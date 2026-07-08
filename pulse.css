@@ -493,3 +493,20 @@ main:has(.dheroimg) .painband, main:has(.dheroimg) .chapter:first-of-type{paddin
 .qband blockquote{font-size:clamp(1.3rem,2.6vw,1.9rem); font-weight:600; letter-spacing:-.02em; line-height:1.45; max-width:780px; margin:0 auto; border:0}
 .qband .qwho{margin-top:22px; font-size:14px; color:rgba(255,255,255,.65)}
 @media (prefers-reduced-motion: reduce){.sfield .orb{animation:none}}
+
+/* v5: hero videos + proof bands */
+.vhero{padding-bottom:96px}
+.vherogrid{position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,5vw,72px);
+  align-items:center; max-width:1200px; margin:0 auto; padding:0 40px; text-align:left}
+.vherogrid h1{max-width:none}
+.vherogrid .sub{margin-left:0}
+.vherogrid .ctas{justify-content:flex-start}
+@media(max-width:980px){.vherogrid{grid-template-columns:1fr; text-align:center}
+  .vherogrid .ctas{justify-content:center}.vherogrid .sub{margin:26px auto 0}}
+.herovid{border-radius:24px; overflow:clip; box-shadow:0 32px 72px rgba(0,0,0,.35); background:rgba(255,255,255,.06)}
+.herovid video{display:block; width:100%; height:auto}
+.proofband .bignum{font-size:clamp(4rem,9vw,7.2rem); font-weight:300; line-height:.95; font-variant-numeric:tabular-nums}
+.prooflbl{font-size:16px; color:var(--ink78); max-width:460px; margin-top:14px}
+.proofband .caption{margin-top:10px}
+.calloutlbl{font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:18px}
+@media (prefers-reduced-motion: reduce){.herovid video{display:none}.herovid::after{content:"Product preview video (motion disabled)"; display:block; padding:40px 20px; color:rgba(255,255,255,.6); font-size:13px; text-align:center}}
