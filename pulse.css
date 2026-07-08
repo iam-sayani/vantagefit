@@ -462,3 +462,34 @@ main:has(.dheroimg) .painband, main:has(.dheroimg) .chapter:first-of-type{paddin
 .applecard{background:#fff; border-radius:28px; padding:clamp(14px,2.4vw,28px); box-shadow:0 18px 56px rgba(29,34,40,.10)}
 .applecard img{width:100%; height:auto; border-radius:18px; display:block}
 .applecard.srimg{opacity:1; transform:none}
+
+/* solution pages v4: apple color fields */
+.sfield--red{background:linear-gradient(175deg,#C8404F 0%,#A93242 55%,#8E2938 100%)}
+.sfield--teal{background:linear-gradient(175deg,#1F8A72 0%,#15705B 55%,#0E5647 100%)}
+.sfield--amber{background:linear-gradient(175deg,#D97B33 0%,#BC6323 55%,#9A4E17 100%)}
+.sfield .orbs{position:absolute; inset:0; pointer-events:none; overflow:clip}
+.sfield .orb{position:absolute; border-radius:999px; background:rgba(255,255,255,.07)}
+.sfield .o1{width:420px; height:420px; left:-120px; top:-140px; animation:drift 38s ease-in-out infinite alternate}
+.sfield .o2{width:300px; height:300px; right:6%; top:8%; background:rgba(255,255,255,.05); animation:drift 46s ease-in-out infinite alternate-reverse}
+.sfield .o3{width:560px; height:560px; right:-180px; bottom:-260px; background:rgba(0,0,0,.10); animation:drift 42s ease-in-out infinite alternate}
+.pagelabel{font-size:clamp(1rem,1.6vw,1.25rem); font-weight:600; color:rgba(255,255,255,.75); margin-bottom:14px}
+.sfield .back{color:rgba(255,255,255,.6)}
+.chglyph{width:46px; height:46px; margin-bottom:18px}
+.stmts{list-style:none; margin:26px 0 0; padding:0; max-width:620px}
+.stmts li{padding:13px 0; border-bottom:1px solid rgba(29,34,40,.08); font-size:16.5px; font-weight:500; color:var(--ink78); line-height:1.55}
+.stmts li:last-child{border-bottom:0}
+.stmts li.lead{color:var(--acc,var(--red)); font-weight:600}
+.bento{display:grid; grid-template-columns:1.45fr .55fr; gap:18px; margin-top:44px; align-items:stretch}
+.bento.solo{grid-template-columns:1fr}
+@media(max-width:900px){.bento{grid-template-columns:1fr}}
+.bento .applecard{margin:0}
+.capcard{background:linear-gradient(170deg,#23272E,#15181C); border-radius:28px; padding:28px; display:flex; align-items:flex-end}
+.capcard p{color:rgba(255,255,255,.85); font-size:15px; font-weight:500; line-height:1.6; margin:0}
+.qband{padding:110px 24px; color:#fff}
+.qband--red{background:linear-gradient(175deg,#A93242,#8E2938)}
+.qband--teal{background:linear-gradient(175deg,#15705B,#0E5647)}
+.qband--amber{background:linear-gradient(175deg,#BC6323,#9A4E17)}
+.qbphoto{width:84px; height:84px; border-radius:999px; object-fit:cover; margin:0 auto 26px; border:3px solid rgba(255,255,255,.35)}
+.qband blockquote{font-size:clamp(1.3rem,2.6vw,1.9rem); font-weight:600; letter-spacing:-.02em; line-height:1.45; max-width:780px; margin:0 auto; border:0}
+.qband .qwho{margin-top:22px; font-size:14px; color:rgba(255,255,255,.65)}
+@media (prefers-reduced-motion: reduce){.sfield .orb{animation:none}}
