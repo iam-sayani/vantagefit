@@ -494,6 +494,19 @@ main:has(.dheroimg) .painband, main:has(.dheroimg) .chapter:first-of-type{paddin
 .qband .qwho{margin-top:22px; font-size:14px; color:rgba(255,255,255,.65)}
 @media (prefers-reduced-motion: reduce){.sfield .orb{animation:none}}
 
+/* v6: full-bleed hero background video under hue veil */
+.vbg{position:relative; overflow:clip}
+.bgvid{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0}
+.veil{position:absolute; inset:0; z-index:0}
+.sfield--red .veil{background:linear-gradient(175deg,rgba(200,64,79,.84) 0%,rgba(169,50,66,.88) 55%,rgba(142,41,56,.93) 100%)}
+.sfield--teal .veil{background:linear-gradient(175deg,rgba(31,138,114,.84) 0%,rgba(21,112,91,.88) 55%,rgba(14,86,71,.93) 100%)}
+.sfield--amber .veil{background:linear-gradient(175deg,rgba(217,123,51,.84) 0%,rgba(188,99,35,.88) 55%,rgba(154,78,23,.93) 100%)}
+.vbg .orbs{z-index:0}
+.vwrap{position:relative; z-index:1; max-width:920px; margin:0 auto; padding:0 40px; text-align:center}
+.vwrap .sub{margin-left:auto; margin-right:auto}
+.vwrap .ctas{justify-content:center}
+@media (prefers-reduced-motion: reduce){.bgvid{display:none}}
+
 /* v5: hero videos + proof bands */
 .vhero{padding-bottom:96px}
 .vherogrid{position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,5vw,72px);
