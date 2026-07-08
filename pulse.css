@@ -507,7 +507,11 @@ main:has(.dheroimg) .painband, main:has(.dheroimg) .chapter:first-of-type{paddin
 .vbg .ghostw{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.42);
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px)}
 .vbg .ghostw:hover{background:rgba(255,255,255,.2)}
-.vbg .orbs{z-index:0}
+.vbg .tracks{z-index:0}
+.vbg .track{position:absolute}
+.vbg .v1{width:340px; height:860px; left:5%; top:-240px; animation:drift 38s ease-in-out infinite alternate}
+.vbg .v2{width:380px; height:920px; right:9%; top:-320px; animation:drift 46s ease-in-out infinite alternate-reverse}
+@media(max-width:900px){.vbg .v2{right:-160px}}
 .vwrap{position:relative; z-index:1; max-width:920px; margin:0 auto; padding:0 40px; text-align:center}
 .vwrap .sub{margin-left:auto; margin-right:auto}
 .vwrap .ctas{justify-content:center}
