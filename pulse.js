@@ -7,7 +7,7 @@
   function navState(){
     var field = document.querySelector(".field");
     var limit = field ? field.offsetHeight - 90 : 60;
-    nav.classList.toggle("light", scrollY > limit);
+    nav.classList.toggle("light", !field || scrollY > limit);
   }
   addEventListener("scroll", navState, {passive:true}); navState();
 
