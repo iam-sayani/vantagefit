@@ -705,3 +705,9 @@ img.glyph.heart{width:64px; height:auto; display:block; margin:0 auto 14px;
 .spec.dark .promote{color:#41D8B4}
 header.in .tbar i{width:var(--w)}
 header.in .promote{opacity:1; transform:none}
+
+/* charcoal touch: dark closing section (brand ink #1D2228) */
+.closer--dark{background:linear-gradient(170deg,#2A313A 0%,#1D2228 62%,#191D22 100%); color:#fff}
+.closer--dark h2{color:#fff}
+.closer--dark .closesub{color:rgba(255,255,255,.68)}
+.closer--dark .pricenote{color:rgba(255,255,255,.5)}
