@@ -62,7 +62,7 @@ nav.top.light .brand .neg{display:none}
 nav.top.light .nl>a,nav.top.light .nl>button{color:var(--ink55)}
 nav.top.light .nl>a:hover,nav.top.light .nl>button:hover{color:var(--ink)}
 .nl .chev{font-size:.6rem; opacity:.6}
-nav.top.light{background:rgba(255,255,255,.55); backdrop-filter:blur(22px) saturate(1.6); -webkit-backdrop-filter:blur(22px) saturate(1.6); box-shadow:0 1px 0 var(--hair)}
+nav.top.light{background:rgba(255,255,255,.72); backdrop-filter:blur(22px) saturate(1.6); -webkit-backdrop-filter:blur(22px) saturate(1.6); box-shadow:0 1px 0 var(--hair)}
 .navcta{height:42px; padding:0 24px; font-size:14px}
 /* dropdown panels: always light */
 .panel{position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(6px);
