@@ -552,7 +552,7 @@ main:has(.dheroimg) .painband, main:has(.dheroimg) .chapter:first-of-type{paddin
 .spec{background:#fff; border:1px solid rgba(29,34,40,.08); border-radius:24px; box-shadow:0 8px 32px rgba(29,34,40,.06); padding:26px}
 .speckick{font-size:12px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--ink55); margin-bottom:16px}
 .specnote{font-size:12px; color:var(--ink40); margin-top:16px}
-.ruled{background-image:repeating-linear-gradient(0deg, rgba(29,34,40,.03) 0 1px, transparent 1px 32px), repeating-linear-gradient(90deg, rgba(29,34,40,.03) 0 1px, transparent 1px 32px)}
+.ruled{background-image:none}
 /* league board */
 .trow{display:grid; grid-template-columns:14px 64px 1fr 42px; gap:12px; align-items:center; padding:12px 0; border-bottom:1px solid rgba(29,34,40,.06)}
 .trow:last-of-type{border-bottom:0}
