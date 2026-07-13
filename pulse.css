@@ -799,3 +799,4 @@ header.in .promote{opacity:1; transform:none}
 .tintcard .csub{color:rgba(255,255,255,.78)}
 .tint-redw .schip.m{background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.35); box-shadow:none; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px)}
 .tint-mintw .brmock{box-shadow:0 24px 60px rgba(0,0,0,.28)}
+.tintcard .brmock{color:var(--ink)}
