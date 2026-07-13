@@ -676,3 +676,31 @@ img.glyph.heart{width:64px; height:auto; display:block; margin:0 auto 14px;
   34%,100%{transform:scale(1)}
 }
 @media (prefers-reduced-motion: reduce){img.glyph.heart{animation:none}}
+
+/* v7: product-image placeholders, feature hero variant, demo band */
+.imgslot{margin:28px auto 0; max-width:640px; border:1.5px dashed rgba(29,34,40,.24); border-radius:20px;
+  min-height:230px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px;
+  background:rgba(29,34,40,.025); padding:24px}
+.imgslot span{font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; font-weight:600; color:var(--ink40)}
+.imgslot em{font-style:normal; font-size:13.5px; color:var(--ink55); max-width:440px; text-align:center; line-height:1.5}
+.heroslot{margin:0; max-width:none; min-height:400px; border-color:rgba(255,255,255,.4); background:rgba(255,255,255,.08)}
+.heroslot span{color:rgba(255,255,255,.65)}
+.heroslot em{color:rgba(255,255,255,.8)}
+.fhero{padding-bottom:96px}
+.fhero .pricechip.dark{border-color:rgba(255,255,255,.35); color:#fff; margin-top:20px}
+.fhero .trustrow{margin-top:24px}
+.trustrow--dark .badge{border-color:rgba(255,255,255,.3); color:rgba(255,255,255,.85)}
+.seckick{font-size:12.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; margin-bottom:10px}
+.secchap .body{max-width:640px}
+.demoband{max-width:900px; margin:0 auto}
+.demoband h2{font-size:clamp(1.5rem,3vw,2.2rem)}
+.spec.dark{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14); box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.spec.dark .speckick{color:rgba(255,255,255,.6)}
+.spec.dark .tname{color:#fff}
+.spec.dark .tnum{color:rgba(255,255,255,.7)}
+.spec.dark .trow{border-bottom-color:rgba(255,255,255,.08)}
+.spec.dark .tbar{background:rgba(255,255,255,.1)}
+.spec.dark .specnote{color:rgba(255,255,255,.45)}
+.spec.dark .promote{color:#41D8B4}
+header.in .tbar i{width:var(--w)}
+header.in .promote{opacity:1; transform:none}
