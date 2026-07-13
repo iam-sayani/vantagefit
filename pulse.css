@@ -666,8 +666,7 @@ section.in .cmpbar i{width:var(--w)}
 
 /* hero logo heart: cardiac lub-dub */
 img.glyph.heart{width:64px; height:auto; display:block; margin:0 auto 14px;
-  animation:heartbeat 2.4s ease-in-out .4s infinite; transform-origin:center;
-  filter:drop-shadow(0 6px 18px rgba(241,81,98,.35))}
+  animation:heartbeat 2.4s ease-in-out .4s infinite; transform-origin:center}
 @keyframes heartbeat{
   0%{transform:scale(1)}
   8%{transform:scale(1.14)}
