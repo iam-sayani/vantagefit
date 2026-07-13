@@ -738,3 +738,55 @@ header.in .promote{opacity:1; transform:none}
   display:flex; justify-content:space-between; gap:16px}
 .pfoot a{padding:0; border-radius:0; font-size:12.5px; font-weight:600; color:var(--ink78); display:inline}
 .pfoot a:hover{background:none; color:var(--red)}
+
+/* pricing v2: configurator, plans, comparison, addons */
+.prhero{padding:170px 24px 90px}
+.truststrip{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:30px}
+.truststrip span{padding:8px 18px; border:1px solid rgba(255,255,255,.28); border-radius:999px; font-size:13.5px; font-weight:600; color:rgba(255,255,255,.85)}
+.config{max-width:820px; margin:0 auto}
+.tabs{display:grid; grid-template-columns:1fr 1fr; gap:10px; background:rgba(29,34,40,.05); padding:8px; border-radius:20px}
+.tab{border:0; cursor:pointer; background:transparent; border-radius:14px; padding:14px 18px; font:inherit; text-align:left; color:var(--ink78); transition:background .2s, box-shadow .2s}
+.tab small{display:block; font-size:12px; color:var(--ink55); margin-top:3px; font-weight:400}
+.tab{font-weight:600; font-size:15px}
+.tab.on{background:#fff; color:var(--ink); box-shadow:0 4px 18px rgba(29,34,40,.08)}
+.sliderrow{display:grid; grid-template-columns:auto 1fr 110px; gap:16px; align-items:center; margin-top:26px}
+@media(max-width:700px){.sliderrow{grid-template-columns:1fr}}
+.sliderrow label{font-size:14px; font-weight:600; color:var(--ink78)}
+.sliderrow input[type=range]{accent-color:var(--red); height:4px}
+.sliderrow input[type=number]{font:inherit; font-weight:600; padding:10px 12px; border:1px solid rgba(29,34,40,.18); border-radius:12px; width:110px}
+.nudge{margin-top:18px; font-size:13.5px; color:var(--ink55); text-align:center}
+.nudge b{color:var(--ink)}
+.plans{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:920px; margin:44px auto 0; align-items:stretch}
+@media(max-width:820px){.plans{grid-template-columns:1fr}}
+.plan{position:relative; background:#fff; border:1px solid rgba(29,34,40,.1); border-radius:28px; padding:32px; display:flex; flex-direction:column}
+.plan.pop{border:2px solid #d97a2d; box-shadow:0 18px 50px rgba(217,122,45,.13)}
+.poppill{position:absolute; top:-13px; left:32px; background:#d97a2d; color:#fff; font-size:11.5px; font-weight:600; letter-spacing:.05em; padding:4px 14px; border-radius:999px}
+.plankick{font-size:13px; font-weight:600; letter-spacing:.09em; text-transform:uppercase}
+.plandiff{font-size:15px; color:var(--ink78); margin-top:8px; line-height:1.5}
+.planprice{margin-top:20px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.planprice span:first-child{font-size:clamp(2rem,3.4vw,2.7rem); font-weight:300; letter-spacing:-.02em; color:var(--ink); font-variant-numeric:tabular-nums}
+.pernote{font-size:13px; color:var(--ink55)}
+.contactline{margin-top:24px; font-size:17px; font-weight:600; color:var(--ink)}
+.incl{margin-top:18px; font-size:12.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--ink40)}
+.planfeat{list-style:none; margin:14px 0 26px; padding:0; flex:1}
+.planfeat li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; font-size:14px; color:var(--ink78); line-height:1.5}
+.planfeat li svg{flex:0 0 15px; margin-top:3px}
+.planfeat b{color:var(--ink); font-weight:600}
+.planbtn{width:100%; text-align:center}
+.cwrap{overflow-x:auto; border:1px solid rgba(29,34,40,.1); border-radius:24px; margin-top:34px}
+.ctable{width:100%; border-collapse:collapse; min-width:640px; font-size:14px}
+.ctable thead th{position:sticky; top:0; background:#fff; text-align:left; padding:16px 20px; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink55); border-bottom:1px solid rgba(29,34,40,.12)}
+.ctable thead th:nth-child(2), .ctable thead th:nth-child(3){width:29%}
+.ctable tbody th{font-weight:500; text-align:left; color:var(--ink78)}
+.ctable td, .ctable tbody th{padding:13px 20px; border-bottom:1px solid rgba(29,34,40,.06); vertical-align:top; line-height:1.5}
+.ctable td{color:var(--ink78)}
+.ctable .csec th{padding-top:26px; font-size:12px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--ink40); border-bottom:0}
+.ctable .no{color:var(--ink40)}
+.addons{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:38px}
+@media(max-width:900px){.addons{grid-template-columns:1fr}}
+.addon{display:flex; flex-direction:column; gap:8px; background:#fff; border:1px solid rgba(29,34,40,.1); border-radius:24px; padding:22px; transition:border-color .2s, transform .2s}
+.addon:hover{border-color:rgba(29,34,40,.28); transform:translateY(-3px)}
+.addon b{font-size:16.5px; font-weight:600; color:var(--ink)}
+.addon p{font-size:13.5px; color:var(--ink55); line-height:1.55; margin:0}
+.addonslot{min-height:150px; margin:0 0 10px; max-width:none}
+.alink{font-size:13px; font-weight:600; color:var(--red); margin-top:auto}
