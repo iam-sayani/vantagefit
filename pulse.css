@@ -45,8 +45,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red); outline-offse
 /* ==========================================================================
    NAV — real site taxonomy, provided logo, mega dropdowns
    ========================================================================== */
-nav.top{position:fixed; inset:0 0 auto 0; z-index:60; height:66px; transition:background .35s, box-shadow .35s;
-  background:rgba(22,26,31,.18); backdrop-filter:blur(18px) saturate(1.4); -webkit-backdrop-filter:blur(18px) saturate(1.4)}
+nav.top{position:fixed; inset:0 0 auto 0; z-index:60; height:66px; transition:background .35s, box-shadow .35s}
 .navin{max-width:1280px; margin:0 auto; height:100%; padding:0 28px; display:flex; align-items:center; justify-content:space-between; gap:18px}
 .brand{display:flex; align-items:center; text-decoration:none}
 .brand img{height:32px; width:auto; transition:filter .35s}
