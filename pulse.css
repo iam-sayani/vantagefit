@@ -790,3 +790,9 @@ header.in .promote{opacity:1; transform:none}
 .addon p{font-size:13.5px; color:var(--ink55); line-height:1.55; margin:0}
 .addonslot{min-height:150px; margin:0 0 10px; max-width:none}
 .alink{font-size:13px; font-weight:600; color:var(--red); margin-top:auto}
+
+/* loop side cards: soft color fields */
+.tintcard.tint-mintw{background:linear-gradient(160deg,#F0FBF7 0%,#DFF5EC 100%); border:1px solid rgba(65,216,180,.25)}
+.tintcard.tint-redw{background:linear-gradient(160deg,#FFF4F5 0%,#FFE7EA 100%); border:1px solid rgba(241,81,98,.18)}
+.tintcard .csub{color:var(--ink78)}
+.tint-redw .schip.m{background:#fff; color:var(--ink); box-shadow:0 3px 12px rgba(29,34,40,.08)}
