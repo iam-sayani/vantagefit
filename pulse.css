@@ -663,3 +663,16 @@ section.in .cmpbar i{width:var(--w)}
   .slide{animation:none; opacity:0}
   .slide.s1{opacity:1; transform:none}
 }
+
+/* hero logo heart: cardiac lub-dub */
+img.glyph.heart{width:64px; height:auto; display:block; margin:0 auto 14px;
+  animation:heartbeat 2.4s ease-in-out .4s infinite; transform-origin:center;
+  filter:drop-shadow(0 6px 18px rgba(241,81,98,.35))}
+@keyframes heartbeat{
+  0%{transform:scale(1)}
+  8%{transform:scale(1.14)}
+  16%{transform:scale(1)}
+  24%{transform:scale(1.08)}
+  34%,100%{transform:scale(1)}
+}
+@media (prefers-reduced-motion: reduce){img.glyph.heart{animation:none}}
