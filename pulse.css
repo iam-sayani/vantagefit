@@ -99,7 +99,7 @@ nav.top.light .mtoggle i{background:var(--ink)}
 .field .kick{font-size:13px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:22px}
 .field h1{font-size:clamp(2.3rem,5.6vw,4.3rem); font-weight:600; letter-spacing:-.033em; line-height:1.07; max-width:900px}
 .field.tall h1{font-size:clamp(2.4rem,6vw,5rem); max-width:1160px; line-height:1.08}
-.field .sub{font-size:clamp(1.02rem,1.5vw,1.25rem); color:rgba(255,255,255,.66); max-width:640px; margin:26px auto 0}
+.field .sub{font-size:clamp(.95rem,1.15vw,1.06rem); color:rgba(255,255,255,.66); max-width:600px; margin:22px auto 0}
 .field .ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:42px}
 .field .pricenote{font-size:13.5px; color:rgba(255,255,255,.5); margin-top:14px}
 .tracks{position:absolute; inset:0; pointer-events:none}
