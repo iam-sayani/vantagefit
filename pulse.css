@@ -644,17 +644,18 @@ section.in .cmpbar i{width:var(--w)}
 /* homepage hero: ken burns still carousel under charcoal veil */
 .heroslides{position:absolute; inset:0; z-index:0}
 .slide{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0;
-  transform-origin:center; animation:kburns 28s ease-in-out infinite; will-change:opacity,transform}
+  transform-origin:center; animation:kburns 35s ease-in-out infinite; will-change:opacity,transform}
 .slide.s1{animation-delay:0s}
 .slide.s2{animation-delay:7s}
 .slide.s3{animation-delay:14s}
 .slide.s4{animation-delay:21s}
+.slide.s5{animation-delay:28s}
 @keyframes kburns{
   0%{opacity:0; transform:scale(1.03)}
-  6%{opacity:1}
-  25%{opacity:1}
-  32%{opacity:0; transform:scale(1.13)}
-  33%,100%{opacity:0; transform:scale(1.03)}
+  5%{opacity:1}
+  20%{opacity:1}
+  26%{opacity:0; transform:scale(1.12)}
+  27%,100%{opacity:0; transform:scale(1.03)}
 }
 .heroveil{position:absolute; inset:0; z-index:0;
   background:linear-gradient(175deg,rgba(42,49,58,.84) 0%,rgba(29,34,40,.88) 68%,rgba(25,29,34,.95) 100%)}
