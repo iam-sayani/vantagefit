@@ -711,3 +711,11 @@ header.in .promote{opacity:1; transform:none}
 .closer--dark h2{color:#fff}
 .closer--dark .closesub{color:rgba(255,255,255,.68)}
 .closer--dark .pricenote{color:rgba(255,255,255,.5)}
+
+/* slim inline demo strip */
+.ctaline{display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;
+  max-width:900px; margin:0 auto; padding:26px 32px; border:1px solid rgba(29,34,40,.12); border-radius:24px; background:#fff}
+.ctaline p{font-size:15.5px; line-height:1.6; color:var(--ink78); margin:0; max-width:560px}
+.ctaline p b{color:var(--ink); font-weight:600}
+.ctaline .cta{flex-shrink:0}
+@media(max-width:700px){.ctaline{justify-content:center; text-align:center}}
