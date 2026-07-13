@@ -687,6 +687,7 @@ img.glyph.heart{width:64px; height:auto; display:block; margin:0 auto 14px;
 .heroslot span{color:rgba(255,255,255,.65)}
 .heroslot em{color:rgba(255,255,255,.8)}
 .fhero{padding-bottom:96px}
+.fhero .back{position:static; display:inline-block; margin-bottom:22px}
 .fhero .pricechip.dark{border-color:rgba(255,255,255,.35); color:#fff; margin-top:20px}
 .fhero .trustrow{margin-top:24px}
 .trustrow--dark .badge{border-color:rgba(255,255,255,.3); color:rgba(255,255,255,.85)}
