@@ -718,3 +718,6 @@ header.in .promote{opacity:1; transform:none}
 .ctaline p b{color:var(--ink); font-weight:600}
 .ctaline .cta{flex-shrink:0}
 @media(max-width:700px){.ctaline{justify-content:center; text-align:center}}
+
+/* homepage hero: photography carries the depth; capsules off (one living element rule) */
+.field.tall .tracks{display:none}
