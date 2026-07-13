@@ -801,3 +801,11 @@ header.in .promote{opacity:1; transform:none}
 .tint-mintw .brmock{box-shadow:0 24px 60px rgba(0,0,0,.28)}
 .tintcard .brmock{color:var(--ink)}
 .tintcard.dark .csub{color:rgba(255,255,255,.78)}
+
+/* proof band: centered stat moment */
+.proofband{text-align:center}
+.proofband .bignum{margin:0 auto}
+.prooflbl{margin:16px auto 0; font-size:clamp(1.05rem,1.6vw,1.25rem); font-weight:600; letter-spacing:-.01em;
+  color:var(--ink); max-width:480px; line-height:1.5}
+.prooflink{display:inline-block; margin-top:14px; font-size:14px; font-weight:600; color:var(--red)}
+.prooflink:hover{text-decoration:underline; text-underline-offset:4px}
