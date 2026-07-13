@@ -69,7 +69,7 @@ nav.top.light{background:rgba(255,255,255,.88); backdrop-filter:blur(14px); -web
   padding:22px; display:grid; gap:2px 28px; opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease}
 .nl:hover .panel,.nl:focus-within .panel{opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0)}
 .panel.closing{opacity:0 !important; pointer-events:none !important}
-.panel.two{grid-template-columns:1fr 1fr; width:640px}
+.panel.two{grid-template-columns:1fr 1fr; width:700px; padding:18px}
 .panel .grp{font-size:10.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--ink40);
   padding:8px 10px 6px; grid-column:span 1}
 .panel a{display:block; padding:8px 10px; border-radius:10px; text-decoration:none; transition:background .15s}
@@ -721,3 +721,20 @@ header.in .promote{opacity:1; transform:none}
 
 /* homepage hero: photography carries the depth; capsules off (one living element rule) */
 .field.tall .tracks{display:none}
+
+/* mega menu: icon chips, hover arrows, footer row */
+.panel a{display:flex; align-items:flex-start; gap:12px; padding:9px 12px; border-radius:14px}
+.panel a:hover{background:color-mix(in srgb, var(--pc, #1D2228) 6%, #fff)}
+.pico{flex:0 0 34px; width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+  color:var(--pc); background:color-mix(in srgb, var(--pc) 11%, #fff); transition:transform .18s var(--ease)}
+.panel a:hover .pico{transform:scale(1.08)}
+.ptxt{min-width:0}
+.ptxt b{display:block; font-size:13.5px; font-weight:600; color:var(--ink); letter-spacing:-.01em}
+.ptxt span{display:block; font-size:11.5px; color:var(--ink55); line-height:1.45; margin-top:1px}
+.parr{margin-left:auto; align-self:center; font-size:13px; font-weight:600; color:var(--pc, var(--ink40));
+  opacity:0; transform:translateX(-5px); transition:opacity .18s, transform .18s}
+.panel a:hover .parr{opacity:1; transform:none}
+.pfoot{grid-column:1/-1; margin-top:10px; padding:12px 12px 2px; border-top:1px solid rgba(29,34,40,.08);
+  display:flex; justify-content:space-between; gap:16px}
+.pfoot a{padding:0; border-radius:0; font-size:12.5px; font-weight:600; color:var(--ink78); display:inline}
+.pfoot a:hover{background:none; color:var(--red)}
