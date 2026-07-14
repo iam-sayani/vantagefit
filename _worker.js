@@ -1,12 +1,19 @@
-// Password gate for the prototype. Change PASS below and redeploy to rotate.
-const USER = "vfit";
-const PASS = "pulse2026";
+// Password gate for the prototype. Only the password matters; username can be
+// anything (or left blank). Change PASS below and redeploy to rotate.
+const PASS = "welcome";
 
 export default {
   async fetch(request, env) {
-    const expected = "Basic " + btoa(USER + ":" + PASS);
     const got = request.headers.get("Authorization") || "";
-    if (got !== expected) {
+    let ok = false;
+    if (got.startsWith("Basic ")) {
+      try {
+        const decoded = atob(got.slice(6));
+        const pass = decoded.slice(decoded.indexOf(":") + 1);
+        ok = pass === PASS;
+      } catch (e) { ok = false; }
+    }
+    if (!ok) {
       return new Response("This is a private prototype. Enter the password to continue.", {
         status: 401,
         headers: {
