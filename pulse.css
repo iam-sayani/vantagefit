@@ -45,23 +45,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red); outline-offse
 /* ==========================================================================
    NAV — real site taxonomy, provided logo, mega dropdowns
    ========================================================================== */
-nav.top{position:fixed; inset:0 0 auto 0; z-index:60; height:66px; transition:background .35s, box-shadow .35s}
-.navin{max-width:1280px; margin:0 auto; height:100%; padding:0 28px; display:flex; align-items:center; justify-content:space-between; gap:18px}
+nav.top{position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:60; height:60px;
+  width:min(1200px, calc(100% - 28px)); border-radius:999px;
+  background:rgba(255,255,255,.86); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  box-shadow:0 8px 28px rgba(41,41,76,.10); transition:box-shadow .3s}
+.navin{height:100%; padding:0 10px 0 24px; display:flex; align-items:center; justify-content:space-between; gap:18px}
 .brand{display:flex; align-items:center; text-decoration:none}
 .brand img{height:32px; width:auto; transition:filter .35s}
-.brand .pos{display:none}
-.brand .neg{display:block}
-nav.top.light .brand .pos{display:block}
-nav.top.light .brand .neg{display:none}
+.brand .pos{display:block}
+.brand .neg{display:none}
 .navlinks{display:flex; gap:4px; align-items:center}
 .nl{position:relative}
 .nl>a,.nl>button{display:inline-flex; align-items:center; gap:6px; padding:10px 14px; border:0; background:none; cursor:pointer;
-  font-family:inherit; font-size:14.5px; font-weight:500; color:rgba(255,255,255,.78); text-decoration:none; transition:color .2s; border-radius:8px}
-.nl>a:hover,.nl>button:hover{color:#fff}
-nav.top.light .nl>a,nav.top.light .nl>button{color:var(--ink55)}
-nav.top.light .nl>a:hover,nav.top.light .nl>button:hover{color:var(--ink)}
+  font-family:inherit; font-size:14.5px; font-weight:500; color:var(--ink55); text-decoration:none; transition:color .2s, background .2s; border-radius:999px}
+.nl>a:hover,.nl>button:hover{color:var(--ink); background:rgba(41,41,76,.06)}
 .nl .chev{font-size:.6rem; opacity:.6}
-nav.top.light{background:rgba(255,255,255,.72); backdrop-filter:blur(22px) saturate(1.6); -webkit-backdrop-filter:blur(22px) saturate(1.6); box-shadow:0 1px 0 var(--hair)}
+nav.top.light{box-shadow:0 12px 34px rgba(41,41,76,.16)}
 .navcta{height:42px; padding:0 24px; font-size:14px}
 /* dropdown panels: always light */
 .panel{position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(6px);
@@ -79,10 +78,9 @@ nav.top.light{background:rgba(255,255,255,.72); backdrop-filter:blur(22px) satur
 .panel a .newtag{display:inline-block; margin-left:6px; padding:1px 7px; border-radius:99px; background:var(--tint-red); color:var(--red); font-size:9px; font-weight:600; letter-spacing:.04em; vertical-align:2px}
 /* mobile */
 .mtoggle{display:none; width:40px; height:40px; border:0; background:none; cursor:pointer; position:relative}
-.mtoggle i{position:absolute; left:9px; right:9px; height:2px; border-radius:2px; background:#fff; transition:background .35s}
-nav.top.light .mtoggle i{background:var(--ink)}
+.mtoggle i{position:absolute; left:9px; right:9px; height:2px; border-radius:2px; background:var(--ink); transition:background .35s}
 .mtoggle i:nth-child(1){top:13px}.mtoggle i:nth-child(2){top:19px}.mtoggle i:nth-child(3){top:25px}
-.msheet{position:fixed; inset:66px 0 0 0; z-index:55; background:#fff; padding:20px 24px 40px; overflow-y:auto; display:none}
+.msheet{position:fixed; inset:86px 0 0 0; z-index:55; background:#fff; padding:20px 24px 40px; overflow-y:auto; display:none}
 .msheet.open{display:block}
 .msheet a{display:block; padding:14px 4px; font-size:17px; font-weight:500; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--hair)}
 .msheet .msub{font-size:11px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--ink40); padding:20px 4px 6px}
