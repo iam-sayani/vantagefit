@@ -807,7 +807,8 @@ header.in .promote{opacity:1; transform:none}
 .prooflink{display:inline-block; margin-top:14px; font-size:14px; font-weight:600; color:var(--red)}
 .prooflink:hover{text-decoration:underline; text-underline-offset:4px}
 
-/* type trial: Plus Jakarta Sans display / Noto Sans body */
-h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline,.kpi b,
+/* type trial 2: Georgia headlines / sans everywhere else */
+.bignum,.val,.stat-inline,.kpi b,
 .cta,.ghostw,.ghostd,.navcta,.minibtn,.wordmark,.pagelabel,.plankick,.planprice,
 .tab,.poppill,.pricechip,.brand,.nl>a,.nl>button{font-family:'Plus Jakarta Sans','Noto Sans',sans-serif}
+h1,h2,h3,h4,blockquote{font-family:Georgia,'Times New Roman',serif; letter-spacing:-.01em; font-weight:600}
