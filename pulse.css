@@ -16,7 +16,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth; overflow-x:clip}
-body{font-family:'Poppins',-apple-system,'Segoe UI',sans-serif; background:var(--paper); color:var(--ink);
+body{font-family:'Noto Sans',-apple-system,'Segoe UI',sans-serif; background:var(--paper); color:var(--ink);
   font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:clip}
 img,svg{display:block}
 .col{max-width:1100px; margin:0 auto; padding:0 40px}
@@ -806,3 +806,8 @@ header.in .promote{opacity:1; transform:none}
   color:var(--ink); max-width:480px; line-height:1.5}
 .prooflink{display:inline-block; margin-top:14px; font-size:14px; font-weight:600; color:var(--red)}
 .prooflink:hover{text-decoration:underline; text-underline-offset:4px}
+
+/* type trial: Plus Jakarta Sans display / Noto Sans body */
+h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline,.kpi b,
+.cta,.ghostw,.ghostd,.navcta,.minibtn,.wordmark,.pagelabel,.plankick,.planprice,
+.tab,.poppill,.pricechip,.brand,.nl>a,.nl>button{font-family:'Plus Jakarta Sans','Noto Sans',sans-serif}
