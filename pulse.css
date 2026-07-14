@@ -810,4 +810,4 @@ header.in .promote{opacity:1; transform:none}
 /* type trial 3: Bricolage Grotesque headlines / Jakarta UI / Noto body */
 .cta,.ghostw,.ghostd,.navcta,.minibtn,.wordmark,.pagelabel,.plankick,.planprice,.kpi b,
 .tab,.poppill,.pricechip,.brand,.nl>a,.nl>button{font-family:'Plus Jakarta Sans','Noto Sans',sans-serif}
-h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif}
+h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'DM Sans','Plus Jakarta Sans',sans-serif; letter-spacing:-.02em}
