@@ -811,3 +811,19 @@ header.in .promote{opacity:1; transform:none}
 .cta,.ghostw,.ghostd,.navcta,.minibtn,.wordmark,.pagelabel,.plankick,.planprice,.kpi b,
 .tab,.poppill,.pricechip,.brand,.nl>a,.nl>button{font-family:'Plus Jakarta Sans','Noto Sans',sans-serif}
 h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'DM Sans','Plus Jakarta Sans',sans-serif; letter-spacing:-.02em}
+
+/* wave 2: answer block, n26 rows, why grid, pull quotes, compare links */
+.answerblk{background:#fff; padding:34px 24px; border-bottom:1px solid var(--hair)}
+.answerblk p{max-width:760px; margin:0 auto; text-align:center; font-size:15px; line-height:1.7; color:var(--ink78)}
+.n26{display:grid; gap:14px; margin-top:22px}
+.n26row b{display:block; font-size:15px; font-weight:600; color:#fff; margin-bottom:2px}
+.n26row span{font-size:13px; line-height:1.55; color:rgba(255,255,255,.75)}
+.whygrid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:34px}
+@media(max-width:800px){.whygrid{grid-template-columns:1fr}}
+.whycard{border:1px solid rgba(41,41,76,.1); border-radius:24px; padding:28px; font-size:16.5px; font-weight:600; letter-spacing:-.01em; color:var(--ink); line-height:1.5}
+.cmplinks{display:flex; gap:10px; flex-wrap:wrap}
+.cmplinks a{padding:9px 18px; border:1px solid rgba(41,41,76,.16); border-radius:999px; font-size:13.5px; font-weight:600; color:var(--ink); transition:border-color .2s}
+.cmplinks a:hover{border-color:var(--red); color:var(--red)}
+.pullq{margin:0; padding:26px 30px; border-left:3px solid #169d7e; background:rgba(65,216,180,.06); border-radius:0 20px 20px 0;
+  font-size:16.5px; line-height:1.6; color:var(--ink); font-weight:500}
+.pullq footer{margin-top:12px; font-size:13px; font-weight:600; color:var(--ink55)}
