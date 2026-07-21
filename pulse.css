@@ -829,3 +829,7 @@ h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'DM Sans','Plus Jak
 .pullq footer{margin-top:12px; font-size:13px; font-weight:600; color:var(--ink55)}
 
 .vwrap .trustrow{justify-content:center; margin-top:26px}
+
+/* wider features dropdown */
+.panel.two[aria-label="Features"]{width:880px; grid-template-columns:1.05fr 1fr}
+@media(max-width:1000px){.panel.two[aria-label="Features"]{width:700px}}
