@@ -827,3 +827,5 @@ h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'DM Sans','Plus Jak
 .pullq{margin:0; padding:26px 30px; border-left:3px solid #169d7e; background:rgba(65,216,180,.06); border-radius:0 20px 20px 0;
   font-size:16.5px; line-height:1.6; color:var(--ink); font-weight:500}
 .pullq footer{margin-top:12px; font-size:13px; font-weight:600; color:var(--ink55)}
+
+.vwrap .trustrow{justify-content:center; margin-top:26px}
