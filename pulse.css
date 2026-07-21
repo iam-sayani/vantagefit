@@ -849,3 +849,10 @@ h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'Noto Sans',sans-se
 .stars .sgold svg{fill:#F6B93B}
 
 .ratestrip{display:block; margin:0 auto; width:min(760px, 92%); height:auto}
+
+/* quiet ratings line in hero */
+.ratequiet{display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;
+  margin-top:22px; font-size:13px; color:rgba(255,255,255,.62)}
+.ratequiet svg{margin-right:1px; vertical-align:-1px}
+.ratequiet b{color:rgba(255,255,255,.92); font-weight:600}
+.ratequiet i{width:3px; height:3px; border-radius:99px; background:rgba(255,255,255,.35)}
