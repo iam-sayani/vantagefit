@@ -835,7 +835,7 @@ h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'Noto Sans',sans-se
 @media(max-width:1000px){.panel.two[aria-label="Features"]{width:700px}}
 
 /* review-platform ratings bar */
-.ratebar{background:#fff; padding:38px 24px 46px; border-bottom:1px solid var(--hair)}
+.ratebar{background:linear-gradient(170deg,#2A313A 0%,#1D2228 100%); padding:44px 24px 50px}
 .ratebar .col{display:flex; justify-content:center; align-items:flex-end; gap:clamp(36px,7vw,110px); flex-wrap:wrap; max-width:1000px; margin:0 auto}
 .rate{text-align:center}
 .rname{font-size:19px; font-weight:800; letter-spacing:-.01em; color:var(--ink); margin-bottom:8px}
