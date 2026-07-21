@@ -863,6 +863,8 @@ h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'Noto Sans',sans-se
   border-radius:28px; background:var(--pt); border:1px solid color-mix(in srgb, var(--pa) 22%, #fff)}
 .proofcard .bignum{font-size:clamp(3.6rem,7.5vw,6rem); font-weight:300; line-height:1;
   color:var(--pa); font-variant-numeric:tabular-nums; margin:0}
+.proofcard .prooftxt{text-align:left}
+@media(max-width:760px){.proofcard .prooftxt{text-align:center}}
 .proofkick{font-size:11.5px; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:var(--pa); margin-bottom:10px}
 .proofcard .prooflbl{margin:0; font-size:clamp(1.05rem,1.6vw,1.3rem); font-weight:600; letter-spacing:-.01em; color:var(--ink); max-width:520px; line-height:1.45; text-align:left}
 .proofcard .prooflink{display:inline-block; margin-top:14px; font-size:14px; font-weight:600; color:var(--pa)}
