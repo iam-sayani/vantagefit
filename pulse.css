@@ -847,3 +847,5 @@ h1,h2,h3,h4,blockquote,.bignum,.val,.stat-inline{font-family:'Noto Sans',sans-se
 .stars .sgrey svg{fill:rgba(41,41,76,.15)}
 .stars .sgold{position:absolute; inset:0 auto 0 0; overflow:hidden}
 .stars .sgold svg{fill:#F6B93B}
+
+.ratestrip{display:block; margin:0 auto; width:min(760px, 92%); height:auto}
