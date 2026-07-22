@@ -415,7 +415,8 @@ main:has(.dheroimg) .painband, main:has(.dheroimg) .chapter:first-of-type{paddin
 .prail .pdot{width:6px; height:6px; border-radius:99px; border:0; background:rgba(41,41,76,.18); cursor:pointer; padding:0;
   transition:background .25s, height .35s cubic-bezier(.22,1,.36,1), transform .2s; position:relative}
 .prail .pdot:hover{background:rgba(41,41,76,.45)}
-.prail .pdot.on{height:24px; background:var(--red)}
+.prail .pdot.on{background:var(--red)}
+.prail .pdot.on:not(:has(~ .pdot.on)){height:24px}
 .prail .pdot .tip{position:absolute; left:20px; top:50%; transform:translateY(-50%) translateX(-6px); white-space:nowrap;
   background:var(--ink); color:#fff; font-size:11.5px; font-weight:500; padding:5px 12px; border-radius:8px; opacity:0; pointer-events:none; transition:opacity .2s, transform .2s}
 .prail .pdot:hover .tip,.prail .pdot:focus-visible .tip{opacity:1; transform:translateY(-50%) translateX(0)}
