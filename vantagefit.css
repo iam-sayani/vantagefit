@@ -235,7 +235,9 @@ nav.top.light{box-shadow:0 1px 0 var(--hair), 0 8px 24px rgba(41,41,76,.06)}
 .moneyf .ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:36px}
 /* closer */
 .closer{background:#fff; text-align:center; padding:130px 24px 110px}
-.closer h2{font-size:clamp(2rem,4.4vw,3.3rem); font-weight:600; letter-spacing:-.03em; line-height:1.1; max-width:22ch; margin:0 auto}
+.closer h2{font-size:clamp(2rem,4.4vw,3.3rem); font-weight:600; letter-spacing:-.03em; line-height:1.1; max-width:1160px; margin:0 auto}
+.closer h2 .br-wide{display:none}
+@media(min-width:900px){.closer h2 .br-wide{display:inline}}
 .closer .ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:44px}
 .closer .pricenote{font-size:13.5px; color:var(--ink40); margin-top:14px}
 
