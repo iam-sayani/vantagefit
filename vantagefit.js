@@ -79,7 +79,7 @@
     text.innerHTML = words.map(function(w){ return '<span class="w-lit">'+w+'</span>'; }).join(" ");
     if(fine) text.appendChild(fine);
     var lit = text.querySelectorAll(".w-lit");
-    if(reduced){ lit.forEach(function(w){ w.classList.add("on"); }); }
+    if(reduced){ lit.forEach(function(w){ w.classList.add("on"); }); illume.classList.add("done"); }
     else{
       var raf = 0;
       var scrub = function(){
@@ -89,6 +89,7 @@
         var p = Math.min(1, Math.max(0, -r.top / total));
         var n = Math.round(p * 1.15 * lit.length);
         lit.forEach(function(w,i){ w.classList.toggle("on", i < n); });
+        illume.classList.toggle("done", n >= lit.length);
       };
       addEventListener("scroll", function(){ if(!raf) raf = requestAnimationFrame(scrub); }, {passive:true});
       scrub();

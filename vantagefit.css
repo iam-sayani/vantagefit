@@ -46,8 +46,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red); outline-offse
    NAV — real site taxonomy, provided logo, mega dropdowns
    ========================================================================== */
 nav.top{position:fixed; inset:0 0 auto 0; z-index:60; height:64px;
-  background:rgba(255,255,255,.8); backdrop-filter:blur(20px) saturate(1.5); -webkit-backdrop-filter:blur(20px) saturate(1.5);
-  box-shadow:0 1px 0 var(--hair); transition:box-shadow .3s}
+  background:linear-gradient(135deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.06) 100%);
+  backdrop-filter:blur(28px) saturate(1.8); -webkit-backdrop-filter:blur(28px) saturate(1.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 0 rgba(255,255,255,.08); transition:box-shadow .3s}
 .navin{max-width:1280px; margin:0 auto; height:100%; padding:0 28px; display:flex; align-items:center; justify-content:space-between; gap:18px}
 .brand{display:flex; align-items:center; text-decoration:none}
 .brand img{height:32px; width:auto; transition:filter .35s}
@@ -59,11 +60,18 @@ nav.top{position:fixed; inset:0 0 auto 0; z-index:60; height:64px;
   font-family:inherit; font-size:14.5px; font-weight:500; color:var(--ink55); text-decoration:none; transition:color .2s, background .2s; border-radius:999px}
 .nl>a:hover,.nl>button:hover{color:var(--ink); background:rgba(41,41,76,.06)}
 .nl .chev{font-size:.6rem; opacity:.6}
-nav.top.light{box-shadow:0 1px 0 var(--hair), 0 8px 24px rgba(41,41,76,.06)}
+nav.top.light{background:linear-gradient(135deg, rgba(255,255,255,.82) 0%, rgba(255,255,255,.66) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 1px 0 var(--hair), 0 8px 24px rgba(41,41,76,.06)}
+/* over the dark hero (not .light): white text, white logo, white ghost CTA on the 10% glass */
+nav.top:not(.light) .brand .pos{display:none}
+nav.top:not(.light) .brand .neg{display:block}
+nav.top:not(.light) .nl>a,nav.top:not(.light) .nl>button{color:rgba(255,255,255,.82)}
+nav.top:not(.light) .nl>a:hover,nav.top:not(.light) .nl>button:hover{color:#fff; background:rgba(255,255,255,.12)}
+nav.top:not(.light) .mtoggle i{background:#fff}
 .navcta{height:42px; padding:0 24px; font-size:14px; transition:transform .2s var(--ease), box-shadow .2s, background .3s, border-color .3s}
 /* ghost over the hero field; full color once the nav goes light past it */
-nav.top:not(.light) .navcta{background:transparent; border:1px solid rgba(241,81,98,.5); color:var(--red)}
-nav.top:not(.light) .navcta:hover{background:rgba(241,81,98,.06); box-shadow:none}
+nav.top:not(.light) .navcta{background:transparent; border:1px solid rgba(255,255,255,.55); color:#fff}
+nav.top:not(.light) .navcta:hover{background:rgba(255,255,255,.12); box-shadow:none}
 /* dropdown panels: always light */
 .panel{position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(6px);
   background:#fff; border:1px solid var(--hair); border-radius:18px; box-shadow:0 24px 64px rgba(41,41,76,.16);
@@ -167,9 +175,25 @@ nav.top:not(.light) .navcta:hover{background:rgba(241,81,98,.06); box-shadow:non
    HOME — illumination, numbers, money (from the approved statement direction)
    ========================================================================== */
 .illume{background:linear-gradient(180deg,#C23D4C 0%, #A93242 52%, #8E2938 100%); color:#fff; position:relative}
-.illume .inner{min-height:210vh}
-.illume .stick{position:sticky; top:0; min-height:100vh; display:flex; align-items:center}
-.illume p{font-size:clamp(1.5rem,3.4vw,2.6rem); font-weight:600; letter-spacing:-.02em; line-height:1.42; max-width:900px; margin:0 auto; text-align:center}
+.illume .inner{min-height:240vh}
+.illume .stick{position:sticky; top:0; min-height:100vh; display:flex; align-items:center; overflow:hidden}
+.illume p{font-size:clamp(1.5rem,3.4vw,2.6rem); font-weight:600; letter-spacing:-.02em; line-height:1.42; max-width:900px; margin:0 auto; text-align:center; transition:transform .9s var(--ease)}
+.illume.done p{transform:translateY(-11vh)}
+
+/* clay laptop screen: rises out of the statement once the text is fully lit */
+.lapmock{position:absolute; left:50%; bottom:0; width:min(880px,82vw);
+  transform:translate(-50%,103%); transition:transform 1.1s cubic-bezier(.22,.9,.24,1); will-change:transform}
+.illume.done .lapmock{transform:translate(-50%,30%)}
+.lapframe{position:relative; border-radius:26px 26px 0 0; padding:17px 17px 0;
+  background:linear-gradient(160deg,#40232a 0%, #2c161c 55%, #251218 100%);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.22), inset 0 0 0 1px rgba(255,255,255,.06),
+    0 -24px 70px rgba(0,0,0,.35), 0 -4px 30px rgba(255,120,130,.28)}
+.lapframe::before{content:""; position:absolute; top:7px; left:50%; transform:translateX(-50%);
+  width:56px; height:4px; border-radius:99px; background:rgba(255,255,255,.14)}
+.lapframe img{display:block; width:100%; height:auto; border-radius:11px 11px 0 0}
+.lapglass{position:absolute; inset:17px 17px 0; border-radius:11px 11px 0 0; pointer-events:none;
+  background:linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 30%,
+    rgba(194,61,76,.08) 58%, rgba(142,41,56,.16) 100%)}
 .illume .w-lit{opacity:.22; transition:opacity .35s linear}
 .illume .w-lit.on{opacity:1}
 .illume .fine{display:block; margin-top:34px; font-size:14px; font-weight:400; color:rgba(255,255,255,.55)}
@@ -305,8 +329,11 @@ footer .fbrand p{font-size:12.5px; color:var(--ink40); margin-top:12px; max-widt
   .track{animation:none}
   .scrollcue i{animation:none}
   .illume .inner{min-height:auto}
-  .illume .stick{position:static; min-height:auto; padding:120px 0}
+  .illume .stick{position:static; min-height:auto; padding:120px 0 0}
   .illume .w-lit{opacity:1 !important; transition:none}
+  .illume.done p,.illume p{transform:none}
+  .lapmock{position:static; width:92vw; margin:64px auto 0; transform:none}
+  .illume.done .lapmock{transform:none}
   .cta:hover,.ghostw:hover,.ghostd:hover,.icard:hover{transform:none}
 }
 
