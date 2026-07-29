@@ -60,7 +60,10 @@ nav.top{position:fixed; inset:0 0 auto 0; z-index:60; height:64px;
 .nl>a:hover,.nl>button:hover{color:var(--ink); background:rgba(41,41,76,.06)}
 .nl .chev{font-size:.6rem; opacity:.6}
 nav.top.light{box-shadow:0 1px 0 var(--hair), 0 8px 24px rgba(41,41,76,.06)}
-.navcta{height:42px; padding:0 24px; font-size:14px}
+.navcta{height:42px; padding:0 24px; font-size:14px; transition:transform .2s var(--ease), box-shadow .2s, background .3s, border-color .3s}
+/* ghost over the hero field; full color once the nav goes light past it */
+nav.top:not(.light) .navcta{background:transparent; border:1px solid rgba(241,81,98,.5); color:var(--red)}
+nav.top:not(.light) .navcta:hover{background:rgba(241,81,98,.06); box-shadow:none}
 /* dropdown panels: always light */
 .panel{position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(6px);
   background:#fff; border:1px solid var(--hair); border-radius:18px; box-shadow:0 24px 64px rgba(41,41,76,.16);
