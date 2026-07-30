@@ -904,9 +904,13 @@
       display: flex; flex-direction: column;
     }
     .flip-back { transform: rotateY(180deg); }
-    .flip-img { flex: 1 1 auto; margin: 14px 0 12px; border-radius: 12px; overflow: hidden; min-height: 0;
-      border: 1px solid rgba(255,255,255,.18); }
-    .flip-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .flip-front { padding: 0; overflow: hidden; justify-content: flex-end; }
+    .flip-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .flip-front::after { content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(30,4,10,.18) 0%, rgba(30,4,10,0) 34%, rgba(30,4,10,0) 55%, rgba(30,4,10,.62) 100%); }
+    .flip-front .step-no { position: absolute; top: 16px; left: 16px; z-index: 1;
+      background: rgba(255,255,255,.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .flip-front h3 { position: relative; z-index: 1; margin: 0 18px 16px; }
     .cardrise .step h3 { color: #fff; font-size: 1.15rem; }
     .flip-back h3 { margin-top: 14px; }
     .cardrise .step p { color: rgba(255,255,255,.75); font-size: .87rem; line-height: 1.55; margin-top: 8px; }
@@ -1664,8 +1668,8 @@
           <article class="step flipcard" tabindex="0">
             <div class="flip-inner">
               <div class="flip-face flip-front">
+                <img class="flip-bg" src="card-invite.jpg" alt="Two colleagues high-fiving at a desk" loading="lazy" decoding="async">
                 <span class="step-no">01</span>
-                <div class="flip-img"><img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_600/vfitimages/Sayani/Vantage%20fit%20website%20assets/happy-business-colleagues-standing-office.png" alt="Colleagues gathered in an office" loading="lazy" decoding="async"></div>
                 <h3>Invite</h3>
               </div>
               <div class="flip-face flip-back">
@@ -1678,8 +1682,8 @@
           <article class="step flipcard" tabindex="0">
             <div class="flip-inner">
               <div class="flip-face flip-front">
+                <img class="flip-bg" src="card-participate.jpg" alt="Runner mid-stride on a road" loading="lazy" decoding="async">
                 <span class="step-no">02</span>
-                <div class="flip-img"><img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_600/vfitimages/Sayani/Vantage%20fit%20website%20assets/vfit-collage-running.jpg" alt="Employee running outdoors" loading="lazy" decoding="async"></div>
                 <h3>Participate</h3>
               </div>
               <div class="flip-face flip-back">
@@ -1692,8 +1696,8 @@
           <article class="step flipcard" tabindex="0">
             <div class="flip-inner">
               <div class="flip-face flip-front">
+                <img class="flip-bg" src="card-reward.jpg" alt="Wrapped gift with a gold ribbon" loading="lazy" decoding="async">
                 <span class="step-no">03</span>
-                <div class="flip-img"><img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_600/vfitimages/Sayani/Vantage%20fit%20website%20assets/Giftcard.png" alt="Gift card rewards in the Vantage Fit app" loading="lazy" decoding="async"></div>
                 <h3>Reward</h3>
               </div>
               <div class="flip-face flip-back">
@@ -1706,8 +1710,8 @@
           <article class="step flipcard" tabindex="0">
             <div class="flip-inner">
               <div class="flip-face flip-front">
+                <img class="flip-bg" src="card-measure.jpg" alt="Analytics dashboard on a screen" loading="lazy" decoding="async">
                 <span class="step-no">04</span>
-                <div class="flip-img"><img src="dashboard-admin.png" alt="Vantage Fit admin analytics dashboard" loading="lazy" decoding="async"></div>
                 <h3>Measure</h3>
               </div>
               <div class="flip-face flip-back">
