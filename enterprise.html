@@ -883,23 +883,36 @@
     .illume .fine { display: block; margin-top: 30px; font-size: 14px; font-weight: 400; color: rgba(255,255,255,.6); }
     .cardrise { position: absolute; left: 50%; transform: translateX(-50%); bottom: 32px; width: min(100% - 48px, var(--max)); }
     .cardrise .steps { margin-bottom: 0; }
-    /* liquid-glass cards on the red field: one material, red light glow */
+    /* liquid-glass flip cards on the red field */
     .cardrise .step,
     .cardrise .step:nth-child(2),
     .cardrise .step:nth-child(3),
     .cardrise .step:nth-child(4) {
-      background: linear-gradient(160deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.06) 100%);
-      backdrop-filter: blur(18px) saturate(1.4);
-      -webkit-backdrop-filter: blur(18px) saturate(1.4);
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.3),
+      background: transparent; border: 0; box-shadow: none; padding: 0;
+      min-height: 0; height: 300px; perspective: 1400px; overflow: visible; color: #fff;
+    }
+    .flip-inner { position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d; transition: transform .7s cubic-bezier(.4,.1,.2,1); }
+    .flipcard:hover .flip-inner, .flipcard:focus-visible .flip-inner, .flipcard.flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-face { position: absolute; inset: 0; padding: 22px; border-radius: 18px;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      background: linear-gradient(160deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.08) 100%);
+      border: 1px solid rgba(255,255,255,.24);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.32),
         0 18px 44px rgba(60, 8, 16, .28),
         0 0 34px rgba(255, 128, 140, .14);
-      color: #fff;
+      display: flex; flex-direction: column;
     }
-    .cardrise .step { min-height: 248px; padding: 26px; }
-    .cardrise .step h3 { color: #fff; font-size: 1.22rem; }
-    .cardrise .step p { color: rgba(255,255,255,.72); font-size: .9rem; line-height: 1.55; }
+    .flip-back { transform: rotateY(180deg); }
+    .flip-img { flex: 1 1 auto; margin: 14px 0 12px; border-radius: 12px; overflow: hidden; min-height: 0;
+      border: 1px solid rgba(255,255,255,.18); }
+    .flip-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cardrise .step h3 { color: #fff; font-size: 1.15rem; }
+    .flip-back h3 { margin-top: 14px; }
+    .cardrise .step p { color: rgba(255,255,255,.75); font-size: .87rem; line-height: 1.55; margin-top: 8px; }
+    .cardrise .step-no { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3); color: #fff; flex: none; align-self: flex-start; }
+    .cardrise .step-tag { display: none; }
+    @media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
     .cardnote { margin-top: 18px; text-align: center; font-size: .78rem; color: rgba(255,255,255,.55);
       opacity: 0; transform: translateY(10px); transition: opacity .7s ease .35s, transform .7s ease .35s; }
     .illume.done .cardnote { opacity: 1; transform: none; }
@@ -1648,31 +1661,63 @@
         </div>
         <div class="cardrise">
           <div class="steps" aria-label="How participation grows">
-          <article class="step">
-            <span class="step-no">01</span>
-            <h3>Invite</h3>
-            <p>Launch programs for teams, regions, or the full workforce from proven challenge formats without a long implementation project.</p>
-            <span class="step-tag" aria-hidden="true">↗</span>
+          <article class="step flipcard" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <span class="step-no">01</span>
+                <div class="flip-img"><img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_600/vfitimages/Sayani/Vantage%20fit%20website%20assets/happy-business-colleagues-standing-office.png" alt="Colleagues gathered in an office" loading="lazy" decoding="async"></div>
+                <h3>Invite</h3>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="step-no">01</span>
+                <h3>Invite</h3>
+                <p>Launch programs for teams, regions, or the full workforce from proven challenge formats without a long implementation project.</p>
+              </div>
+            </div>
           </article>
-          <article class="step">
-            <span class="step-no">02</span>
-            <h3>Participate</h3>
-            <p>Steps, multi-activity, team formats, mindfulness, and everyday wellbeing actions make wellness broader than a fitness contest.</p>
-            <span class="step-tag" aria-hidden="true">◎</span>
+          <article class="step flipcard" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <span class="step-no">02</span>
+                <div class="flip-img"><img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_600/vfitimages/Sayani/Vantage%20fit%20website%20assets/vfit-collage-running.jpg" alt="Employee running outdoors" loading="lazy" decoding="async"></div>
+                <h3>Participate</h3>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="step-no">02</span>
+                <h3>Participate</h3>
+                <p>Steps, multi-activity, team formats, mindfulness, and everyday wellbeing actions make wellness broader than a fitness contest.</p>
+              </div>
+            </div>
           </article>
-          <article class="step">
-            <span class="step-no">03</span>
-            <h3>Reward</h3>
-            <p>Recognize effort with points, badges, leaderboards, and redeemable rewards tied to real progress people care about.</p>
-            <span class="step-tag" aria-hidden="true">✦</span>
+          <article class="step flipcard" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <span class="step-no">03</span>
+                <div class="flip-img"><img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_600/vfitimages/Sayani/Vantage%20fit%20website%20assets/Giftcard.png" alt="Gift card rewards in the Vantage Fit app" loading="lazy" decoding="async"></div>
+                <h3>Reward</h3>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="step-no">03</span>
+                <h3>Reward</h3>
+                <p>Recognize effort with points, badges, leaderboards, and redeemable rewards tied to real progress people care about.</p>
+              </div>
+            </div>
           </article>
-          <article class="step">
-            <span class="step-no">04</span>
-            <h3>Measure</h3>
-            <p>Track participation rate, trends, and team-level patterns so you know what is working and what to run next.</p>
-            <span class="step-tag" aria-hidden="true">⌁</span>
+          <article class="step flipcard" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front">
+                <span class="step-no">04</span>
+                <div class="flip-img"><img src="dashboard-admin.png" alt="Vantage Fit admin analytics dashboard" loading="lazy" decoding="async"></div>
+                <h3>Measure</h3>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="step-no">04</span>
+                <h3>Measure</h3>
+                <p>Track participation rate, trends, and team-level patterns so you know what is working and what to run next.</p>
+              </div>
+            </div>
           </article>
-        </div>
+          </div>
           <p class="cardnote">Vantage Fit is designed for day 30, day 90, and the next challenge after that.</p>
         </div>
       </div></div>
@@ -2104,6 +2149,14 @@
       window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(scrub); }, { passive: true });
       scrub();
     })();
+
+  
+    // Flip cards: tap toggle for touch devices
+    if (window.matchMedia('(hover: none)').matches) {
+      document.querySelectorAll('.flipcard').forEach((card) => {
+        card.addEventListener('click', () => card.classList.toggle('flipped'));
+      });
+    }
 
   </script>
 </body>
