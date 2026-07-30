@@ -897,8 +897,14 @@
         0 0 34px rgba(255, 128, 140, .14);
       color: #fff;
     }
-    .cardrise .step h3 { color: #fff; }
-    .cardrise .step p { color: rgba(255,255,255,.72); }
+    .cardrise .step { min-height: 248px; padding: 26px; }
+    .cardrise .step h3 { color: #fff; font-size: 1.22rem; }
+    .cardrise .step p { color: rgba(255,255,255,.72); font-size: .9rem; line-height: 1.55; }
+    .cardnote { margin-top: 18px; text-align: center; font-size: .78rem; color: rgba(255,255,255,.55);
+      opacity: 0; transform: translateY(10px); transition: opacity .7s ease .35s, transform .7s ease .35s; }
+    .illume.done .cardnote { opacity: 1; transform: none; }
+    @media (max-width: 900px) { .cardnote { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .cardnote { opacity: 1; transform: none; transition: none; } }
     .cardrise .step-no { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3); color: #fff; }
     .cardrise .step-tag { display: none; }
     .cardrise .step { opacity: 0; transform: translateY(130%); transition: transform .95s cubic-bezier(.22,.9,.24,1), opacity .6s ease; }
@@ -1638,7 +1644,7 @@
     <section class="illume" id="engine" aria-label="The participation problem">
       <div class="illume-inner"><div class="illume-stick">
         <div class="shell">
-          <p id="illume-text">A wellness benefit only works when people use it after launch. Most programs peak on announcement day. Vantage Fit is designed for day 30, day 90, and the next challenge after that.<span class="fine">Different interests. Different abilities. One program with more ways to take part.</span></p>
+          <p id="illume-text">A wellness benefit only works when people use it after launch. Most programs peak on announcement day.<span class="fine">Different interests. Different abilities. One program with more ways to take part.</span></p>
         </div>
         <div class="cardrise">
           <div class="steps" aria-label="How participation grows">
@@ -1667,6 +1673,7 @@
             <span class="step-tag" aria-hidden="true">⌁</span>
           </article>
         </div>
+          <p class="cardnote">Vantage Fit is designed for day 30, day 90, and the next challenge after that.</p>
         </div>
       </div></div>
     </section>
