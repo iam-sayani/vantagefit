@@ -883,7 +883,24 @@
     .illume .fine { display: block; margin-top: 30px; font-size: 14px; font-weight: 400; color: rgba(255,255,255,.6); }
     .cardrise { position: absolute; left: 50%; transform: translateX(-50%); bottom: 32px; width: min(100% - 48px, var(--max)); }
     .cardrise .steps { margin-bottom: 0; }
-    .cardrise .step { color: var(--ink); }
+    /* liquid-glass cards on the red field: one material, red light glow */
+    .cardrise .step,
+    .cardrise .step:nth-child(2),
+    .cardrise .step:nth-child(3),
+    .cardrise .step:nth-child(4) {
+      background: linear-gradient(160deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.06) 100%);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.3),
+        0 18px 44px rgba(60, 8, 16, .28),
+        0 0 34px rgba(255, 128, 140, .14);
+      color: #fff;
+    }
+    .cardrise .step h3 { color: #fff; }
+    .cardrise .step p { color: rgba(255,255,255,.72); }
+    .cardrise .step-no { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3); color: #fff; }
+    .cardrise .step-tag { display: none; }
     .cardrise .step { opacity: 0; transform: translateY(130%); transition: transform .95s cubic-bezier(.22,.9,.24,1), opacity .6s ease; }
     .cardrise .step:nth-child(2) { transition-delay: .08s; }
     .cardrise .step:nth-child(3) { transition-delay: .16s; }
