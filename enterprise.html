@@ -871,6 +871,38 @@
       line-height: 1.45;
     }
 
+    /* —— S2 illume statement (red, scroll-lit) —— */
+    .illume { position: relative; background: linear-gradient(180deg, #C23D4C 0%, #A93242 52%, #8E2938 100%); color: #fff; }
+    .illume-inner { min-height: 240vh; }
+    .illume-stick { position: sticky; top: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    #illume-text { max-width: 920px; margin: 0 auto; text-align: center; font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700; letter-spacing: -.02em; line-height: 1.42; transition: transform .9s cubic-bezier(.22,.9,.24,1); }
+    .illume.done #illume-text { transform: translateY(-17vh); }
+    .illume .w-lit { opacity: .22; transition: opacity .35s linear; }
+    .illume .w-lit.on { opacity: 1; }
+    .illume .fine { display: block; margin-top: 30px; font-size: 14px; font-weight: 400; color: rgba(255,255,255,.6); }
+    .cardrise { position: absolute; left: 50%; transform: translateX(-50%); bottom: 32px; width: min(100% - 48px, var(--max)); }
+    .cardrise .steps { margin-bottom: 0; }
+    .cardrise .step { color: var(--ink); }
+    .cardrise .step { opacity: 0; transform: translateY(130%); transition: transform .95s cubic-bezier(.22,.9,.24,1), opacity .6s ease; }
+    .cardrise .step:nth-child(2) { transition-delay: .08s; }
+    .cardrise .step:nth-child(3) { transition-delay: .16s; }
+    .cardrise .step:nth-child(4) { transition-delay: .24s; }
+    .illume.done .cardrise .step { opacity: 1; transform: none; }
+    @media (max-width: 900px) {
+      .illume-inner { min-height: auto; }
+      .illume-stick { position: static; min-height: auto; display: block; padding: 90px 0 56px; }
+      .illume .w-lit { opacity: 1 !important; }
+      .illume.done #illume-text, #illume-text { transform: none; }
+      .cardrise { position: static; transform: none; width: auto; margin: 44px 24px 0; }
+      .cardrise .step { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .illume .w-lit { opacity: 1 !important; }
+      .cardrise .step { opacity: 1; transform: none; transition: none; }
+      .illume.done #illume-text { transform: none; }
+    }
+
     /* —— S3 Proof —— */
     .proof-screen { background: #f0f2ee; }
     .video-grid {
@@ -1585,20 +1617,14 @@
     </header>
 
     <!-- ========== S2 PARTICIPATION ENGINE (Claude / Fable) ========== -->
-    <section class="screen engine-screen" id="engine" aria-labelledby="engine-heading">
-      <div class="shell">
-        <div class="problem-block">
-          <div>
-            <span class="eyebrow">The participation problem</span>
-            <h2 id="engine-heading">A wellness benefit only works when people use it after launch.</h2>
-          </div>
-          <div class="problem-quote">
-            <p>Most programs peak on announcement day. Vantage Fit is designed for day 30, day 90, and the next challenge after that.</p>
-            <small>Different interests. Different abilities. One program with more ways to take part.</small>
-          </div>
+    <!-- ========== S2 THE PARTICIPATION PROBLEM (illume) ========== -->
+    <section class="illume" id="engine" aria-label="The participation problem">
+      <div class="illume-inner"><div class="illume-stick">
+        <div class="shell">
+          <p id="illume-text">A wellness benefit only works when people use it after launch. Most programs peak on announcement day. Vantage Fit is designed for day 30, day 90, and the next challenge after that.<span class="fine">Different interests. Different abilities. One program with more ways to take part.</span></p>
         </div>
-
-        <div class="steps" aria-label="How participation grows">
+        <div class="cardrise">
+          <div class="steps" aria-label="How participation grows">
           <article class="step">
             <span class="step-no">01</span>
             <h3>Invite</h3>
@@ -1624,7 +1650,13 @@
             <span class="step-tag" aria-hidden="true">⌁</span>
           </article>
         </div>
+        </div>
+      </div></div>
+    </section>
 
+    <!-- ========== S2B EXPERIENCE ========== -->
+    <section class="screen engine-screen" id="experience" aria-label="Employee and HR experience">
+      <div class="shell">
         <div class="dual">
           <div class="dual-head">
             <h3>Enjoyable for employees. Manageable for HR.</h3>
@@ -1676,6 +1708,7 @@
 
           <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days ÷ enrolled employees.</p>
         </div>
+      
       </div>
     </section>
 
@@ -2014,6 +2047,40 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeVideo();
     });
+  
+    // Illume: scroll-lit statement + card rise
+    (function () {
+      const illume = document.querySelector('.illume');
+      const text = document.getElementById('illume-text');
+      if (!illume || !text) return;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const fine = text.querySelector('.fine');
+      const raw = [];
+      text.childNodes.forEach((n) => { if (n.nodeType === 3) raw.push(n.textContent); });
+      const words = raw.join(' ').trim().split(/\s+/);
+      text.innerHTML = words.map((w) => '<span class="w-lit">' + w + '</span>').join(' ');
+      if (fine) text.appendChild(fine);
+      const lit = text.querySelectorAll('.w-lit');
+      if (reducedMotion || window.matchMedia('(max-width: 900px)').matches) {
+        lit.forEach((w) => w.classList.add('on'));
+        illume.classList.add('done');
+        return;
+      }
+      let raf = 0;
+      const scrub = () => {
+        raf = 0;
+        const r = illume.getBoundingClientRect();
+        const total = r.height - window.innerHeight;
+        if (total <= 0) return;
+        const prog = Math.min(1, Math.max(0, -r.top / total));
+        const n = Math.round(prog * 1.15 * lit.length);
+        lit.forEach((w, i) => w.classList.toggle('on', i < n));
+        illume.classList.toggle('done', n >= lit.length);
+      };
+      window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(scrub); }, { passive: true });
+      scrub();
+    })();
+
   </script>
 </body>
 </html>
