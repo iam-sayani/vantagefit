@@ -49,25 +49,61 @@ nav{position:fixed; inset:0 0 auto 0; z-index:50; height:64px;
   radial-gradient(700px 420px at 4% 96%, rgba(65,216,180,.08), transparent 60%), #fff}
 .herogrid{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center}
 .herovis{position:relative; padding:26px 8px}
-.herostat{text-align:center; padding:26px 28px 24px; border-radius:28px; background:#fff;
-  border:1px solid rgba(41,41,76,.08); box-shadow:0 24px 70px rgba(41,41,76,.12)}
-.stathead{display:flex; justify-content:center; margin-bottom:10px}
-.livechip{display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:600; color:var(--ink70);
-  border:1px solid rgba(41,41,76,.1); border-radius:var(--pill); padding:6px 13px}
-.livechip i{width:7px; height:7px; border-radius:50%; background:#41d8b4; animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(65,216,180,.5)}55%{box-shadow:0 0 0 6px rgba(65,216,180,0)}}
-.bignum{font-size:clamp(4rem,7.5vw,6.2rem); font-weight:800; letter-spacing:-.04em; line-height:1; color:var(--red)}
-.bignum sup{font-size:.38em; font-weight:700; vertical-align:super}
-.statlabel{font-size:13.5px; color:var(--ink70); max-width:300px; margin:10px auto 0; line-height:1.55}
-.trend{display:block; width:100%; margin-top:18px}
-.legend{display:flex; justify-content:center; gap:20px; margin-top:8px; font-size:11.5px; color:var(--ink55)}
-.legend i{display:inline-block; width:16px; height:3px; border-radius:2px; margin-right:6px; vertical-align:3px}
+.dash{display:flex; border-radius:22px; background:#fff; overflow:hidden;
+  border:1px solid rgba(41,41,76,.09); box-shadow:0 30px 80px rgba(41,41,76,.14)}
+.rail{width:46px; background:#23243a; display:flex; flex-direction:column; align-items:center; gap:8px; padding:16px 0}
+.ric{width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.55)}
+.ric.on{background:var(--red); color:#fff}
+.dbody{flex:1; padding:16px 18px 14px; min-width:0}
+.dtop{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px}
+.dtop b{font-size:13.5px; font-weight:700}
+.drange{display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:var(--ink55);
+  border:1px solid rgba(41,41,76,.12); border-radius:8px; padding:5px 10px}
+.kpis{display:grid; grid-template-columns:1.25fr 1fr 1fr; gap:10px}
+.kpi{border:1px solid rgba(41,41,76,.09); border-radius:12px; padding:10px 12px}
+.kpi label{display:block; font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink55); margin-bottom:4px}
+.kv{font-size:2rem; font-weight:800; letter-spacing:-.03em; line-height:1.05; color:var(--red)}
+.kv2{font-size:1.5rem; font-weight:700; letter-spacing:-.02em; line-height:1.2}
+.kpi em{display:block; font-style:normal; font-size:10px; font-weight:600; margin-top:3px}
+.kpi .up{color:#169d7e}.kpi .mut{color:var(--ink55); font-weight:500}
+.khero{background:linear-gradient(160deg, rgba(241,81,98,.05), rgba(241,81,98,.01)); border-color:rgba(241,81,98,.22)}
+.drow{display:grid; grid-template-columns:1.35fr 1fr; gap:10px; margin-top:10px}
+.dchart{border:1px solid rgba(41,41,76,.09); border-radius:12px; padding:10px 12px 8px; min-width:0}
+.dchart>label,.act>label{display:block; font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink55); margin-bottom:6px}
+.trend{display:block; width:100%}
+.legend{display:flex; gap:14px; margin-top:4px; font-size:10px; color:var(--ink55)}
+.legend span{white-space:nowrap}
+.legend i{display:inline-block; width:14px; height:3px; border-radius:2px; margin-right:5px; vertical-align:2.5px}
+.chmini{display:flex; gap:22px; margin-top:12px; padding-top:12px; border-top:1px solid rgba(41,41,76,.07)}
+.chmini div{white-space:nowrap}
+.chmini b{display:block; font-size:15px; font-weight:700; letter-spacing:-.01em}
+.chmini span{font-size:9.5px; color:var(--ink55); white-space:nowrap}
+.dside{display:flex; flex-direction:column; gap:10px; min-width:0}
+.ins{border:1px solid rgba(124,92,255,.25); background:linear-gradient(160deg, rgba(124,92,255,.06), rgba(124,92,255,.015));
+  border-radius:12px; padding:10px 12px}
+.instag{display:inline-flex; align-items:center; gap:5px; font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#7c5cff}
+.ins p{font-size:11px; line-height:1.5; color:var(--ink70); margin-top:5px}
+.ins i{display:inline-block; font-style:normal; font-size:9px; font-weight:600; color:#7c5cff; margin-top:6px;
+  border:1px solid rgba(124,92,255,.3); border-radius:var(--pill); padding:2px 8px}
+.act{border:1px solid rgba(41,41,76,.09); border-radius:12px; padding:10px 12px; flex:1}
+.arow{display:flex; align-items:center; gap:8px; font-size:11px; font-weight:500; color:var(--ink); padding:5px 0}
+.arow+.arow{border-top:1px solid rgba(41,41,76,.06)}
+.aico{width:22px; height:22px; border-radius:7px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  color:var(--c); background:color-mix(in srgb, var(--c) 12%, white)}
+.askbar{display:flex; align-items:center; gap:9px; margin-top:10px; border-radius:var(--pill); padding:9px 14px;
+  font-size:11.5px; font-weight:600; color:var(--ink70);
+  background:linear-gradient(90deg, rgba(124,92,255,.08), rgba(241,81,98,.07));
+  border:1px solid rgba(124,92,255,.2)}
+.askstar{color:#7c5cff; display:flex}
+.askbar kbd{margin-left:auto; font-family:inherit; font-size:10px; font-weight:700; color:var(--ink55);
+  border:1px solid rgba(41,41,76,.14); border-radius:6px; padding:2px 7px; background:#fff}
+.viscap{text-align:center; font-size:11.5px; color:var(--ink55); margin-top:14px}
 .fcard{position:absolute; background:#fff; border:1px solid rgba(41,41,76,.08); border-radius:16px;
   box-shadow:0 14px 40px rgba(41,41,76,.14); padding:12px 15px; display:flex; align-items:center; gap:10px;
   font-size:12px; line-height:1.45; color:var(--ink70)}
 .fcard b{color:var(--ink); font-weight:600}
 .fc1{top:-8px; left:-26px; transform:rotate(-3deg); animation:bob 5.5s ease-in-out infinite}
-.fc2{bottom:-10px; right:-20px; transform:rotate(2.5deg); animation:bob 6.5s ease-in-out .8s infinite}
+.fc2{bottom:44px; right:-24px; transform:rotate(2.5deg); animation:bob 6.5s ease-in-out .8s infinite}
 @keyframes bob{0%,100%{margin-top:0}50%{margin-top:-7px}}
 .avs{display:flex}
 .avs b{width:28px; height:28px; border-radius:50%; border:2px solid #fff; margin-left:-8px; display:flex;
@@ -172,32 +208,77 @@ nav{position:fixed; inset:0 0 auto 0; z-index:50; height:64px;
       </div>
       <p class="trustline settle"><b>100+</b> organizations<i></i><b>190+</b> countries<i></i><b>4.5</b> on G2</p>
     </div>
-    <div class="herovis settle" aria-label="86 percent employee participation at Brazosport ISD, holding through week six while typical programs decline">
-      <div class="herostat">
-        <div class="stathead">
-          <span class="livechip"><i></i>Steps challenge, live</span>
-        </div>
-        <div class="bignum"><span id="count" data-n="86">0</span><sup>%</sup></div>
-        <p class="statlabel">employee participation at Brazosport ISD, 16 points above benchmark</p>
-        <svg class="trend" viewBox="0 0 320 110" aria-hidden="true">
-          <defs>
-            <linearGradient id="fillred" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#F15162" stop-opacity=".18"/>
-              <stop offset="1" stop-color="#F15162" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path d="M10 30 C 60 24, 90 34, 140 30 S 250 24, 310 27" fill="none" stroke="#F15162" stroke-width="3" stroke-linecap="round"/>
-          <path d="M10 30 C 60 24, 90 34, 140 30 S 250 24, 310 27 L310 96 L10 96 Z" fill="url(#fillred)"/>
-          <path d="M10 32 C 70 44, 120 64, 170 76 S 260 88, 310 91" fill="none" stroke="rgba(41,41,76,.25)" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/>
-          <g font-size="10" fill="rgba(41,41,76,.45)" font-family="inherit">
-            <text x="10" y="108">Week 1</text><text x="150" y="108" text-anchor="middle">Week 3</text><text x="310" y="108" text-anchor="end">Week 6</text>
-          </g>
-        </svg>
-        <div class="legend">
-          <span><i style="background:#F15162"></i>Vantage Fit cohort</span>
-          <span><i style="background:rgba(41,41,76,.3)"></i>Typical program</span>
+    <div class="herovis settle" aria-label="Vantage Fit admin dashboard showing 86 percent participation, 16 points above benchmark, with enrolled users, active users, AI leadership insights and recommended actions">
+      <div class="dash">
+        <aside class="rail" aria-hidden="true">
+          <span class="ric on"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 20c-4 0-7-2.8-7-6.5C5 9 8 6 12 4c4 2 7 5 7 9.5 0 3.7-3 6.5-7 6.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <span class="ric"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <span class="ric"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 19V10M10 19V5M16 19v-7M21 19H3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="ric"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 5V3M12 21v-2M5 12H3M21 12h-2M6.3 6.3 4.9 4.9M19.1 19.1l-1.4-1.4M17.7 6.3l1.4-1.4M4.9 19.1l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </aside>
+        <div class="dbody">
+          <div class="dtop"><b>Wellness overview</b><span class="drange">Last 30 days <svg viewBox="0 0 24 24" width="10" height="10"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></div>
+          <div class="kpis">
+            <div class="kpi khero">
+              <label>Participation rate</label>
+              <div class="kv"><span id="count" data-n="86">0</span>%</div>
+              <em class="up">+16 pts vs benchmark</em>
+            </div>
+            <div class="kpi">
+              <label>Enrolled users</label>
+              <div class="kv2">561</div>
+              <em class="mut">all regions</em>
+            </div>
+            <div class="kpi">
+              <label>Active users</label>
+              <div class="kv2">300</div>
+              <em class="up">+12 vs prev period</em>
+            </div>
+          </div>
+          <div class="drow">
+            <div class="dchart">
+              <label>Participation, week 1 to 6</label>
+              <svg class="trend" viewBox="0 0 300 96" aria-hidden="true">
+                <defs>
+                  <linearGradient id="fillred" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#F15162" stop-opacity=".16"/>
+                    <stop offset="1" stop-color="#F15162" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="rgba(41,41,76,.07)"><line x1="8" y1="22" x2="292" y2="22"/><line x1="8" y1="48" x2="292" y2="48"/><line x1="8" y1="74" x2="292" y2="74"/></g>
+                <path d="M8 26 C 55 21, 85 30, 130 26 S 235 21, 292 24" fill="none" stroke="#F15162" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M8 26 C 55 21, 85 30, 130 26 S 235 21, 292 24 L292 82 L8 82 Z" fill="url(#fillred)"/>
+                <path d="M8 28 C 62 38, 110 56, 155 66 S 245 76, 292 79" fill="none" stroke="rgba(41,41,76,.24)" stroke-width="2.2" stroke-dasharray="1 6" stroke-linecap="round"/>
+                <circle cx="292" cy="24" r="3.4" fill="#F15162"/>
+                <g font-size="9" fill="rgba(41,41,76,.4)"><text x="8" y="94">W1</text><text x="150" y="94" text-anchor="middle">W3</text><text x="292" y="94" text-anchor="end">W6</text></g>
+              </svg>
+              <div class="legend">
+                <span><i style="background:#F15162"></i>Vantage Fit cohort</span>
+                <span><i style="background:rgba(41,41,76,.3)"></i>Typical program</span>
+              </div>
+              <div class="chmini">
+                <div><b>7,580</b><span>avg steps /day</span></div>
+                <div><b>45 min</b><span>active /day</span></div>
+                <div><b>8 hrs</b><span>avg sleep</span></div>
+              </div>
+            </div>
+            <div class="dside">
+              <div class="ins">
+                <span class="instag"><svg viewBox="0 0 24 24" width="11" height="11"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4L12 2z" fill="currentColor"/></svg>Leadership Insights</span>
+                <p>Participation is holding 16 points above benchmark. Recognition posts are driving the trend.</p>
+                <i>AI-generated</i>
+              </div>
+              <div class="act">
+                <label>Recommended actions</label>
+                <div class="arow"><span class="aico" style="--c:#7c5cff"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 3a6 6 0 0 1 6 6c0 4 2 5 2 5H4s2-1 2-5a6 6 0 0 1 6-6zM10 18a2.4 2.4 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>Nudge 73 inactive users</div>
+                <div class="arow"><span class="aico" style="--c:#169d7e"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M4 19V10M10 19V5M16 19v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>Review org wellness score</div>
+              </div>
+            </div>
+          </div>
+          <div class="askbar"><span class="askstar"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4L12 2z" fill="currentColor"/></svg></span>Ask Vantage Fit anything<kbd>&#8984;K</kbd></div>
         </div>
       </div>
+      <p class="viscap">Admin dashboard, participation view. Numbers from Brazosport ISD's live program.</p>
       <div class="fcard fc1">
         <div class="avs"><b style="background:#F6B93B">AK</b><b style="background:#41d8b4">RM</b><b style="background:#5f5fa7">JT</b><b style="background:#F15162">+9</b></div>
         <span>walked 4,000 steps<br/>before lunch today</span>
