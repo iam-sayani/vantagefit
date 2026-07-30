@@ -895,6 +895,55 @@
     }
 
     /* —— Responsive —— */
+    /* —— S2.5 Analytics: from activity to action —— */
+    .analytics-screen { background: var(--canvas); }
+    .an-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 56px; align-items: center; }
+    .an-copy h2 { font-size: clamp(2rem, 3.6vw, 3.1rem); line-height: 1.05; letter-spacing: -.03em; margin: 14px 0 18px; }
+    .an-sub { color: var(--muted); font-size: 1.02rem; line-height: 1.65; max-width: 400px; }
+    .an-list { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 16px; }
+    .an-list li { display: flex; gap: 14px; align-items: flex-start; }
+    .an-no { flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px; background: var(--soft); color: var(--mint-dark);
+      display: grid; place-items: center; font-size: .72rem; font-weight: 700; }
+    .an-list b { display: block; font-size: .95rem; font-weight: 700; }
+    .an-list p { color: var(--muted); font-size: .84rem; line-height: 1.55; margin-top: 3px; max-width: 360px; }
+    .an-privacy { margin: 24px 0 26px; padding: 14px 16px; background: var(--paper); border-left: 3px solid var(--mint);
+      border-radius: 0 12px 12px 0; font-size: .82rem; line-height: 1.6; color: var(--muted); max-width: 400px; }
+    .an-privacy b { color: var(--ink); }
+    .an-dash { background: var(--paper); border-radius: 18px; box-shadow: var(--shadow); border: 1px solid var(--line); overflow: hidden; }
+    .an-body { padding: 18px 20px 14px; }
+    .an-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+    .an-kpi { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .an-kpi span { display: block; font-size: .62rem; color: var(--muted); margin-bottom: 5px; }
+    .an-kpi b { font-size: 1.05rem; font-weight: 700; }
+    .an-kpi.on { background: var(--soft); border-color: rgba(55, 201, 164, .35); }
+    .an-panels { display: grid; grid-template-columns: 1.05fr .95fr; gap: 10px; margin-top: 10px; }
+    .an-panel { border: 1px solid var(--line); border-radius: 12px; padding: 12px 12px 8px; min-width: 0; }
+    .an-plab { display: block; font-size: .64rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+    .an-chart { position: relative; }
+    .an-target { position: absolute; left: 0; right: 0; top: 18%; border-top: 1.5px dashed rgba(239, 93, 103, .5); }
+    .an-chart svg { display: block; width: 100%; }
+    .an-bars { display: flex; gap: 9px; align-items: flex-end; height: 118px; padding-bottom: 2px; }
+    .an-bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; min-width: 0; }
+    .an-bar i { display: block; width: 100%; height: var(--h); background: var(--c); border-radius: 6px; }
+    .an-bar b { font-size: .56rem; font-weight: 700; margin-top: 5px; }
+    .an-bar span { font-size: .52rem; color: var(--muted); }
+    .an-insight { display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 12px 14px; border-radius: 12px;
+      background: #efeafb; border: 1px solid rgba(111, 91, 214, .22); }
+    .an-ico { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: #6f5bd6; color: #fff; display: grid; place-items: center; }
+    .an-insight small { display: block; font-size: .56rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #6f5bd6; }
+    .an-insight b { display: block; font-size: .78rem; font-weight: 700; margin-top: 1px; }
+    .an-insight p { font-size: .68rem; color: var(--muted); margin-top: 1px; }
+    .an-insight a { margin-left: auto; flex-shrink: 0; font-size: .68rem; font-weight: 700; color: #6f5bd6; text-decoration: none; white-space: nowrap; }
+    .an-insight a:hover { text-decoration: underline; }
+    .an-note { display: block; text-align: right; font-size: .58rem; color: var(--muted); padding: 8px 2px 2px; }
+    @media (max-width: 1100px) { .an-grid { grid-template-columns: 1fr; gap: 40px; } }
+    @media (max-width: 620px) {
+      .an-kpis { grid-template-columns: repeat(2, 1fr); }
+      .an-panels { grid-template-columns: 1fr; }
+      .an-insight { flex-wrap: wrap; }
+      .an-insight a { margin-left: 42px; }
+    }
+
     @media (max-width: 1100px) {
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-copy { max-width: 720px; }
@@ -1288,6 +1337,79 @@
           </div>
 
           <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days ÷ enrolled employees.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== S2.5 ANALYTICS ========== -->
+    <section class="screen analytics-screen" id="analytics" aria-labelledby="analytics-heading">
+      <div class="shell an-grid">
+        <div class="an-copy">
+          <span class="eyebrow">From activity to action</span>
+          <h2 id="analytics-heading">Know what is working. Act before participation slips.</h2>
+          <p class="an-sub">Start with a participation rate everyone can understand. Then diagnose the trend, teams, challenges, and behaviors behind it, so HR knows where to focus next.</p>
+          <ol class="an-list">
+            <li><span class="an-no">01</span><div><b>Track against a target</b><p>Use one consistent definition, time window, and program goal.</p></div></li>
+            <li><span class="an-no">02</span><div><b>Find the participation gaps</b><p>Compare trends by department, country, challenge, and activity source.</p></div></li>
+            <li><span class="an-no">03</span><div><b>Turn signals into action</b><p>Launch a targeted challenge, adjust the format, or re-engage a specific group.</p></div></li>
+          </ol>
+          <div class="an-privacy"><b>Privacy by design:</b> HR sees program participation and aggregate trends, not individual BMI, mood, sleep, lab results, food logs, or health-assessment answers.</div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+            <a class="btn btn-outline" href="https://www.vantagefit.io/health-fitness-analytics/">Explore workforce analytics</a>
+          </div>
+        </div>
+
+        <div class="an-visual" aria-label="Example wellness analytics view with participation by department and a leadership insight">
+          <div class="an-dash">
+            <div class="dash-top"><i class="dash-dot"></i><i class="dash-dot"></i><i class="dash-dot"></i><span class="dash-url"></span></div>
+            <div class="an-body">
+              <div class="dash-title">
+                <div><strong>Wellness analytics</strong></div>
+                <span class="period">Last 30 days</span>
+              </div>
+              <div class="an-kpis">
+                <div class="an-kpi on"><span>Participation rate</span><b>68%</b></div>
+                <div class="an-kpi"><span>Target</span><b>75%</b></div>
+                <div class="an-kpi"><span>Active users</span><b>1,455</b></div>
+                <div class="an-kpi"><span>Active challenges</span><b>2</b></div>
+              </div>
+              <div class="an-panels">
+                <div class="an-panel">
+                  <span class="an-plab">Participation rate &middot; over time</span>
+                  <div class="an-chart">
+                    <i class="an-target" aria-hidden="true"></i>
+                    <svg viewBox="0 0 260 118" preserveAspectRatio="none" aria-hidden="true">
+                      <defs><linearGradient id="anFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37c9a4" stop-opacity=".3"/><stop offset="1" stop-color="#37c9a4" stop-opacity="0"/></linearGradient></defs>
+                      <path d="M0 92 C30 90 50 82 80 80 S135 66 165 60 S225 44 260 40 L260 118 L0 118Z" fill="url(#anFill)"/>
+                      <path d="M0 92 C30 90 50 82 80 80 S135 66 165 60 S225 44 260 40" fill="none" stroke="#147b64" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="an-panel">
+                  <span class="an-plab">Participation &middot; by department</span>
+                  <div class="an-bars" aria-hidden="true">
+                    <div class="an-bar" style="--h:82%;--c:#37c9a4"><i></i><b>82%</b><span>Eng</span></div>
+                    <div class="an-bar" style="--h:76%;--c:#37c9a4"><i></i><b>76%</b><span>Prod</span></div>
+                    <div class="an-bar" style="--h:71%;--c:#f3aa55"><i></i><b>71%</b><span>Mktg</span></div>
+                    <div class="an-bar" style="--h:66%;--c:#f3aa55"><i></i><b>66%</b><span>Ops</span></div>
+                    <div class="an-bar" style="--h:58%;--c:#ef5d67"><i></i><b>58%</b><span>Supp</span></div>
+                    <div class="an-bar" style="--h:49%;--c:#ef5d67"><i></i><b>49%</b><span>Sales</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="an-insight">
+                <span class="an-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4L12 2z" fill="currentColor"/></svg></span>
+                <div>
+                  <small>Leadership insight</small>
+                  <b>Support and Sales are below the organization's 75% target.</b>
+                  <p>Consider a team challenge and a targeted reminder before the next reporting window.</p>
+                </div>
+                <a href="https://www.vantagefit.io/health-fitness-analytics/">View action &rarr;</a>
+              </div>
+              <span class="an-note">Illustrative recommendation based on this product view.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
