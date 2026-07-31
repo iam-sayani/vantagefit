@@ -966,7 +966,10 @@
     .tour-copy h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); letter-spacing: -.025em; line-height: 1.15; margin: 12px 0 12px; }
     .tour-copy > p { color: var(--muted); font-size: .98rem; line-height: 1.65; max-width: 440px; }
     .tour-checks { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
-    .tour-checks li { position: relative; padding-left: 30px; font-size: .92rem; color: var(--ink); }
+    .tour-checks { gap: 16px; }
+    .tour-checks li { position: relative; padding-left: 32px; font-size: .92rem; color: var(--ink); }
+    .tour-checks li b { display: block; font-size: .98rem; font-weight: 700; }
+    .tour-checks li p { color: var(--muted); font-size: .86rem; line-height: 1.6; margin-top: 3px; max-width: 400px; }
     .tour-checks li::before { content: ""; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%;
       background: rgba(65,216,180,.16) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23169d7e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>') center/11px no-repeat; }
     .tour-media img { width: 100%; height: auto; display: block; }
@@ -1711,10 +1714,9 @@
     </section>
 
     <!-- ========== S2B EXPERIENCE ========== -->
-    <section class="screen tour-screen" id="experience" aria-label="Product tour">
+    <section class="screen tour-screen" id="experience" aria-label="Employee and HR experience">
       <div class="shell">
         <div class="center">
-          <span class="eyebrow">The platform</span>
           <h2>Enjoyable for employees. Manageable for HR.</h2>
           <p class="lead">The employee experience creates momentum. The admin experience helps you sustain it.</p>
         </div>
@@ -1722,44 +1724,24 @@
         <div class="tour-row">
           <div class="tour-copy">
             <span class="eyebrow">For employees</span>
-            <h3>A wellness app people open on their own.</h3>
-            <p>Challenges meet people where they are, from a 21-day yoga journey to team step battles, with a leaderboard that keeps it friendly.</p>
             <ul class="tour-checks">
-              <li>17 activity types, movement to mindfulness</li>
-              <li>Daily goals, streaks, and team challenges</li>
-              <li>Syncs with Apple Health, Google Fit, and wearables</li>
+              <li><b>Something for more people</b><p>Support physical, mental, and everyday wellbeing across different interests and abilities.</p></li>
+              <li><b>Progress people can feel</b><p>Daily goals, streaks, and team challenges turn a distant goal into a clear next step.</p></li>
+              <li><b>Rewards worth earning</b><p>Points convert into a global catalogue employees recognize and redeem.</p></li>
             </ul>
           </div>
           <div class="tour-media">
-            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579791/product-images-hub/v-fit/vfit-challenge-mobile.png" alt="Vantage Fit mobile app showing a 21-day yoga challenge journey, weekly tasks, and team leaderboard" width="820" height="541" loading="lazy" decoding="async">
+            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579791/product-images-hub/v-fit/vfit-challenge-mobile.png" alt="Vantage Fit mobile app showing a challenge journey, weekly tasks, and team leaderboard" width="820" height="541" loading="lazy" decoding="async">
           </div>
         </div>
 
         <div class="tour-row tour-flip">
           <div class="tour-copy">
-            <span class="eyebrow">Rewards</span>
-            <h3>Points become gift cards employees actually want.</h3>
-            <p>Effort earns points. Points redeem from a global catalogue employees recognize, without HR lifting a finger.</p>
-            <ul class="tour-checks">
-              <li>Amazon, Starbucks, Nike, and 1,000+ options</li>
-              <li>Badges, milestones, and leaderboards built in</li>
-              <li>Works across 190+ countries</li>
-            </ul>
-          </div>
-          <div class="tour-media">
-            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1772104740/product-images-hub/v-fit/vantage-fit-points-rewards-mobile.png" alt="Vantage Fit rewards catalogue on mobile with Starbucks, Nike, Sephora and other gift cards" width="820" height="541" loading="lazy" decoding="async">
-          </div>
-        </div>
-
-        <div class="tour-row">
-          <div class="tour-copy">
             <span class="eyebrow">For HR teams</span>
-            <h3>One dashboard. One number to take upstairs.</h3>
-            <p>Participation, activity, and engagement trends by department, gender, age, and location, live on one screen.</p>
             <ul class="tour-checks">
-              <li>Participation rate tracked against your target</li>
-              <li>Trends by team, country, and challenge</li>
-              <li>Aggregate only. Individual data stays private</li>
+              <li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li>
+              <li><b>See participation clearly</b><p>Follow the rolling rate, trend direction, and teams that need a different approach.</p></li>
+              <li><b>Run one connected program</b><p>Manage challenges, engagement, rewards, and reporting in one place.</p></li>
             </ul>
             <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days &divide; enrolled employees.</p>
           </div>
