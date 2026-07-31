@@ -428,10 +428,18 @@
     @keyframes hsdraw { to { stroke-dashoffset: 0; } }
     .hs-arc { animation: hsarc 1.3s cubic-bezier(.22,.9,.24,1) .9s forwards; }
     @keyframes hsarc { to { stroke-dashoffset: 121.8; } }
+    .hs-graph { transform: translateY(18px); opacity: 0; animation: hsgraph 1s cubic-bezier(.22,.9,.24,1) .8s forwards; }
+    @keyframes hsgraph { to { transform: translateY(0); opacity: 1; } }
+    .hs-area { opacity: 0; animation: hsfade .9s ease 1.5s forwards; }
+    @keyframes hsfade { to { opacity: 1; } }
+    .hs-tip { opacity: 0; animation: hstip .5s ease 1.9s forwards, hsfloat 3.4s ease-in-out 2.4s infinite; }
+    @keyframes hstip { to { opacity: 1; } }
+    @keyframes hsfloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
     @media (prefers-reduced-motion: reduce) {
       .hs-in { animation: none; opacity: 1; transform: none; }
       .hs-draw { animation: none; stroke-dashoffset: 0; }
       .hs-arc { animation: none; stroke-dashoffset: 121.8; }
+      .hs-graph, .hs-area, .hs-tip { animation: none; opacity: 1; transform: none; }
     }
     .hero-product { position: relative; width: 100%; height: auto; filter: drop-shadow(0 22px 44px rgba(41,41,76,.13)); }
     .hero-chip { position: absolute; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 16px;
@@ -1686,8 +1694,11 @@
               <text x="530" y="102" class="hs-lab">PARTICIPATION RATE</text>
               <text x="530" y="140" class="hs-big"><tspan id="hs-part">0</tspan>%</text>
               <text x="530" y="160" class="hs-sub">of enrolled employees</text>
-              <path class="hs-draw" style="--d:.7s" d="M634 150 C654 148 668 141 686 136 S716 127 726 124" fill="none" stroke="#F15162" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M634 150 C654 148 668 141 686 136 S716 127 726 124 L726 160 L634 160 Z" fill="url(#hsRed)"/>
+              <g class="hs-graph">
+                <path class="hs-area" d="M634 150 C654 148 668 141 686 136 S716 127 726 124 L726 160 L634 160 Z" fill="url(#hsRed)"/>
+                <path class="hs-draw" style="--d:1s" d="M634 150 C654 148 668 141 686 136 S716 127 726 124" fill="none" stroke="#F15162" stroke-width="2.5" stroke-linecap="round"/>
+                <circle class="hs-tip" cx="726" cy="124" r="3.5" fill="#F15162"/>
+              </g>
             </g>
 
             <!-- AI insight strip -->
