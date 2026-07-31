@@ -411,7 +411,7 @@
     .hs-title { font-size: 16px; font-weight: 700; fill: #29294c; letter-spacing: -.01em; }
     .hs-lab { font-size: 9px; font-weight: 700; letter-spacing: .09em; fill: rgba(41,41,76,.45); }
     .hs-num { font-size: 28px; font-weight: 800; letter-spacing: -.02em; fill: #29294c; }
-    .hs-big { font-size: 34px; font-weight: 800; letter-spacing: -.02em; fill: #F15162; }
+    .hs-big { font-size: 40px; font-weight: 800; letter-spacing: -.02em; fill: #F15162; }
     .hs-mid { font-size: 19px; font-weight: 800; letter-spacing: -.01em; fill: #29294c; }
     .hs-val { font-size: 11px; font-weight: 700; fill: #29294c; }
     .hs-sub { font-size: 10.5px; fill: rgba(41,41,76,.5); }
@@ -427,7 +427,7 @@
     .hs-draw { stroke-dasharray: 160; stroke-dashoffset: 160; animation: hsdraw 1.2s ease var(--d,0s) forwards; }
     @keyframes hsdraw { to { stroke-dashoffset: 0; } }
     .hs-arc { animation: hsarc 1.3s cubic-bezier(.22,.9,.24,1) .9s forwards; }
-    @keyframes hsarc { to { stroke-dashoffset: 121.8; } }
+    @keyframes hsarc { to { stroke-dashoffset: 100.3; } }
     .hs-graph { transform: translateY(18px); opacity: 0; animation: hsgraph 1s cubic-bezier(.22,.9,.24,1) .8s forwards; }
     @keyframes hsgraph { to { transform: translateY(0); opacity: 1; } }
     .hs-area { opacity: 0; animation: hsfade .9s ease 1.5s forwards; }
@@ -438,7 +438,7 @@
     @media (prefers-reduced-motion: reduce) {
       .hs-in { animation: none; opacity: 1; transform: none; }
       .hs-draw { animation: none; stroke-dashoffset: 0; }
-      .hs-arc { animation: none; stroke-dashoffset: 121.8; }
+      .hs-arc { animation: none; stroke-dashoffset: 100.3; }
       .hs-graph, .hs-area, .hs-tip { animation: none; opacity: 1; transform: none; }
     }
     .hero-product { position: relative; width: 100%; height: auto; filter: drop-shadow(0 22px 44px rgba(41,41,76,.13)); }
@@ -1647,17 +1647,17 @@
         </div>
 
         <div class="hero-visual" aria-label="Vantage Fit admin dashboard and employee app">
-          <svg class="hero-product hero-svg" viewBox="0 0 760 520" role="img" aria-label="Vantage Fit wellness overview dashboard: enrolled users, active users, 60 percent participation rate, AI leadership insight, organisation wellness score, and daily activity averages">
+          <svg class="hero-product hero-svg" viewBox="0 0 760 450" role="img" aria-label="Vantage Fit wellness overview dashboard: 60 percent participation rate, enrolled and active users, AI leadership insight, organisation wellness score, and the ask-anything bar">
             <defs>
               <linearGradient id="hsRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F15162" stop-opacity=".14"/><stop offset="1" stop-color="#F15162" stop-opacity="0"/></linearGradient>
               <linearGradient id="hsAsk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#F15162"/></linearGradient>
             </defs>
 
             <!-- window -->
-            <rect x="1.5" y="1.5" width="757" height="517" rx="18" fill="#fff" stroke="rgba(41,41,76,.12)"/>
+            <rect x="1.5" y="1.5" width="757" height="447" rx="18" fill="#fff" stroke="rgba(41,41,76,.12)"/>
 
             <!-- slim rail -->
-            <path d="M1.5 19.5 a18 18 0 0 1 18 -18 H54 V518.5 H19.5 a18 18 0 0 1 -18 -18 Z" fill="#23243a"/>
+            <path d="M1.5 19.5 a18 18 0 0 1 18 -18 H54 V448.5 H19.5 a18 18 0 0 1 -18 -18 Z" fill="#23243a"/>
             <circle cx="28" cy="32" r="6.5" fill="#F15162"/>
             <rect x="21" y="64" width="14" height="14" rx="4" fill="rgba(255,255,255,.2)"/>
             <rect x="21" y="92" width="14" height="14" rx="4" fill="#F15162"/>
@@ -1670,87 +1670,70 @@
             <rect x="608" y="26" width="130" height="26" rx="13" fill="#fff" stroke="rgba(41,41,76,.14)"/>
             <text x="622" y="43" class="hs-chip">Jun 29 &#8211; Jul 28</text>
 
-            <!-- KPI: enrolled -->
+            <!-- KPI: participation, first and biggest -->
             <g class="hs-in" style="--d:.1s">
-              <rect x="80" y="76" width="204" height="104" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <text x="98" y="102" class="hs-lab">ENROLLED USERS</text>
-              <text x="98" y="138" class="hs-num">561</text>
-              <text x="98" y="160" class="hs-sub">across all countries</text>
+              <rect x="80" y="76" width="272" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
+              <path d="M80 79 h272" stroke="#F15162" stroke-width="3"/>
+              <text x="98" y="104" class="hs-lab" fill="#c2394a">PARTICIPATION RATE</text>
+              <text x="98" y="150" class="hs-big"><tspan id="hs-part">0</tspan>%</text>
+              <text x="98" y="172" class="hs-sub">of enrolled employees</text>
+              <g class="hs-graph">
+                <path class="hs-area" d="M232 160 C252 158 268 149 288 143 S322 131 334 127 L334 172 L232 172 Z" fill="url(#hsRed)"/>
+                <path class="hs-draw" style="--d:1s" d="M232 160 C252 158 268 149 288 143 S322 131 334 127" fill="none" stroke="#F15162" stroke-width="2.5" stroke-linecap="round"/>
+                <circle class="hs-tip" cx="334" cy="127" r="3.5" fill="#F15162"/>
+              </g>
+            </g>
+
+            <!-- KPI: enrolled -->
+            <g class="hs-in" style="--d:.22s">
+              <rect x="364" y="76" width="182" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
+              <text x="382" y="104" class="hs-lab">ENROLLED USERS</text>
+              <text x="382" y="146" class="hs-num">561</text>
+              <text x="382" y="168" class="hs-sub">across all countries</text>
             </g>
 
             <!-- KPI: active -->
-            <g class="hs-in" style="--d:.2s">
-              <rect x="296" y="76" width="204" height="104" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <text x="314" y="102" class="hs-lab">ACTIVE USERS</text>
-              <text x="314" y="138" class="hs-num">300</text>
-              <text x="378" y="138" class="hs-up">&#9650; 12</text>
-              <text x="314" y="160" class="hs-sub">vs previous period</text>
-            </g>
-
-            <!-- KPI: participation, the headline metric -->
-            <g class="hs-in" style="--d:.3s">
-              <rect x="512" y="76" width="226" height="104" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <path d="M512 79 h226" stroke="#F15162" stroke-width="3"/>
-              <text x="530" y="102" class="hs-lab">PARTICIPATION RATE</text>
-              <text x="530" y="140" class="hs-big"><tspan id="hs-part">0</tspan>%</text>
-              <text x="530" y="160" class="hs-sub">of enrolled employees</text>
-              <g class="hs-graph">
-                <path class="hs-area" d="M634 150 C654 148 668 141 686 136 S716 127 726 124 L726 160 L634 160 Z" fill="url(#hsRed)"/>
-                <path class="hs-draw" style="--d:1s" d="M634 150 C654 148 668 141 686 136 S716 127 726 124" fill="none" stroke="#F15162" stroke-width="2.5" stroke-linecap="round"/>
-                <circle class="hs-tip" cx="726" cy="124" r="3.5" fill="#F15162"/>
-              </g>
+            <g class="hs-in" style="--d:.34s">
+              <rect x="558" y="76" width="180" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
+              <text x="576" y="104" class="hs-lab">ACTIVE USERS</text>
+              <text x="576" y="146" class="hs-num">300</text>
+              <text x="640" y="146" class="hs-up">&#9650; 12</text>
+              <text x="576" y="168" class="hs-sub">vs previous period</text>
             </g>
 
             <!-- AI insight strip -->
-            <g class="hs-in" style="--d:.4s">
-              <rect x="80" y="196" width="658" height="48" rx="12" fill="#faf9ff" stroke="rgba(124,92,255,.2)"/>
-              <path d="M102 212 l2.4 6.8 6.8 2.4 -6.8 2.4 -2.4 6.8 -2.4 -6.8 -6.8 -2.4 6.8 -2.4 z" fill="#7c5cff"/>
-              <text x="122" y="216" class="hs-ai">LEADERSHIP INSIGHT</text>
-              <text x="122" y="232" class="hs-body">Participation is steady this quarter. Team challenges are the strongest driver.</text>
-              <rect x="634" y="208" width="90" height="24" rx="12" fill="#fff" stroke="rgba(124,92,255,.25)"/>
-              <text x="647" y="224" class="hs-aigen">&#10022; AI-generated</text>
+            <g class="hs-in" style="--d:.46s">
+              <rect x="80" y="206" width="658" height="48" rx="12" fill="#faf9ff" stroke="rgba(124,92,255,.2)"/>
+              <path d="M102 222 l2.4 6.8 6.8 2.4 -6.8 2.4 -2.4 6.8 -2.4 -6.8 -6.8 -2.4 6.8 -2.4 z" fill="#7c5cff"/>
+              <text x="122" y="226" class="hs-ai">LEADERSHIP INSIGHT</text>
+              <text x="122" y="242" class="hs-body">Participation is steady this quarter. Team challenges are the strongest driver.</text>
+              <rect x="616" y="217" width="106" height="26" rx="13" fill="#fff" stroke="rgba(124,92,255,.25)"/>
+              <text x="630" y="234" class="hs-aigen">&#10022; AI-generated</text>
             </g>
 
-            <!-- org wellness score: donut -->
-            <g class="hs-in" style="--d:.5s">
-              <rect x="80" y="260" width="240" height="182" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <text x="98" y="288" class="hs-lab">ORG WELLNESS SCORE</text>
-              <circle cx="150" cy="366" r="34" fill="none" stroke="rgba(41,41,76,.08)" stroke-width="8"/>
-              <circle class="hs-arc" cx="150" cy="366" r="34" fill="none" stroke="#F15162" stroke-width="8" stroke-linecap="round"
-                stroke-dasharray="213.6" stroke-dashoffset="213.6" transform="rotate(-90 150 366)"/>
-              <text x="150" y="374" text-anchor="middle" class="hs-num" font-size="24">43</text>
-              <g class="hs-body" font-size="9.5">
-                <text x="208" y="330">Health baselines</text><text x="310" y="330" text-anchor="end" class="hs-val">89</text>
-                <text x="208" y="356">Participation</text><text x="310" y="356" text-anchor="end" class="hs-val">44</text>
-                <text x="208" y="382">Activity levels</text><text x="310" y="382" text-anchor="end" class="hs-val">33</text>
-                <text x="208" y="408">Adherence</text><text x="310" y="408" text-anchor="end" class="hs-val">13</text>
-              </g>
-            </g>
-
-            <!-- at a glance -->
-            <g class="hs-in" style="--d:.6s">
-              <rect x="332" y="260" width="406" height="106" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <text x="350" y="288" class="hs-lab">AT A GLANCE &#183; DAILY AVERAGES</text>
-              <text x="350" y="326" class="hs-mid">7,580</text><text x="350" y="346" class="hs-sub">steps</text>
-              <line x1="442" y1="308" x2="442" y2="348" stroke="rgba(41,41,76,.08)"/>
-              <text x="458" y="326" class="hs-mid">45 min</text><text x="458" y="346" class="hs-sub">active</text>
-              <line x1="550" y1="308" x2="550" y2="348" stroke="rgba(41,41,76,.08)"/>
-              <text x="566" y="326" class="hs-mid">30 min</text><text x="566" y="346" class="hs-sub">mindful</text>
-              <line x1="658" y1="308" x2="658" y2="348" stroke="rgba(41,41,76,.08)"/>
-              <text x="674" y="326" class="hs-mid">8 hrs</text><text x="674" y="346" class="hs-sub">sleep</text>
+            <!-- org wellness score: donut only -->
+            <g class="hs-in" style="--d:.58s">
+              <rect x="80" y="272" width="272" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
+              <text x="98" y="300" class="hs-lab">ORG WELLNESS SCORE</text>
+              <circle cx="138" cy="342" r="28" fill="none" stroke="rgba(41,41,76,.08)" stroke-width="7"/>
+              <circle class="hs-arc" cx="138" cy="342" r="28" fill="none" stroke="#F15162" stroke-width="7" stroke-linecap="round"
+                stroke-dasharray="175.9" stroke-dashoffset="175.9" transform="rotate(-90 138 342)"/>
+              <text x="138" y="349" text-anchor="middle" class="hs-num" font-size="21">43</text>
+              <text x="188" y="336" class="hs-body">Improving</text>
+              <text x="188" y="354" class="hs-sub">vs previous quarter</text>
             </g>
 
             <!-- ask bar -->
             <g class="hs-in" style="--d:.7s">
-              <rect x="332" y="384" width="406" height="58" rx="29" fill="#fff" stroke="rgba(41,41,76,.12)"/>
-              <circle cx="364" cy="413" r="14" fill="url(#hsAsk)"/>
-              <path d="M364 405.5 l1.8 5.2 5.2 1.8 -5.2 1.8 -1.8 5.2 -1.8 -5.2 -5.2 -1.8 5.2 -1.8 z" fill="#fff"/>
-              <text x="390" y="418" class="hs-ask">Ask Vantage Fit anything</text>
-              <rect x="678" y="399" width="44" height="28" rx="8" fill="#f6f6f9" stroke="rgba(41,41,76,.12)"/>
-              <text x="688" y="418" class="hs-chip">&#8984;K</text>
+              <rect x="364" y="299" width="374" height="58" rx="29" fill="#fff" stroke="rgba(41,41,76,.12)"/>
+              <circle cx="396" cy="328" r="14" fill="url(#hsAsk)"/>
+              <path d="M396 320.5 l1.8 5.2 5.2 1.8 -5.2 1.8 -1.8 5.2 -1.8 -5.2 -5.2 -1.8 5.2 -1.8 z" fill="#fff"/>
+              <text x="422" y="333" class="hs-ask">Ask Vantage Fit anything</text>
+              <rect x="676" y="314" width="44" height="28" rx="8" fill="#f6f6f9" stroke="rgba(41,41,76,.12)"/>
+              <text x="686" y="333" class="hs-chip">&#8984;K</text>
             </g>
 
-            <text x="80" y="486" class="hs-note">Illustrative product data</text>
+            <text x="80" y="424" class="hs-note">Illustrative product data</text>
           </svg>
           <div class="hero-chip hc1"><b>86%</b><span>participation<br>Brazosport ISD</span></div>
           <div class="hero-chip hc2"><i class="hc-dot"></i><span>1,059 active challenges</span></div>
