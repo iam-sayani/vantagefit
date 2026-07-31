@@ -411,6 +411,18 @@
       filter: blur(2px);
       pointer-events: none;
     }
+
+    .hero-product { position: relative; width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(41,41,76,.18)); }
+    .hero-chip { position: absolute; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 16px;
+      background: rgba(255,255,255,.78); backdrop-filter: blur(14px) saturate(1.5); -webkit-backdrop-filter: blur(14px) saturate(1.5);
+      border: 1px solid rgba(41,41,76,.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 14px 36px rgba(41,41,76,.14);
+      font-size: .74rem; line-height: 1.3; color: var(--muted); }
+    .hero-chip b { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; color: var(--coral); }
+    .hc1 { left: -18px; bottom: 12%; animation: chipbob 5.5s ease-in-out infinite; }
+    .hc2 { right: -8px; top: 6%; animation: chipbob 6.5s ease-in-out .9s infinite; }
+    .hc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(65,216,180,.2); flex: none; }
+    @keyframes chipbob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @media (prefers-reduced-motion: reduce) { .hero-chip { animation: none; } }
     .dash {
       position: absolute;
       top: 6px;
@@ -941,6 +953,30 @@
       .illume .w-lit { opacity: 1 !important; }
       .cardrise .step { opacity: 1; transform: none; transition: none; }
       .illume.done #illume-text { transform: none; }
+    }
+
+    /* —— Product tour —— */
+    .tour-screen { background: var(--paper); min-height: 0; padding: 88px 0; }
+    .tour-screen .center { text-align: center; max-width: 720px; margin: 0 auto 26px; }
+    .tour-screen .center .lead { color: var(--muted); margin-top: 12px; }
+    .tour-row { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; padding: 44px 0; }
+    .tour-row + .tour-row { border-top: 1px solid rgba(41,41,76,.07); }
+    .tour-flip .tour-copy { order: 2; }
+    .tour-flip .tour-media { order: 1; }
+    .tour-copy h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); letter-spacing: -.025em; line-height: 1.15; margin: 12px 0 12px; }
+    .tour-copy > p { color: var(--muted); font-size: .98rem; line-height: 1.65; max-width: 440px; }
+    .tour-checks { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+    .tour-checks li { position: relative; padding-left: 30px; font-size: .92rem; color: var(--ink); }
+    .tour-checks li::before { content: ""; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(65,216,180,.16) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23169d7e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>') center/11px no-repeat; }
+    .tour-media img { width: 100%; height: auto; display: block; }
+    .tour-frame { padding: 14px; border-radius: 20px; background: var(--canvas); border: 1px solid rgba(41,41,76,.08); box-shadow: var(--shadow-soft); }
+    .tour-frame img { border-radius: 10px; }
+    .tour-screen .measure-note { margin-top: 18px; font-size: .72rem; color: var(--muted); max-width: 430px; }
+    @media (max-width: 900px) {
+      .tour-row { grid-template-columns: 1fr; gap: 28px; padding: 34px 0; }
+      .tour-flip .tour-copy { order: 1; }
+      .tour-flip .tour-media { order: 2; }
     }
 
     /* —— S3 Proof —— */
@@ -1580,65 +1616,12 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Example Vantage Fit participation dashboard and employee challenge app">
-          <div class="dash">
-            <div class="dash-top"><i class="dash-dot"></i><i class="dash-dot"></i><i class="dash-dot"></i><span class="dash-url"></span></div>
-            <div class="dash-body">
-              <div class="dash-title">
-                <div><small>Program overview · Last 30 days</small><strong>Workforce participation</strong></div>
-              </div>
-              <div class="metric-inline">
-                <span><i>Participating</i><b>1,455</b></span>
-                <span><i>Enrolled</i><b>2,140</b></span>
-                <span><i>Target</i><b>75%</b></span>
-              </div>
-              <div class="metric-card metric-main">
-                <div class="metric-lab">Participation rate</div>
-                <div class="metric-value">68%</div>
-                <span class="metric-delta">↑ 4 pts vs last quarter</span>
-              </div>
-              <div class="chart-card">
-                <div class="chart-head"><span>Participation over time</span><span class="legend"><i></i>30-day rate</span></div>
-                <div class="chart">
-                  <div class="target-line"><span>75% target</span></div>
-                  <svg viewBox="0 0 500 120" preserveAspectRatio="none" aria-hidden="true">
-                    <defs>
-                      <linearGradient id="heroFill" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="#41d8b4" stop-opacity=".38"/>
-                        <stop offset="1" stop-color="#41d8b4" stop-opacity="0"/>
-                      </linearGradient>
-                    </defs>
-                    <path d="M0 98 C40 97 70 94 100 90 S160 88 200 82 S260 78 300 70 S360 58 400 50 S460 40 500 34 L500 120 L0 120Z" fill="url(#heroFill)"/>
-                    <path d="M0 98 C40 97 70 94 100 90 S160 88 200 82 S260 78 300 70 S360 58 400 50 S460 40 500 34" fill="none" stroke="#169d7e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <div class="chart-labels"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="phone" aria-hidden="true">
-            <div class="phone-screen">
-              <div class="phone-head"><span>Good morning, Mia</span><i class="avatar"></i></div>
-              <div class="challenge">
-                <div class="challenge-art"><span class="challenge-person">🏃🏽‍♀️</span></div>
-                <div class="challenge-copy">
-                  <small>ACTIVE CHALLENGE</small>
-                  <b>Move Together</b>
-                  <p>Any activity counts. 8 days left.</p>
-                  <div class="progress-label"><span>Your goal</span><b>72%</b></div>
-                  <div class="progress"><i></i></div>
-                </div>
-              </div>
-              <div class="phone-stats">
-                <div class="phone-stat"><b>6</b><span>active days</span></div>
-                <div class="phone-stat"><b>#12</b><span>team rank</span></div>
-                <div class="phone-stat"><b>850</b><span>points</span></div>
-              </div>
-              <div class="phone-cta">Continue challenge</div>
-            </div>
-          </div>
-          <span class="visual-caption">Illustrative product data</span>
+        <div class="hero-visual" aria-label="Vantage Fit admin dashboard and employee app">
+          <img class="hero-product" src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto:eco,w_760/v1765974729/VantageFit/2025/webp-images/homepage/tinified/Group_1407_1_1"
+            srcset="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto:eco,w_760/v1765974729/VantageFit/2025/webp-images/homepage/tinified/Group_1407_1_1 1x, https://cdn.vantagecircle.com/image/upload/f_auto,q_auto:eco,w_1400/v1765974729/VantageFit/2025/webp-images/homepage/tinified/Group_1407_1_1 2x"
+            alt="Vantage Fit product: admin analytics dashboard with engagement trends beside the employee mobile app" width="760" height="502" loading="eager" fetchpriority="high" decoding="async">
+          <div class="hero-chip hc1"><b>86%</b><span>participation<br>Brazosport ISD</span></div>
+          <div class="hero-chip hc2"><i class="hc-dot"></i><span>2,140 employees enrolled</span></div>
         </div>
       </div>
 
@@ -1728,60 +1711,62 @@
     </section>
 
     <!-- ========== S2B EXPERIENCE ========== -->
-    <section class="screen engine-screen" id="experience" aria-label="Employee and HR experience">
+    <section class="screen tour-screen" id="experience" aria-label="Product tour">
       <div class="shell">
-        <div class="dual">
-          <div class="dual-head">
-            <h3>Enjoyable for employees. Manageable for HR.</h3>
-            <p>The employee experience creates momentum. The admin experience helps you sustain it.</p>
-          </div>
-          <div class="tabs" role="tablist" aria-label="Product experience">
-            <button class="tab" id="employee-tab" role="tab" aria-selected="true" aria-controls="employee-panel" type="button">For employees</button>
-            <button class="tab" id="admin-tab" role="tab" aria-selected="false" aria-controls="admin-panel" type="button">For HR teams</button>
-          </div>
-
-          <div class="experience-panel active" id="employee-panel" role="tabpanel" aria-labelledby="employee-tab">
-            <div class="benefits">
-              <div class="benefit"><span class="benefit-icon" aria-hidden="true">◎</span><div><h4>Something for more people</h4><p>Support physical, mental, and everyday wellbeing across different interests and abilities.</p></div></div>
-              <div class="benefit"><span class="benefit-icon" aria-hidden="true">↗</span><div><h4>Progress people can feel</h4><p>Daily goals, streaks, and team challenges turn a distant goal into a clear next step.</p></div></div>
-              <div class="benefit"><span class="benefit-icon" aria-hidden="true">✦</span><div><h4>Rewards worth earning</h4><p>Points convert into a global catalogue employees recognize and redeem.</p></div></div>
-            </div>
-            <div class="product-window">
-              <div class="product-screen">
-                <div class="app-header"><b>Your wellness</b><span>Wednesday</span></div>
-                <div class="app-banner"><div><small>THIS WEEK</small><h3>Three ways to move closer to your goal</h3></div><span class="runner" aria-hidden="true"> circ</span></div>
-                <div class="app-grid">
-                  <div class="app-card"><span class="mini-icon" aria-hidden="true">👟</span><b>Move Together</b><p>Team challenge · Day 12</p></div>
-                  <div class="app-card"><span class="mini-icon" aria-hidden="true">🧘</span><b>Mindful minutes</b><p>4-day personal streak</p></div>
-                  <div class="app-card"><span class="mini-icon" aria-hidden="true">🎁</span><b>1,250 points</b><p>Ready to redeem</p></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="experience-panel" id="admin-panel" role="tabpanel" aria-labelledby="admin-tab" hidden>
-            <div class="benefits">
-              <div class="benefit"><span class="benefit-icon" aria-hidden="true">＋</span><div><h4>Launch without a project</h4><p>Start from proven formats and adapt audience, duration, and rewards.</p></div></div>
-              <div class="benefit"><span class="benefit-icon" aria-hidden="true">⌁</span><div><h4>See participation clearly</h4><p>Follow the rolling rate, trend direction, and teams that need a different approach.</p></div></div>
-              <div class="benefit"><span class="benefit-icon" aria-hidden="true">✓</span><div><h4>Run one connected program</h4><p>Manage challenges, engagement, rewards, and reporting in one place.</p></div></div>
-            </div>
-            <div class="product-window">
-              <div class="product-screen">
-                <div class="admin-layout">
-                  <aside class="admin-side"><b>Vantage Fit</b><div class="admin-link active">Overview</div><div class="admin-link">Analytics</div><div class="admin-link">Challenges</div><div class="admin-link">Reports</div></aside>
-                  <div class="admin-main">
-                    <h3>Participation overview</h3><p>Last 30 days · All employees · Illustrative</p>
-                    <div class="admin-cards"><div class="admin-card"><span>Participation</span><b>68%</b></div><div class="admin-card"><span>Participating</span><b>1,455</b></div><div class="admin-card"><span>Active challenges</span><b>4</b></div></div>
-                    <div class="admin-chart"><div class="admin-chart-head"><span>Participation by department</span><span>Target 75%</span></div><div class="bars"><i class="bar" style="height:68%"></i><i class="bar" style="height:86%"></i><i class="bar" style="height:62%"></i><i class="bar" style="height:74%"></i><i class="bar" style="height:81%"></i><i class="bar" style="height:58%"></i><i class="bar" style="height:50%"></i></div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days ÷ enrolled employees.</p>
+        <div class="center">
+          <span class="eyebrow">The platform</span>
+          <h2>Enjoyable for employees. Manageable for HR.</h2>
+          <p class="lead">The employee experience creates momentum. The admin experience helps you sustain it.</p>
         </div>
-      
+
+        <div class="tour-row">
+          <div class="tour-copy">
+            <span class="eyebrow">For employees</span>
+            <h3>A wellness app people open on their own.</h3>
+            <p>Challenges meet people where they are, from a 21-day yoga journey to team step battles, with a leaderboard that keeps it friendly.</p>
+            <ul class="tour-checks">
+              <li>17 activity types, movement to mindfulness</li>
+              <li>Daily goals, streaks, and team challenges</li>
+              <li>Syncs with Apple Health, Google Fit, and wearables</li>
+            </ul>
+          </div>
+          <div class="tour-media">
+            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579791/product-images-hub/v-fit/vfit-challenge-mobile.png" alt="Vantage Fit mobile app showing a 21-day yoga challenge journey, weekly tasks, and team leaderboard" width="820" height="541" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="tour-row tour-flip">
+          <div class="tour-copy">
+            <span class="eyebrow">Rewards</span>
+            <h3>Points become gift cards employees actually want.</h3>
+            <p>Effort earns points. Points redeem from a global catalogue employees recognize, without HR lifting a finger.</p>
+            <ul class="tour-checks">
+              <li>Amazon, Starbucks, Nike, and 1,000+ options</li>
+              <li>Badges, milestones, and leaderboards built in</li>
+              <li>Works across 190+ countries</li>
+            </ul>
+          </div>
+          <div class="tour-media">
+            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1772104740/product-images-hub/v-fit/vantage-fit-points-rewards-mobile.png" alt="Vantage Fit rewards catalogue on mobile with Starbucks, Nike, Sephora and other gift cards" width="820" height="541" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="tour-row">
+          <div class="tour-copy">
+            <span class="eyebrow">For HR teams</span>
+            <h3>One dashboard. One number to take upstairs.</h3>
+            <p>Participation, activity, and engagement trends by department, gender, age, and location, live on one screen.</p>
+            <ul class="tour-checks">
+              <li>Participation rate tracked against your target</li>
+              <li>Trends by team, country, and challenge</li>
+              <li>Aggregate only. Individual data stays private</li>
+            </ul>
+            <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days &divide; enrolled employees.</p>
+          </div>
+          <div class="tour-media tour-frame">
+            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579792/product-images-hub/v-fit/vfit-analytics-dashboard-desktop.png" alt="Vantage Fit admin analytics dashboard with activity insights and participation by department, gender, and location" width="820" height="668" loading="lazy" decoding="async">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2074,24 +2059,6 @@
         }
       });
     });
-
-    // Employee / HR tabs
-    const employeeTab = document.getElementById('employee-tab');
-    const adminTab = document.getElementById('admin-tab');
-    const employeePanel = document.getElementById('employee-panel');
-    const adminPanel = document.getElementById('admin-panel');
-
-    function selectTab(which) {
-      const isEmployee = which === 'employee';
-      employeeTab.setAttribute('aria-selected', String(isEmployee));
-      adminTab.setAttribute('aria-selected', String(!isEmployee));
-      employeePanel.classList.toggle('active', isEmployee);
-      adminPanel.classList.toggle('active', !isEmployee);
-      employeePanel.hidden = !isEmployee;
-      adminPanel.hidden = isEmployee;
-    }
-    employeeTab.addEventListener('click', () => selectTab('employee'));
-    adminTab.addEventListener('click', () => selectTab('admin'));
 
     // Video modal
     const modal = document.getElementById('video-modal');
