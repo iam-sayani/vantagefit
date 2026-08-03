@@ -1189,24 +1189,25 @@
     @media (prefers-reduced-motion: reduce) { .tabpane.is-in { animation: none; } .seg-thumb { transition: none; } }
 
     /* —— S3 Proof —— */
-    .proof-screen { background: #f0f2ee; }
-    .bento { display: grid; grid-template-columns: 1fr 1fr 288px; gap: 18px; margin-top: 40px; }
+    .proof-screen { min-height: auto; padding: 52px 0; background: #f0f2ee; }
+    .proof-screen .lead { margin-top: 10px; }
+    .bento { display: grid; grid-template-columns: 1fr 1fr 288px; gap: 14px; margin-top: 28px; }
     .b-card { border-radius: 22px; background: #fff; border: 1px solid rgba(41,41,76,.08);
       box-shadow: var(--shadow-soft); transition: transform .25s ease, box-shadow .25s ease; }
     .b-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
     .b-feat { grid-column: 1 / span 2; display: grid; grid-template-columns: 1fr; overflow: hidden; }
-    .video-thumb { position: relative; display: block; width: 100%; height: auto; min-height: 0; aspect-ratio: 2.25 / 1; padding: 0;
+    .video-thumb { position: relative; display: block; width: 100%; height: auto; min-height: 0; aspect-ratio: 2.75 / 1; padding: 0;
       border: 0; cursor: pointer; background: #111; overflow: hidden; }
-    .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .92; transition: opacity .25s, transform .5s ease; display: block; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; opacity: .92; transition: opacity .25s, transform .5s ease; display: block; }
     .b-feat:hover .video-thumb img { opacity: 1; transform: scale(1.04); }
     .play-btn { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
     .play-btn span { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%;
       background: linear-gradient(125deg, #F15162 5%, #f4705a 125%); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
     .play-btn svg { width: 22px; margin-left: 3px; }
-    .b-feat-body { padding: 20px 28px 22px; display: flex; flex-direction: column; justify-content: center; }
-    .b-feat-body blockquote { max-width: 760px; margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.5; letter-spacing: -.01em; }
-    .video-person { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
-    .video-person > img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    .b-feat-body { padding: 14px 22px 16px; display: flex; flex-direction: column; justify-content: center; }
+    .b-feat-body blockquote { max-width: 780px; margin: 0; font-size: .9rem; font-weight: 600; line-height: 1.45; letter-spacing: -.01em; }
+    .video-person { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+    .video-person > img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
     .video-person strong { display: block; font-size: .88rem; }
     .video-person span { display: block; margin-top: 2px; color: var(--muted); font-size: .74rem; }
     .video-person .b-logo { margin-left: auto; }
@@ -1240,6 +1241,8 @@
     @media (max-width: 600px) {
       .video-thumb { aspect-ratio: 16 / 9; }
       .b-feat-body { padding: 18px 20px 20px; }
+      .b-feat-body blockquote { font-size: .94rem; }
+      .video-person { margin-top: 14px; }
     }
     .proof-note { margin-top: 16px; color: var(--muted); font-size: .68rem; text-align: center; }
     .proof-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-top: 8px; }
