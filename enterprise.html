@@ -573,10 +573,23 @@
     .moment-icon.mint { background: rgba(65,216,180,.16); color: #128f72; }
     .moment-icon.orange { background: rgba(241,81,98,.14); color: var(--coral-deep); }
     .moment-icon.red { background: rgba(241,81,98,.13); color: var(--coral-text); }
-    .moment-icon.reward-gift { background: rgba(241,81,98,.11); color: var(--coral-deep); }
+    .moment-icon.reward-gift { background: transparent; color: var(--coral-deep); }
     .moment-icon.reward-gift svg { width: 21px; height: 21px; fill: currentColor; }
-    .moment-icon.coin { border-radius: 50%; background: transparent; }
-    .moment-icon.coin svg { display: block; width: 34px; height: 34px; }
+    .moment-icon.coin { border-radius: 50%; background: transparent; perspective: 90px; }
+    .moment-icon.coin svg {
+      display: block;
+      width: 34px;
+      height: 34px;
+      transform-origin: center;
+      animation: coin-turn 4.8s cubic-bezier(.45, 0, .2, 1) infinite;
+      filter: drop-shadow(0 4px 5px rgba(214, 139, 0, .2));
+      will-change: transform;
+    }
+    @keyframes coin-turn {
+      0%, 64% { transform: translateY(0) rotateY(0) scale(1); }
+      76% { transform: translateY(-2px) rotateY(180deg) scale(1.06); }
+      88%, 100% { transform: translateY(0) rotateY(360deg) scale(1); }
+    }
     .participation-moment {
       top: 36px;
       left: -2%;
@@ -633,6 +646,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .moment-card { animation: none; }
+      .moment-icon.coin svg { animation: none; }
       .participation-spark .spark-line { animation: none; stroke-dashoffset: 0; }
       .participation-spark .spark-area { animation: none; opacity: 1; clip-path: none; }
       .participation-spark .spark-end { animation: none; opacity: 1; transform: none; }
