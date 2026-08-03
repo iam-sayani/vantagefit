@@ -448,17 +448,13 @@
 
     /* Human hero with live product moments */
     .people-visual {
-      display: grid;
-      grid-template-columns: minmax(205px, .8fr) minmax(0, 1.35fr);
-      grid-template-rows: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      min-height: 506px;
+      min-height: 530px;
       isolation: isolate;
     }
     .people-visual::after {
       position: absolute;
-      right: -2%;
-      bottom: -1%;
+      right: -1%;
+      bottom: 5%;
       z-index: -1;
       width: 98px;
       height: 98px;
@@ -467,15 +463,15 @@
       content: "";
     }
     .hero-photo {
-      position: relative;
-      grid-column: 2;
-      grid-row: 1 / -1;
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      top: 6px;
+      right: 5%;
+      width: 76%;
+      height: 506px;
       margin: 0;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.84);
-      border-radius: 30px 30px 96px 30px;
+      border-radius: 38px 38px 118px 38px;
       background: #d8d8d8;
       box-shadow: 0 30px 72px rgba(41,41,76,.18);
     }
@@ -522,7 +518,7 @@
       box-shadow: 0 0 0 4px rgba(65,216,180,.18);
     }
     .moment-card {
-      position: relative;
+      position: absolute;
       z-index: 3;
       display: flex;
       align-items: center;
@@ -537,10 +533,7 @@
       backdrop-filter: blur(24px) saturate(1.55);
       -webkit-backdrop-filter: blur(24px) saturate(1.55);
       color: var(--ink);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
-    .moment-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.98);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.98), 0 22px 46px rgba(41,41,76,.18); }
     .moment-card::before { content: ""; position: absolute; z-index: 0; top: -48%; left: -15%; width: 72%; height: 110%;
       border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.7), rgba(255,255,255,0) 70%); pointer-events: none; }
     .moment-card > * { position: relative; z-index: 1; }
@@ -573,13 +566,13 @@
     .moment-icon.coin { border-radius: 50%; background: transparent; }
     .moment-icon.coin svg { display: block; width: 34px; height: 34px; }
     .participation-moment {
-      grid-column: 1;
-      grid-row: 1;
-      width: 100%;
+      top: 36px;
+      left: -2%;
+      width: 226px;
       justify-content: space-between;
       padding: 14px 15px;
       border-color: rgba(65,216,180,.28);
-      animation: none;
+      animation: moment-float 5.6s ease-in-out infinite;
     }
     .participation-copy { flex: 0 0 auto; padding-top: 2px; }
     .participation-moment .trend {
@@ -598,17 +591,17 @@
     .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
     .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 2.5; }
     .points-moment {
-      grid-column: 1;
-      grid-row: 2;
-      width: 100%;
-      animation: none;
+      top: 208px;
+      right: -1%;
+      width: 188px;
+      animation: moment-float 6.2s ease-in-out .8s infinite;
     }
     .reward-moment {
-      grid-column: 1;
-      grid-row: 3;
-      width: 100%;
-      align-items: center;
-      animation: none;
+      left: 0;
+      bottom: 18px;
+      width: 246px;
+      align-items: flex-start;
+      animation: moment-float 6.6s ease-in-out .3s infinite;
     }
     .reward-moment strong { font-size: .83rem; letter-spacing: -.01em; }
     .reward-brands { display: flex; margin-top: 9px; }
@@ -1584,6 +1577,9 @@
       .hero-visual { min-height: 416px; }
       .people-visual { min-height: 430px; }
       .hero-photo { height: 416px; }
+      .participation-moment { top: 38px; }
+      .points-moment { top: 190px; }
+      .reward-moment { bottom: -4px; }
       .dash { width: min(100%, 404px); }
       .chart { height: 72px; }
       .metric-value { font-size: 1.85rem; }
@@ -1668,14 +1664,14 @@
     @media (max-width: 560px) {
       h1 { font-size: clamp(2.15rem, 10.5vw, 2.9rem); }
       h2 { font-size: clamp(1.7rem, 8.5vw, 2.4rem); }
-      .hero-visual { min-height: 0; }
-      .people-visual { grid-template-columns: 1fr; grid-template-rows: 360px repeat(3, auto); gap: 12px; min-height: 0; }
-      .hero-photo { grid-column: 1; grid-row: 1; width: 100%; height: 360px; border-radius: 24px 24px 70px 24px; }
+      .hero-visual { min-height: 455px; }
+      .people-visual { min-height: 490px; }
+      .hero-photo { right: 2%; width: 82%; height: 455px; border-radius: 26px 26px 88px 26px; }
       .photo-status { display: none; }
-      .participation-moment { grid-column: 1; grid-row: 2; width: 100%; padding: 14px 15px; }
-      .participation-spark { flex-basis: 82px; width: 82px; height: 44px; transform: translateY(-5px); }
-      .points-moment { grid-column: 1; grid-row: 3; width: 100%; padding: 14px; }
-      .reward-moment { grid-column: 1; grid-row: 4; width: 100%; padding: 14px; }
+      .participation-moment { top: 30px; left: -2px; width: 190px; padding: 11px 12px; transform-origin: left top; }
+      .participation-spark { flex-basis: 65px; width: 65px; height: 42px; transform: translateY(-5px); }
+      .points-moment { top: 205px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
+      .reward-moment { left: 0; bottom: 8px; width: 218px; padding: 11px; transform-origin: left bottom; }
       .moment-icon { width: 31px; height: 31px; flex-basis: 31px; }
       .moment-icon.coin svg { width: 29px; height: 29px; }
       .moment-card strong { font-size: 1.1rem; }
