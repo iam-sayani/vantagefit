@@ -563,6 +563,8 @@
     .moment-icon.mint { background: rgba(65,216,180,.16); color: #128f72; }
     .moment-icon.orange { background: rgba(241,81,98,.14); color: var(--coral-deep); }
     .moment-icon.red { background: rgba(241,81,98,.13); color: var(--coral-text); }
+    .moment-icon.reward-gift { background: rgba(241,81,98,.11); color: var(--coral-deep); }
+    .moment-icon.reward-gift svg { width: 21px; height: 21px; fill: currentColor; }
     .moment-icon.coin { border-radius: 50%; background: transparent; }
     .moment-icon.coin svg { display: block; width: 34px; height: 34px; }
     .participation-moment {
@@ -603,27 +605,12 @@
     .reward-moment {
       left: 0;
       bottom: 18px;
-      width: 246px;
-      align-items: flex-start;
+      width: 218px;
+      align-items: center;
+      padding: 14px 15px;
       animation: moment-float 6.6s ease-in-out .3s infinite;
     }
-    .reward-moment strong { font-size: .83rem; letter-spacing: -.01em; }
-    .reward-brands { display: flex; margin-top: 9px; }
-    .reward-brands span {
-      display: grid;
-      width: 26px;
-      height: 26px;
-      margin-right: -4px;
-      place-items: center;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      color: #fff;
-      font-size: .66rem;
-      font-weight: 900;
-    }
-    .reward-brands .amazon { background: #20252b; font-family: Georgia, serif; }
-    .reward-brands .starbucks { background: #087c5b; }
-    .reward-brands .nike { background: var(--coral-deep); }
+    .reward-moment strong { font-size: .86rem; letter-spacing: -.01em; }
     @keyframes moment-float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-7px); }
@@ -1677,7 +1664,7 @@
       .participation-moment .trend { font-size: .48rem; }
       .participation-spark { flex-basis: 65px; width: 65px; height: 40px; }
       .points-moment { top: 205px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
-      .reward-moment { left: 0; bottom: 8px; width: 218px; padding: 11px; transform-origin: left bottom; }
+      .reward-moment { left: 0; bottom: 8px; width: 190px; padding: 11px 12px; transform-origin: left bottom; }
       .moment-icon { width: 31px; height: 31px; flex-basis: 31px; }
       .moment-icon.coin svg { width: 29px; height: 29px; }
       .moment-card strong { font-size: 1.1rem; }
@@ -1882,15 +1869,14 @@
           </div>
 
           <div class="moment-card reward-moment" aria-label="Gift card reward unlocked">
-            <span class="moment-icon red" aria-hidden="true">&#9670;</span>
+            <span class="moment-icon reward-gift" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <path d="M4 4.25h5.25V7.9a2.93 2.93 0 0 0-1.84-.65 2.16 2.16 0 0 0-2 3H2.25V6A1.76 1.76 0 0 1 4 4.25Zm16 0h-9.25V7.9a2.93 2.93 0 0 1 1.84-.65 2.16 2.16 0 0 1 2 3h7.16V6A1.76 1.76 0 0 0 20 4.25Zm-6.94 5.63a.66.66 0 0 0-.47-1.13 1.45 1.45 0 0 0-1.38 1l-.17.5h1.65Zm.47 3.59a.75.75 0 0 1-1.06 1.06l-1.72-1.72v6.94H20A1.76 1.76 0 0 0 21.75 18v-6.25h-9.94Zm-7.06 1.06a.75.75 0 0 1 0-1.06l1.72-1.72H2.25V18A1.76 1.76 0 0 0 4 19.75h5.25v-6.94l-1.72 1.72a.75.75 0 0 1-1.06 0ZM9 10.25l-.17-.51a1.45 1.45 0 0 0-1.38-.99.67.67 0 0 0-.66.66.63.63 0 0 0 .2.47l.36.37Z"></path>
+              </svg>
+            </span>
             <div>
               <p>Reward unlocked</p>
               <strong>Choose a gift card</strong>
-              <span class="reward-brands" aria-label="Amazon, Starbucks, and Nike">
-                <span class="amazon">a</span>
-                <span class="starbucks">&#9733;</span>
-                <span class="nike">&#10003;</span>
-              </span>
             </div>
           </div>
         </div>
