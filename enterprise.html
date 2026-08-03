@@ -1195,7 +1195,7 @@
       box-shadow: var(--shadow-soft); transition: transform .25s ease, box-shadow .25s ease; }
     .b-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
     .b-feat { grid-column: 1 / span 2; display: grid; grid-template-columns: 44% 1fr; overflow: hidden; }
-    .video-thumb { position: relative; display: block; width: 100%; height: 100%; min-height: 250px; padding: 0;
+    .video-thumb { position: relative; display: block; width: 100%; height: auto; min-height: 0; aspect-ratio: 16 / 9; padding: 0;
       border: 0; cursor: pointer; background: #111; overflow: hidden; }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .92; transition: opacity .25s, transform .5s ease; display: block; }
     .b-feat:hover .video-thumb img { opacity: 1; transform: scale(1.04); }
@@ -1235,7 +1235,7 @@
     @media (max-width: 1000px) {
       .bento { grid-template-columns: 1fr; }
       .b-feat { grid-column: auto; grid-template-columns: 1fr; }
-      .video-thumb { min-height: 210px; }
+      .video-thumb { min-height: 0; }
     }
     .proof-note { margin-top: 16px; color: var(--muted); font-size: .68rem; text-align: center; }
     .proof-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-top: 8px; }
@@ -1938,7 +1938,7 @@
 
           <article class="b-card b-feat">
             <button class="video-thumb" type="button" data-video="LSX4pxSB6Qw" aria-label="Play Rachel Arthur testimonial video">
-              <img src="https://img.youtube.com/vi/LSX4pxSB6Qw/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
+              <img src="rachel-arthur-testimonial-thumb.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
               <div class="play-btn"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
             </button>
             <div class="b-feat-body">
