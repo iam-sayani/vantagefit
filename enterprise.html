@@ -362,32 +362,40 @@
       flex-direction: column;
       justify-content: space-between;
     }
+    .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .34;
+      background-image: linear-gradient(rgba(41,41,76,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(41,41,76,.035) 1px, transparent 1px);
+      background-size: 44px 44px; -webkit-mask-image: linear-gradient(90deg, #000, transparent 58%); mask-image: linear-gradient(90deg, #000, transparent 58%); }
     .hero-grid {
       position: relative;
+      z-index: 1;
       display: grid;
       flex: 1 1 auto;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: .92fr 1.08fr;
       align-items: center;
-      gap: 52px;
+      gap: 68px;
       min-height: 0;
-      padding: 24px 0 14px;
+      padding: 40px 0 24px;
     }
-    .hero-copy h1 { max-width: 680px; margin-top: 14px; line-height: 1.03; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px; border: 1px solid rgba(22,157,126,.16);
+      border-radius: 999px; background: rgba(255,255,255,.65); box-shadow: 0 6px 20px rgba(41,41,76,.06); color: #116f5d;
+      font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .hero-kicker i { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(65,216,180,.15); }
+    .hero-copy h1 { max-width: 650px; margin-top: 18px; line-height: 1.01; }
     .hero-copy h1 em { font-style: normal; background: linear-gradient(125deg, var(--coral) 20%, var(--coral-deep) 90%);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
-    .hero-copy .lead { max-width: 560px; margin-top: 14px; color: var(--muted); font-size: 1.05rem; line-height: 1.55; }
-    .hero-copy .btn-row { margin-top: 22px; }
+    .hero-copy .lead { max-width: 530px; margin-top: 18px; color: var(--muted); font-size: 1.04rem; line-height: 1.62; }
+    .hero-copy .btn-row { margin-top: 26px; }
     .hero-note {
       display: flex;
       flex-wrap: wrap;
       gap: 10px 18px;
-      margin-top: 18px;
+      margin-top: 20px;
       max-width: 560px;
       color: var(--muted);
       font-size: .75rem;
     }
-    .hero-note span { display: inline-flex; align-items: center; gap: 7px; }
-    .hero-note span::before { width: 5px; height: 5px; border-radius: 50%; background: var(--mint); content: ""; flex: none; }
+    .hero-note span { display: inline-flex; align-items: center; gap: 7px; font-weight: 650; }
+    .hero-note span::before { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 3px rgba(65,216,180,.12); content: ""; flex: none; }
 
     /* Hero product visual — exact Fable composition */
     .hero-visual {
@@ -447,31 +455,32 @@
 
     /* Human hero with live product moments */
     .people-visual {
-      min-height: 520px;
+      min-height: 530px;
       isolation: isolate;
     }
     .people-visual::after {
       position: absolute;
-      right: 0;
-      bottom: 4%;
+      right: -1%;
+      bottom: 5%;
       z-index: -1;
-      width: 92px;
-      height: 92px;
-      background-image: radial-gradient(rgba(241,81,98,.36) 1.4px, transparent 1.4px);
+      width: 98px;
+      height: 98px;
+      background-image: radial-gradient(rgba(241,81,98,.28) 1.35px, transparent 1.35px);
       background-size: 11px 11px;
       content: "";
     }
     .hero-photo {
       position: absolute;
-      top: 0;
-      right: 7%;
-      width: 72%;
-      height: 500px;
+      top: 6px;
+      right: 5%;
+      width: 76%;
+      height: 506px;
       margin: 0;
       overflow: hidden;
-      border-radius: 126px 24px 126px 24px;
+      border: 1px solid rgba(255,255,255,.84);
+      border-radius: 38px 38px 118px 38px;
       background: #d8d8d8;
-      box-shadow: 0 26px 64px rgba(41,41,76,.2);
+      box-shadow: 0 30px 72px rgba(41,41,76,.18);
     }
     .hero-photo img {
       width: 100%;
@@ -482,14 +491,14 @@
     .hero-photo::after {
       position: absolute;
       inset: 0;
-      background: linear-gradient(150deg, transparent 56%, rgba(29,34,40,.18));
+      background: linear-gradient(155deg, transparent 54%, rgba(29,34,40,.2));
       content: "";
       pointer-events: none;
     }
     .photo-status {
       position: absolute;
-      right: 28px;
-      bottom: 32px;
+      right: 30px;
+      bottom: 38px;
       z-index: 1;
       display: inline-flex;
       max-width: calc(100% - 56px);
@@ -525,7 +534,7 @@
       overflow: hidden;
       isolation: isolate;
       border: 1px solid rgba(255,255,255,.82);
-      border-radius: 17px;
+      border-radius: 22px;
       background: linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.43));
       box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(255,255,255,.3), 4px 18px 42px rgba(41,41,76,.17);
       backdrop-filter: blur(24px) saturate(1.55);
@@ -564,15 +573,15 @@
     .moment-icon.coin { border-radius: 50%; background: transparent; }
     .moment-icon.coin svg { display: block; width: 34px; height: 34px; }
     .participation-moment {
-      top: 64px;
-      left: -1%;
+      top: 36px;
+      left: -2%;
       width: 226px;
       justify-content: space-between;
       padding: 14px 15px;
       border-color: rgba(65,216,180,.28);
       animation: moment-float 5.6s ease-in-out infinite;
     }
-    .participation-copy { flex: 0 0 auto; }
+    .participation-copy { flex: 0 0 auto; padding-top: 2px; }
     .participation-moment .trend {
       display: inline-flex;
       align-items: center;
@@ -583,20 +592,20 @@
       font-weight: 800;
     }
     .participation-moment .trend::before { content: "↑"; font-size: .68rem; }
-    .participation-spark { position: relative; flex: 0 0 82px; width: 82px; height: 48px; padding-top: 4px; }
+    .participation-spark { position: relative; flex: 0 0 82px; width: 82px; height: 48px; align-self: flex-start; transform: translateY(-7px); }
     .participation-spark svg { width: 100%; height: 100%; overflow: visible; }
     .participation-spark .spark-grid { stroke: rgba(41,41,76,.09); stroke-width: 1; stroke-dasharray: 2 4; }
     .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
     .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 2.5; }
     .points-moment {
-      top: 232px;
-      right: -2%;
+      top: 208px;
+      right: -1%;
       width: 188px;
       animation: moment-float 6.2s ease-in-out .8s infinite;
     }
     .reward-moment {
-      left: 1%;
-      bottom: 8px;
+      left: 0;
+      bottom: 18px;
       width: 246px;
       align-items: flex-start;
       animation: moment-float 6.6s ease-in-out .3s infinite;
@@ -1664,12 +1673,12 @@
       h2 { font-size: clamp(1.7rem, 8.5vw, 2.4rem); }
       .hero-visual { min-height: 455px; }
       .people-visual { min-height: 490px; }
-      .hero-photo { right: 2%; width: 80%; height: 455px; border-radius: 98px 22px 98px 22px; }
+      .hero-photo { right: 2%; width: 82%; height: 455px; border-radius: 26px 26px 88px 26px; }
       .photo-status { display: none; }
-      .participation-moment { top: 42px; left: -2px; width: 190px; padding: 11px 12px; transform-origin: left top; }
-      .participation-spark { flex-basis: 65px; width: 65px; height: 42px; }
-      .points-moment { top: 222px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
-      .reward-moment { left: 0; bottom: 2px; width: 218px; padding: 11px; transform-origin: left bottom; }
+      .participation-moment { top: 30px; left: -2px; width: 190px; padding: 11px 12px; transform-origin: left top; }
+      .participation-spark { flex-basis: 65px; width: 65px; height: 42px; transform: translateY(-5px); }
+      .points-moment { top: 205px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
+      .reward-moment { left: 0; bottom: 8px; width: 218px; padding: 11px; transform-origin: left bottom; }
       .moment-icon { width: 31px; height: 31px; flex-basis: 31px; }
       .moment-icon.coin svg { width: 29px; height: 29px; }
       .moment-card strong { font-size: 1.1rem; }
@@ -1823,11 +1832,17 @@
     <header class="hero" id="hero">
       <div class="shell hero-grid">
         <div class="hero-copy">
+          <span class="hero-kicker"><i aria-hidden="true"></i> Participation-first wellness</span>
           <h1>More employees <em>participating.</em> Better workforce wellbeing.</h1>
           <p class="lead">Build lasting participation with inclusive challenges, meaningful rewards, and data leaders can trust.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
             <a class="btn btn-outline" href="#proof">See customer results</a>
+          </div>
+          <div class="hero-note" aria-label="Program benefits">
+            <span>Inclusive challenges</span>
+            <span>Global rewards</span>
+            <span>Clear HR analytics</span>
           </div>
         </div>
 
