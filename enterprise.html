@@ -559,16 +559,28 @@
     .participation-moment {
       top: 64px;
       left: -1%;
-      width: 190px;
+      width: 226px;
+      justify-content: space-between;
+      padding: 14px 15px;
+      border-color: rgba(65,216,180,.28);
       animation: moment-float 5.6s ease-in-out infinite;
     }
+    .participation-copy { flex: 0 0 auto; }
     .participation-moment .trend {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
       margin-top: 4px;
       color: #128f72;
       font-size: .57rem;
       font-weight: 800;
     }
+    .participation-moment .trend::before { content: "↑"; font-size: .68rem; }
+    .participation-spark { position: relative; flex: 0 0 82px; width: 82px; height: 48px; padding-top: 4px; }
+    .participation-spark svg { width: 100%; height: 100%; overflow: visible; }
+    .participation-spark .spark-grid { stroke: rgba(41,41,76,.09); stroke-width: 1; stroke-dasharray: 2 4; }
+    .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 2.5; }
     .points-moment {
       top: 232px;
       right: -2%;
@@ -1647,7 +1659,8 @@
       .people-visual { min-height: 490px; }
       .hero-photo { right: 2%; width: 80%; height: 455px; border-radius: 98px 22px 98px 22px; }
       .photo-status { display: none; }
-      .participation-moment { top: 42px; left: -2px; width: 162px; padding: 11px; transform-origin: left top; }
+      .participation-moment { top: 42px; left: -2px; width: 190px; padding: 11px 12px; transform-origin: left top; }
+      .participation-spark { flex-basis: 65px; width: 65px; height: 42px; }
       .points-moment { top: 222px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
       .reward-moment { left: 0; bottom: 2px; width: 218px; padding: 11px; transform-origin: left bottom; }
       .moment-icon { width: 31px; height: 31px; flex-basis: 31px; }
@@ -1817,12 +1830,25 @@
             <figcaption class="photo-status"><i></i> Wellness in motion</figcaption>
           </figure>
 
-          <div class="moment-card participation-moment" aria-label="Participation reached 88 percent">
-            <span class="moment-icon mint" aria-hidden="true">&#8599;</span>
-            <div>
+          <div class="moment-card participation-moment" aria-label="Participation increased to 88 percent, up 18 percent this month">
+            <div class="participation-copy">
               <p>Participation</p>
               <strong>88%</strong>
               <span class="trend">+18% this month</span>
+            </div>
+            <div class="participation-spark" aria-hidden="true">
+              <svg viewBox="0 0 82 48" focusable="false">
+                <defs>
+                  <linearGradient id="participation-area" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#41d8b4" stop-opacity=".34"></stop>
+                    <stop offset="1" stop-color="#41d8b4" stop-opacity=".03"></stop>
+                  </linearGradient>
+                </defs>
+                <path class="spark-grid" d="M2 15.5H80M2 30.5H80"></path>
+                <path d="M2 43V37C12 39 17 32 25 33S37 27 43 29 54 19 61 21 72 12 80 7V43Z" fill="url(#participation-area)"></path>
+                <path class="spark-line" d="M2 37C12 39 17 32 25 33S37 27 43 29 54 19 61 21 72 12 80 7"></path>
+                <circle class="spark-end" cx="80" cy="7" r="4"></circle>
+              </svg>
             </div>
           </div>
 
