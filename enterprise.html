@@ -2185,6 +2185,12 @@
       tabs.hr.addEventListener('click', () => select('hr'));
     })();
 
+  
+    // Grayscale preview mode for accessibility review: append ?gray to the URL
+    if (new URLSearchParams(location.search).has('gray')) {
+      document.documentElement.style.filter = 'grayscale(1)';
+    }
+
   </script>
 </body>
 </html>
