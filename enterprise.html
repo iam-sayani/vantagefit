@@ -574,21 +574,36 @@
     .moment-icon.orange { background: rgba(241,81,98,.14); color: var(--coral-deep); }
     .moment-icon.red { background: rgba(241,81,98,.13); color: var(--coral-text); }
     .moment-icon.reward-gift { background: transparent; color: var(--coral-deep); }
-    .moment-icon.reward-gift svg { width: 21px; height: 21px; fill: currentColor; }
+    .moment-icon.reward-gift svg {
+      width: 25px;
+      height: 25px;
+      fill: currentColor;
+      transform-origin: center bottom;
+      animation: gift-pop 3.2s ease-in-out infinite;
+      will-change: transform;
+    }
     .moment-icon.coin { border-radius: 50%; background: transparent; perspective: 90px; }
     .moment-icon.coin svg {
       display: block;
       width: 34px;
       height: 34px;
       transform-origin: center;
-      animation: coin-turn 4.8s cubic-bezier(.45, 0, .2, 1) infinite;
+      animation: coin-pop 2.8s ease-in-out infinite;
       filter: drop-shadow(0 4px 5px rgba(214, 139, 0, .2));
       will-change: transform;
     }
-    @keyframes coin-turn {
-      0%, 64% { transform: translateY(0) rotateY(0) scale(1); }
-      76% { transform: translateY(-2px) rotateY(180deg) scale(1.06); }
-      88%, 100% { transform: translateY(0) rotateY(360deg) scale(1); }
+    @keyframes coin-pop {
+      0%, 20%, 100% { transform: translateY(0) rotate(0) scale(1); }
+      36% { transform: translateY(-5px) rotate(-10deg) scale(1.09); }
+      52% { transform: translateY(0) rotate(8deg) scale(1.02); }
+      66% { transform: translateY(-2px) rotate(-4deg) scale(1.05); }
+      80% { transform: translateY(0) rotate(0) scale(1); }
+    }
+    @keyframes gift-pop {
+      0%, 58%, 100% { transform: translateY(0) rotate(0) scale(1); }
+      68% { transform: translateY(-3px) rotate(-6deg) scale(1.12); }
+      78% { transform: translateY(0) rotate(5deg) scale(1.04); }
+      88% { transform: translateY(-1px) rotate(-2deg) scale(1.07); }
     }
     .participation-moment {
       top: 36px;
@@ -647,6 +662,7 @@
     @media (prefers-reduced-motion: reduce) {
       .moment-card { animation: none; }
       .moment-icon.coin svg { animation: none; }
+      .moment-icon.reward-gift svg { animation: none; }
       .participation-spark .spark-line { animation: none; stroke-dashoffset: 0; }
       .participation-spark .spark-area { animation: none; opacity: 1; clip-path: none; }
       .participation-spark .spark-end { animation: none; opacity: 1; transform: none; }
