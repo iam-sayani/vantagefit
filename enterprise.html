@@ -568,28 +568,39 @@
     .participation-moment {
       top: 36px;
       left: -2%;
-      width: 226px;
+      width: 246px;
       justify-content: space-between;
-      padding: 14px 15px;
-      border-color: rgba(65,216,180,.28);
+      gap: 13px;
+      padding: 12px 12px 12px 15px;
+      border-color: rgba(65,216,180,.34);
+      background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(247,252,250,.72));
       animation: moment-float 5.6s ease-in-out infinite;
     }
-    .participation-copy { flex: 0 0 auto; padding-top: 2px; }
+    .participation-copy { flex: 0 0 auto; }
+    .participation-copy p { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; font-size: .58rem;
+      font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .participation-copy p::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--mint);
+      box-shadow: 0 0 0 3px rgba(65,216,180,.14); }
+    .participation-copy strong { font-size: 1.48rem; letter-spacing: -.055em; }
     .participation-moment .trend {
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      margin-top: 4px;
+      margin-top: 6px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(65,216,180,.13);
       color: #128f72;
-      font-size: .57rem;
+      font-size: .54rem;
       font-weight: 800;
     }
     .participation-moment .trend::before { content: "↑"; font-size: .68rem; }
-    .participation-spark { position: relative; flex: 0 0 82px; width: 82px; height: 48px; align-self: flex-start; transform: translateY(-7px); }
+    .participation-spark { position: relative; flex: 0 0 94px; width: 94px; height: 62px; align-self: center; padding: 7px 6px 5px;
+      border: 1px solid rgba(22,157,126,.1); border-radius: 14px; background: rgba(65,216,180,.07); }
     .participation-spark svg { width: 100%; height: 100%; overflow: visible; }
-    .participation-spark .spark-grid { stroke: rgba(41,41,76,.09); stroke-width: 1; stroke-dasharray: 2 4; }
-    .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-    .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 2.5; }
+    .participation-spark .spark-grid { stroke: rgba(22,157,126,.12); stroke-width: 1; stroke-dasharray: 2 4; }
+    .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+    .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 3; }
     .points-moment {
       top: 208px;
       right: -1%;
@@ -1668,8 +1679,10 @@
       .people-visual { min-height: 490px; }
       .hero-photo { right: 2%; width: 82%; height: 455px; border-radius: 26px 26px 88px 26px; }
       .photo-status { display: none; }
-      .participation-moment { top: 30px; left: -2px; width: 190px; padding: 11px 12px; transform-origin: left top; }
-      .participation-spark { flex-basis: 65px; width: 65px; height: 42px; transform: translateY(-5px); }
+      .participation-moment { top: 30px; left: -2px; width: 210px; padding: 10px 10px 10px 12px; transform-origin: left top; }
+      .participation-copy strong { font-size: 1.22rem; }
+      .participation-moment .trend { padding: 3px 5px; font-size: .48rem; }
+      .participation-spark { flex-basis: 76px; width: 76px; height: 52px; padding: 5px 4px 3px; }
       .points-moment { top: 205px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
       .reward-moment { left: 0; bottom: 8px; width: 218px; padding: 11px; transform-origin: left bottom; }
       .moment-icon { width: 31px; height: 31px; flex-basis: 31px; }
