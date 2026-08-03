@@ -443,6 +443,175 @@
     .hc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(65,216,180,.2); flex: none; }
     @keyframes chipbob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
     @media (prefers-reduced-motion: reduce) { .hero-chip { animation: none; } }
+
+    /* Human hero with live product moments */
+    .people-visual {
+      min-height: 520px;
+      isolation: isolate;
+    }
+    .people-visual::before {
+      position: absolute;
+      inset: 3% 1% 2% 8%;
+      z-index: -2;
+      border-radius: 46% 54% 42% 58% / 42% 42% 58% 58%;
+      background: linear-gradient(145deg, rgba(241,81,98,.15), rgba(255,157,87,.055));
+      content: "";
+      transform: rotate(3deg);
+    }
+    .people-visual::after {
+      position: absolute;
+      right: 0;
+      bottom: 4%;
+      z-index: -1;
+      width: 92px;
+      height: 92px;
+      background-image: radial-gradient(rgba(241,81,98,.36) 1.4px, transparent 1.4px);
+      background-size: 11px 11px;
+      content: "";
+    }
+    .hero-photo {
+      position: absolute;
+      top: 0;
+      right: 7%;
+      width: 72%;
+      height: 500px;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 126px 24px 126px 24px;
+      background: #d8d8d8;
+      box-shadow: 0 26px 64px rgba(41,41,76,.2);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 30%;
+    }
+    .hero-photo::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(150deg, transparent 56%, rgba(29,34,40,.18));
+      content: "";
+      pointer-events: none;
+    }
+    .photo-status {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.46);
+      border-radius: 999px;
+      background: rgba(29,34,40,.48);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .photo-status i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 4px rgba(65,216,180,.18);
+    }
+    .moment-card {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 17px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 4px 14px 36px rgba(41,41,76,.16);
+      backdrop-filter: blur(18px) saturate(1.3);
+      -webkit-backdrop-filter: blur(18px) saturate(1.3);
+      color: var(--ink);
+    }
+    .moment-card p {
+      margin: 0 0 2px;
+      color: var(--muted);
+      font-size: .64rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .moment-card strong {
+      display: block;
+      font-size: 1.33rem;
+      line-height: 1.05;
+      letter-spacing: -.035em;
+    }
+    .moment-icon {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      place-items: center;
+      border-radius: 11px;
+      font-size: .9rem;
+      font-weight: 900;
+    }
+    .moment-icon.mint { background: rgba(65,216,180,.16); color: #128f72; }
+    .moment-icon.orange { background: rgba(255,157,87,.16); color: #c76b27; }
+    .moment-icon.red { background: rgba(241,81,98,.13); color: var(--coral-text); }
+    .participation-moment {
+      top: 64px;
+      left: -1%;
+      width: 190px;
+      animation: moment-float 5.6s ease-in-out infinite;
+    }
+    .participation-moment .trend {
+      display: block;
+      margin-top: 4px;
+      color: #128f72;
+      font-size: .57rem;
+      font-weight: 800;
+    }
+    .points-moment {
+      top: 232px;
+      right: -2%;
+      width: 188px;
+      animation: moment-float 6.2s ease-in-out .8s infinite;
+    }
+    .reward-moment {
+      left: 1%;
+      bottom: 8px;
+      width: 246px;
+      align-items: flex-start;
+      animation: moment-float 6.6s ease-in-out .3s infinite;
+    }
+    .reward-moment strong { font-size: .83rem; letter-spacing: -.01em; }
+    .reward-brands { display: flex; margin-top: 9px; }
+    .reward-brands span {
+      display: grid;
+      width: 26px;
+      height: 26px;
+      margin-right: -4px;
+      place-items: center;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      color: #fff;
+      font-size: .66rem;
+      font-weight: 900;
+    }
+    .reward-brands .amazon { background: #20252b; font-family: Georgia, serif; }
+    .reward-brands .starbucks { background: #087c5b; }
+    .reward-brands .nike { background: #f4705a; }
+    @keyframes moment-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .moment-card { animation: none; }
+    }
     .dash {
       position: absolute;
       top: 6px;
@@ -1334,6 +1503,11 @@
       .hero-note { margin-top: 14px; }
       .btn { min-height: 44px; font-size: .88rem; }
       .hero-visual { min-height: 416px; }
+      .people-visual { min-height: 430px; }
+      .hero-photo { height: 416px; }
+      .participation-moment { top: 38px; }
+      .points-moment { top: 190px; }
+      .reward-moment { bottom: -4px; }
       .dash { width: min(100%, 404px); }
       .chart { height: 72px; }
       .metric-value { font-size: 1.85rem; }
@@ -1367,6 +1541,7 @@
       }
       .hero-grid { padding: 0 0 18px; }
       .hero-visual { min-height: 500px; }
+      .people-visual { min-height: 540px; }
       .menu-btn { display: grid; place-items: center; }
       .nav-links {
         position: absolute;
@@ -1418,6 +1593,15 @@
       h1 { font-size: clamp(2.15rem, 10.5vw, 2.9rem); }
       h2 { font-size: clamp(1.7rem, 8.5vw, 2.4rem); }
       .hero-visual { min-height: 455px; }
+      .people-visual { min-height: 490px; }
+      .hero-photo { right: 2%; width: 80%; height: 455px; border-radius: 98px 22px 98px 22px; }
+      .photo-status { display: none; }
+      .participation-moment { top: 42px; left: -2px; width: 162px; padding: 11px; transform-origin: left top; }
+      .points-moment { top: 222px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
+      .reward-moment { left: 0; bottom: 2px; width: 218px; padding: 11px; transform-origin: left bottom; }
+      .moment-icon { width: 31px; height: 31px; flex-basis: 31px; }
+      .moment-card strong { font-size: 1.1rem; }
+      .reward-moment strong { font-size: .76rem; }
       .dash { width: calc(100% - 20px); transform: none; }
       .phone { width: 158px; bottom: 6px; transform: rotate(-2deg); }
       .phone-screen { min-height: 330px; }
@@ -1575,96 +1759,41 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Vantage Fit admin dashboard and employee app">
-          <svg class="hero-product hero-svg" viewBox="0 0 760 450" role="img" aria-label="Vantage Fit wellness overview dashboard: 60 percent participation rate, enrolled and active users, AI leadership insight, organisation wellness score, and the ask-anything bar">
-            <defs>
-              <linearGradient id="hsRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F15162" stop-opacity=".14"/><stop offset="1" stop-color="#F15162" stop-opacity="0"/></linearGradient>
-              <linearGradient id="hsAsk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#F15162"/></linearGradient>
-            </defs>
+        <div class="hero-visual people-visual" aria-label="Employee participation and rewards in Vantage Fit">
+          <figure class="hero-photo">
+            <img src="hero-person.jpg" alt="A smiling employee holding a clipboard outdoors" width="720" height="900" fetchpriority="high">
+            <figcaption class="photo-status"><i></i> Wellness in motion</figcaption>
+          </figure>
 
-            <!-- window -->
-            <rect x="1.5" y="1.5" width="757" height="447" rx="18" fill="#fff" stroke="rgba(41,41,76,.12)"/>
+          <div class="moment-card participation-moment" aria-label="Participation reached 88 percent">
+            <span class="moment-icon mint" aria-hidden="true">&#8599;</span>
+            <div>
+              <p>Participation</p>
+              <strong>88%</strong>
+              <span class="trend">+18% this month</span>
+            </div>
+          </div>
 
-            <!-- slim rail -->
-            <path d="M1.5 19.5 a18 18 0 0 1 18 -18 H54 V448.5 H19.5 a18 18 0 0 1 -18 -18 Z" fill="#23243a"/>
-            <circle cx="28" cy="32" r="6.5" fill="#F15162"/>
-            <rect x="21" y="64" width="14" height="14" rx="4" fill="rgba(255,255,255,.2)"/>
-            <rect x="21" y="92" width="14" height="14" rx="4" fill="#F15162"/>
-            <rect x="21" y="120" width="14" height="14" rx="4" fill="rgba(255,255,255,.2)"/>
-            <rect x="21" y="148" width="14" height="14" rx="4" fill="rgba(255,255,255,.2)"/>
+          <div class="moment-card points-moment" aria-label="1,420 points earned today">
+            <span class="moment-icon orange" aria-hidden="true">V</span>
+            <div>
+              <p>Points earned today</p>
+              <strong>1,420</strong>
+            </div>
+          </div>
 
-            <!-- header -->
-            <text x="80" y="40" class="hs-title">Wellness overview</text>
-            <text x="80" y="58" class="hs-sub">All employees &#183; Last 30 days</text>
-            <rect x="608" y="26" width="130" height="26" rx="13" fill="#fff" stroke="rgba(41,41,76,.14)"/>
-            <text x="622" y="43" class="hs-chip">Jun 29 &#8211; Jul 28</text>
-
-            <!-- KPI: participation, first and biggest -->
-            <g class="hs-in" style="--d:.1s">
-              <rect x="80" y="76" width="272" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <path d="M80 79 h272" stroke="#F15162" stroke-width="3"/>
-              <text x="98" y="104" class="hs-lab" fill="#c2394a">PARTICIPATION RATE</text>
-              <text x="98" y="150" class="hs-big"><tspan id="hs-part">0</tspan>%</text>
-              <text x="98" y="172" class="hs-sub">of enrolled employees</text>
-              <g class="hs-graph">
-                <path class="hs-area" d="M232 160 C252 158 268 149 288 143 S322 131 334 127 L334 172 L232 172 Z" fill="url(#hsRed)"/>
-                <path class="hs-draw" style="--d:1s" d="M232 160 C252 158 268 149 288 143 S322 131 334 127" fill="none" stroke="#F15162" stroke-width="2.5" stroke-linecap="round"/>
-                <circle class="hs-tip" cx="334" cy="127" r="3.5" fill="#F15162"/>
-              </g>
-            </g>
-
-            <!-- KPI: enrolled -->
-            <g class="hs-in" style="--d:.22s">
-              <rect x="364" y="76" width="182" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <text x="382" y="104" class="hs-lab">ENROLLED USERS</text>
-              <text x="382" y="146" class="hs-num">561</text>
-              <text x="382" y="168" class="hs-sub">across all countries</text>
-            </g>
-
-            <!-- KPI: active -->
-            <g class="hs-in" style="--d:.34s">
-              <rect x="558" y="76" width="180" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <text x="576" y="104" class="hs-lab">ACTIVE USERS</text>
-              <text x="576" y="146" class="hs-num">300</text>
-              <text x="640" y="146" class="hs-up">&#9650; 12</text>
-              <text x="576" y="168" class="hs-sub">vs previous period</text>
-            </g>
-
-            <!-- AI insight strip -->
-            <g class="hs-in" style="--d:.46s">
-              <rect x="80" y="206" width="658" height="48" rx="12" fill="#faf9ff" stroke="rgba(124,92,255,.2)"/>
-              <path d="M102 222 l2.4 6.8 6.8 2.4 -6.8 2.4 -2.4 6.8 -2.4 -6.8 -6.8 -2.4 6.8 -2.4 z" fill="#7c5cff"/>
-              <text x="122" y="226" class="hs-ai">LEADERSHIP INSIGHT</text>
-              <text x="122" y="242" class="hs-body">Participation is steady this quarter. Team challenges are the strongest driver.</text>
-              <rect x="616" y="217" width="106" height="26" rx="13" fill="#fff" stroke="rgba(124,92,255,.25)"/>
-              <text x="630" y="234" class="hs-aigen">&#10022; AI-generated</text>
-            </g>
-
-            <!-- org wellness score: donut only -->
-            <g class="hs-in" style="--d:.58s">
-              <rect x="80" y="272" width="272" height="112" rx="12" fill="#fff" stroke="rgba(41,41,76,.1)"/>
-              <text x="98" y="300" class="hs-lab">ORG WELLNESS SCORE</text>
-              <circle cx="138" cy="342" r="28" fill="none" stroke="rgba(41,41,76,.08)" stroke-width="7"/>
-              <circle class="hs-arc" cx="138" cy="342" r="28" fill="none" stroke="#F15162" stroke-width="7" stroke-linecap="round"
-                stroke-dasharray="175.9" stroke-dashoffset="175.9" transform="rotate(-90 138 342)"/>
-              <text x="138" y="349" text-anchor="middle" class="hs-num" font-size="21">43</text>
-              <text x="188" y="336" class="hs-body">Improving</text>
-              <text x="188" y="354" class="hs-sub">vs previous quarter</text>
-            </g>
-
-            <!-- ask bar -->
-            <g class="hs-in" style="--d:.7s">
-              <rect x="364" y="299" width="374" height="58" rx="29" fill="#fff" stroke="rgba(41,41,76,.12)"/>
-              <circle cx="396" cy="328" r="14" fill="url(#hsAsk)"/>
-              <path d="M396 320.5 l1.8 5.2 5.2 1.8 -5.2 1.8 -1.8 5.2 -1.8 -5.2 -5.2 -1.8 5.2 -1.8 z" fill="#fff"/>
-              <text x="422" y="333" class="hs-ask">Ask Vantage Fit anything</text>
-              <rect x="676" y="314" width="44" height="28" rx="8" fill="#f6f6f9" stroke="rgba(41,41,76,.12)"/>
-              <text x="686" y="333" class="hs-chip">&#8984;K</text>
-            </g>
-
-            <text x="80" y="424" class="hs-note">Illustrative product data</text>
-          </svg>
-          <div class="hero-chip hc2"><i class="hc-dot"></i><span>1,059 active challenges</span></div>
+          <div class="moment-card reward-moment" aria-label="Gift card reward unlocked">
+            <span class="moment-icon red" aria-hidden="true">&#9670;</span>
+            <div>
+              <p>Reward unlocked</p>
+              <strong>Choose a gift card</strong>
+              <span class="reward-brands" aria-label="Amazon, Starbucks, and Nike">
+                <span class="amazon">a</span>
+                <span class="starbucks">&#9733;</span>
+                <span class="nike">&#10003;</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
