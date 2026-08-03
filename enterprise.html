@@ -229,6 +229,12 @@
     .mega.mega-wide { width: min(920px, calc(100vw - 48px)); }
     .nav-item:hover .mega,
     .nav-item:focus-within .mega { display: block; }
+    .nav-links:has(> :hover) .nav-item:not(:hover) .mega { display: none; }
+    .nav-links:has(> :hover) .nav-item:not(:hover) .nav-trigger {
+      background: transparent;
+      color: #536067;
+    }
+    .nav-links:has(> :hover) .nav-item:not(:hover) .nav-trigger svg { transform: none; }
     .mega-body { padding: 22px; }
     .mega-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; }
     .mega-grid.cols-2 { grid-template-columns: 1fr 1fr; }
