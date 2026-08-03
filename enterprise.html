@@ -449,15 +449,6 @@
       min-height: 520px;
       isolation: isolate;
     }
-    .people-visual::before {
-      position: absolute;
-      inset: 3% 1% 2% 8%;
-      z-index: -2;
-      border-radius: 46% 54% 42% 58% / 42% 42% 58% 58%;
-      background: linear-gradient(145deg, rgba(241,81,98,.15), rgba(255,157,87,.055));
-      content: "";
-      transform: rotate(3deg);
-    }
     .people-visual::after {
       position: absolute;
       right: 0;
@@ -1227,7 +1218,8 @@
       font-weight: 650; line-height: 1.5; letter-spacing: -.012em; }
     .b-feat-body blockquote::before { content: "“"; position: absolute; left: 0; top: -7px; color: var(--coral); font-size: 2.1rem; line-height: 1; font-weight: 900; }
     .video-person { display: flex; align-items: center; gap: 11px; margin-top: 14px; }
-    .video-person > img:not(.b-logo) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px rgba(65,216,180,.15); }
+    .video-person > img:not(.b-logo) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 24%;
+      box-shadow: 0 0 0 3px rgba(65,216,180,.15); }
     .video-person strong { display: block; font-size: .88rem; }
     .video-person span { display: block; margin-top: 2px; color: var(--muted); font-size: .72rem; }
     .video-person .b-logo { width: 124px; max-width: 124px; height: 34px; margin: 0 8px 0 auto; align-self: center;
@@ -1990,7 +1982,7 @@
             <div class="b-feat-body">
               <blockquote>&ldquo;Vantage Fit has helped our employees stay active, track their progress, and get rewarded, turning wellness into a daily habit that drives both health and happiness across BISD.&rdquo;</blockquote>
               <div class="video-person">
-                <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_80/v1765517539/VantageFit/2025/webp-images/homepage/729449d5f4fa2763c0e2254bc7025b0bb73d6f75.png" alt="" width="44" height="44" loading="lazy">
+                <img src="rachel-arthur-avatar.jpg" alt="Rachel Arthur" width="40" height="40" loading="lazy" decoding="async">
                 <div>
                   <strong>Rachel Arthur</strong>
                   <span>Director of Benefits &amp; Wellness, Brazosport ISD</span>
