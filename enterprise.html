@@ -588,16 +588,18 @@
       width: 34px;
       height: 34px;
       transform-origin: center;
-      animation: coin-pop 2.8s ease-in-out infinite;
+      animation: coin-flip 3s cubic-bezier(.45, 0, .2, 1) infinite;
+      backface-visibility: visible;
       filter: drop-shadow(0 4px 5px rgba(214, 139, 0, .2));
+      transform-style: preserve-3d;
       will-change: transform;
     }
-    @keyframes coin-pop {
-      0%, 20%, 100% { transform: translateY(0) rotate(0) scale(1); }
-      36% { transform: translateY(-5px) rotate(-10deg) scale(1.09); }
-      52% { transform: translateY(0) rotate(8deg) scale(1.02); }
-      66% { transform: translateY(-2px) rotate(-4deg) scale(1.05); }
-      80% { transform: translateY(0) rotate(0) scale(1); }
+    @keyframes coin-flip {
+      0%, 18% { transform: translateY(0) rotateX(0) scale(1); }
+      34% { transform: translateY(-6px) rotateX(120deg) scale(1.08); }
+      52% { transform: translateY(-8px) rotateX(360deg) scale(1.1); }
+      70% { transform: translateY(-4px) rotateX(600deg) scale(1.06); }
+      84%, 100% { transform: translateY(0) rotateX(720deg) scale(1); }
     }
     @keyframes gift-pop {
       0%, 58%, 100% { transform: translateY(0) rotate(0) scale(1); }
