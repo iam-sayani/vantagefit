@@ -980,32 +980,43 @@
       .illume.done #illume-text { transform: none; }
     }
 
-    /* —— Product tour —— */
-    .tour-screen { background: var(--paper); min-height: 0; padding: 88px 0; }
-    .tour-screen .center { text-align: center; max-width: 720px; margin: 0 auto 26px; }
+    /* —— Product tour (tabbed) —— */
+    .tour-screen { background: var(--canvas); min-height: 0; padding: 88px 0; }
+    .tour-screen .center { text-align: center; max-width: 720px; margin: 0 auto; }
     .tour-screen .center .lead { color: var(--muted); margin-top: 12px; }
-    .tour-row { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; padding: 44px 0; }
-    .tour-row + .tour-row { border-top: 1px solid rgba(41,41,76,.07); }
-    .tour-flip .tour-copy { order: 2; }
-    .tour-flip .tour-media { order: 1; }
-    .tour-copy h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); letter-spacing: -.025em; line-height: 1.15; margin: 12px 0 12px; }
-    .tour-copy > p { color: var(--muted); font-size: .98rem; line-height: 1.65; max-width: 440px; }
-    .tour-checks { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
-    .tour-checks { gap: 16px; }
+    .seg { position: relative; display: flex; width: max-content; margin: 34px auto 0; padding: 5px;
+      background: #fff; border: 1px solid rgba(41,41,76,.1); border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(41,41,76,.06); }
+    .seg-btn { position: relative; z-index: 1; border: 0; background: none; cursor: pointer;
+      padding: 11px 26px; border-radius: 999px; font-family: inherit; font-size: .92rem; font-weight: 700;
+      color: var(--muted); transition: color .25s ease; width: 172px; }
+    .seg-btn[aria-selected="true"] { color: #fff; }
+    .seg-thumb { position: absolute; top: 5px; bottom: 5px; left: 5px; width: 172px; border-radius: 999px;
+      background: linear-gradient(125deg, #F15162 5%, #f4705a 125%);
+      transition: transform .35s cubic-bezier(.22,.9,.24,1); }
+    .seg.hr .seg-thumb { transform: translateX(172px); }
+    .tabpane { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center;
+      max-width: 1080px; margin: 44px auto 0; }
+    .tabpane[hidden] { display: none; }
+    .tabpane.is-in { animation: panein .5s cubic-bezier(.22,.9,.24,1); }
+    @keyframes panein { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .tour-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
     .tour-checks li { position: relative; padding-left: 32px; font-size: .92rem; color: var(--ink); }
     .tour-checks li b { display: block; font-size: .98rem; font-weight: 700; }
     .tour-checks li p { color: var(--muted); font-size: .86rem; line-height: 1.6; margin-top: 3px; max-width: 400px; }
     .tour-checks li::before { content: ""; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%;
       background: rgba(65,216,180,.16) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23169d7e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>') center/11px no-repeat; }
     .tour-media img { width: 100%; height: auto; display: block; }
-    .tour-frame { padding: 14px; border-radius: 20px; background: var(--canvas); border: 1px solid rgba(41,41,76,.08); box-shadow: var(--shadow-soft); }
+    .tour-frame { padding: 14px; border-radius: 20px; background: #fff; border: 1px solid rgba(41,41,76,.08); box-shadow: var(--shadow-soft); }
     .tour-frame img { border-radius: 10px; }
     .tour-screen .measure-note { margin-top: 18px; font-size: .72rem; color: var(--muted); max-width: 430px; }
     @media (max-width: 900px) {
-      .tour-row { grid-template-columns: 1fr; gap: 28px; padding: 34px 0; }
-      .tour-flip .tour-copy { order: 1; }
-      .tour-flip .tour-media { order: 2; }
+      .tabpane { grid-template-columns: 1fr; gap: 28px; }
+      .seg-btn { width: 140px; padding: 10px 12px; font-size: .84rem; }
+      .seg-thumb { width: 140px; }
+      .seg.hr .seg-thumb { transform: translateX(140px); }
     }
+    @media (prefers-reduced-motion: reduce) { .tabpane.is-in { animation: none; } .seg-thumb { transition: none; } }
 
     /* —— S3 Proof —— */
     .proof-screen { background: #f0f2ee; }
@@ -1804,9 +1815,14 @@
           <p class="lead">The employee experience creates momentum. The admin experience helps you sustain it.</p>
         </div>
 
-        <div class="tour-row">
+        <div class="seg" role="tablist" aria-label="Choose experience">
+          <span class="seg-thumb" aria-hidden="true"></span>
+          <button class="seg-btn" id="tab-emp" role="tab" aria-selected="true" aria-controls="pane-emp" type="button">For employees</button>
+          <button class="seg-btn" id="tab-hr" role="tab" aria-selected="false" aria-controls="pane-hr" type="button">For HR teams</button>
+        </div>
+
+        <div class="tabpane is-in" id="pane-emp" role="tabpanel" aria-labelledby="tab-emp">
           <div class="tour-copy">
-            <span class="eyebrow">For employees</span>
             <ul class="tour-checks">
               <li><b>Something for more people</b><p>Support physical, mental, and everyday wellbeing across different interests and abilities.</p></li>
               <li><b>Progress people can feel</b><p>Daily goals, streaks, and team challenges turn a distant goal into a clear next step.</p></li>
@@ -1818,9 +1834,8 @@
           </div>
         </div>
 
-        <div class="tour-row tour-flip">
+        <div class="tabpane" id="pane-hr" role="tabpanel" aria-labelledby="tab-hr" hidden>
           <div class="tour-copy">
-            <span class="eyebrow">For HR teams</span>
             <ul class="tour-checks">
               <li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li>
               <li><b>See participation clearly</b><p>Follow the rolling rate, trend direction, and teams that need a different approach.</p></li>
@@ -2214,6 +2229,27 @@
       const state = () => nav.classList.toggle('lit', window.scrollY > hero.offsetHeight - 90);
       window.addEventListener('scroll', state, { passive: true });
       state();
+    })();
+
+  
+    // Experience tabs
+    (function () {
+      const seg = document.querySelector('.seg');
+      if (!seg) return;
+      const tabs = { emp: document.getElementById('tab-emp'), hr: document.getElementById('tab-hr') };
+      const panes = { emp: document.getElementById('pane-emp'), hr: document.getElementById('pane-hr') };
+      function select(which) {
+        seg.classList.toggle('hr', which === 'hr');
+        for (const k of ['emp', 'hr']) {
+          tabs[k].setAttribute('aria-selected', String(k === which));
+          panes[k].hidden = k !== which;
+          panes[k].classList.remove('is-in');
+        }
+        void panes[which].offsetWidth;
+        panes[which].classList.add('is-in');
+      }
+      tabs.emp.addEventListener('click', () => select('emp'));
+      tabs.hr.addEventListener('click', () => select('hr'));
     })();
 
   </script>
