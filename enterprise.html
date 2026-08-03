@@ -235,14 +235,10 @@
       overflow: hidden;
     }
     .mega.mega-wide { width: min(920px, calc(100vw - 48px)); }
-    .nav-item:hover .mega,
-    .nav-item:focus-within .mega { display: block; }
-    .nav-links:has(> :hover) .nav-item:not(:hover) .mega { display: none; }
-    .nav-links:has(> :hover) .nav-item:not(:hover) .nav-trigger {
-      background: transparent;
-      color: #536067;
+    @media (min-width: 861px) {
+      .nav-item.desktop-open .mega,
+      .nav-item:focus-within .mega { display: block; }
     }
-    .nav-links:has(> :hover) .nav-item:not(:hover) .nav-trigger svg { transform: none; }
     .mega-body { padding: 22px; }
     .mega-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; }
     .mega-grid.cols-2 { grid-template-columns: 1fr 1fr; }
@@ -2250,7 +2246,45 @@
     });
 
     // Mobile mega-menu toggles
-    document.querySelectorAll('.nav-trigger').forEach((btn) => {
+    const navItems = [...document.querySelectorAll('.nav-item')];
+    const navTriggers = [...document.querySelectorAll('.nav-trigger')];
+    const desktopNav = window.matchMedia('(min-width: 861px)');
+    let desktopCloseTimer;
+
+    const closeDesktopMenus = (except = null) => {
+      navItems.forEach((item) => {
+        if (item !== except) item.classList.remove('desktop-open');
+      });
+    };
+
+    navItems.forEach((item) => {
+      item.addEventListener('pointerenter', () => {
+        if (!desktopNav.matches) return;
+        window.clearTimeout(desktopCloseTimer);
+        closeDesktopMenus(item);
+        item.classList.add('desktop-open');
+
+        const focusedTrigger = document.activeElement?.closest?.('.nav-trigger');
+        if (focusedTrigger && !item.contains(focusedTrigger)) focusedTrigger.blur();
+      });
+
+      item.addEventListener('pointerleave', () => {
+        if (!desktopNav.matches) return;
+        desktopCloseTimer = window.setTimeout(() => {
+          if (!item.matches(':hover') && !item.contains(document.activeElement)) {
+            item.classList.remove('desktop-open');
+          }
+        }, 120);
+      });
+    });
+
+    document.querySelectorAll('.nav-links > a').forEach((link) => {
+      link.addEventListener('pointerenter', () => {
+        if (desktopNav.matches) closeDesktopMenus();
+      });
+    });
+
+    navTriggers.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         if (window.matchMedia('(max-width: 860px)').matches) {
           e.preventDefault();
