@@ -498,6 +498,26 @@
       content: "";
       pointer-events: none;
     }
+    .hero-head-pop {
+      position: absolute;
+      top: -27px;
+      right: 5%;
+      z-index: 2;
+      display: flex;
+      width: 76%;
+      height: 142px;
+      justify-content: center;
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, #000 0 72%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, #000 0 72%, transparent 100%);
+      pointer-events: none;
+    }
+    .hero-head-pop img {
+      width: max(100%, 405px);
+      max-width: none;
+      height: auto;
+      flex: none;
+    }
     .photo-status {
       position: absolute;
       right: 30px;
@@ -1581,6 +1601,8 @@
       .hero-visual { min-height: 416px; }
       .people-visual { min-height: 430px; }
       .hero-photo { height: 416px; }
+      .hero-head-pop { top: -23px; height: 122px; }
+      .hero-head-pop img { width: max(100%, 333px); }
       .participation-moment { top: 38px; }
       .points-moment { top: 190px; }
       .reward-moment { bottom: -4px; }
@@ -1671,6 +1693,8 @@
       .hero-visual { min-height: 455px; }
       .people-visual { min-height: 490px; }
       .hero-photo { right: 2%; width: 82%; height: 455px; border-radius: 26px 26px 88px 26px; }
+      .hero-head-pop { top: -24px; right: 2%; width: 82%; height: 128px; }
+      .hero-head-pop img { width: max(100%, 364px); }
       .photo-status { display: none; }
       .participation-moment { top: 30px; left: -2px; width: 190px; padding: 11px 12px; transform-origin: left top; }
       .participation-copy strong { font-size: 1.2rem; }
@@ -1844,6 +1868,9 @@
             <img src="hero-person.jpg" alt="A smiling employee holding a clipboard outdoors" width="720" height="900" fetchpriority="high">
             <figcaption class="photo-status"><i></i> Wellness in motion</figcaption>
           </figure>
+          <div class="hero-head-pop" aria-hidden="true">
+            <img src="hero-person-head-pop.png" alt="" width="1122" height="420">
+          </div>
 
           <div class="moment-card participation-moment" aria-label="Participation increased to 88 percent, up 18 percent this month">
             <div class="participation-copy">
