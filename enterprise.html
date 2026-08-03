@@ -594,8 +594,14 @@
     .participation-spark { position: relative; flex: 0 0 82px; width: 82px; height: 46px; align-self: center; }
     .participation-spark svg { width: 100%; height: 100%; overflow: visible; }
     .participation-spark .spark-grid { display: none; }
-    .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
-    .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 2.5; }
+    .participation-spark .spark-area { opacity: 0; clip-path: inset(0 100% 0 0); animation: spark-area-in 1.7s .38s cubic-bezier(.22,.9,.24,1) forwards; }
+    .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round;
+      stroke-dasharray: 1; stroke-dashoffset: 1; animation: spark-line-in 1.7s .38s cubic-bezier(.22,.9,.24,1) forwards; }
+    .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 2.5; opacity: 0; transform-box: fill-box; transform-origin: center;
+      transform: scale(.3); animation: spark-point-in .35s 1.9s cubic-bezier(.22,.9,.24,1) forwards; }
+    @keyframes spark-line-in { to { stroke-dashoffset: 0; } }
+    @keyframes spark-area-in { to { opacity: 1; clip-path: inset(0 0 0 0); } }
+    @keyframes spark-point-in { to { opacity: 1; transform: scale(1); } }
     .points-moment {
       top: 208px;
       right: -1%;
@@ -617,6 +623,9 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .moment-card { animation: none; }
+      .participation-spark .spark-line { animation: none; stroke-dashoffset: 0; }
+      .participation-spark .spark-area { animation: none; opacity: 1; clip-path: none; }
+      .participation-spark .spark-end { animation: none; opacity: 1; transform: none; }
     }
     .dash {
       position: absolute;
@@ -1809,9 +1818,9 @@
                   </linearGradient>
                 </defs>
                 <path class="spark-grid" d="M2 15.5H80M2 30.5H80"></path>
-                <path d="M2 43V37C12 39 17 32 25 33S37 27 43 29 54 19 61 21 72 12 80 7V43Z" fill="url(#participation-area)"></path>
-                <path class="spark-line" d="M2 37C12 39 17 32 25 33S37 27 43 29 54 19 61 21 72 12 80 7"></path>
-                <circle class="spark-end" cx="80" cy="7" r="4"></circle>
+                <path class="spark-area" d="M3 43V40C10 39 14 37 20 36 27 35 30 31 36 30 44 28 47 26 53 24 60 22 63 18 68 17 74 14 77 10 80 6V43Z" fill="url(#participation-area)"></path>
+                <path class="spark-line" pathLength="1" d="M3 40C10 39 14 37 20 36 27 35 30 31 36 30 44 28 47 26 53 24 60 22 63 18 68 17 74 14 77 10 80 6"></path>
+                <circle class="spark-end" cx="80" cy="6" r="4"></circle>
               </svg>
             </div>
           </div>
