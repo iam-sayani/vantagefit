@@ -1148,19 +1148,21 @@
     .tour-screen { background: var(--canvas); min-height: 0; padding: 88px 0; }
     .tour-screen .center { text-align: center; max-width: 720px; margin: 0 auto; }
     .tour-screen .center .lead { color: var(--muted); margin-top: 12px; }
-    .seg { position: relative; display: flex; width: max-content; margin: 34px auto 0; padding: 5px;
-      background: #fff; border: 1px solid rgba(41,41,76,.1); border-radius: 999px;
-      box-shadow: 0 4px 16px rgba(41,41,76,.06); }
+    .tour-tabs { margin-top: 38px; padding: 14px 34px 38px; border: 1px solid rgba(41,41,76,.09); border-radius: 30px;
+      background: rgba(255,255,255,.92); box-shadow: 0 20px 54px rgba(41,41,76,.09); }
+    .seg { position: relative; display: flex; width: max-content; margin: 0 auto; padding: 5px;
+      background: #f1f4f2; border: 1px solid rgba(41,41,76,.08); border-radius: 999px; box-shadow: none; }
     .seg-btn { position: relative; z-index: 1; border: 0; background: none; cursor: pointer;
       padding: 11px 26px; border-radius: 999px; font-family: inherit; font-size: .92rem; font-weight: 700;
       color: var(--muted); transition: color .25s ease; width: 172px; }
-    .seg-btn[aria-selected="true"] { color: #fff; }
+    .seg-btn[aria-selected="true"] { color: #116f5d; }
+    .seg-btn:focus-visible { outline: 3px solid rgba(22,157,126,.28); outline-offset: 2px; }
     .seg-thumb { position: absolute; top: 5px; bottom: 5px; left: 5px; width: 172px; border-radius: 999px;
-      background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%);
+      background: #dff7f0; border: 1px solid rgba(22,157,126,.16); box-shadow: 0 3px 10px rgba(22,157,126,.10);
       transition: transform .35s cubic-bezier(.22,.9,.24,1); }
     .seg.hr .seg-thumb { transform: translateX(172px); }
     .tabpane { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center;
-      max-width: 1080px; margin: 44px auto 0; }
+      max-width: 1080px; margin: 34px auto 0; padding: 6px 8px 0; }
     .tabpane[hidden] { display: none; }
     .tabpane.is-in { animation: panein .5s cubic-bezier(.22,.9,.24,1); }
     @keyframes panein { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
@@ -1179,6 +1181,14 @@
       .seg-btn { width: 140px; padding: 10px 12px; font-size: .84rem; }
       .seg-thumb { width: 140px; }
       .seg.hr .seg-thumb { transform: translateX(140px); }
+    }
+    @media (max-width: 600px) {
+      .tour-tabs { margin-top: 28px; padding: 10px 14px 24px; border-radius: 22px; }
+      .seg { width: 100%; }
+      .seg-btn { width: 50%; }
+      .seg-thumb { width: calc(50% - 5px); }
+      .seg.hr .seg-thumb { transform: translateX(100%); }
+      .tabpane { margin-top: 26px; padding-inline: 4px; }
     }
     @media (prefers-reduced-motion: reduce) { .tabpane.is-in { animation: none; } .seg-thumb { transition: none; } }
 
@@ -1938,36 +1948,38 @@
           <p class="lead">The employee experience creates momentum. The admin experience helps you sustain it.</p>
         </div>
 
-        <div class="seg" role="tablist" aria-label="Choose experience">
-          <span class="seg-thumb" aria-hidden="true"></span>
-          <button class="seg-btn" id="tab-emp" role="tab" aria-selected="true" aria-controls="pane-emp" type="button">For employees</button>
-          <button class="seg-btn" id="tab-hr" role="tab" aria-selected="false" aria-controls="pane-hr" type="button">For HR teams</button>
-        </div>
+        <div class="tour-tabs">
+          <div class="seg" role="tablist" aria-label="Choose experience">
+            <span class="seg-thumb" aria-hidden="true"></span>
+            <button class="seg-btn" id="tab-emp" role="tab" aria-selected="true" aria-controls="pane-emp" type="button">For employees</button>
+            <button class="seg-btn" id="tab-hr" role="tab" aria-selected="false" aria-controls="pane-hr" type="button">For HR teams</button>
+          </div>
 
-        <div class="tabpane is-in" id="pane-emp" role="tabpanel" aria-labelledby="tab-emp">
-          <div class="tour-copy">
-            <ul class="tour-checks">
-              <li><b>Something for more people</b><p>Support physical, mental, and everyday wellbeing across different interests and abilities.</p></li>
-              <li><b>Progress people can feel</b><p>Daily goals, streaks, and team challenges turn a distant goal into a clear next step.</p></li>
-              <li><b>Rewards worth earning</b><p>Points convert into a global catalogue employees recognize and redeem.</p></li>
-            </ul>
+          <div class="tabpane is-in" id="pane-emp" role="tabpanel" aria-labelledby="tab-emp">
+            <div class="tour-copy">
+              <ul class="tour-checks">
+                <li><b>Something for more people</b><p>Support physical, mental, and everyday wellbeing across different interests and abilities.</p></li>
+                <li><b>Progress people can feel</b><p>Daily goals, streaks, and team challenges turn a distant goal into a clear next step.</p></li>
+                <li><b>Rewards worth earning</b><p>Points convert into a global catalogue employees recognize and redeem.</p></li>
+              </ul>
+            </div>
+            <div class="tour-media">
+              <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579791/product-images-hub/v-fit/vfit-challenge-mobile.png" alt="Vantage Fit mobile app showing a challenge journey, weekly tasks, and team leaderboard" width="820" height="541" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div class="tour-media">
-            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579791/product-images-hub/v-fit/vfit-challenge-mobile.png" alt="Vantage Fit mobile app showing a challenge journey, weekly tasks, and team leaderboard" width="820" height="541" loading="lazy" decoding="async">
-          </div>
-        </div>
 
-        <div class="tabpane" id="pane-hr" role="tabpanel" aria-labelledby="tab-hr" hidden>
-          <div class="tour-copy">
-            <ul class="tour-checks">
-              <li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li>
-              <li><b>See participation clearly</b><p>Follow the rolling rate, trend direction, and teams that need a different approach.</p></li>
-              <li><b>Run one connected program</b><p>Manage challenges, engagement, rewards, and reporting in one place.</p></li>
-            </ul>
-            <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days &divide; enrolled employees.</p>
-          </div>
-          <div class="tour-media tour-frame">
-            <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579792/product-images-hub/v-fit/vfit-analytics-dashboard-desktop.png" alt="Vantage Fit admin analytics dashboard with activity insights and participation by department, gender, and location" width="820" height="668" loading="lazy" decoding="async">
+          <div class="tabpane" id="pane-hr" role="tabpanel" aria-labelledby="tab-hr" hidden>
+            <div class="tour-copy">
+              <ul class="tour-checks">
+                <li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li>
+                <li><b>See participation clearly</b><p>Follow the rolling rate, trend direction, and teams that need a different approach.</p></li>
+                <li><b>Run one connected program</b><p>Manage challenges, engagement, rewards, and reporting in one place.</p></li>
+              </ul>
+              <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days &divide; enrolled employees.</p>
+            </div>
+            <div class="tour-media tour-frame">
+              <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579792/product-images-hub/v-fit/vfit-analytics-dashboard-desktop.png" alt="Vantage Fit admin analytics dashboard with activity insights and participation by department, gender, and location" width="820" height="668" loading="lazy" decoding="async">
+            </div>
           </div>
         </div>
       </div>
