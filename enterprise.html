@@ -20,6 +20,7 @@
       --dark: #1D2228;
       --dark-2: #2A313A;
       --coral: #F15162;
+      --coral-deep: #B62E40;
       --coral-dark: #d63d4e;
       --coral-text: #d13c4d;
       --mint: #41d8b4;
@@ -126,7 +127,7 @@
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: linear-gradient(125deg, #F15162 5%, #f4705a 125%);
+      background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%);
       color: #fff;
     }
     .btn-primary:hover { filter: brightness(1.05); }
@@ -206,7 +207,7 @@
       margin-left: 8px;
       padding-inline: 18px;
       border-radius: 999px;
-      background: linear-gradient(125deg, #F15162 5%, #f4705a 125%);
+      background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%);
       color: #fff;
     }
     .nav-links .nav-cta:hover { filter: brightness(1.06); color: #fff; }
@@ -372,7 +373,7 @@
       padding: 24px 0 14px;
     }
     .hero-copy h1 { max-width: 680px; margin-top: 14px; line-height: 1.03; }
-    .hero-copy h1 em { font-style: normal; background: linear-gradient(125deg, #F15162 20%, #f4705a 90%);
+    .hero-copy h1 em { font-style: normal; background: linear-gradient(125deg, var(--coral) 20%, var(--coral-deep) 90%);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
     .hero-copy .lead { max-width: 560px; margin-top: 14px; color: var(--muted); font-size: 1.05rem; line-height: 1.55; }
     .hero-copy .btn-row { margin-top: 22px; }
@@ -551,7 +552,7 @@
       font-weight: 900;
     }
     .moment-icon.mint { background: rgba(65,216,180,.16); color: #128f72; }
-    .moment-icon.orange { background: rgba(255,157,87,.16); color: #c76b27; }
+    .moment-icon.orange { background: rgba(241,81,98,.14); color: var(--coral-deep); }
     .moment-icon.red { background: rgba(241,81,98,.13); color: var(--coral-text); }
     .moment-icon.coin { border-radius: 50%; background: transparent; }
     .moment-icon.coin svg { display: block; width: 34px; height: 34px; }
@@ -597,7 +598,7 @@
     }
     .reward-brands .amazon { background: #20252b; font-family: Georgia, serif; }
     .reward-brands .starbucks { background: #087c5b; }
-    .reward-brands .nike { background: #f4705a; }
+    .reward-brands .nike { background: var(--coral-deep); }
     @keyframes moment-float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-7px); }
@@ -781,7 +782,7 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--amber), var(--coral));
+      background: linear-gradient(135deg, var(--coral), var(--coral-deep));
     }
     .challenge {
       margin: 0 11px;
@@ -1027,7 +1028,7 @@
       padding: 16px;
       overflow: hidden;
       border-radius: 14px;
-      background: linear-gradient(125deg, #ed6470, #f6a467);
+      background: linear-gradient(125deg, var(--coral), var(--coral-deep));
       color: #fff;
     }
     .app-banner small { font-size: .55rem; font-weight: 800; letter-spacing: .08em; }
@@ -1155,7 +1156,7 @@
       color: var(--muted); transition: color .25s ease; width: 172px; }
     .seg-btn[aria-selected="true"] { color: #fff; }
     .seg-thumb { position: absolute; top: 5px; bottom: 5px; left: 5px; width: 172px; border-radius: 999px;
-      background: linear-gradient(125deg, #F15162 5%, #f4705a 125%);
+      background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%);
       transition: transform .35s cubic-bezier(.22,.9,.24,1); }
     .seg.hr .seg-thumb { transform: translateX(172px); }
     .tabpane { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center;
@@ -1211,7 +1212,7 @@
     .b-feat:hover .video-thumb img { opacity: 1; transform: scale(1.025); }
     .play-btn { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; pointer-events: none; }
     .play-btn span { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%;
-      background: linear-gradient(135deg, #ff5968, #f47756); color: #fff; border: 5px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, var(--coral), var(--coral-deep)); color: #fff; border: 5px solid rgba(255,255,255,.16);
       box-shadow: 0 14px 34px rgba(0,0,0,.28); transition: transform .25s ease; }
     .b-feat:hover .play-btn span { transform: scale(1.08); }
     .play-btn svg { width: 21px; margin-left: 3px; }
@@ -1468,7 +1469,7 @@
     }
     .blog-recent a + a { margin-top: 4px; }
     .blog-recent a:hover {
-      background: linear-gradient(125deg, rgba(241, 81, 98, .12), rgba(243, 170, 85, .14));
+      background: linear-gradient(125deg, rgba(241,81,98,.12), rgba(182,46,64,.14));
       color: var(--coral-dark);
     }
 
@@ -1491,7 +1492,7 @@
     .final h2 { max-width: 880px; margin-inline: auto; }
     .final p { max-width: 620px; margin: 20px auto 0; color: rgba(255,255,255,.8); font-size: 1.08rem; }
     .final .btn-row { justify-content: center; }
-    .final .btn-primary { background: linear-gradient(125deg, #F15162 5%, #f4705a 125%); }
+    .final .btn-primary { background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%); }
     .final .btn-outline { border-color: rgba(255,255,255,.35); background: transparent; color: #fff; }
     .final .btn-outline:hover { background: rgba(255,255,255,.1); }
     .final-note { margin-top: 18px; font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.85); }
