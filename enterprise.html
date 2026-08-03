@@ -1227,13 +1227,13 @@
       font-weight: 650; line-height: 1.5; letter-spacing: -.012em; }
     .b-feat-body blockquote::before { content: "“"; position: absolute; left: 0; top: -7px; color: var(--coral); font-size: 2.1rem; line-height: 1; font-weight: 900; }
     .video-person { display: flex; align-items: center; gap: 11px; margin-top: 14px; }
-    .video-person > img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px rgba(65,216,180,.15); }
+    .video-person > img:not(.b-logo) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px rgba(65,216,180,.15); }
     .video-person strong { display: block; font-size: .88rem; }
     .video-person span { display: block; margin-top: 2px; color: var(--muted); font-size: .72rem; }
-    .video-person .b-logo { max-width: 102px; height: 26px; margin: 0 8px 0 auto; align-self: center; object-fit: contain; object-position: center; }
+    .video-person .b-logo { width: 124px; max-width: 124px; height: 34px; margin: 0 8px 0 auto; align-self: center;
+      border-radius: 0; box-shadow: none; object-fit: contain; object-position: center; }
     .b-logo { height: 25px; max-width: 118px; width: auto; opacity: .8; align-self: flex-start; flex: none; object-fit: contain; }
     .b-quote { grid-column: span 6; min-height: 226px; padding: 25px 27px; display: flex; flex-direction: column; gap: 18px; overflow: hidden; }
-    .b-quote::after { content: "“"; position: absolute; right: 20px; bottom: -31px; color: rgba(65,216,180,.10); font-size: 9rem; line-height: 1; font-weight: 900; pointer-events: none; }
     .b-head { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; }
     .b-head > img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px rgba(41,41,76,.06); }
     .b-head strong { display: block; font-size: .86rem; }
