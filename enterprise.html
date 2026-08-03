@@ -1209,96 +1209,60 @@
     @media (prefers-reduced-motion: reduce) { .tabpane.is-in { animation: none; } .seg-thumb { transition: none; } }
 
     /* —— S3 Proof —— */
-    .proof-screen { position: relative; min-height: auto; padding: 88px 0; overflow: hidden; background: #f6f7f4; }
-    .proof-screen .shell { position: relative; }
-    .proof-screen > .shell > .center { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .7fr);
-      grid-template-rows: auto auto; column-gap: 72px; align-items: end; max-width: none; margin: 0; text-align: left; }
-    .proof-screen > .shell > .center .eyebrow { grid-column: 1; grid-row: 1; justify-self: start; }
-    .proof-screen > .shell > .center h2 { grid-column: 1; grid-row: 2; margin-top: 12px; max-width: 680px; }
-    .proof-screen > .shell > .center .lead { grid-column: 2; grid-row: 1 / span 2; margin: 0 0 7px; max-width: 410px; line-height: 1.65; }
-    .bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)) auto;
-      gap: 20px 30px; margin-top: 42px; }
-    .b-card { position: relative; background: transparent; border: 0; box-shadow: none; }
-    .b-card:hover { transform: none; box-shadow: none; }
-    .b-feat { grid-column: 1 / span 8; grid-row: 1 / span 2; display: grid; grid-template-columns: 1fr; overflow: hidden;
-      border: 1px solid rgba(41,41,76,.08); border-radius: 20px; background: #fff; }
-    .video-thumb { position: relative; display: block; width: 100%; min-height: 0; aspect-ratio: 16 / 7.35; padding: 0;
-      border: 0; cursor: pointer; background: #111; overflow: hidden; }
-    .video-thumb::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(to top, rgba(10,15,19,.2), transparent 34%); }
-    .video-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; opacity: .97;
-      transition: opacity .3s, transform .7s cubic-bezier(.22,.9,.24,1); display: block; }
-    .b-feat:hover .video-thumb img { opacity: 1; transform: scale(1.025); }
-    .play-btn { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; pointer-events: none; }
-    .play-btn span { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--coral), var(--coral-deep)); color: #fff; border: 5px solid rgba(255,255,255,.16);
-      box-shadow: 0 14px 34px rgba(0,0,0,.28); transition: transform .25s ease; }
-    .b-feat:hover .play-btn span { transform: scale(1.08); }
-    .play-btn svg { width: 21px; margin-left: 3px; }
-    .b-feat-body { padding: 20px 24px 22px; display: flex; flex-direction: column; justify-content: center; }
-    .b-feat-body blockquote { position: relative; max-width: 760px; margin: 0; padding-left: 0; font-size: .94rem;
-      font-weight: 650; line-height: 1.5; letter-spacing: -.012em; }
-    .video-person { display: flex; align-items: center; gap: 11px; margin-top: 14px; }
-    .video-person > img:not(.b-logo) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 24%;
-      box-shadow: 0 0 0 3px rgba(65,216,180,.15); }
-    .video-person strong { display: block; font-size: .88rem; }
-    .video-person span { display: block; margin-top: 2px; color: var(--muted); font-size: .72rem; }
-    .video-person .b-logo { width: 124px; max-width: 124px; height: 34px; margin: 0 8px 0 auto; align-self: center;
-      border-radius: 0; box-shadow: none; object-fit: contain; object-position: center; }
-    .b-logo { height: 25px; max-width: 118px; width: auto; opacity: .8; align-self: flex-start; flex: none; object-fit: contain; }
-    .b-quote { grid-column: span 6; min-height: 190px; padding: 26px 0 0; display: flex; flex-direction: column; gap: 16px;
-      overflow: hidden; border-top: 1px solid rgba(41,41,76,.11); }
-    .b-head { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; }
-    .b-head > img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px rgba(41,41,76,.06); }
-    .b-head strong { display: block; font-size: .86rem; }
-    .b-head span { display: block; margin-top: 2px; color: var(--muted); font-size: .7rem; }
-    .b-play { margin-left: auto; flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(41,41,76,.12); cursor: pointer;
-      display: grid; place-items: center; color: var(--coral-deep); background: transparent; transition: border-color .2s ease, color .2s ease; }
-    .b-play:hover { transform: none; background: transparent; color: var(--coral-deep); border-color: var(--coral-deep); }
-    .b-play svg { margin-left: 2px; }
-    .b-quote blockquote { position: relative; z-index: 1; margin: 0; font-size: .9rem; line-height: 1.65; color: rgba(41,41,76,.76); flex: 1; }
-    .b-quote .b-logo { position: relative; z-index: 1; }
-    .b-stat { grid-column: 9 / -1; min-height: 0; padding: 24px 8px; display: flex; flex-direction: column; justify-content: center;
-      overflow: hidden; border-bottom: 1px solid rgba(41,41,76,.11); }
-    .b-stat p { margin-top: 9px; color: var(--muted); font-size: .8rem; line-height: 1.5; }
-    .b-num { margin-top: 12px; font-size: clamp(2.7rem, 4vw, 3.7rem); font-weight: 900; letter-spacing: -.055em; line-height: .9; }
-    .b-stat-dark { grid-row: 1; }
-    .b-stat-dark .result-company, .b-stat-dark p { color: var(--muted); }
-    .b-stat-blush { grid-row: 2; }
-    .result-company { color: var(--muted); font-size: .66rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .proof-note { margin-top: 24px; color: var(--muted); font-size: .66rem; text-align: left; }
-    .proof-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 12px; max-width: none;
-      margin-top: 18px; padding-top: 22px; border-top: 1px solid rgba(41,41,76,.11); text-align: left; }
-    .proof-actions .proof-link { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 0 18px;
-      border-radius: 999px; font-size: .82rem; font-weight: 800; text-decoration: none; transition: background .2s ease, color .2s ease, border-color .2s ease; }
-    .proof-actions .proof-link-primary { background: var(--coral-deep); color: #fff; border: 1px solid var(--coral-deep); }
-    .proof-actions .proof-link-secondary { background: transparent; color: var(--ink); border: 1px solid rgba(41,41,76,.16); }
-    .proof-actions .proof-link-secondary:hover { border-color: var(--coral-deep); color: var(--coral-deep); }
-    @media (max-width: 900px) {
-      .proof-screen { padding: 72px 0; }
-      .proof-screen > .shell > .center { display: block; max-width: 680px; margin: 0 auto; text-align: center; }
-      .proof-screen > .shell > .center .eyebrow { justify-self: auto; }
-      .proof-screen > .shell > .center .lead { margin: 10px auto 0; }
-      .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; margin-top: 34px; }
-      .b-feat { grid-column: 1 / -1; grid-row: auto; }
-      .b-stat { grid-column: span 1; grid-row: 2; min-height: 150px; }
-      .b-quote { grid-column: span 1; min-height: 260px; }
+    .proof-screen { min-height: auto; padding: 96px 0; background: #f6f7f4; }
+    .stories-layout { display: grid; grid-template-columns: .78fr 1.04fr .94fr; gap: 30px; align-items: center; }
+    .stories-intro { align-self: center; padding-right: 12px; }
+    .stories-intro .eyebrow { margin-bottom: 14px; }
+    .stories-intro h2 { font-size: clamp(2.25rem, 4vw, 4rem); line-height: .98; letter-spacing: -.055em; }
+    .stories-intro .lead { max-width: 330px; margin-top: 18px; color: var(--muted); font-size: .92rem; line-height: 1.65; }
+    .stories-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 26px; }
+    .stories-actions .btn { min-height: 44px; padding-inline: 18px; }
+    .stories-actions .text-link { font-size: .8rem; }
+    .story-feature { position: relative; overflow: hidden; min-height: 520px; border-radius: 24px; background: #171b20;
+      box-shadow: 0 18px 46px rgba(30,38,38,.13); }
+    .story-feature-media { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: #171b20; }
+    .story-feature-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,10,13,.92) 0%, rgba(7,10,13,.18) 58%, transparent 78%); }
+    .story-feature-media > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 17% 50%; transition: transform .6s cubic-bezier(.22,.9,.24,1); }
+    .story-feature:hover .story-feature-media > img { transform: scale(1.025); }
+    .story-feature-play { position: absolute; z-index: 2; top: 20px; right: 20px; display: grid; width: 48px; height: 48px; place-items: center;
+      border-radius: 50%; background: rgba(255,255,255,.94); color: var(--coral-deep); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .story-feature-play svg { width: 16px; margin-left: 2px; }
+    .story-feature-copy { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; padding: 28px; color: #fff; pointer-events: none; }
+    .story-feature-copy blockquote { margin: 0; font-size: 1.02rem; font-weight: 700; line-height: 1.5; letter-spacing: -.015em; }
+    .story-feature-person { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
+    .story-feature-person img { width: 38px; height: 38px; border: 2px solid rgba(255,255,255,.5); border-radius: 50%; object-fit: cover; }
+    .story-feature-person strong, .story-feature-person span { display: block; }
+    .story-feature-person strong { font-size: .8rem; }
+    .story-feature-person span { margin-top: 2px; color: rgba(255,255,255,.68); font-size: .66rem; }
+    .story-stack { display: grid; max-height: 520px; gap: 12px; padding-right: 8px; overflow: auto; scrollbar-width: thin; scrollbar-color: rgba(41,41,76,.2) transparent; }
+    .story-card { padding: 19px 20px; border: 1px solid rgba(41,41,76,.08); border-radius: 17px; background: #fff;
+      box-shadow: 0 8px 24px rgba(30,38,38,.05); }
+    .story-card blockquote { margin: 0; color: rgba(41,41,76,.78); font-size: .82rem; line-height: 1.55; }
+    .story-person { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
+    .story-person > img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: #eef0ed; }
+    .story-person strong, .story-person span { display: block; }
+    .story-person strong { font-size: .76rem; }
+    .story-person span { margin-top: 2px; color: var(--muted); font-size: .64rem; }
+    .story-play { display: grid; width: 32px; height: 32px; margin-left: auto; place-items: center; border: 1px solid rgba(41,41,76,.12);
+      border-radius: 50%; background: transparent; color: var(--coral-deep); cursor: pointer; }
+    .story-play svg { width: 12px; margin-left: 2px; }
+    .proof-note { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: .62rem; }
+    @media (max-width: 980px) {
+      .proof-screen { padding: 76px 0; }
+      .stories-layout { grid-template-columns: 1fr 1fr; }
+      .stories-intro { grid-column: 1 / -1; padding: 0; }
+      .stories-intro h2 { max-width: 620px; }
+      .stories-intro .lead { max-width: 540px; }
     }
-    @media (max-width: 600px) {
-      .proof-screen { padding: 58px 0; }
-      .proof-screen > .shell > .center { text-align: left; }
-      .proof-screen > .shell > .center .lead { margin-left: 0; }
-      .bento { grid-template-columns: 1fr; gap: 14px; margin-top: 28px; }
-      .video-thumb { aspect-ratio: 16 / 9; }
-      .play-btn span { width: 54px; height: 54px; }
-      .b-feat-body { padding: 20px; }
-      .b-feat-body blockquote { font-size: .9rem; }
-      .video-person { margin-top: 16px; align-items: flex-start; }
-      .video-person .b-logo { display: none; }
-      .b-stat, .b-quote { grid-column: auto; grid-row: auto; min-height: 0; }
-      .b-stat { padding: 25px; }
-      .b-quote { padding: 20px 0 0; }
-      .proof-actions .proof-link { width: 100%; }
+    @media (max-width: 650px) {
+      .proof-screen { padding: 60px 0; }
+      .stories-layout { grid-template-columns: 1fr; gap: 22px; }
+      .stories-intro { grid-column: auto; }
+      .story-feature { min-height: 500px; }
+      .story-stack { max-height: none; padding-right: 0; overflow: visible; }
+      .story-feature-copy { padding: 23px; }
+      .stories-actions { flex-direction: row; flex-wrap: wrap; }
+      .proof-note { grid-column: auto; }
     }
 
     /* Video modal */
@@ -2013,76 +1977,76 @@
     <!-- ========== S3 PROOF ========== -->
     <section class="screen proof-screen" id="proof" aria-labelledby="proof-heading">
       <div class="shell">
-        <div class="center">
-          <span class="eyebrow">Customer proof</span>
-          <h2 id="proof-heading">Customer results, firsthand.</h2>
-          <p class="lead">See how HR leaders build healthier habits through participation.</p>
-        </div>
+        <div class="stories-layout">
+          <div class="stories-intro">
+            <span class="eyebrow">Customer stories</span>
+            <h2 id="proof-heading">Trusted by wellness leaders.</h2>
+            <p class="lead">See how teams turn simple daily actions into healthier habits and stronger participation.</p>
+            <div class="stories-actions">
+              <a class="btn btn-primary" href="https://www.vantagefit.io/client-testimonials/">View all testimonials</a>
+              <a class="text-link" href="https://www.vantagefit.io/casestudy/">Read customer stories &rarr;</a>
+            </div>
+          </div>
 
-        <div class="bento">
-
-          <article class="b-card b-feat">
-            <button class="video-thumb" type="button" data-video="LSX4pxSB6Qw" aria-label="Play Rachel Arthur testimonial video">
-              <img src="rachel-arthur-testimonial-thumb.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">
-              <div class="play-btn"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+          <article class="story-feature">
+            <button class="story-feature-media" type="button" data-video="LSX4pxSB6Qw" aria-label="Play Rachel Arthur testimonial video">
+              <img src="rachel-arthur-testimonial-thumb.jpg" alt="Rachel Arthur of Brazosport ISD" width="1280" height="720" loading="lazy" decoding="async">
+              <span class="story-feature-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
             </button>
-            <div class="b-feat-body">
-              <blockquote>&ldquo;Vantage Fit has helped our employees stay active, track their progress, and get rewarded, turning wellness into a daily habit that drives both health and happiness across BISD.&rdquo;</blockquote>
-              <div class="video-person">
-                <img src="rachel-arthur-avatar.jpg" alt="Rachel Arthur" width="40" height="40" loading="lazy" decoding="async">
-                <div>
-                  <strong>Rachel Arthur</strong>
-                  <span>Director of Benefits &amp; Wellness, Brazosport ISD</span>
-                </div>
-                <img class="b-logo" src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto:eco,w_240/v1765884515/VantageFit/2025/webp-images/homepage/image_243.png" alt="Brazosport ISD" width="120" height="28" loading="lazy">
+            <div class="story-feature-copy">
+              <blockquote>&ldquo;Vantage Fit has helped our employees stay active, track their progress, and get rewarded.&rdquo;</blockquote>
+              <div class="story-feature-person">
+                <img src="rachel-arthur-avatar.jpg" alt="" width="38" height="38" loading="lazy" decoding="async">
+                <div><strong>Rachel Arthur</strong><span>Director of Benefits &amp; Wellness, Brazosport ISD</span></div>
               </div>
             </div>
           </article>
 
-          <article class="b-card b-stat b-stat-dark" data-value="88%">
-            <div class="result-company">IBS Software</div>
-            <div class="b-num" style="color:#41d8b4">88%</div>
-            <p>28-day challenge participation.</p>
-          </article>
-
-          <article class="b-card b-quote">
-            <div class="b-head">
-              <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_80/v1765517539/VantageFit/2025/webp-images/homepage/d9e862beb0e13ea75718169fbb028e45069e4664.png" alt="" width="44" height="44" loading="lazy">
-              <div>
-                <strong>Landmark Leisure</strong>
-                <span>Sr. Manager Training</span>
+          <div class="story-stack" aria-label="More customer testimonials">
+            <article class="story-card">
+              <blockquote>&ldquo;Vantage Fit gave our team the first momentum toward healthier habits and a culture of daily progress.&rdquo;</blockquote>
+              <div class="story-person">
+                <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_80/v1765517539/VantageFit/2025/webp-images/homepage/d9e862beb0e13ea75718169fbb028e45069e4664.png" alt="" width="36" height="36" loading="lazy">
+                <div><strong>Shyam Surendran</strong><span>Sr. Manager Training, Landmark Leisure</span></div>
+                <button class="story-play" type="button" data-video="4h9eRm4hNe0" aria-label="Play Shyam Surendran testimonial video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
               </div>
-              <button class="b-play" type="button" data-video="4h9eRm4hNe0" aria-label="Play Landmark Leisure testimonial video"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"/></svg></button>
-            </div>
-            <blockquote>&ldquo;Vantage Fit gave our team the first momentum toward healthier habits, turning &lsquo;something is better than nothing&rsquo; into a culture of wellness and daily progress.&rdquo;</blockquote>
-            <img class="b-logo" src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto:eco,w_240/v1765884514/VantageFit/2025/webp-images/homepage/image_242.png" alt="Landmark Leisure" width="120" height="28" loading="lazy">
-          </article>
+            </article>
 
-          <article class="b-card b-quote">
-            <div class="b-head">
-              <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_80/v1765517621/VantageFit/2025/webp-images/homepage/59629bd97ff65d225bdcd8e4ef68df4a7a658728.png" alt="" width="44" height="44" loading="lazy">
-              <div>
-                <strong>Matt Whitmore</strong>
-                <span>Managing Partner, BWC Real Estate</span>
+            <article class="story-card">
+              <blockquote>&ldquo;In four months, Vantage Fit became part of our growing business and boosted workplace wellbeing.&rdquo;</blockquote>
+              <div class="story-person">
+                <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_80/v1765517621/VantageFit/2025/webp-images/homepage/59629bd97ff65d225bdcd8e4ef68df4a7a658728.png" alt="" width="36" height="36" loading="lazy">
+                <div><strong>Matt Whitmore</strong><span>Managing Partner, BWC Real Estate</span></div>
+                <button class="story-play" type="button" data-video="L_39IykL-O4" aria-label="Play Matt Whitmore testimonial video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
               </div>
-              <button class="b-play" type="button" data-video="L_39IykL-O4" aria-label="Play Matt Whitmore testimonial video"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"/></svg></button>
-            </div>
-            <blockquote>&ldquo;In just four months, Vantage Fit has seamlessly integrated into our growing business, boosted workplace wellbeing, and delivered incredible results for our employees.&rdquo;</blockquote>
-            <img class="b-logo" src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto:eco,w_240/v1765884521/VantageFit/2025/webp-images/homepage/Group_641.png" alt="BWC Real Estate" width="120" height="28" loading="lazy">
-          </article>
+            </article>
 
-          <article class="b-card b-stat b-stat-blush" data-value="59%">
-            <div class="result-company">Tata Motors</div>
-            <div class="b-num" style="color:var(--coral)">59%</div>
-            <p>Step &amp; Stride program engagement.</p>
-          </article>
+            <article class="story-card">
+              <blockquote>&ldquo;Employees could use the mobile app and sync their wearables easily, making participation feel effortless.&rdquo;</blockquote>
+              <div class="story-person">
+                <img src="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_80/v1758865288/VantageFit/2025/client-testimonial/275e4f6bf8a6dac8050b82ed68f1ffcd5c403a6d" alt="" width="36" height="36" loading="lazy">
+                <div><strong>Michelle Shaw Metivier</strong><span>HR Manager, SRS Medical</span></div>
+              </div>
+            </article>
 
-        </div>
+            <article class="story-card">
+              <blockquote>&ldquo;The app was straightforward, easy to use, and worked well for our team.&rdquo;</blockquote>
+              <div class="story-person">
+                <img src="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_80/v1758865290/VantageFit/2025/client-testimonial/e8c74b21e9b04bfcb1c1d4918cd87301f41d4665" alt="" width="36" height="36" loading="lazy">
+                <div><strong>Beth Kalbach</strong><span>Marinus Pharma</span></div>
+              </div>
+            </article>
 
-        <p class="proof-note">Customer results vary by workforce, program design, and measurement period.</p>
-        <div class="proof-actions">
-          <a class="proof-link proof-link-primary" href="https://www.vantagefit.io/casestudy/">Read customer stories →</a>
-          <a class="proof-link proof-link-secondary" href="https://www.vantagefit.io/client-testimonials/">Watch more customer videos →</a>
+            <article class="story-card">
+              <blockquote>&ldquo;Custom challenges created a wellness community around hydration, steps, mindfulness, and friendly competition.&rdquo;</blockquote>
+              <div class="story-person">
+                <img src="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_80/v1758865289/VantageFit/2025/client-testimonial/45931ef68087e8c2cce4d8803d9955e81cb540f2" alt="" width="36" height="36" loading="lazy">
+                <div><strong>Shana Marino</strong><span>Specialist People &amp; Culture, Link Logistics</span></div>
+              </div>
+            </article>
+          </div>
+
+          <p class="proof-note">Customer experiences vary by workforce and program design.</p>
         </div>
       </div>
     </section>
