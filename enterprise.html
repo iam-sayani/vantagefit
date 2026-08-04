@@ -207,8 +207,78 @@
     .feature-list li::before { position: absolute; top: 2px; left: 0; display: grid; width: 18px; height: 18px; place-items: center; border-radius: 50%; background: var(--mint); color: #063f35; content: "✓"; font-size: .65rem; font-weight: 900; }
     .feature-list b { display: block; margin-bottom: 4px; font-size: .86rem; }
     .feature-list p { margin: 0; color: var(--muted); font-size: .77rem; line-height: 1.62; }
-    .panel-art { position: absolute; right: -10%; bottom: -1%; width: 67%; filter: drop-shadow(0 24px 38px rgba(23,23,45,.15)); }
-    .panel-art.admin { right: -5%; bottom: 7%; width: 62%; border-radius: 14px; }
+    .product-mockup { position: absolute; right: 3%; bottom: 0; width: 54%; height: 94%; color: #262740; }
+    .phone {
+      position: absolute;
+      overflow: hidden;
+      border: 7px solid #fff;
+      border-radius: 31px;
+      background: #fff;
+      box-shadow: 0 24px 48px rgba(36,37,64,.18);
+      font-size: 8px;
+    }
+    .phone::before { position: absolute; top: 7px; left: 50%; z-index: 4; width: 36px; height: 5px; border-radius: 5px; background: #272839; transform: translateX(-50%); content: ""; }
+    .phone-leaderboard { left: 0; bottom: -3%; width: 47%; height: 82%; transform: rotate(-2deg); }
+    .phone-summary { right: 0; bottom: 2%; z-index: 2; width: 54%; height: 91%; transform: rotate(1.5deg); }
+    .phone-bar { display: flex; height: 34px; align-items: center; justify-content: space-between; padding: 12px 10px 5px; font-weight: 800; }
+    .leader-hero { padding: 14px 12px 17px; background: linear-gradient(135deg, var(--coral), var(--coral-deep)); color: #fff; text-align: center; }
+    .leader-hero b { display: block; margin-bottom: 11px; font-size: 13px; }
+    .leader-score { display: flex; align-items: center; justify-content: space-between; }
+    .leader-score strong { font-size: 16px; }
+    .avatar-ui { display: grid; width: 42px; height: 42px; place-items: center; border: 3px solid #fff; border-radius: 50%; background: #dff8f1; color: var(--mint-deep); font-size: 11px; }
+    .leader-tabs { display: grid; grid-template-columns: 1fr 1fr; margin: 9px; padding: 3px; border-radius: 8px; background: #f0f1f4; text-align: center; }
+    .leader-tabs b { padding: 5px; border-radius: 6px; background: #fff; }
+    .leader-list { display: grid; padding: 0 10px; }
+    .leader-row { display: grid; grid-template-columns: 12px 26px 1fr auto; align-items: center; gap: 6px; padding: 8px 0; border-bottom: 1px solid #ececf1; }
+    .leader-row i { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 50%; background: #f1f2f5; color: var(--coral-deep); font-style: normal; font-weight: 800; }
+    .leader-row span { color: #8a8ba0; font-size: 6px; }
+    .leader-row em { padding: 4px 7px; border-radius: 10px; background: var(--coral); color: #fff; font-style: normal; }
+    .summary-head { padding: 7px 10px 12px; }
+    .summary-head small { color: #9293a2; }
+    .summary-head strong { display: block; margin-top: 2px; font-size: 12px; }
+    .activity-ring { display: flex; align-items: center; gap: 10px; margin: 0 9px 10px; padding: 10px; border: 1px solid #d8e7e3; border-radius: 14px; box-shadow: 0 8px 20px rgba(36,37,64,.08); }
+    .ring { display: grid; width: 45px; height: 45px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: conic-gradient(var(--coral) 0 43%, #fff 43% 49%, #65c8c6 49% 81%, #e7f0ef 81%); }
+    .ring::after { width: 24px; height: 24px; border-radius: 50%; background: #fff; content: ""; }
+    .activity-data { display: grid; gap: 5px; color: #76778b; }
+    .activity-data b { color: var(--ink); }
+    .challenge-ui { margin: 0 9px; overflow: hidden; border-radius: 13px; box-shadow: 0 10px 24px rgba(55,71,150,.16); }
+    .challenge-ui > div:first-child { padding: 12px; background: linear-gradient(135deg, #526fd1, #3b4698); color: #fff; font-size: 10px; font-weight: 800; line-height: 1.35; }
+    .challenge-progress { padding: 9px; background: #fff; }
+    .progress-track { height: 5px; margin-top: 6px; overflow: hidden; border-radius: 5px; background: #d9f3ee; }
+    .progress-track::after { display: block; width: 78%; height: 100%; border-radius: inherit; background: var(--mint); content: ""; }
+    .mini-trends { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px 9px; }
+    .trend-card { padding: 8px; border-radius: 9px; background: #f7f7f9; }
+    .trend-bars { display: flex; height: 35px; align-items: end; gap: 4px; margin-top: 8px; }
+    .trend-bars i { flex: 1; border-radius: 4px 4px 0 0; background: var(--coral); }
+    .trend-card:last-child .trend-bars i { background: #58bbb9; }
+    .phone-nav { position: absolute; inset: auto 0 0; display: flex; height: 31px; align-items: center; justify-content: space-around; border-top: 1px solid #eeeef2; background: #fff; color: var(--coral); }
+
+    .admin-mock { right: 2%; bottom: 6%; width: 58%; height: 78%; overflow: hidden; border: 6px solid #fff; border-radius: 17px; background: #f7f8fb; box-shadow: 0 24px 50px rgba(36,37,64,.2); }
+    .admin-top { display: flex; height: 32px; align-items: center; gap: 5px; padding: 0 11px; border-bottom: 1px solid #e5e6ed; background: #fff; }
+    .admin-top i { width: 6px; height: 6px; border-radius: 50%; background: #e4e5eb; }
+    .admin-layout { display: grid; height: calc(100% - 32px); grid-template-columns: 74px 1fr; }
+    .admin-side { padding: 13px 9px; background: #292b52; color: rgba(255,255,255,.7); }
+    .admin-side b { display: block; margin-bottom: 16px; color: #fff; font-size: 7px; }
+    .admin-side span { display: block; margin: 11px 0; font-size: 6px; }
+    .admin-side span:nth-child(3) { margin-inline: -5px; padding: 7px 5px; border-radius: 5px; background: rgba(255,255,255,.13); color: #fff; }
+    .admin-main { padding: 12px; overflow: hidden; }
+    .admin-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .admin-toolbar strong { font-size: 9px; }
+    .admin-toolbar span { padding: 5px 7px; border: 1px solid #e1e3eb; border-radius: 6px; background: #fff; color: #77798d; font-size: 6px; }
+    .admin-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+    .admin-metric { min-height: 76px; padding: 9px; border: 1px solid #e1e3eb; border-radius: 8px; background: #fff; }
+    .admin-metric small { color: #797b91; font-size: 6px; text-transform: uppercase; }
+    .admin-metric strong { display: block; margin: 5px 0; font-size: 17px; }
+    .spark { height: 17px; margin-top: 8px; border-bottom: 2px solid var(--mint); border-radius: 50%; transform: skewY(-4deg); }
+    .admin-metric:nth-child(2) .spark { border-color: var(--coral); }
+    .admin-metric:nth-child(3) .spark { border-color: #6b60ec; }
+    .insight-banner { margin: 9px 0; padding: 11px; border-radius: 8px; background: linear-gradient(90deg, #f5edff, #ebfbf8); color: #6d36c9; font-size: 7px; font-weight: 800; }
+    .admin-bottom { display: grid; grid-template-columns: 1.1fr .9fr; gap: 7px; }
+    .wellness-card, .action-card { min-height: 116px; padding: 10px; border: 1px solid #e1e3eb; border-radius: 8px; background: #fff; }
+    .wellness-card strong { display: block; margin: 5px 0 12px; font-size: 19px; }
+    .score-line { display: flex; align-items: center; justify-content: space-between; margin: 8px 0; color: #77798d; font-size: 6px; }
+    .action-card b { font-size: 8px; }
+    .action-card span { display: block; margin: 10px 0; color: #77798d; font-size: 6px; }
     .panel-stat { position: absolute; right: 5%; top: 8%; z-index: 3; padding: 13px 16px; border: 1px solid rgba(255,255,255,.7); border-radius: 16px; background: rgba(255,255,255,.74); backdrop-filter: blur(18px); box-shadow: var(--shadow); }
     .panel-stat small { display: block; color: var(--muted); font-size: .58rem; font-weight: 800; }
     .panel-stat strong { font-size: 1.45rem; }
@@ -335,8 +405,8 @@
       .tab-list { margin-top: 24px; }
       .experience-panel { min-height: 720px; }
       .panel-copy { width: auto; padding: 30px 24px; }
-      .panel-art { right: -18%; width: 110%; }
-      .panel-art.admin { right: -16%; bottom: 7%; width: 108%; }
+      .product-mockup { right: 4%; width: 64%; height: 58%; }
+      .admin-mock { right: 4%; bottom: 5%; width: 92%; height: 45%; }
       .panel-stat { top: auto; right: 18px; bottom: 35%; }
       .proof-grid { grid-template-columns: 1fr; }
       .feature-story { min-height: 520px; }
@@ -436,13 +506,45 @@
           <article class="experience-panel" id="employee-panel" role="tabpanel" aria-labelledby="employee-tab">
             <div class="panel-copy"><span class="eyebrow">Momentum people feel</span><h3>Wellness that fits real life.</h3><ul class="feature-list"><li><b>Something for more people</b><p>Physical, mental, and everyday wellbeing across different interests and abilities.</p></li><li><b>Progress people can feel</b><p>Daily goals, streaks, and teams turn a distant goal into a clear next step.</p></li><li><b>Rewards worth earning</b><p>Points convert into a global catalogue employees recognize and redeem.</p></li></ul></div>
             <div class="panel-stat"><small>Challenge completion</small><strong>87%</strong></div>
-            <img class="panel-art" src="/employees-day.png" alt="Vantage Fit employee mobile experience" width="1400" height="900" loading="lazy">
+            <div class="product-mockup employee-mock" role="img" aria-label="Vantage Fit employee app showing a leaderboard, challenge progress, activity and points">
+              <div class="phone phone-leaderboard">
+                <div class="phone-bar"><span>3:44</span><span>● ● ●</span></div>
+                <div class="leader-hero"><b>Leaderboard</b><div class="leader-score"><span>YOU<br><strong>12th</strong></span><span class="avatar-ui">AT</span><span>SCORE<br><strong>412</strong></span></div></div>
+                <div class="leader-tabs"><b>Weekly</b><span>Overall</span></div>
+                <div class="leader-list">
+                  <div class="leader-row"><b>1</b><i>AT</i><div>Angu Tamba<span>Marketing</span></div><em>710</em></div>
+                  <div class="leader-row"><b>2</b><i>MR</i><div>Mariam Ray<span>App Development</span></div><em>678</em></div>
+                  <div class="leader-row"><b>3</b><i>JD</i><div>Johnny Doeish<span>Operations</span></div><em>634</em></div>
+                  <div class="leader-row"><b>4</b><i>AS</i><div>Arya Singh<span>Brand Sales</span></div><em>610</em></div>
+                  <div class="leader-row"><b>5</b><i>MS</i><div>Mohsen Salehi<span>Design</span></div><em>599</em></div>
+                </div>
+              </div>
+              <div class="phone phone-summary">
+                <div class="phone-bar"><span>9:41</span><span>2,500 ●</span></div>
+                <div class="summary-head"><small>Wednesday, 16 July</small><strong>Summary</strong></div>
+                <div class="activity-ring"><span class="ring"></span><div class="activity-data"><span>Steps covered <b>5,988</b>/7,000</span><span>Active minutes <b>31</b>/60 mins</span></div></div>
+                <div class="challenge-ui"><div>Week 5<br>21 Days to Transform: Strength, Stamina, and Sweat</div><div class="challenge-progress">Weekly progress: <b>88%</b><div class="progress-track"></div></div></div>
+                <div class="mini-trends"><div class="trend-card"><b>Avg steps</b><div class="trend-bars"><i style="height:55%"></i><i style="height:82%"></i><i style="height:68%"></i><i style="height:91%"></i><i style="height:76%"></i></div></div><div class="trend-card"><b>Active minutes</b><div class="trend-bars"><i style="height:46%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:86%"></i><i style="height:70%"></i></div></div></div>
+                <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
+              </div>
+            </div>
           </article>
 
           <article class="experience-panel" id="hr-panel" role="tabpanel" aria-labelledby="hr-tab" hidden>
             <div class="panel-copy"><span class="eyebrow">Clarity for program owners</span><h3>Run wellness without running in circles.</h3><ul class="feature-list"><li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li><li><b>See participation clearly</b><p>Follow rolling rates, trend direction, and teams needing a new approach.</p></li><li><b>One connected program</b><p>Manage challenges, engagement, rewards, and reporting in one place.</p></li></ul></div>
             <div class="panel-stat"><small>Programs live</small><strong>12</strong></div>
-            <img class="panel-art admin" src="/dashboard-admin.png" alt="Vantage Fit HR analytics dashboard" width="1400" height="900" loading="lazy">
+            <div class="product-mockup admin-mock" role="img" aria-label="Vantage Fit HR dashboard showing enrolled users, participation and wellness insights">
+              <div class="admin-top"><i></i><i></i><i></i></div>
+              <div class="admin-layout">
+                <div class="admin-side"><b>VANTAGE FIT</b><span>Overview</span><span>Wellness</span><span>Challenges</span><span>Programs</span><span>Reports</span><span>Rewards</span></div>
+                <div class="admin-main">
+                  <div class="admin-toolbar"><strong>Wellness overview</strong><span>Last 30 days⌄</span></div>
+                  <div class="admin-metrics"><div class="admin-metric"><small>Enrolled users</small><strong>561</strong><div class="spark"></div></div><div class="admin-metric"><small>Active users</small><strong>300</strong><div class="spark"></div></div><div class="admin-metric"><small>Participation</small><strong>60%</strong><div class="spark"></div></div></div>
+                  <div class="insight-banner">✦ Leadership insights <span style="float:right">AI-generated</span></div>
+                  <div class="admin-bottom"><div class="wellness-card"><small>ORG WELLNESS SCORE</small><strong>43</strong><div class="score-line"><span>Health baselines</span><b>89</b></div><div class="score-line"><span>Participation</span><b>44</b></div><div class="score-line"><span>Activity levels</span><b>33</b></div></div><div class="action-card"><b>Recommended actions</b><span>○ View inactive employees</span><span>○ Nudge inactive users</span><span>○ Review wellness score</span><span>○ Check health insights</span></div></div>
+                </div>
+              </div>
+            </div>
           </article>
         </div>
       </div>
