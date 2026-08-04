@@ -623,16 +623,16 @@
     }
     .participation-moment .trend::before { content: "↑"; font-size: .68rem; }
     .participation-spark { position: relative; flex: 0 0 82px; width: 82px; height: 46px; align-self: center; }
-    .participation-spark svg { width: 100%; height: 100%; overflow: visible; }
-    .participation-spark .spark-grid { display: none; }
-    .participation-spark .spark-area { opacity: 0; clip-path: inset(0 100% 0 0); animation: spark-area-in 1.7s .38s cubic-bezier(.22,.9,.24,1) forwards; }
-    .participation-spark .spark-line { fill: none; stroke: #169d7e; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round;
-      stroke-dasharray: 1; stroke-dashoffset: 1; animation: spark-line-in 1.7s .38s cubic-bezier(.22,.9,.24,1) forwards; }
-    .participation-spark .spark-end { fill: #169d7e; stroke: #fff; stroke-width: 2.5; opacity: 0; transform-box: fill-box; transform-origin: center;
-      transform: scale(.3); animation: spark-point-in .35s 1.9s cubic-bezier(.22,.9,.24,1) forwards; }
-    @keyframes spark-line-in { to { stroke-dashoffset: 0; } }
-    @keyframes spark-area-in { to { opacity: 1; clip-path: inset(0 0 0 0); } }
-    @keyframes spark-point-in { to { opacity: 1; transform: scale(1); } }
+    .participation-spark svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .participation-spark .pbar {
+      transform-box: fill-box;
+      transform-origin: bottom center;
+      transform: scaleY(.06);
+      animation: pbar-grow .72s cubic-bezier(.22,1.2,.32,1) forwards;
+      animation-delay: calc(.34s + var(--i) * .07s);
+    }
+    @keyframes pbar-grow { to { transform: scaleY(1); } }
+
     .points-moment {
       top: 208px;
       right: -1%;
@@ -1847,15 +1847,20 @@
             <div class="participation-spark" aria-hidden="true">
               <svg viewBox="0 0 82 48" focusable="false">
                 <defs>
-                  <linearGradient id="participation-area" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stop-color="#41d8b4" stop-opacity=".34"></stop>
-                    <stop offset="1" stop-color="#41d8b4" stop-opacity=".03"></stop>
+                  <linearGradient id="pbar-fill" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0" stop-color="#41d8b4"></stop>
+                    <stop offset="1" stop-color="#169d7e"></stop>
                   </linearGradient>
                 </defs>
-                <path class="spark-grid" d="M2 15.5H80M2 30.5H80"></path>
-                <path class="spark-area" d="M3 43V40C10 39 14 37 20 36 27 35 30 31 36 30 44 28 47 26 53 24 60 22 63 18 68 17 74 14 77 10 80 6V43Z" fill="url(#participation-area)"></path>
-                <path class="spark-line" pathLength="1" d="M3 40C10 39 14 37 20 36 27 35 30 31 36 30 44 28 47 26 53 24 60 22 63 18 68 17 74 14 77 10 80 6"></path>
-                <circle class="spark-end" cx="80" cy="6" r="4"></circle>
+                <g fill="url(#pbar-fill)">
+                <rect class="pbar" style="--i:0" x="1" y="32" width="8" height="14" rx="4" opacity="0.34"></rect>
+                <rect class="pbar" style="--i:1" x="13" y="27" width="8" height="19" rx="4" opacity="0.44"></rect>
+                <rect class="pbar" style="--i:2" x="25" y="29" width="8" height="17" rx="4" opacity="0.54"></rect>
+                <rect class="pbar" style="--i:3" x="37" y="20" width="8" height="26" rx="4" opacity="0.66"></rect>
+                <rect class="pbar" style="--i:4" x="49" y="14" width="8" height="32" rx="4" opacity="0.78"></rect>
+                <rect class="pbar" style="--i:5" x="61" y="8" width="8" height="38" rx="4" opacity="0.9"></rect>
+                <rect class="pbar" style="--i:6" x="73" y="1" width="8" height="45" rx="4" opacity="1"></rect>
+                </g>
               </svg>
             </div>
           </div>
