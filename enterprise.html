@@ -130,7 +130,14 @@
     .hero-note span::before { margin-right: 7px; color: var(--mint); content: "✓"; }
 
     .hero-stage { position: relative; min-height: 610px; }
-    .hero-art { position: absolute; right: -13%; bottom: -4%; width: 106%; filter: drop-shadow(0 30px 70px rgba(0,0,0,.28)); }
+    .hero-art {
+      position: absolute;
+      right: 2%;
+      bottom: 0;
+      width: min(82%, 500px);
+      height: auto;
+      filter: drop-shadow(0 30px 70px rgba(0,0,0,.28));
+    }
     .metric {
       position: absolute;
       z-index: 4;
@@ -149,11 +156,11 @@
     .metric small { display: block; margin-bottom: 2px; color: #77788e; font-size: .61rem; font-weight: 800; }
     .metric strong { display: block; font-size: 1.25rem; letter-spacing: -.04em; }
     .metric-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; font-size: 1rem; }
-    .metric-participation { top: 17%; left: -2%; }
+    .metric-participation { top: 21%; left: 0; }
     .metric-participation .metric-icon { background: #dffaf3; color: var(--mint-deep); }
-    .metric-points { top: 48%; right: -5%; animation-delay: -.8s; }
+    .metric-points { top: 48%; right: 0; animation-delay: -.8s; }
     .metric-points .metric-icon { background: #fff2c8; animation: coinFlip 3.2s ease-in-out infinite; }
-    .metric-reward { bottom: 8%; left: 2%; animation-delay: -1.6s; }
+    .metric-reward { bottom: 7%; left: 3%; animation-delay: -1.6s; }
     .metric-reward .metric-icon { background: #ffe7eb; color: var(--coral-deep); animation: giftPop 3.4s ease-in-out infinite; }
     @keyframes float { 50% { transform: translateY(-8px); } }
     @keyframes coinFlip { 0%,20%,100% { transform: rotateX(0) translateY(0); } 52% { transform: rotateX(360deg) translateY(-3px); } 80% { transform: rotateX(720deg); } }
@@ -277,13 +284,13 @@
 
     @media (max-width: 1040px) {
       .hero { min-height: auto; }
-      .hero-grid { min-height: 980px; grid-template-columns: 1fr; align-content: start; padding-top: 140px; }
+      .hero-grid { min-height: auto; grid-template-columns: 1fr; align-content: start; gap: 22px; padding: 140px 0 42px; }
       .hero-copy { max-width: 760px; }
-      .hero-stage { min-height: 510px; }
-      .hero-art { right: 1%; bottom: -16%; width: min(78%, 590px); }
-      .metric-participation { left: 9%; }
-      .metric-points { right: 8%; }
-      .metric-reward { left: 15%; bottom: 4%; }
+      .hero-stage { min-height: 610px; }
+      .hero-art { right: 50%; bottom: 0; width: min(68%, 500px); transform: translateX(50%); }
+      .metric-participation { top: 21%; left: 13%; }
+      .metric-points { right: 12%; }
+      .metric-reward { left: 16%; bottom: 6%; }
       .loop-grid { grid-template-columns: repeat(2, 1fr); }
       .experience-wrap { grid-template-columns: 1fr; }
       .experience-nav { display: grid; grid-template-columns: 1fr auto; align-items: end; }
@@ -305,19 +312,19 @@
       .nav-links.open { display: grid; }
       .nav-links > a:not(.nav-cta) { color: var(--ink) !important; }
       .nav-cta { margin: 6px 0 0; }
-      .hero-grid { min-height: 850px; gap: 0; padding: 115px 0 30px; }
+      .hero-grid { min-height: auto; gap: 20px; padding: 115px 0 28px; }
       .hero-actions { align-items: stretch; }
       .hero-actions .btn { flex: 1; }
       .hero-note { gap: 10px 16px; }
-      .hero-stage { min-height: 390px; }
-      .hero-art { right: -14%; bottom: -12%; width: 105%; }
+      .hero-stage { min-height: 430px; }
+      .hero-art { right: 50%; bottom: 0; width: min(94%, 350px); transform: translateX(50%); }
       .metric { gap: 8px; padding: 10px 11px; border-radius: 14px; }
       .metric-icon { width: 28px; height: 28px; font-size: .8rem; }
       .metric strong { font-size: 1rem; }
       .metric small { font-size: .5rem; }
-      .metric-participation { top: 15%; left: -1%; }
-      .metric-points { top: 45%; right: -1%; }
-      .metric-reward { left: 2%; bottom: 0; }
+      .metric-participation { top: 17%; left: 0; }
+      .metric-points { top: 47%; right: 0; }
+      .metric-reward { left: 2%; bottom: 2%; }
       .brand-rail-label { display: none; }
       .brand-list { overflow: auto; justify-content: flex-start; }
       .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 34px; }
