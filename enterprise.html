@@ -490,38 +490,6 @@
       object-fit: contain;
       filter: drop-shadow(0 30px 52px rgba(41,41,76,.17));
     }
-    /* ============ BRAND ELEMENT: the thread ============
-       A ribbon of parallel hairlines with rounded turns, running through
-       the page so sections read as one continuous path. Draws itself on
-       scroll, line by line.
-         .vf-thread          place absolutely inside a .vf-stage section
-         .vf-thread--light   for dark backgrounds
-         .vf-thread--teal    secondary accent
-       Set position/height inline; JS adds .is-drawn when it scrolls in. */
-    .vf-thread { position: absolute; left: 0; right: 0; z-index: 0; pointer-events: none;
-      transform: translate3d(var(--dx, 0px), var(--dy, 0px), 0); will-change: transform; }
-    .vf-thread--diag { transform: none; will-change: auto; }
-    .vf-thread svg { display: block; width: 100%; height: 100%; overflow: visible; }
-    .vf-thread path {
-      fill: none;
-      stroke: rgba(41,41,76,.15);
-      stroke-width: 1.2;
-      stroke-linecap: round;
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-    }
-    .vf-thread--light path { stroke: rgba(255,255,255,.13); }
-    .vf-thread--teal path { stroke: rgba(65,216,180,.3); }
-    .vf-thread.is-drawn path {
-      animation: thread-draw 1.9s cubic-bezier(.25,.85,.3,1) forwards;
-      animation-delay: calc(var(--i) * 65ms);
-    }
-    @keyframes thread-draw { to { stroke-dashoffset: 0; } }
-    @media (prefers-reduced-motion: reduce) {
-      .vf-thread path { stroke-dashoffset: 0; }
-      .vf-thread.is-drawn path { animation: none; }
-    }
-
     .vf-stage { position: relative; overflow: hidden; }
     .vf-stage > .shell { position: relative; z-index: 1; }
     .vf-dots { background-image: radial-gradient(rgba(241,81,98,.24) 1.35px, transparent 1.35px); background-size: 11px 11px; }
@@ -1856,7 +1824,6 @@
   <main id="top">
     <!-- ========== S1 HERO (Fable) ========== -->
     <header class="hero" id="hero">
-      <div class="vf-thread vf-thread--diag" style="inset:0"><svg viewBox="0 0 1440 1440" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" style="--i:0" d="M260 0 C 260 260, 1180 1180, 1180 1440"/><path pathLength="1" style="--i:1" d="M276 0 C 276 260, 1196 1180, 1196 1440"/><path pathLength="1" style="--i:2" d="M292 0 C 292 260, 1212 1180, 1212 1440"/></svg></div>
       <div class="shell hero-grid">
         <div class="hero-copy">
           <h1>More employees <em>participating.</em> Better workforce wellbeing.</h1>
@@ -1944,8 +1911,7 @@
     <!-- ========== S2 PARTICIPATION ENGINE (Claude / Fable) ========== -->
     <!-- ========== S2 THE PARTICIPATION PROBLEM (illume) ========== -->
     <section class="illume" id="engine" aria-label="The participation problem">
-      <div class="illume-inner">
-      <div class="vf-thread vf-thread--diag vf-thread--light" style="inset:0"><svg viewBox="0 0 1440 1440" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" style="--i:0" d="M1180 0 C 1180 260, 300 1180, 300 1440"/><path pathLength="1" style="--i:1" d="M1196 0 C 1196 260, 316 1180, 316 1440"/><path pathLength="1" style="--i:2" d="M1212 0 C 1212 260, 332 1180, 332 1440"/></svg></div><div class="illume-stick">
+      <div class="illume-inner"><div class="illume-stick">
         <div class="shell">
           <p id="illume-text">A wellness benefit only works when people use it after launch. Most programs peak on announcement day.<span class="fine">Different interests. Different abilities. One program with more ways to take part.</span></p>
         </div>
@@ -2015,7 +1981,6 @@
 
     <!-- ========== S2B EXPERIENCE ========== -->
     <section class="screen tour-screen vf-stage" id="experience" aria-label="Employee and HR experience">
-      <div class="vf-thread vf-thread--diag" style="inset:0"><svg viewBox="0 0 1440 1440" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" style="--i:0" d="M300 0 C 300 260, 1160 1180, 1160 1440"/><path pathLength="1" style="--i:1" d="M316 0 C 316 260, 1176 1180, 1176 1440"/><path pathLength="1" style="--i:2" d="M332 0 C 332 260, 1192 1180, 1192 1440"/></svg></div>
       <div class="shell">
         <div class="center">
           <h2>Enjoyable for <span class="role-highlight">employees</span>. Manageable for <span class="role-highlight">HR</span>.</h2>
@@ -2061,7 +2026,6 @@
 
     <!-- ========== S3 PROOF ========== -->
     <section class="screen proof-screen vf-stage" id="proof" aria-labelledby="proof-heading">
-      <div class="vf-thread vf-thread--diag" style="inset:0"><svg viewBox="0 0 1440 1440" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" style="--i:0" d="M1160 0 C 1160 260, 320 1180, 320 1440"/><path pathLength="1" style="--i:1" d="M1176 0 C 1176 260, 336 1180, 336 1440"/><path pathLength="1" style="--i:2" d="M1192 0 C 1192 260, 352 1180, 352 1440"/></svg></div>
       <i class="vf-dots" style="width:88px;height:88px;top:13%;right:3.5%" aria-hidden="true"></i>
       <div class="shell">
         <div class="stories-layout">
@@ -2139,7 +2103,6 @@
 
     <!-- ========== S4 SECURITY ========== -->
     <section class="screen trust-screen" id="security" aria-labelledby="security-heading">
-      <div class="vf-thread vf-thread--diag vf-thread--light" style="inset:0"><svg viewBox="0 0 1440 1440" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" style="--i:0" d="M320 0 C 320 260, 1140 1180, 1140 1440"/><path pathLength="1" style="--i:1" d="M336 0 C 336 260, 1156 1180, 1156 1440"/><path pathLength="1" style="--i:2" d="M352 0 C 352 260, 1172 1180, 1172 1440"/></svg></div>
       <div class="shell trust-cols">
         <div class="trust-copy">
           <span class="eyebrow">Enterprise security &amp; compliance</span>
@@ -2165,7 +2128,6 @@
 
     <!-- ========== S5 WELLNESS BLOGS (live site) ========== -->
     <section class="screen blogs-screen" id="blogs" aria-labelledby="blogs-heading">
-      <div class="vf-thread vf-thread--diag" style="inset:0"><svg viewBox="0 0 1440 1440" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" style="--i:0" d="M1140 0 C 1140 260, 340 1180, 340 1440"/><path pathLength="1" style="--i:1" d="M1156 0 C 1156 260, 356 1180, 356 1440"/><path pathLength="1" style="--i:2" d="M1172 0 C 1172 260, 372 1180, 372 1440"/></svg></div>
       <div class="shell">
         <div class="center">
           <h2 id="blogs-heading">Wellness insights for HR</h2>
@@ -2233,7 +2195,6 @@
 
     <!-- ========== S6 FINAL CTA ========== -->
     <section class="final vf-stage" id="demo" aria-labelledby="demo-heading">
-      <div class="vf-thread vf-thread--diag vf-thread--light" style="inset:0"><svg viewBox="0 0 1440 1440" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" style="--i:0" d="M340 0 C 340 260, 1200 1180, 1200 1440"/><path pathLength="1" style="--i:1" d="M356 0 C 356 260, 1216 1180, 1216 1440"/><path pathLength="1" style="--i:2" d="M372 0 C 372 260, 1232 1180, 1232 1440"/></svg></div>
       <div class="shell">
         <h2 id="demo-heading">See what better participation looks like.</h2>
         <p>Explore the employee experience, build a challenge, and see reporting for HR leaders.</p>
@@ -2497,37 +2458,6 @@
     }
 
   
-    // Brand thread: draw the ribbon line-by-line when it scrolls into view
-    (function () {
-      const threads = document.querySelectorAll('.vf-thread');
-      if (!threads.length) return;
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          e.target.classList.add('is-drawn');
-          io.unobserve(e.target);
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-      threads.forEach((t) => io.observe(t));
-
-      // subtle drift as the page scrolls: horizontals slide along x, verticals along y
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      let raf = 0;
-      const drift = () => {
-        raf = 0;
-        const vh = window.innerHeight;
-        threads.forEach((t) => {
-          const r = t.getBoundingClientRect();
-          if (r.bottom < -200 || r.top > vh + 200) return;
-          const prog = (vh - r.top) / (vh + r.height);          // 0 entering -> 1 leaving
-          const amt = (prog - 0.5) * 2 * (Number(t.dataset.drift) || 24);
-          const vertical = t.classList.contains('vf-thread--v');
-          t.style.setProperty(vertical ? '--dy' : '--dx', amt.toFixed(1) + 'px');
-        });
-      };
-      addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(drift); }, { passive: true });
-      drift();
-    })();
 
   </script>
 </body>
