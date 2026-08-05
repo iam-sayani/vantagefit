@@ -230,8 +230,8 @@
       font-size: 8.5px;
     }
     .phone::before { position: absolute; top: 7px; left: 50%; z-index: 4; width: 36px; height: 5px; border-radius: 5px; background: #272839; transform: translateX(-50%); content: ""; }
-    .phone-leaderboard { left: 0; bottom: -3%; width: 45%; height: 82%; transform: rotate(-1.5deg); }
-    .phone-summary { right: 0; bottom: 2%; z-index: 2; width: 52%; height: 91%; transform: rotate(1deg); }
+    .phone-leaderboard { left: 0; bottom: 2%; width: 45%; height: 74%; transform: rotate(-1.5deg); }
+    .phone-summary { right: 0; bottom: 3%; z-index: 2; width: 52%; height: 79%; transform: rotate(1deg); }
     .phone-bar { display: flex; height: 34px; align-items: center; justify-content: space-between; padding: 12px 10px 5px; font-weight: 800; }
     .leader-hero { padding: 14px 12px 17px; background: linear-gradient(135deg, var(--coral), var(--coral-deep)); color: #fff; text-align: center; }
     .leader-hero b { display: block; margin-bottom: 11px; font-size: 13px; }
@@ -263,6 +263,12 @@
     .trend-bars { display: flex; height: 35px; align-items: end; gap: 4px; margin-top: 8px; }
     .trend-bars i { flex: 1; border-radius: 4px 4px 0 0; background: var(--coral); }
     .trend-card:last-child .trend-bars i { background: #58bbb9; }
+    .achievement-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 9px 38px; }
+    .achievement { display: flex; align-items: center; gap: 7px; padding: 8px; border: 1px solid #ececf1; border-radius: 9px; background: #fff; }
+    .achievement i { display: grid; width: 24px; height: 24px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: #fff0d3; color: #c47a00; font-style: normal; font-size: 11px; }
+    .achievement:last-child i { background: #e2faf4; color: var(--mint-deep); }
+    .achievement small { display: block; color: #8a8b9a; font-size: 5.5px; }
+    .achievement b { display: block; font-size: 7px; }
     .phone-nav { position: absolute; inset: auto 0 0; display: flex; height: 31px; align-items: center; justify-content: space-around; border-top: 1px solid #eeeef2; background: #fff; color: var(--coral); }
 
     .admin-mock { right: 2.5%; bottom: 5%; width: 54%; height: 82%; overflow: hidden; border: 6px solid #fff; border-radius: var(--radius-md); background: #fafbfe; box-shadow: 0 26px 60px rgba(29,34,40,.18); }
@@ -537,6 +543,7 @@
                 <div class="activity-ring"><span class="ring"></span><div class="activity-data"><span>Steps covered <b>5,988</b>/7,000</span><span>Active minutes <b>31</b>/60 mins</span></div></div>
                 <div class="challenge-ui"><div>Week 5<br>21 Days to Transform: Strength, Stamina, and Sweat</div><div class="challenge-progress">Weekly progress: <b>88%</b><div class="progress-track"></div></div></div>
                 <div class="mini-trends"><div class="trend-card"><b>Avg steps</b><div class="trend-bars"><i style="height:55%"></i><i style="height:82%"></i><i style="height:68%"></i><i style="height:91%"></i><i style="height:76%"></i></div></div><div class="trend-card"><b>Active minutes</b><div class="trend-bars"><i style="height:46%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:86%"></i><i style="height:70%"></i></div></div></div>
+                <div class="achievement-strip"><div class="achievement"><i>✦</i><span><small>Current streak</small><b>7 active days</b></span></div><div class="achievement"><i>↗</i><span><small>Weekly rank</small><b>28 of 340</b></span></div></div>
                 <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
               </div>
             </div>
