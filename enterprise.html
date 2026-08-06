@@ -230,49 +230,57 @@
     .panel-stat small { display: block; margin-bottom: 2px; color: var(--muted); font-size: .54rem; font-weight: 800; }
     .panel-stat strong { font-size: 1.55rem; letter-spacing: -.05em; }
 
-    .phone { position: absolute; z-index: 2; overflow: hidden; border: 6px solid rgba(255,255,255,.96); border-radius: 30px; background: #fff; box-shadow: 0 28px 64px rgba(29,34,40,.18); font-size: 8.5px; }
-    .phone::before { position: absolute; top: 7px; left: 50%; z-index: 4; width: 38px; height: 5px; border-radius: 5px; background: #272839; transform: translateX(-50%); content: ""; }
+    .phone { position: absolute; z-index: 2; overflow: hidden; border: 7px solid #191d23; border-radius: 36px; outline: 1px solid rgba(255,255,255,.48); background: #f6f7f9; box-shadow: 0 28px 64px rgba(29,34,40,.22); font-size: 8px; }
+    .phone::before { position: absolute; top: 6px; left: 50%; z-index: 10; width: 52px; height: 16px; border-radius: 999px; background: #111419; transform: translateX(-50%); content: ""; }
+    .phone::after { position: absolute; bottom: 3px; left: 50%; z-index: 10; width: 58px; height: 3px; border-radius: 999px; background: #242830; transform: translateX(-50%); content: ""; }
     .phone-leaderboard { left: 5%; bottom: -4%; width: 42%; height: 70%; transform: rotate(-1deg); }
     .phone-summary { top: 13%; right: 4%; z-index: 3; width: 49%; height: 82%; transform: rotate(.7deg); }
-    .phone-bar { display: flex; height: 34px; align-items: center; justify-content: space-between; padding: 13px 11px 5px; font-weight: 800; }
-    .leader-hero { padding: 16px 13px 18px; background: linear-gradient(135deg, #f45e6e, #cc364a); color: #fff; text-align: left; }
-    .leader-hero > b { display: block; margin-bottom: 12px; font-size: 12px; }
+    .phone-bar { position: relative; z-index: 5; display: flex; height: 36px; align-items: center; justify-content: space-between; padding: 13px 11px 5px; color: #171b20; font-size: 7px; font-weight: 800; }
+    .phone-status { display: flex; align-items: center; gap: 3px; }
+    .phone-status i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #171b20; }
+    .phone-status i:last-of-type { width: 7px; height: 5px; border: 1px solid #171b20; border-width: 1px 1px 0; border-radius: 6px 6px 0 0; background: transparent; }
+    .phone-status b { position: relative; display: block; width: 10px; height: 6px; border: 1px solid #171b20; border-radius: 2px; }
+    .phone-status b::after { position: absolute; inset: 1px; border-radius: 1px; background: #171b20; content: ""; }
+    .leader-hero { margin: 3px 8px 0; padding: 15px 12px 16px; border-radius: 16px; background: linear-gradient(135deg, #f45e6e, #c93449); color: #fff; text-align: left; }
+    .leader-hero > b { display: block; margin-bottom: 11px; font-size: 11px; }
     .leader-score { display: flex; align-items: center; justify-content: space-between; text-align: center; }
     .leader-score strong { font-size: 17px; }
     .avatar-ui { display: grid; width: 43px; height: 43px; place-items: center; border: 3px solid #fff; border-radius: 50%; background: #dff8f1; color: var(--mint-deep); font-size: 11px; }
-    .leader-tabs { display: grid; grid-template-columns: 1fr 1fr; margin: 10px; padding: 3px; border-radius: 9px; background: #f0f1f4; text-align: center; }
+    .leader-tabs { display: grid; grid-template-columns: 1fr 1fr; margin: 8px; padding: 3px; border-radius: 10px; background: #e9ebef; text-align: center; }
     .leader-tabs b { padding: 5px; border-radius: 7px; background: #fff; }
-    .leader-list { display: grid; padding: 0 11px; }
-    .leader-row { display: grid; grid-template-columns: 12px 27px 1fr auto; align-items: center; gap: 6px; padding: 9px 0; border-bottom: 1px solid #ececf1; }
-    .leader-row i { display: grid; width: 26px; height: 26px; place-items: center; border-radius: 50%; background: #f1f2f5; color: var(--coral-deep); font-style: normal; font-weight: 800; }
+    .leader-list { display: grid; margin: 0 8px; padding: 0 8px; border: 1px solid #ebecef; border-radius: 13px; background: #fff; }
+    .leader-row { display: grid; grid-template-columns: 10px 24px 1fr auto; align-items: center; gap: 5px; padding: 7px 0; border-bottom: 1px solid #ececf1; }
+    .leader-row i { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 50%; background: #f1f2f5; color: var(--coral-deep); font-style: normal; font-weight: 800; }
     .leader-row span { display: block; color: #8a8ba0; font-size: 6px; }
     .leader-row em { padding: 4px 7px; border-radius: 10px; background: #ffe7ea; color: var(--coral-deep); font-style: normal; font-weight: 800; }
-    .summary-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 11px 12px; }
+    .summary-head { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px 10px; }
     .summary-head small { color: #9293a2; }
     .summary-head strong { display: block; margin-top: 2px; font-size: 12px; }
     .point-pill { padding: 5px 7px; border-radius: 999px; background: #fff0d3; color: #8b6200; font-size: 6.5px; font-weight: 800; }
-    .activity-ring { display: flex; align-items: center; gap: 10px; margin: 0 10px 10px; padding: 11px; border: 1px solid #d9ebe6; border-radius: 14px; background: #fff; box-shadow: 0 8px 20px rgba(29,34,40,.06); }
+    .activity-ring { display: flex; align-items: center; gap: 9px; margin: 0 8px 8px; padding: 9px; border: 1px solid #d9ebe6; border-radius: 13px; background: #fff; box-shadow: 0 5px 14px rgba(29,34,40,.05); }
     .ring { display: grid; width: 46px; height: 46px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: conic-gradient(var(--coral) 0 43%, #fff 43% 49%, #65c8c6 49% 81%, #e7f0ef 81%); }
     .ring::after { width: 25px; height: 25px; border-radius: 50%; background: #fff; content: ""; }
     .activity-data { display: grid; gap: 5px; color: #76778b; }
     .activity-data b { color: var(--ink); }
-    .challenge-ui { margin: 0 10px; overflow: hidden; border-radius: 13px; box-shadow: 0 10px 24px rgba(55,71,150,.14); }
+    .challenge-ui { margin: 0 8px; overflow: hidden; border-radius: 13px; box-shadow: 0 7px 18px rgba(55,71,150,.12); }
     .challenge-ui > div:first-child { padding: 12px; background: linear-gradient(135deg, #566dcc, #35418f); color: #fff; font-size: 9.5px; font-weight: 800; line-height: 1.35; }
     .challenge-progress { padding: 9px; background: #fff; }
     .progress-track { height: 5px; margin-top: 6px; overflow: hidden; border-radius: 5px; background: #d9f3ee; }
     .progress-track::after { display: block; width: 88%; height: 100%; border-radius: inherit; background: var(--mint); content: ""; }
-    .mini-trends { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; padding: 10px; }
+    .mini-trends { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 8px; }
     .trend-card { padding: 9px; border: 1px solid #efeff2; border-radius: 10px; background: #fbfbfc; }
     .trend-bars { display: flex; height: 34px; align-items: end; gap: 4px; margin-top: 8px; }
     .trend-bars i { flex: 1; border-radius: 4px 4px 1px 1px; background: var(--coral); }
     .trend-card:last-child .trend-bars i { background: #58bbb9; }
-    .achievement-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 0 10px 38px; }
+    .achievement-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 8px 38px; }
     .achievement { display: flex; align-items: center; gap: 7px; padding: 8px; border: 1px solid #ececf1; border-radius: 10px; background: #fff; }
     .achievement i { display: grid; width: 24px; height: 24px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: #fff0d3; color: #c47a00; font-style: normal; font-size: 11px; }
     .achievement:last-child i { background: #e2faf4; color: var(--mint-deep); }
     .achievement small { display: block; color: #8a8b9a; font-size: 5.5px; }
     .achievement b { display: block; font-size: 7px; }
-    .phone-nav { position: absolute; inset: auto 0 0; display: flex; height: 32px; align-items: center; justify-content: space-around; border-top: 1px solid #eeeef2; background: #fff; color: var(--coral); }
+    .phone-nav { position: absolute; inset: auto 0 0; z-index: 6; display: flex; height: 37px; align-items: flex-start; justify-content: space-around; padding-top: 6px; border-top: 1px solid #e7e8eb; background: rgba(255,255,255,.98); color: #8e929a; }
+    .phone-nav span { display: grid; width: 22px; height: 20px; place-items: center; border-radius: 8px; font-size: 10px; line-height: 1; }
+    .phone-nav span:first-child { background: #ffe7ea; color: var(--coral-deep); }
 
     .admin-window { position: absolute; inset: 11% 4% 5%; z-index: 2; overflow: hidden; border: 6px solid rgba(255,255,255,.95); border-radius: 20px; background: #f7f8fa; box-shadow: 0 30px 70px rgba(29,34,40,.18); }
     .admin-top { display: flex; height: 34px; align-items: center; gap: 6px; padding: 0 12px; border-bottom: 1px solid #e6e7eb; background: #fff; }
@@ -324,9 +332,9 @@
     .experience-showcase .product-mockup::after { display: none; }
     .experience-showcase .visual-label { top: 22px; left: 26px; color: rgba(255,255,255,.88); }
     .experience-showcase .visual-label::before { background: var(--mint); box-shadow: none; }
-    .experience-showcase .phone { top: 64px; left: 50%; width: 190px; height: 440px; border: 6px solid #fff; border-radius: 30px; box-shadow: 0 18px 42px rgba(83,13,29,.2); transform: translateX(-50%); }
+    .experience-showcase .phone { top: 64px; left: 50%; width: 210px; height: 440px; border: 7px solid #191d23; border-radius: 36px; box-shadow: 0 20px 46px rgba(83,13,29,.24); transform: translateX(-50%); }
     .experience-showcase .phone-summary, .experience-showcase .phone-leaderboard { right: auto; bottom: auto; }
-    .experience-showcase .phone-leaderboard { width: 190px; height: 440px; }
+    .experience-showcase .phone-summary, .experience-showcase .phone-leaderboard { width: 210px; height: 440px; background: #f6f7f9; }
     .experience-showcase .admin-window { inset: 76px 26px 34px; border-width: 5px; border-radius: 12px; box-shadow: 0 18px 42px rgba(83,13,29,.2); }
     .scene-stat { display: none; }
     .scene-stat small, .scene-stat strong { display: block; }
@@ -530,7 +538,7 @@
       .scene-stat, .reward-ticket { display: none; }
       .experience-showcase .phone,
       .experience-showcase .phone-summary,
-      .experience-showcase .phone-leaderboard { top: 32px; left: 50%; display: block; width: 190px; height: 440px; transform: translateX(-50%); }
+      .experience-showcase .phone-leaderboard { top: 32px; left: 50%; display: block; width: 210px; height: 440px; transform: translateX(-50%); }
       .experience-showcase .admin-window { inset: 54px 10px 22px; }
       .experience-accordion .tab-btn { min-height: 56px; flex-basis: 56px; padding: 14px 16px; }
       .experience-accordion .tab-heading b { font-size: .92rem; }
@@ -635,13 +643,13 @@
                 <div class="visual-label">Vantage Fit mobile app</div>
                 <div class="scene-stat scene-stat-left"><small>STEPS TODAY</small><strong>5,988</strong></div>
                 <div class="phone phone-summary">
-                  <div class="phone-bar"><span>9:41</span><span>●</span></div>
+                  <div class="phone-bar"><span>9:41</span><span class="phone-status" aria-hidden="true"><i></i><i></i><b></b></span></div>
                   <div class="summary-head"><div><small>Wednesday, 16 July</small><strong>Your wellbeing</strong></div><span class="point-pill">2,500 pts</span></div>
                   <div class="activity-ring"><span class="ring"></span><div class="activity-data"><span>Steps covered <b>5,988</b>/7,000</span><span>Active minutes <b>31</b>/60 mins</span></div></div>
                   <div class="challenge-ui"><div>Week 5<br>21 Days to Transform: Strength, Stamina, and Sweat</div><div class="challenge-progress">Weekly progress: <b>88%</b><div class="progress-track"></div></div></div>
                   <div class="mini-trends"><div class="trend-card"><b>Avg steps</b><div class="trend-bars"><i style="height:55%"></i><i style="height:82%"></i><i style="height:68%"></i><i style="height:91%"></i><i style="height:76%"></i></div></div><div class="trend-card"><b>Active minutes</b><div class="trend-bars"><i style="height:46%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:86%"></i><i style="height:70%"></i></div></div></div>
                   <div class="achievement-strip"><div class="achievement"><i>✦</i><span><small>Current streak</small><b>7 active days</b></span></div><div class="achievement"><i>↗</i><span><small>Weekly rank</small><b>28 of 340</b></span></div></div>
-                  <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
+                  <div class="phone-nav"><span>⌂</span><span>◇</span><span>＋</span><span>▣</span><span>○</span></div>
                 </div>
                 <div class="scene-stat scene-stat-right"><small>WEEKLY GOAL</small><strong>88%</strong></div>
               </div>
@@ -652,12 +660,12 @@
                 <div class="visual-label">Team challenge</div>
                 <div class="scene-stat scene-stat-left"><small>TEAM MEMBERS</small><strong>340</strong></div>
                 <div class="phone feature-screen">
-                  <div class="phone-bar"><span>9:41</span><span>●</span></div>
+                  <div class="phone-bar"><span>9:41</span><span class="phone-status" aria-hidden="true"><i></i><i></i><b></b></span></div>
                   <div class="feature-screen-head"><small>MY CHALLENGES</small><strong>Keep your team moving</strong></div>
                   <div class="challenge-cover"><small>ACTIVE · WEEK 5</small><strong>21 Days to Transform</strong><span>Weekly progress <b>88%</b></span><div class="progress-track"></div></div>
                   <div class="screen-section"><div class="screen-section-title"><span>Today’s goals</span><span>2 of 3</span></div><div class="goal-row"><i>✓</i><div><b>7,000 steps</b><small>5,988 completed</small></div><em>86%</em></div><div class="goal-row"><i>✓</i><div><b>30 active minutes</b><small>31 completed</small></div><em>Done</em></div><div class="goal-row"><i>↗</i><div><b>Team check-in</b><small>Encourage your group</small></div><em>Open</em></div></div>
                   <div class="screen-section"><div class="screen-section-title"><span>Team momentum</span><span>12 day streak</span></div><div class="trend-bars"><i style="height:44%"></i><i style="height:68%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:96%"></i></div></div>
-                  <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
+                  <div class="phone-nav"><span>⌂</span><span>◇</span><span>＋</span><span>▣</span><span>○</span></div>
                 </div>
                 <div class="scene-stat scene-stat-right"><small>COMPLETION</small><strong>87%</strong></div>
               </div>
@@ -667,11 +675,11 @@
               <div class="product-mockup" role="img" aria-label="Vantage Fit mobile leaderboard and reward preview">
                 <div class="visual-label">Leaderboards and rewards</div>
                 <div class="phone phone-leaderboard">
-                  <div class="phone-bar"><span>3:44</span><span>● ● ●</span></div>
+                  <div class="phone-bar"><span>3:44</span><span class="phone-status" aria-hidden="true"><i></i><i></i><b></b></span></div>
                   <div class="leader-hero"><b>Team leaderboard</b><div class="leader-score"><span>YOUR RANK<br><strong>12th</strong></span><span class="avatar-ui">AT</span><span>POINTS<br><strong>412</strong></span></div></div>
                   <div class="leader-tabs"><b>Weekly</b><span>Overall</span></div>
                   <div class="leader-list"><div class="leader-row"><b>1</b><i>AT</i><div>Angu Tamba<span>Marketing</span></div><em>710</em></div><div class="leader-row"><b>2</b><i>MR</i><div>Mariam Ray<span>App Development</span></div><em>678</em></div><div class="leader-row"><b>3</b><i>JD</i><div>Johnny Doeish<span>Operations</span></div><em>634</em></div><div class="leader-row"><b>4</b><i>AS</i><div>Arya Singh<span>Brand Sales</span></div><em>610</em></div><div class="leader-row"><b>5</b><i>MS</i><div>Mohsen Salehi<span>Design</span></div><em>599</em></div></div>
-                  <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
+                  <div class="phone-nav"><span>⌂</span><span>◇</span><span>＋</span><span>▣</span><span>○</span></div>
                 </div>
                 <div class="reward-ticket"><small>REWARD UNLOCKED</small><strong>Choose a gift card</strong><span>Redeem 2,500 points →</span></div>
               </div>
