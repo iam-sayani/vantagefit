@@ -1255,8 +1255,8 @@
     .tour-checks li::before { content: "✓"; position: absolute; left: 0; top: 17px; color: #169d7e;
       font-size: 1rem; font-weight: 900; line-height: 1; }
     /* ===== HTML product screens: matched to the live Vantage Fit app ===== */
-    .ui-phones { position: relative; width: 100%; max-width: 560px; height: 566px; margin: 0 auto;
-      perspective: 1600px; }
+    .ui-phones { position: relative; width: 100%; max-width: 430px; height: 436px; margin: 0 auto;
+      perspective: 1400px; }
     .vp { position: absolute; border-radius: 38px; padding: 2.5px;
       background: linear-gradient(146deg, #e6e8ee 0%, #9498a6 22%, #5f6472 46%, #cfd2da 62%, #7c8090 82%, #b6bac5 100%);
       box-shadow: 0 34px 64px rgba(28,30,52,.3), 0 10px 22px rgba(28,30,52,.18), 0 1px 0 rgba(255,255,255,.5) inset; }
@@ -1269,8 +1269,8 @@
       background: linear-gradient(116deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.06) 16%, rgba(255,255,255,0) 34%); }
     .vp-home { position: absolute; z-index: 3; left: 50%; bottom: 6px; transform: translateX(-50%);
       width: 33%; height: 3.4px; border-radius: 99px; background: rgba(20,22,38,.3); }
-    .vp-front { left: 0; top: 2%; width: 46%; height: 98%; z-index: 2; transform: rotate(-1deg); }
-    .vp-back { right: 0; top: 0; width: 43.5%; height: 88%; z-index: 1; transform: rotate(1.4deg); }
+    .vp-front { left: 3%; top: 2%; width: 44%; height: 98%; z-index: 2; transform: rotate(-1deg); }
+    .vp-back { right: 3%; top: 0; width: 42%; height: 87%; z-index: 1; transform: rotate(1.4deg); }
     .vp-not { position: absolute; z-index: 3; top: 9px; left: 50%; transform: translateX(-50%);
       width: 31%; height: 10px; border-radius: 99px; background: #07080c; }
     .vp-scr { position: relative; height: 100%; border-radius: 31.5px; background: #f5f6f8; overflow: hidden;
@@ -1330,7 +1330,7 @@
     .vp-ring b { display: block; font-size: 6.59px; font-weight: 800; }
     .vp-ring em { display: block; font-style: normal; font-size: 3.9px; color: rgba(41,41,76,.5); }
     .vp-brow { display: grid; grid-template-columns: auto 1fr; gap: 7px; align-items: center; margin-top: 7px; }
-    .vp-btn { display: inline-flex; align-items: center; gap: 4px; background: #f8615a; color: #fff; border-radius: 99px;
+    .vp-btn { display: inline-flex; margin-top: 7px; align-items: center; gap: 4px; background: #f8615a; color: #fff; border-radius: 99px;
       padding: 3px 8px; font-size: 5.86px; font-weight: 800; letter-spacing: .04em; }
     .vp-btn em { font-style: normal; font-size: 7.32px; opacity: .8; }
     .vp-tp span { display: block; font-size: 4.39px; font-weight: 700; letter-spacing: .05em; color: rgba(41,41,76,.4); text-align: right; }
@@ -1409,9 +1409,9 @@
       background: linear-gradient(120deg, #7c5cff, #F15162); }
     .vd-ask kbd { margin-left: auto; font-family: inherit; font-size: 5.4px; font-weight: 800; color: rgba(41,41,76,.5);
       background: #f4f4f8; border: 1px solid rgba(41,41,76,.12); border-radius: 4px; padding: 1.6px 5px; }
-    @media (max-width: 900px) { .ui-phones { height: 500px; } }
+    @media (max-width: 900px) { .ui-phones { height: 400px; } }
     @media (max-width: 560px) {
-      .ui-phones { height: 424px; }
+      .ui-phones { height: 352px; }
       .vd-rail { width: 28px; } .vd-grid { grid-template-columns: 1fr; }
       .vd-kpis { grid-template-columns: 1fr 1fr; } .vd-gen { display: none; }
     }
@@ -2198,37 +2198,25 @@
                       <div class="vp-trow">
                         <span class="vp-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8c-3.7 0-6.7 3-6.7 6.7 0 4.8 6.7 13.4 6.7 13.4s6.7-8.6 6.7-13.4c0-3.7-3-6.7-6.7-6.7Z" fill="#f8615a"/><circle cx="12" cy="8.4" r="2.7" fill="#fff"/></svg></span>
                         <div class="vp-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i></div>
-                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
-                        <div class="vp-ring" style="--p:35"><i><b>35%</b><em>completed</em></i></div></div>
+                        <div class="vp-rw"><div class="vp-ring" style="--p:35"><i><b>35%</b></i></div></div>
                       </div>
-                      <div class="vp-brow">
-                        <span class="vp-btn">START ACTIVITY<em>&raquo;</em></span>
-                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:18%"></i></div><u>0 &nbsp; 50</u></div>
-                      </div>
+                      <span class="vp-btn">START ACTIVITY<em>&raquo;</em></span>
                     </div>
                     <div class="vp-task">
                       <div class="vp-trow">
                         <span class="vp-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="#5b8def"><circle cx="12" cy="5.4" r="2.5"/><path d="M12 8.7c-2 0-3.6 1.3-4 3.2l-.3 1.5c-.1.6.4 1.1 1 1l1.8-.4c1-.2 2-.2 3 0l1.8.4c.6.1 1.1-.4 1-1l-.3-1.5c-.4-1.9-2-3.2-4-3.2Z"/><path d="M6.6 16.5c1.5-.8 3.4-1.2 5.4-1.2s3.9.4 5.4 1.2c.6.3.5 1.2-.2 1.4-1.6.4-3.4.6-5.2.6s-3.6-.2-5.2-.6c-.7-.2-.8-1.1-.2-1.4Z"/></g></svg></span>
                         <div class="vp-tt"><b>Do Yoga for 5 days<br>in this week</b><i>Earn 100 points</i></div>
-                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
-                        <div class="vp-ring" style="--p:40"><i><b>2/5</b><em>completed</em></i></div></div>
+                        <div class="vp-rw"><div class="vp-ring" style="--p:40"><i><b>2/5</b></i></div></div>
                       </div>
-                      <div class="vp-brow">
-                        <span class="vp-btn">LOG ACTIVITY<em>&raquo;</em></span>
-                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:100%"></i></div><u>100%</u></div>
-                      </div>
+                      <span class="vp-btn">LOG ACTIVITY<em>&raquo;</em></span>
                     </div>
                     <div class="vp-task">
                       <div class="vp-trow">
                         <span class="vp-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.4" fill="#f6c445"/><circle cx="8.8" cy="10" r="1.35" fill="#3a2a10"/><circle cx="15.2" cy="10" r="1.35" fill="#3a2a10"/><path d="M7.6 14.2a5 5 0 0 0 8.8 0" fill="none" stroke="#3a2a10" stroke-width="1.7" stroke-linecap="round"/></svg></span>
                         <div class="vp-tt"><b>Log your mood 4<br>days this week.</b><i>Earn 100 points</i></div>
-                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
-                        <div class="vp-ring" style="--p:75"><i><b>3/4</b><em>completed</em></i></div></div>
+                        <div class="vp-rw"><div class="vp-ring" style="--p:75"><i><b>3/4</b></i></div></div>
                       </div>
-                      <div class="vp-brow">
-                        <span class="vp-btn">TRACK MOOD<em>&raquo;</em></span>
-                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:100%"></i></div><u>100%</u></div>
-                      </div>
+                      <span class="vp-btn">TRACK MOOD<em>&raquo;</em></span>
                     </div>
                     <p class="vp-h2">Leaderboard</p>
                     <div class="vp-lead">
@@ -2270,24 +2258,11 @@
                       <div class="vp-trow">
                         <span class="vp-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8c-3.7 0-6.7 3-6.7 6.7 0 4.8 6.7 13.4 6.7 13.4s6.7-8.6 6.7-13.4c0-3.7-3-6.7-6.7-6.7Z" fill="#f8615a"/><circle cx="12" cy="8.4" r="2.7" fill="#fff"/></svg></span>
                         <div class="vp-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i></div>
-                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
-                        <div class="vp-ring" style="--p:35"><i><b>35%</b><em>completed</em></i></div></div>
+                        <div class="vp-rw"><div class="vp-ring" style="--p:35"><i><b>35%</b></i></div></div>
                       </div>
-                      <div class="vp-brow">
-                        <span class="vp-btn">START ACTIVITY<em>&raquo;</em></span>
-                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:18%"></i></div><u>0 &nbsp; 50</u></div>
-                      </div>
+                      <span class="vp-btn">START ACTIVITY<em>&raquo;</em></span>
                     </div>
-                    <div class="vp-task">
-                      <div class="vp-trow">
-                        <span class="vp-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="#5b8def"><circle cx="12" cy="5.4" r="2.5"/><path d="M12 8.7c-2 0-3.6 1.3-4 3.2l-.3 1.5c-.1.6.4 1.1 1 1l1.8-.4c1-.2 2-.2 3 0l1.8.4c.6.1 1.1-.4 1-1l-.3-1.5c-.4-1.9-2-3.2-4-3.2Z"/><path d="M6.6 16.5c1.5-.8 3.4-1.2 5.4-1.2s3.9.4 5.4 1.2c.6.3.5 1.2-.2 1.4-1.6.4-3.4.6-5.2.6s-3.6-.2-5.2-.6c-.7-.2-.8-1.1-.2-1.4Z"/></g></svg></span>
-                        <div class="vp-tt"><b>Do Yoga for 5 days<br>in this week</b><i>Earn 100 points</i></div>
-                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
-                          <div class="vp-ring" style="--p:40"><i><b>2/5</b><em>completed</em></i></div></div>
-                      </div>
-                      <div class="vp-brow">
-                        <span class="vp-btn">LOG ACTIVITY<em>&raquo;</em></span>
-                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:100%"></i></div><u>100%</u></div>
+                    
                     <span class="vp-home"></span>
                   </div>
                   <span class="vp-glare"></span>
