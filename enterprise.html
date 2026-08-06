@@ -157,9 +157,19 @@
       position: sticky;
       z-index: 40;
       top: 0;
-      border-bottom: 1px solid var(--line);
-      background: rgba(247, 248, 245, .92);
-      backdrop-filter: blur(16px);
+      /* liquid glass: barely-there tint, heavy blur, lit top edge */
+      border-bottom: 1px solid rgba(255, 255, 255, .5);
+      background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.16));
+      backdrop-filter: blur(26px) saturate(1.8);
+      -webkit-backdrop-filter: blur(26px) saturate(1.8);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+      transition: background .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    /* once past the hero, thicken the glass so links stay readable over content */
+    .nav.lit {
+      border-bottom-color: rgba(41,41,76,.09);
+      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.62));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 6px 22px rgba(41,41,76,.06);
     }
     .nav-inner {
       display: flex;
