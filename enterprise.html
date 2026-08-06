@@ -309,41 +309,76 @@
     .action-row { display: flex; gap: 6px; margin-top: 8px; }
     .action-row span { flex: 1; padding: 8px; border: 1px solid #e4e5e9; border-radius: 8px; background: #fff; color: #737680; font-size: 6px; }
 
-    /* Minimal split experience: product canvas + audience accordion */
+    /* Flat product explorer: editorial canvas + capability accordion */
+    .experience { background: #fff; }
+    .experience::before { display: none; }
     .experience-nav { grid-template-columns: minmax(0, .9fr) minmax(360px, .62fr); margin-bottom: 42px; }
     .experience-nav .experience-deck { align-self: end; margin: 0 0 7px; }
-    .experience-showcase { display: grid; min-height: 680px; grid-template-columns: 1.06fr .94fr; overflow: hidden; border: 1px solid rgba(29,34,40,.11); border-radius: 26px; background: #fff; box-shadow: 0 28px 72px rgba(29,34,40,.09); }
-    .experience-visuals { position: relative; min-width: 0; min-height: 680px; overflow: hidden; background: #dff3f5; }
-    .experience-visuals::before { position: absolute; inset: 0; background: linear-gradient(rgba(29,34,40,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(29,34,40,.045) 1px, transparent 1px); background-size: 92px 92px; content: ""; }
-    .experience-showcase .experience-panel { position: absolute; inset: 0; display: block; min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+    .experience-showcase { display: grid; min-height: 680px; grid-template-columns: minmax(0, 1.04fr) minmax(430px, .96fr); overflow: hidden; border-block: 1px solid var(--line); background: #fff; }
+    .experience-visuals { position: relative; min-width: 0; min-height: 680px; overflow: hidden; background: #dceff7; }
+    .experience-visuals::before { position: absolute; inset: 0; background: linear-gradient(rgba(42,77,100,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(42,77,100,.055) 1px, transparent 1px); background-size: 96px 96px; content: ""; }
+    .experience-visuals::after { position: absolute; top: 74px; left: 23%; width: 74px; height: 710px; background: rgba(255,255,255,.76); box-shadow: 118px 0 0 rgba(255,255,255,.66), 236px 0 0 rgba(255,255,255,.54); content: ""; transform: rotate(-18deg); transform-origin: top center; }
+    .experience-showcase .experience-panel { position: absolute; inset: 0; z-index: 2; display: block; min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
     .experience-showcase .experience-panel[hidden] { display: none; }
-    .experience-showcase .product-mockup { position: absolute; inset: 0; min-height: 0; border-radius: 0; background: transparent; }
-    .experience-showcase .product-mockup::after { right: -100px; bottom: -140px; width: 350px; height: 350px; border-width: 68px; }
-    .employee-panel-stage::before { position: absolute; top: 75px; left: 55px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.72); content: ""; }
-    .employee-panel-stage::after { position: absolute; top: 115px; left: 85px; width: 230px; height: 1px; background: var(--coral); box-shadow: 0 28px 0 var(--mint), 0 56px 0 #5569ce; content: ""; transform: rotate(-10deg); }
-    .experience-showcase .visual-label { top: 26px; left: 28px; }
-    .experience-showcase .panel-stat { top: 24px; right: 26px; }
-    .experience-showcase .phone-leaderboard { left: 10%; bottom: -4%; width: min(34%, 220px); height: 74%; transform: rotate(-1.2deg); }
-    .experience-showcase .phone-summary { top: 12%; right: 12%; width: min(36%, 232px); height: 80%; transform: rotate(.8deg); }
-    .experience-showcase .admin-window { inset: 13% 5% 6%; }
+    .experience-showcase .product-mockup { position: absolute; inset: 0; min-height: 0; overflow: hidden; border-radius: 0; background: transparent; }
+    .experience-showcase .product-mockup::after { display: none; }
+    .experience-showcase .visual-label { top: 28px; left: 30px; color: #3f6678; }
+    .experience-showcase .visual-label::before { background: var(--coral); box-shadow: none; }
+    .experience-showcase .phone { top: 92px; left: 50%; width: 226px; height: 520px; border: 7px solid #fff; border-radius: 34px; box-shadow: 0 22px 50px rgba(24,58,76,.17); transform: translateX(-50%); }
+    .experience-showcase .phone-summary, .experience-showcase .phone-leaderboard { right: auto; bottom: auto; }
+    .experience-showcase .phone-leaderboard { width: 226px; height: 520px; }
+    .experience-showcase .admin-window { inset: 104px 34px 56px; border-width: 5px; border-radius: 12px; box-shadow: 0 20px 46px rgba(24,58,76,.15); }
+    .scene-stat { position: absolute; z-index: 5; min-width: 132px; padding: 14px 15px; border: 1px solid rgba(24,58,76,.12); background: rgba(255,255,255,.92); box-shadow: 0 12px 28px rgba(24,58,76,.09); }
+    .scene-stat small, .scene-stat strong { display: block; }
+    .scene-stat small { color: var(--muted); font-size: .52rem; font-weight: 800; }
+    .scene-stat strong { margin-top: 4px; font-size: 1.35rem; letter-spacing: -.04em; }
+    .scene-stat-left { top: 154px; left: 34px; }
+    .scene-stat-right { right: 28px; bottom: 72px; }
+    .scene-stat-right strong { color: var(--coral-deep); }
+
+    .feature-screen { padding-bottom: 34px; background: #f8f8fa; }
+    .feature-screen-head { padding: 14px 13px 12px; background: #fff; }
+    .feature-screen-head small, .feature-screen-head strong { display: block; }
+    .feature-screen-head small { color: #9093a0; font-size: 6px; font-weight: 800; letter-spacing: .1em; }
+    .feature-screen-head strong { margin-top: 4px; font-size: 13px; }
+    .challenge-cover { margin: 0 10px 10px; padding: 18px 13px 15px; background: linear-gradient(135deg, #5067c7, #303b86); color: #fff; }
+    .challenge-cover small, .challenge-cover strong, .challenge-cover span { display: block; }
+    .challenge-cover small { font-size: 6px; font-weight: 800; opacity: .74; }
+    .challenge-cover strong { max-width: 160px; margin: 8px 0 20px; font-size: 13px; line-height: 1.24; }
+    .challenge-cover span { font-size: 7px; }
+    .challenge-cover .progress-track { margin-top: 8px; background: rgba(255,255,255,.25); }
+    .challenge-cover .progress-track::after { background: var(--mint); }
+    .screen-section { margin: 9px 10px 0; padding: 11px; background: #fff; }
+    .screen-section-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 7px; font-weight: 800; }
+    .goal-row { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid #eceef2; }
+    .goal-row i { display: grid; width: 26px; height: 26px; place-items: center; border-radius: 50%; background: #e3f8f3; color: var(--mint-deep); font-style: normal; }
+    .goal-row b, .goal-row small { display: block; }
+    .goal-row b { font-size: 7px; }
+    .goal-row small { margin-top: 2px; color: #91939f; font-size: 5.5px; }
+    .goal-row em { color: var(--coral-deep); font-size: 6px; font-style: normal; font-weight: 800; }
+    .reward-ticket { position: absolute; right: 28px; bottom: 68px; z-index: 5; width: 150px; padding: 16px; border: 1px solid rgba(24,58,76,.12); background: #fff; box-shadow: 0 14px 30px rgba(24,58,76,.1); }
+    .reward-ticket small, .reward-ticket strong, .reward-ticket span { display: block; }
+    .reward-ticket small { color: var(--muted); font-size: .5rem; font-weight: 800; }
+    .reward-ticket strong { margin: 10px 0 18px; font-size: 1rem; line-height: 1.15; }
+    .reward-ticket span { padding-top: 10px; border-top: 1px solid var(--line); color: var(--coral-deep); font-size: .58rem; font-weight: 800; }
 
     .experience-accordion.tab-list { display: flex; max-width: none; flex-direction: column; gap: 0; padding: 0; border: 0; border-left: 1px solid var(--line); border-radius: 0; background: #fff; box-shadow: none; backdrop-filter: none; }
-    .experience-accordion .tab-btn { display: block; min-height: 112px; flex: 0 0 auto; padding: 26px 30px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: #fff; color: var(--ink); box-shadow: none; transform: none; }
+    .experience-accordion .tab-btn { display: block; min-height: 76px; flex: 0 0 76px; padding: 20px 26px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: #fff; color: var(--ink); box-shadow: none; transform: none; }
     .experience-accordion .tab-btn:last-child { border-bottom: 0; }
-    .experience-accordion .tab-btn:hover { background: #faf9f6; transform: none; }
-    .experience-accordion .tab-btn[aria-selected="true"] { flex: 1 1 auto; background: #f5f2ec; color: var(--ink); box-shadow: none; }
-    .experience-accordion .tab-heading { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 13px; }
-    .experience-accordion .tab-heading b { font-size: 1.42rem; letter-spacing: -.035em; }
-    .experience-accordion .tab-no { width: 32px; height: 32px; }
-    .experience-accordion .tab-btn[aria-selected="true"] .tab-no { border-color: var(--coral); background: var(--coral); color: #fff; }
-    .experience-accordion .tab-arrow { transition: transform .22s ease; }
-    .experience-accordion .tab-btn[aria-selected="true"] .tab-arrow { transform: rotate(90deg); }
-    .tab-detail { display: none; padding: 28px 0 4px 45px; }
+    .experience-accordion .tab-btn:hover { background: #fafcfc; transform: none; }
+    .experience-accordion .tab-btn[aria-selected="true"] { flex: 1 1 auto; background: #eff7f9; color: var(--ink); box-shadow: inset 3px 0 0 var(--coral); }
+    .experience-accordion .tab-heading { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; }
+    .experience-accordion .tab-heading b { font-size: 1.08rem; letter-spacing: -.025em; }
+    .experience-accordion .tab-no { width: 28px; height: 28px; border: 0; color: #8a9299; }
+    .experience-accordion .tab-btn[aria-selected="true"] .tab-no { background: var(--coral); color: #fff; }
+    .experience-accordion .tab-arrow { color: #737d84; transition: transform .22s ease; }
+    .experience-accordion .tab-btn[aria-selected="true"] .tab-arrow { color: var(--coral-deep); transform: rotate(90deg); }
+    .tab-detail { display: none; padding: 32px 16px 4px 40px; }
     .tab-btn[aria-selected="true"] .tab-detail { display: block; }
     .tab-detail strong, .tab-detail small, .tab-benefits { display: block; }
-    .tab-detail strong { max-width: 390px; font-size: 1.55rem; line-height: 1.18; letter-spacing: -.035em; }
-    .tab-detail small { max-width: 430px; margin-top: 13px; color: var(--muted); font-size: .76rem; line-height: 1.72; }
-    .tab-benefits { margin-top: 24px; color: var(--coral-deep); font-size: .64rem; font-weight: 800; }
+    .tab-detail strong { max-width: 360px; font-size: 1.42rem; line-height: 1.2; letter-spacing: -.035em; }
+    .tab-detail small { max-width: 400px; margin-top: 13px; color: var(--muted); font-size: .72rem; line-height: 1.7; }
+    .tab-benefits { margin-top: 24px; color: var(--coral-deep); font-size: .62rem; font-weight: 800; }
 
     .proof { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
     .proof::before { position: absolute; left: -140px; bottom: -180px; width: 430px; height: 430px; border: 90px solid rgba(65,216,180,.08); border-radius: 50%; content: ""; }
@@ -429,6 +464,7 @@
       .experience-showcase { grid-template-columns: 1fr; }
       .experience-visuals { min-height: 650px; }
       .experience-accordion.tab-list { max-width: none; border-top: 1px solid var(--line); border-left: 0; }
+      .experience-accordion .tab-btn[aria-selected="true"] { box-shadow: inset 3px 0 0 var(--coral); }
       .experience-panel { grid-template-columns: minmax(300px, .68fr) minmax(0, 1.32fr); }
       .panel-copy { padding-inline: 34px; }
       .proof-grid { grid-template-columns: .72fr 1.2fr; }
@@ -485,14 +521,18 @@
       .admin-main { padding: 10px; }
       .action-row span:last-child { display: none; }
       .experience-nav .experience-deck { margin-top: 4px; }
-      .experience-showcase { min-height: 0; border-radius: 20px; }
-      .experience-visuals { min-height: 610px; }
+      .experience-showcase { min-height: 0; border-radius: 0; }
+      .experience-visuals { min-height: 580px; }
+      .experience-visuals::after { left: 8%; }
       .experience-showcase .visual-label { display: none; }
-      .experience-showcase .phone-leaderboard { display: none; }
-      .experience-showcase .phone-summary { top: 10%; right: 21%; width: 58%; height: 84%; transform: none; }
-      .experience-accordion .tab-btn { padding: 22px 20px; }
-      .experience-accordion .tab-heading b { font-size: 1.15rem; }
-      .tab-detail { padding: 22px 0 2px 45px; }
+      .scene-stat, .reward-ticket { display: none; }
+      .experience-showcase .phone,
+      .experience-showcase .phone-summary,
+      .experience-showcase .phone-leaderboard { top: 50px; left: 50%; display: block; width: 214px; height: 490px; transform: translateX(-50%); }
+      .experience-showcase .admin-window { inset: 66px 10px 28px; }
+      .experience-accordion .tab-btn { min-height: 70px; flex-basis: 70px; padding: 20px 18px; }
+      .experience-accordion .tab-heading b { font-size: 1rem; }
+      .tab-detail { padding: 22px 0 2px 40px; }
       .tab-detail strong { font-size: 1.25rem; }
       .proof-grid { grid-template-columns: 1fr; }
       .feature-story { min-height: 520px; }
@@ -588,16 +628,10 @@
 
         <div class="experience-showcase reveal">
           <div class="experience-visuals">
-            <article class="experience-panel employee-panel-stage" id="employee-panel" role="tabpanel" aria-labelledby="employee-tab">
-              <div class="product-mockup employee-mock" role="img" aria-label="Vantage Fit employee app showing a mobile activity summary and leaderboard">
-                <div class="visual-label">Employee mobile experience</div>
-                <div class="panel-stat"><small>Challenge completion</small><strong>87%</strong></div>
-                <div class="phone phone-leaderboard">
-                  <div class="phone-bar"><span>3:44</span><span>● ● ●</span></div>
-                  <div class="leader-hero"><b>Team leaderboard</b><div class="leader-score"><span>YOUR RANK<br><strong>12th</strong></span><span class="avatar-ui">AT</span><span>POINTS<br><strong>412</strong></span></div></div>
-                  <div class="leader-tabs"><b>Weekly</b><span>Overall</span></div>
-                  <div class="leader-list"><div class="leader-row"><b>1</b><i>AT</i><div>Angu Tamba<span>Marketing</span></div><em>710</em></div><div class="leader-row"><b>2</b><i>MR</i><div>Mariam Ray<span>App Development</span></div><em>678</em></div><div class="leader-row"><b>3</b><i>JD</i><div>Johnny Doeish<span>Operations</span></div><em>634</em></div><div class="leader-row"><b>4</b><i>AS</i><div>Arya Singh<span>Brand Sales</span></div><em>610</em></div></div>
-                </div>
+            <article class="experience-panel" id="wellbeing-panel" role="tabpanel" aria-labelledby="wellbeing-tab">
+              <div class="product-mockup" role="img" aria-label="Vantage Fit mobile wellbeing summary">
+                <div class="visual-label">Vantage Fit mobile app</div>
+                <div class="scene-stat scene-stat-left"><small>STEPS TODAY</small><strong>5,988</strong></div>
                 <div class="phone phone-summary">
                   <div class="phone-bar"><span>9:41</span><span>●</span></div>
                   <div class="summary-head"><div><small>Wednesday, 16 July</small><strong>Your wellbeing</strong></div><span class="point-pill">2,500 pts</span></div>
@@ -607,27 +641,73 @@
                   <div class="achievement-strip"><div class="achievement"><i>✦</i><span><small>Current streak</small><b>7 active days</b></span></div><div class="achievement"><i>↗</i><span><small>Weekly rank</small><b>28 of 340</b></span></div></div>
                   <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
                 </div>
+                <div class="scene-stat scene-stat-right"><small>WEEKLY GOAL</small><strong>88%</strong></div>
               </div>
             </article>
 
-            <article class="experience-panel hr-panel-stage" id="hr-panel" role="tabpanel" aria-labelledby="hr-tab" hidden>
-              <div class="product-mockup hr-mock" role="img" aria-label="Vantage Fit HR dashboard showing enrollment, participation trends, wellness score and recommended actions">
+            <article class="experience-panel" id="challenges-panel" role="tabpanel" aria-labelledby="challenges-tab" hidden>
+              <div class="product-mockup" role="img" aria-label="Vantage Fit mobile team challenge screen">
+                <div class="visual-label">Team challenge</div>
+                <div class="scene-stat scene-stat-left"><small>TEAM MEMBERS</small><strong>340</strong></div>
+                <div class="phone feature-screen">
+                  <div class="phone-bar"><span>9:41</span><span>●</span></div>
+                  <div class="feature-screen-head"><small>MY CHALLENGES</small><strong>Keep your team moving</strong></div>
+                  <div class="challenge-cover"><small>ACTIVE · WEEK 5</small><strong>21 Days to Transform</strong><span>Weekly progress <b>88%</b></span><div class="progress-track"></div></div>
+                  <div class="screen-section"><div class="screen-section-title"><span>Today’s goals</span><span>2 of 3</span></div><div class="goal-row"><i>✓</i><div><b>7,000 steps</b><small>5,988 completed</small></div><em>86%</em></div><div class="goal-row"><i>✓</i><div><b>30 active minutes</b><small>31 completed</small></div><em>Done</em></div><div class="goal-row"><i>↗</i><div><b>Team check-in</b><small>Encourage your group</small></div><em>Open</em></div></div>
+                  <div class="screen-section"><div class="screen-section-title"><span>Team momentum</span><span>12 day streak</span></div><div class="trend-bars"><i style="height:44%"></i><i style="height:68%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:96%"></i></div></div>
+                  <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
+                </div>
+                <div class="scene-stat scene-stat-right"><small>COMPLETION</small><strong>87%</strong></div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="rewards-panel" role="tabpanel" aria-labelledby="rewards-tab" hidden>
+              <div class="product-mockup" role="img" aria-label="Vantage Fit mobile leaderboard and reward preview">
+                <div class="visual-label">Leaderboards and rewards</div>
+                <div class="phone phone-leaderboard">
+                  <div class="phone-bar"><span>3:44</span><span>● ● ●</span></div>
+                  <div class="leader-hero"><b>Team leaderboard</b><div class="leader-score"><span>YOUR RANK<br><strong>12th</strong></span><span class="avatar-ui">AT</span><span>POINTS<br><strong>412</strong></span></div></div>
+                  <div class="leader-tabs"><b>Weekly</b><span>Overall</span></div>
+                  <div class="leader-list"><div class="leader-row"><b>1</b><i>AT</i><div>Angu Tamba<span>Marketing</span></div><em>710</em></div><div class="leader-row"><b>2</b><i>MR</i><div>Mariam Ray<span>App Development</span></div><em>678</em></div><div class="leader-row"><b>3</b><i>JD</i><div>Johnny Doeish<span>Operations</span></div><em>634</em></div><div class="leader-row"><b>4</b><i>AS</i><div>Arya Singh<span>Brand Sales</span></div><em>610</em></div><div class="leader-row"><b>5</b><i>MS</i><div>Mohsen Salehi<span>Design</span></div><em>599</em></div></div>
+                  <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
+                </div>
+                <div class="reward-ticket"><small>REWARD UNLOCKED</small><strong>Choose a gift card</strong><span>Redeem 2,500 points →</span></div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="program-panel" role="tabpanel" aria-labelledby="program-tab" hidden>
+              <div class="product-mockup" role="img" aria-label="Vantage Fit HR program management dashboard">
                 <div class="visual-label">HR program workspace</div>
-                <div class="panel-stat"><small>Programs live</small><strong>12</strong></div>
                 <div class="admin-window">
-                  <div class="admin-top"><i></i><i></i><i></i><span>app.vantagefit.io / organization</span></div>
+                  <div class="admin-top"><i></i><i></i><i></i><span>app.vantagefit.io / programs</span></div>
                   <div class="admin-layout">
-                    <div class="admin-side"><b>VANTAGE FIT</b><span class="active">Overview</span><span>Wellness</span><span>Challenges</span><span>Programs</span><span>Reports</span><span>Rewards</span></div>
-                    <div class="admin-main"><div class="admin-toolbar"><div><small>ORGANIZATION</small><strong>Wellness overview</strong></div><span>Last 30 days⌄</span></div><div class="admin-metrics"><div class="admin-metric"><small>Enrolled users</small><strong>561</strong><em>↑ 8.4%</em></div><div class="admin-metric"><small>Active users</small><strong>300</strong><em>↑ 12.1%</em></div><div class="admin-metric"><small>Participation</small><strong>60%</strong><em>↑ 6.2%</em></div></div><div class="admin-dashboard"><div class="participation-chart"><div class="chart-head">Participation trend <span>+12% this month</span></div><div class="chart-bars"><i style="height:38%"></i><i style="height:52%"></i><i style="height:47%"></i><i style="height:68%"></i><i style="height:73%"></i><i style="height:86%"></i><i style="height:92%"></i></div></div><div class="wellness-card"><small>ORG WELLNESS SCORE</small><div class="score-ring"><b>43</b></div><p>Up 5 points this month</p></div></div><div class="insight-banner">✦ Leadership insight <span>Participation is strongest in team challenges</span></div><div class="action-row"><span>○ View inactive employees</span><span>○ Nudge low-participation teams</span><span>○ Export monthly report</span></div></div>
+                    <div class="admin-side"><b>VANTAGE FIT</b><span>Overview</span><span>Wellness</span><span>Challenges</span><span class="active">Programs</span><span>Reports</span><span>Rewards</span></div>
+                    <div class="admin-main"><div class="admin-toolbar"><div><small>PROGRAMS</small><strong>Active wellness programs</strong></div><span>＋ New program</span></div><div class="admin-metrics"><div class="admin-metric"><small>Programs live</small><strong>12</strong><em>3 launching soon</em></div><div class="admin-metric"><small>Enrolled users</small><strong>561</strong><em>↑ 8.4%</em></div><div class="admin-metric"><small>Active teams</small><strong>48</strong><em>Across 7 regions</em></div></div><div class="admin-dashboard"><div class="participation-chart"><div class="chart-head">Program participation <span>Last 8 weeks</span></div><div class="chart-bars"><i style="height:38%"></i><i style="height:48%"></i><i style="height:56%"></i><i style="height:63%"></i><i style="height:71%"></i><i style="height:79%"></i><i style="height:88%"></i></div></div><div class="wellness-card"><small>COMPLETION RATE</small><div class="score-ring"><b>87%</b></div><p>Up 9% from last cycle</p></div></div><div class="insight-banner">✦ Next launch <span>Global Steps Challenge · Monday</span></div><div class="action-row"><span>○ Manage participants</span><span>○ Send announcement</span><span>○ View schedule</span></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="analytics-panel" role="tabpanel" aria-labelledby="analytics-tab" hidden>
+              <div class="product-mockup" role="img" aria-label="Vantage Fit HR analytics dashboard">
+                <div class="visual-label">Analytics and insights</div>
+                <div class="admin-window">
+                  <div class="admin-top"><i></i><i></i><i></i><span>app.vantagefit.io / analytics</span></div>
+                  <div class="admin-layout">
+                    <div class="admin-side"><b>VANTAGE FIT</b><span>Overview</span><span>Wellness</span><span>Challenges</span><span>Programs</span><span class="active">Reports</span><span>Rewards</span></div>
+                    <div class="admin-main"><div class="admin-toolbar"><div><small>ORGANIZATION</small><strong>Participation analytics</strong></div><span>Last 30 days⌄</span></div><div class="admin-metrics"><div class="admin-metric"><small>Active users</small><strong>300</strong><em>↑ 12.1%</em></div><div class="admin-metric"><small>Participation</small><strong>60%</strong><em>↑ 6.2%</em></div><div class="admin-metric"><small>Avg. streak</small><strong>8.4</strong><em>days per user</em></div></div><div class="admin-dashboard"><div class="participation-chart"><div class="chart-head">Participation trend <span>+12% this month</span></div><div class="chart-bars"><i style="height:38%"></i><i style="height:52%"></i><i style="height:47%"></i><i style="height:68%"></i><i style="height:73%"></i><i style="height:86%"></i><i style="height:92%"></i></div></div><div class="wellness-card"><small>ORG WELLNESS SCORE</small><div class="score-ring"><b>43</b></div><p>Up 5 points this month</p></div></div><div class="insight-banner">✦ Leadership insight <span>Team challenges drive the strongest repeat participation</span></div><div class="action-row"><span>○ Compare teams</span><span>○ Schedule report</span><span>○ Export data</span></div></div>
                   </div>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="tab-list experience-accordion" role="tablist" aria-label="Choose platform experience">
-            <button class="tab-btn" id="employee-tab" type="button" role="tab" aria-selected="true" aria-controls="employee-panel" tabindex="0"><span class="tab-heading"><span class="tab-no">01</span><b>Employee experience</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>Wellness that fits real life.</strong><small>Daily activity, inclusive challenges, leaderboards, streaks, and rewards make progress easy to see and worth returning to.</small><span class="tab-benefits">Activity tracking · Team challenges · Global rewards</span></span></button>
-            <button class="tab-btn" id="hr-tab" type="button" role="tab" aria-selected="false" aria-controls="hr-panel" tabindex="-1"><span class="tab-heading"><span class="tab-no">02</span><b>HR program workspace</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>Clarity without the admin drag.</strong><small>Launch programs, follow participation, understand wellness patterns, and act on recommendations from one workspace.</small><span class="tab-benefits">Program management · Analytics · Reporting</span></span></button>
+          <div class="tab-list experience-accordion" role="tablist" aria-label="Explore Vantage Fit capabilities">
+            <button class="tab-btn" id="wellbeing-tab" type="button" role="tab" aria-selected="true" aria-controls="wellbeing-panel" tabindex="0"><span class="tab-heading"><span class="tab-no">01</span><b>Everyday wellbeing</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>A daily experience people want to return to.</strong><small>Activity, mindfulness, hydration, nutrition, and healthy habits come together in one simple mobile view.</small><span class="tab-benefits">Explore the employee app →</span></span></button>
+            <button class="tab-btn" id="challenges-tab" type="button" role="tab" aria-selected="false" aria-controls="challenges-panel" tabindex="-1"><span class="tab-heading"><span class="tab-no">02</span><b>Team challenges</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>Turn shared goals into visible momentum.</strong><small>Run step, multi-activity, mindfulness, and custom challenges for teams, regions, or the whole organization.</small><span class="tab-benefits">Explore team challenges →</span></span></button>
+            <button class="tab-btn" id="rewards-tab" type="button" role="tab" aria-selected="false" aria-controls="rewards-panel" tabindex="-1"><span class="tab-heading"><span class="tab-no">03</span><b>Leaderboards &amp; rewards</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>Recognize consistency, not just first place.</strong><small>Flexible leaderboards, points, badges, and a global rewards catalogue keep progress meaningful for more people.</small><span class="tab-benefits">Explore rewards →</span></span></button>
+            <button class="tab-btn" id="program-tab" type="button" role="tab" aria-selected="false" aria-controls="program-panel" tabindex="-1"><span class="tab-heading"><span class="tab-no">04</span><b>Program management</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>Launch and run programs without the admin drag.</strong><small>Build audiences, schedule communications, manage incentives, and follow every active program from one workspace.</small><span class="tab-benefits">Explore program management →</span></span></button>
+            <button class="tab-btn" id="analytics-tab" type="button" role="tab" aria-selected="false" aria-controls="analytics-panel" tabindex="-1"><span class="tab-heading"><span class="tab-no">05</span><b>Analytics &amp; insights</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>See what is working—and what to do next.</strong><small>Participation trends, team comparisons, and board-ready reporting turn program activity into clear decisions.</small><span class="tab-benefits">Explore analytics →</span></span></button>
           </div>
         </div>
       </div>
