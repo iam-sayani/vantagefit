@@ -1254,173 +1254,151 @@
     .tour-checks li p { color: var(--muted); font-size: .85rem; line-height: 1.55; margin-top: 4px; max-width: 390px; }
     .tour-checks li::before { content: "✓"; position: absolute; left: 0; top: 17px; color: #169d7e;
       font-size: 1rem; font-weight: 900; line-height: 1; }
-    /* ===== HTML product screens ===== */
+    /* ===== HTML product screens: matched to the live Vantage Fit app ===== */
     .ui-phones { position: relative; width: 100%; max-width: 452px; height: 470px; margin: 0 auto; }
-    .pw { position: absolute; border-radius: 30px; background: #16171d; padding: 7px;
+    .vp { position: absolute; border-radius: 30px; background: #16171d; padding: 7px;
       box-shadow: 0 2px 0 rgba(255,255,255,.16) inset, 0 26px 54px rgba(41,41,76,.26); }
-    .pw-front { left: 0; top: 3%; width: 51%; height: 97%; z-index: 2; }
-    .pw-back { right: 0; top: 0; width: 49%; height: 88%; z-index: 1; transform: rotate(1.2deg); }
-    .pw-not { position: absolute; z-index: 3; top: 13px; left: 50%; transform: translateX(-50%);
+    .vp-front { left: 0; top: 3%; width: 51%; height: 97%; z-index: 2; }
+    .vp-back { right: 0; top: 0; width: 49%; height: 88%; z-index: 1; }
+    .vp-not { position: absolute; z-index: 3; top: 13px; left: 50%; transform: translateX(-50%);
       width: 34%; height: 11px; border-radius: 99px; background: #16171d; }
-    .pw-scr { height: 100%; border-radius: 24px; background: #fff; overflow: hidden; padding: 20px 11px 8px;
-      color: var(--ink); display: flex; flex-direction: column; }
-    .pw-front .pw-scr { padding-bottom: 34px; }
-    .pw-sb { display: flex; align-items: center; justify-content: space-between; font-size: 6.6px; font-weight: 800; padding: 0 3px 6px; }
-    .pw-sb em { display: flex; gap: 1.6px; }
-    .pw-sb i { width: 4.6px; height: 4.6px; border-radius: 1px; background: rgba(41,41,76,.42); }
-    .pw-hd { display: flex; align-items: center; gap: 6px; padding: 1px 1px 8px; }
-    .pw-hd b { font-size: 10px; font-weight: 800; letter-spacing: -.02em; }
-    .pw-hd .pw-bk { font-size: 12px; line-height: 1; }
-    .pw-ib { margin-left: auto; width: 17px; height: 17px; border-radius: 50%; display: grid; place-items: center;
-      background: #f3f3f7; color: rgba(41,41,76,.6); }
-    .pw-ib svg { width: 9px; height: 9px; }
-    .pw-bk { margin: 0; background: none; }
+    .vp-scr { height: 100%; border-radius: 24px; background: #f5f6f8; overflow: hidden;
+      padding: 19px 9px 8px; color: var(--ink); }
+    .vp-back .vp-scr { padding-top: 12px; }
+    .vp-sb { display: flex; align-items: center; justify-content: space-between; font-size: 6.4px; font-weight: 800; padding: 0 3px 5px; }
+    .vp-sb em { display: flex; gap: 1.6px; }
+    .vp-sb i { width: 4.4px; height: 4.4px; border-radius: 1px; background: rgba(41,41,76,.45); }
+    .vp-nav { position: relative; text-align: center; padding: 3px 0 8px; }
+    .vp-nav b { font-size: 9px; font-weight: 700; }
+    .vp-bk { position: absolute; left: 2px; top: 0; font-size: 12px; color: rgba(41,41,76,.6); }
 
-    /* challenge hero */
-    .pw-hero { flex: none; position: relative; overflow: hidden; border-radius: 14px; padding: 10px; color: #fff;
-      background: linear-gradient(148deg, #5b4bd6 0%, #7c5cff 52%, #a06bf0 100%); }
-    .pw-hglow { position: absolute; inset: auto -20% -60% auto; width: 78%; aspect-ratio: 1; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,.34), transparent 68%); }
-    .pw-tag { position: relative; font-size: 5.4px; font-weight: 800; letter-spacing: .12em;
-      background: rgba(255,255,255,.22); border-radius: 99px; padding: 2.4px 7px; }
-    .pw-hmain { position: relative; display: flex; align-items: center; gap: 8px; margin-top: 7px; }
-    .pw-dial { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center;
-      background: conic-gradient(#fff calc(var(--p) * 1%), rgba(255,255,255,.26) 0); }
-    .pw-dial i { width: 29px; height: 29px; border-radius: 50%; background: rgba(255,255,255,.16);
-      backdrop-filter: blur(4px); display: grid; place-items: center; }
-    .pw-dial svg { width: 16px; height: 16px; }
-    .pw-hmain b { display: block; font-size: 10px; font-weight: 800; letter-spacing: -.025em; }
-    .pw-hmain span { display: block; font-size: 6.2px; opacity: .82; margin-top: 2px; }
-    .pw-hfoot { position: relative; display: flex; align-items: center; gap: 6px; margin-top: 8px;
-      border-top: 1px solid rgba(255,255,255,.2); padding-top: 6px; font-size: 6.2px; font-weight: 700; }
-    .pw-hfoot svg { width: 7px; height: 7px; fill: #ffd76a; stroke: none; vertical-align: -1px; margin-right: 3px; }
-    .pw-join { margin-left: auto; background: #fff; color: #5b4bd6; border-radius: 99px; padding: 2.4px 8px; font-weight: 800; }
+    .vp-weeks { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; margin-bottom: 7px; }
+    .vp-weeks span { display: grid; place-items: center; padding: 4px 0; border-radius: 5px; background: #fff;
+      border: 1px solid rgba(248,97,90,.4); font-size: 5px; font-weight: 700; color: #f8615a; line-height: 1.3; }
+    .vp-weeks span b { font-size: 7.4px; font-weight: 800; }
+    .vp-weeks span.on { background: #f8615a; border-color: #f8615a; color: rgba(255,255,255,.9); }
+    .vp-weeks span.on b { color: #fff; }
 
-    .pw-sec { flex: none; font-size: 6px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
-      color: rgba(41,41,76,.42); padding: 9px 2px 5px; }
-    .pw-sec2 { padding: 0 2px 5px; }
-    .pw-week { flex: none; margin-top: 9px; }
-    .pw-dots { display: flex; gap: 3px; }
-    .pw-dots i { flex: 1; height: 18px; border-radius: 5px; display: grid; place-items: center; font-style: normal;
-      font-size: 5.6px; font-weight: 800; background: #f3f3f7; color: rgba(41,41,76,.42); }
-    .pw-dots i.on { background: rgba(65,216,180,.2); color: #12856b; }
-    .pw-dots i.now { background: var(--coral); color: #fff; }
+    .vp-blue { border-radius: 8px 8px 10px 10px; background: #2f6feb; padding: 8px 8px 0; text-align: center; color: #fff; }
+    .vp-btop { display: flex; align-items: center; justify-content: space-between; }
+    .vp-i { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.22); display: grid; place-items: center;
+      font-size: 6px; font-weight: 800; font-style: italic; }
+    .vp-chat { font-size: 8px; }
+    .vp-title { font-size: 9.4px; font-weight: 700; margin: 2px 0 6px; }
+    .vp-avatar { width: 42px; height: 42px; margin: 0 auto 5px; border-radius: 50%; background: #f5c74a;
+      display: grid; place-items: center; font-size: 21px; }
+    .vp-sm { font-size: 5.4px; opacity: .9; }
+    .vp-theme { font-size: 8.6px; font-weight: 700; margin-top: 1px; }
+    .vp-rank { display: inline-block; margin-top: 5px; padding: 2.4px 11px; border-radius: 99px; background: #fff;
+      color: #2f6feb; font-size: 6px; font-weight: 700; }
+    .vp-fit { margin-top: 5px; }
+    .vp-prog { margin-top: 7px; background: #fff; border-radius: 7px; padding: 6px 7px 7px; color: var(--ink);
+      box-shadow: 0 2px 8px rgba(41,41,76,.08); }
+    .vp-ph { display: flex; justify-content: space-between; font-size: 5.8px; font-weight: 600; color: rgba(41,41,76,.65); }
+    .vp-pb { height: 3.4px; border-radius: 99px; background: #e9ecf1; margin: 5px 0 4px; overflow: hidden; }
+    .vp-pb i { display: block; height: 100%; border-radius: 99px; background: #00c2a8; }
+    .vp-pc { font-size: 5.4px; text-align: center; color: rgba(41,41,76,.6); }
 
-    .pw-task { flex: none; display: grid; grid-template-columns: 21px 1fr 25px; gap: 7px; align-items: center;
-      border-radius: 10px; padding: 6px 7px; margin-bottom: 4px; background: #fafafc; border: 1px solid rgba(41,41,76,.06); }
-    .pw-ti { width: 21px; height: 21px; border-radius: 7px; display: grid; place-items: center; color: var(--c);
-      background: color-mix(in srgb, var(--c) 14%, white); }
-    .pw-ti svg { width: 11px; height: 11px; }
-    .pw-tx b { display: block; font-size: 6.6px; font-weight: 700; letter-spacing: -.01em; }
-    .pw-pts { display: inline-flex; align-items: center; gap: 2px; margin-top: 3px; font-size: 5.4px; font-weight: 800;
-      color: #b8791f; background: rgba(246,185,59,.18); border-radius: 99px; padding: 1.6px 5px; }
-    .pw-pts svg { width: 6px; height: 6px; fill: #f6b93b; stroke: none; }
-    .pw-ring { width: 25px; height: 25px; border-radius: 50%; display: grid; place-items: center;
-      background: conic-gradient(#41d8b4 calc(var(--p) * 1%), #ebedf1 0); }
-    .pw-ring i { width: 18.5px; height: 18.5px; border-radius: 50%; background: #fff; display: grid; place-items: center;
-      font-style: normal; font-size: 5.4px; font-weight: 800; }
-    .pw-tabs { position: absolute; left: 7px; right: 7px; bottom: 7px; height: 26px; border-radius: 0 0 24px 24px;
-      display: flex; align-items: center; justify-content: space-around; background: rgba(255,255,255,.86);
-      backdrop-filter: blur(8px); border-top: 1px solid rgba(41,41,76,.07); }
-    .pw-tabs span { color: rgba(41,41,76,.3); }
-    .pw-tabs span.on { color: var(--coral); }
-    .pw-tabs svg { width: 11px; height: 11px; }
+    .vp-h2 { font-size: 8px; font-weight: 700; padding: 9px 2px 6px; }
+    .vp-h2a { padding-top: 8px; }
+    .vp-task { background: #fff; border-radius: 8px; padding: 7px; margin-bottom: 6px; box-shadow: 0 1px 5px rgba(41,41,76,.07); }
+    .vp-trow { display: grid; grid-template-columns: 20px 1fr auto; gap: 6px; align-items: center; }
+    .vp-pin { width: 20px; height: 20px; border-radius: 50%; background: #f1f3f7; display: grid; place-items: center; font-size: 10px; }
+    .vp-tt b { display: block; font-size: 6px; font-weight: 700; line-height: 1.35; }
+    .vp-tt i { display: block; font-style: normal; font-size: 5.4px; font-weight: 600; color: #f8615a; margin-top: 3px; }
+    .vp-rw { text-align: center; }
+    .vp-rl { display: block; font-size: 3.8px; font-weight: 700; letter-spacing: .06em; color: rgba(41,41,76,.42); margin-bottom: 2px; }
+    .vp-ring { width: 25px; height: 25px; margin: 0 auto; border-radius: 50%; display: grid; place-items: center;
+      background: conic-gradient(#00c2a8 calc(var(--p) * 1%), #e9ecf1 0); }
+    .vp-ring i { width: 19px; height: 19px; border-radius: 50%; background: #fff; display: grid; place-items: center;
+      font-style: normal; line-height: 1; }
+    .vp-ring b { display: block; font-size: 5.4px; font-weight: 800; }
+    .vp-ring em { display: block; font-style: normal; font-size: 3.2px; color: rgba(41,41,76,.5); }
+    .vp-brow { display: grid; grid-template-columns: auto 1fr; gap: 7px; align-items: center; margin-top: 7px; }
+    .vp-btn { display: inline-flex; align-items: center; gap: 4px; background: #f8615a; color: #fff; border-radius: 99px;
+      padding: 3px 8px; font-size: 4.8px; font-weight: 800; letter-spacing: .04em; }
+    .vp-btn em { font-style: normal; font-size: 6px; opacity: .8; }
+    .vp-tp span { display: block; font-size: 3.6px; font-weight: 700; letter-spacing: .05em; color: rgba(41,41,76,.4); text-align: right; }
+    .vp-tb { height: 2.6px; border-radius: 99px; background: #e9ecf1; margin: 2.5px 0 1.5px; overflow: hidden; }
+    .vp-tb i { display: block; height: 100%; border-radius: 99px; background: #00c2a8; }
+    .vp-tp u { display: block; text-decoration: none; font-size: 3.6px; color: rgba(41,41,76,.4); text-align: right; }
 
-    /* rewards screen */
-    .pw-bal { flex: none; position: relative; overflow: hidden; border-radius: 14px; padding: 10px 11px; color: #fff;
-      background: linear-gradient(140deg, #F15162, #f4705a 62%, #f6993b); }
-    .pw-bl { font-size: 5.4px; font-weight: 800; letter-spacing: .12em; opacity: .9; }
-    .pw-bal b { display: block; font-size: 21px; font-weight: 800; letter-spacing: -.04em; line-height: 1.1; margin-top: 2px; }
-    .pw-bc { font-size: 5.8px; font-weight: 700; opacity: .88; }
-    .pw-cta { position: absolute; right: 10px; bottom: 10px; background: #fff; color: var(--coral);
-      border-radius: 99px; padding: 3px 9px; font-size: 6px; font-weight: 800; }
-    .pw-gifts { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-    .pw-g { border: 1px solid rgba(41,41,76,.08); border-radius: 10px; padding: 7px; background: #fff; }
-    .pw-g span { display: grid; place-items: center; width: 19px; height: 19px; border-radius: 6px; color: var(--c);
-      background: color-mix(in srgb, var(--c) 13%, white); }
-    .pw-g svg { width: 10px; height: 10px; }
-    .pw-g b { display: block; font-size: 6.4px; font-weight: 800; margin-top: 5px; }
-    .pw-g i { font-style: normal; font-size: 5.4px; font-weight: 700; color: rgba(41,41,76,.45); }
-    .pw-lb { flex: none; display: grid; gap: 4px; }
-    .pw-lr { display: flex; align-items: center; gap: 6px; border-radius: 9px; padding: 5px 7px; background: #fafafc;
-      border: 1px solid rgba(41,41,76,.06); }
-    .pw-rk { width: 13px; height: 13px; flex: none; border-radius: 50%; display: grid; place-items: center;
-      font-size: 5.2px; font-weight: 800; background: #ebedf1; color: rgba(41,41,76,.55); }
-    .pw-rk1 { background: #f6b93b; color: #fff; }
-    .pw-av { width: 15px; height: 15px; flex: none; border-radius: 50%; background: linear-gradient(140deg, var(--a), var(--b)); }
-    .pw-lr b { font-size: 6.4px; font-weight: 700; }
-    .pw-lr em { margin-left: auto; font-style: normal; font-size: 7px; font-weight: 800; }
-    .pw-me { background: rgba(241,81,98,.06); border-color: rgba(241,81,98,.22); }
-    .pw-me em { color: var(--coral); }
+    .vp-lead { display: flex; align-items: center; gap: 8px; background: #fff; border-radius: 8px; padding: 8px;
+      box-shadow: 0 1px 5px rgba(41,41,76,.07); }
+    .vp-you span { display: inline-block; background: #fdf0d0; color: #a97b14; border-radius: 3px; padding: 1.6px 5px;
+      font-size: 4.4px; font-weight: 800; }
+    .vp-you b { display: block; font-size: 9px; font-weight: 800; color: #2f6feb; margin-top: 3px; }
+    .vp-you em { font-style: normal; font-size: 4.6px; }
+    .vp-face { width: 27px; height: 27px; border-radius: 50%; margin: 0 auto;
+      background: linear-gradient(150deg, #f4c9ae, #c98d68); border: 1.6px solid #00c2a8; }
+    .vp-sc { text-align: right; }
+    .vp-sc span { font-size: 4.4px; font-weight: 800; letter-spacing: .06em; color: #2f6feb; }
+    .vp-sc b { display: block; font-size: 10px; font-weight: 800; color: #2f6feb; }
 
-    /* ===== dashboard ===== */
+    /* ===== admin console: matched to the live Vantage Fit dashboard ===== */
     .ui-dash { display: flex; width: min(100%, 580px); margin: 0 auto; border-radius: 16px; overflow: hidden;
       background: #fff; border: 1px solid rgba(41,41,76,.1); box-shadow: 0 26px 56px rgba(41,41,76,.16); }
-    .dw-rail { width: 38px; flex: none; background: #1f2029; display: flex; flex-direction: column; align-items: center;
-      gap: 7px; padding: 11px 0 12px; }
-    .dw-logo { width: 15px; height: 15px; border-radius: 5px; background: linear-gradient(140deg, #F15162, #f4705a); margin-bottom: 5px; }
-    .dw-ri { width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; color: rgba(255,255,255,.42); }
-    .dw-ri svg { width: 11px; height: 11px; }
-    .dw-ri.on { background: rgba(241,81,98,.9); color: #fff; }
-    .dw-last { margin-top: auto; }
-    .dw-main { flex: 1; padding: 11px 13px 12px; min-width: 0; }
-    .dw-top { display: flex; align-items: center; gap: 8px; padding-bottom: 10px; }
-    .dw-top b { display: block; font-size: 9.5px; font-weight: 800; letter-spacing: -.02em; }
-    .dw-top > div span { font-size: 6.4px; color: rgba(41,41,76,.48); }
-    .dw-srch { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; font-size: 6.2px; font-weight: 600;
-      color: rgba(41,41,76,.45); background: #f4f4f8; border-radius: 99px; padding: 3.5px 9px; }
-    .dw-srch svg { width: 8px; height: 8px; }
-    .dw-date { font-size: 6.2px; font-weight: 700; color: rgba(41,41,76,.55); border: 1px solid rgba(41,41,76,.13);
-      border-radius: 99px; padding: 3.5px 8px; }
-    .dw-me { width: 17px; height: 17px; border-radius: 50%; background: linear-gradient(140deg, #f4a58c, #d97a5c); }
-    .dw-kpis { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 7px; }
-    .dw-k { position: relative; overflow: hidden; border: 1px solid rgba(41,41,76,.09); border-radius: 10px; padding: 8px 9px; }
-    .dw-k > span { font-size: 5.4px; font-weight: 800; letter-spacing: .1em; color: rgba(41,41,76,.45); }
-    .dw-kv { display: flex; align-items: baseline; gap: 5px; margin-top: 2px; }
-    .dw-kv b { font-size: 17px; font-weight: 800; letter-spacing: -.035em; }
-    .dw-kv em { font-style: normal; font-size: 6px; font-weight: 800; color: #169d7e; }
-    .dw-sub { font-style: normal; font-size: 5.6px; color: rgba(41,41,76,.42); }
-    .dw-k1 { background: linear-gradient(150deg, rgba(241,81,98,.07), rgba(241,81,98,.02)); border-color: rgba(241,81,98,.26); }
-    .dw-k1 .dw-kv b { color: var(--coral); font-size: 20px; }
-    .dw-k1 > span { color: #c2394a; }
-    .dw-mini { margin-top: 4px; height: 15px; }
-    .dw-mini svg { width: 100%; height: 100%; }
-    .dw-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 7px; margin-top: 7px; }
-    .dw-card { border: 1px solid rgba(41,41,76,.09); border-radius: 10px; padding: 9px; }
-    .dw-ch { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
-    .dw-ch b { font-size: 6.6px; font-weight: 800; }
-    .dw-leg { display: inline-flex; align-items: center; gap: 4px; font-size: 5.4px; color: rgba(41,41,76,.45); }
-    .dw-leg i { width: 9px; height: 2.4px; border-radius: 2px; background: #169d7e; }
-    .dw-chart { display: flex; flex-direction: column; }
-    .dw-plot { position: relative; flex: 1; min-height: 78px; }
-    .dw-plot svg { display: block; width: 100%; height: 100%; }
-    .dw-tgt { position: absolute; left: 0; right: 0; top: 19%; border-top: 1px dashed rgba(241,81,98,.55); }
-    .dw-tgt i { position: absolute; right: 0; top: -8px; font-style: normal; font-size: 5px; font-weight: 800; color: var(--coral); }
-    .dw-mo { display: flex; justify-content: space-between; margin-top: 4px; font-size: 5.2px; color: rgba(41,41,76,.4); }
-    .dw-side { display: grid; gap: 7px; align-content: start; }
-    .dw-score { text-align: center; }
-    .dw-score b { display: block; font-size: 6.4px; font-weight: 800; }
-    .dw-donut { width: 54px; height: 54px; margin: 7px auto 5px; border-radius: 50%; display: grid; place-items: center;
+    .vd-rail { width: 36px; flex: none; background: #23243a; display: flex; flex-direction: column; align-items: center;
+      gap: 6px; padding: 10px 0 11px; }
+    .vd-logo { width: 14px; height: 14px; border-radius: 50%; background: #F15162; margin-bottom: 4px; }
+    .vd-ri { width: 21px; height: 21px; border-radius: 6px; display: grid; place-items: center; color: rgba(255,255,255,.4); }
+    .vd-ri svg { width: 10px; height: 10px; }
+    .vd-ri.on { background: #F15162; color: #fff; }
+    .vd-last { margin-top: auto; }
+    .vd-main { flex: 1; padding: 10px 12px 11px; min-width: 0; }
+    .vd-top { display: flex; align-items: center; gap: 8px; padding-bottom: 9px; }
+    .vd-top b { display: block; font-size: 9.4px; font-weight: 800; letter-spacing: -.02em; }
+    .vd-top > div span { font-size: 6px; color: rgba(41,41,76,.48); }
+    .vd-date { margin-left: auto; font-size: 6px; font-weight: 700; color: rgba(41,41,76,.55);
+      border: 1px solid rgba(41,41,76,.13); border-radius: 99px; padding: 3px 8px; }
+    .vd-me { width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(140deg, #f4a58c, #d97a5c); }
+    .vd-kpis { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 6px; }
+    .vd-k { position: relative; overflow: hidden; border: 1px solid rgba(41,41,76,.1); border-radius: 9px; padding: 7px 8px; }
+    .vd-k > span { display: block; font-size: 5.2px; font-weight: 800; letter-spacing: .09em; color: rgba(41,41,76,.45); }
+    .vd-k > b { display: block; font-size: 16px; font-weight: 800; letter-spacing: -.035em; margin-top: 2px; }
+    .vd-k > i { display: block; font-style: normal; font-size: 5.4px; color: rgba(41,41,76,.42); margin-top: 1px; }
+    .vd-kv { display: flex; align-items: baseline; gap: 5px; }
+    .vd-kv b { font-size: 16px; font-weight: 800; letter-spacing: -.035em; }
+    .vd-kv em { font-style: normal; font-size: 5.8px; font-weight: 800; color: #169d7e; }
+    .vd-k1 { background: rgba(241,81,98,.045); border-color: rgba(241,81,98,.3); border-top: 2.4px solid #F15162; }
+    .vd-k1 > span { color: #c2394a; }
+    .vd-k1 > b { color: #F15162; font-size: 19px; }
+    .vd-spark { position: absolute; right: 7px; bottom: 6px; width: 46px; height: 15px; }
+    .vd-spark svg { width: 100%; height: 100%; }
+    .vd-ai { display: flex; align-items: center; gap: 7px; margin-top: 6px; padding: 6px 9px; border-radius: 9px;
+      background: #faf9ff; border: 1px solid rgba(124,92,255,.2); }
+    .vd-sp { color: #7c5cff; font-size: 9px; }
+    .vd-ai b { display: block; font-size: 5.2px; font-weight: 800; letter-spacing: .1em; color: #7c5cff; }
+    .vd-ai p { font-size: 6.2px; color: rgba(41,41,76,.62); margin-top: 1px; }
+    .vd-gen { margin-left: auto; flex: none; font-size: 5.4px; font-weight: 700; color: #7c5cff;
+      border: 1px solid rgba(124,92,255,.28); border-radius: 99px; padding: 2.4px 7px; background: #fff; }
+    .vd-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 6px; margin-top: 6px; }
+    .vd-card { border: 1px solid rgba(41,41,76,.1); border-radius: 9px; padding: 8px; }
+    .vd-card > b { display: block; font-size: 6.2px; font-weight: 800; }
+    .vd-srow { display: flex; align-items: center; gap: 9px; margin-top: 6px; }
+    .vd-donut { width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center;
       background: conic-gradient(#F15162 calc(var(--p) * 1%), #eef0f4 0); }
-    .dw-donut i { width: 41px; height: 41px; border-radius: 50%; background: #fff; display: grid; place-items: center;
-      font-style: normal; font-size: 13px; font-weight: 800; letter-spacing: -.03em; }
-    .dw-up { font-size: 5.6px; font-weight: 800; color: #169d7e; }
-    .dw-dep b { display: block; font-size: 6.4px; font-weight: 800; margin-bottom: 6px; }
-    .dw-dr { display: grid; grid-template-columns: 40px 1fr 16px; gap: 5px; align-items: center; margin-bottom: 4.5px; }
-    .dw-dr span { font-size: 5.4px; color: rgba(41,41,76,.5); }
-    .dw-dr i { height: 5px; border-radius: 99px; background: #eef0f4; position: relative; }
-    .dw-dr i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 99px; background: var(--c); }
-    .dw-dr em { font-style: normal; font-size: 5.6px; font-weight: 800; text-align: right; }
-    .dw-ins { display: flex; align-items: center; gap: 7px; margin-top: 7px; padding: 8px 10px; border-radius: 10px;
-      background: linear-gradient(100deg, #f7f4ff, #f2fbf8); border: 1px solid rgba(124,92,255,.18); }
-    .dw-sp { color: #7c5cff; font-size: 9px; }
-    .dw-ins b { font-size: 6.6px; font-weight: 800; }
-    .dw-ins em { margin-left: auto; font-style: normal; font-size: 6.2px; font-weight: 800; color: #7c5cff; white-space: nowrap; }
+    .vd-donut i { width: 35px; height: 35px; border-radius: 50%; background: #fff; display: grid; place-items: center;
+      font-style: normal; font-size: 12px; font-weight: 800; letter-spacing: -.03em; }
+    .vd-brk { flex: 1; }
+    .vd-brk div { display: flex; justify-content: space-between; padding: 1.6px 0; font-size: 5.4px; }
+    .vd-brk span { color: rgba(41,41,76,.55); }
+    .vd-brk em { font-style: normal; font-weight: 800; }
+    .vd-gr { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 4px; margin-top: 7px; }
+    .vd-gr b { display: block; font-size: 10px; font-weight: 800; letter-spacing: -.02em; }
+    .vd-gr span { font-size: 5.2px; color: rgba(41,41,76,.45); }
+    .vd-ask { display: flex; align-items: center; gap: 7px; margin-top: 6px; border-radius: 99px; padding: 6px 10px;
+      font-size: 6.4px; font-weight: 600; color: rgba(41,41,76,.6); background: #fff;
+      border: 1px solid rgba(124,92,255,.28); }
+    .vd-orb { width: 14px; height: 14px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 7px;
+      background: linear-gradient(120deg, #7c5cff, #F15162); }
+    .vd-ask kbd { margin-left: auto; font-family: inherit; font-size: 5.4px; font-weight: 800; color: rgba(41,41,76,.5);
+      background: #f4f4f8; border: 1px solid rgba(41,41,76,.12); border-radius: 4px; padding: 1.6px 5px; }
     @media (max-width: 900px) { .ui-phones { height: 420px; } }
     @media (max-width: 560px) {
       .ui-phones { height: 356px; }
-      .dw-rail { width: 30px; } .dw-srch, .dw-ins em { display: none; }
-      .dw-grid { grid-template-columns: 1fr; } .dw-kpis { grid-template-columns: 1fr 1fr; }
+      .vd-rail { width: 28px; } .vd-grid { grid-template-columns: 1fr; }
+      .vd-kpis { grid-template-columns: 1fr 1fr; } .vd-gen { display: none; }
     }
 
     .tour-media { display: grid; min-height: 310px; place-items: center; padding: 0; }
@@ -2194,68 +2172,92 @@
               </ul>
             </div>
             <div class="tour-media">
-                            <div class="ui-phones" role="img" aria-label="Vantage Fit app: a 21 Days of Yoga challenge with daily tasks and progress, and a rewards screen with a points balance, gift cards and a team leaderboard">
-                <div class="pw pw-back">
-                  <div class="pw-not"></div>
-                  <div class="pw-scr">
-                    <div class="pw-sb"><span>9:41</span><em><i></i><i></i><i></i></em></div>
-                    <div class="pw-hd"><b>Rewards</b><span class="pw-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.4"/><path d="M5 20c.9-3.4 3.6-5 7-5s6.1 1.6 7 5"/></svg></span></div>
-                    <div class="pw-bal">
-                      <span class="pw-bl">POINTS BALANCE</span>
-                      <b>1,420</b>
-                      <span class="pw-bc">+180 this week</span>
-                      <span class="pw-cta">Redeem</span>
+                                          <div class="ui-phones" role="img" aria-label="Vantage Fit app: the 21 Days of Yoga challenge with weekly progress, this week's tasks with points and completion rings, and the team leaderboard">
+                <div class="vp vp-back">
+                  <div class="vp-not"></div>
+                  <div class="vp-scr">
+                    <p class="vp-h2">This Week&rsquo;s Task</p>
+                    <div class="vp-task">
+                      <div class="vp-trow">
+                        <span class="vp-pin">&#128681;</span>
+                        <div class="vp-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i></div>
+                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
+                        <div class="vp-ring" style="--p:35"><i><b>35%</b><em>completed</em></i></div></div>
+                      </div>
+                      <div class="vp-brow">
+                        <span class="vp-btn">START ACTIVITY<em>&raquo;</em></span>
+                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:18%"></i></div><u>0 &nbsp; 50</u></div>
+                      </div>
                     </div>
-                    <p class="pw-sec">Popular rewards</p>
-                    <div class="pw-gifts">
-                      <div class="pw-g" style="--c:#ff9900"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><b>Amazon</b><i>500 pts</i></div>
-                      <div class="pw-g" style="--c:#0a7d4b"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><b>Starbucks</b><i>350 pts</i></div>
+                    <div class="vp-task">
+                      <div class="vp-trow">
+                        <span class="vp-pin">&#129496;</span>
+                        <div class="vp-tt"><b>Do Yoga for 5 days<br>in this week</b><i>Earn 100 points</i></div>
+                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
+                        <div class="vp-ring" style="--p:40"><i><b>2/5</b><em>completed</em></i></div></div>
+                      </div>
+                      <div class="vp-brow">
+                        <span class="vp-btn">LOG ACTIVITY<em>&raquo;</em></span>
+                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:100%"></i></div><u>100%</u></div>
+                      </div>
                     </div>
-                    <p class="pw-sec">Team leaderboard</p>
-                    <div class="pw-lb">
-                      <div class="pw-lr"><span class="pw-rk pw-rk1">1</span><i class="pw-av" style="--a:#f6b93b;--b:#e58e26"></i><b>Aisha K.</b><em>640</em></div>
-                      <div class="pw-lr"><span class="pw-rk">2</span><i class="pw-av" style="--a:#7ecfc0;--b:#41d8b4"></i><b>Marco P.</b><em>587</em></div>
-                      <div class="pw-lr pw-me"><span class="pw-rk">12</span><i class="pw-av" style="--a:#f4a58c;--b:#d97a5c"></i><b>You</b><em>412</em></div>
+                    <div class="vp-task">
+                      <div class="vp-trow">
+                        <span class="vp-pin">&#128512;</span>
+                        <div class="vp-tt"><b>Log your mood 4<br>days this week.</b><i>Earn 100 points</i></div>
+                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
+                        <div class="vp-ring" style="--p:75"><i><b>3/4</b><em>completed</em></i></div></div>
+                      </div>
+                      <div class="vp-brow">
+                        <span class="vp-btn">TRACK MOOD<em>&raquo;</em></span>
+                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:100%"></i></div><u>100%</u></div>
+                      </div>
+                    </div>
+                    <p class="vp-h2">Leaderboard</p>
+                    <div class="vp-lead">
+                      <div class="vp-you"><span>&#11088; YOU</span><b>12<em>th</em></b></div>
+                      <span class="vp-face"></span>
+                      <div class="vp-sc"><span>SCORE</span><b>412</b></div>
                     </div>
                   </div>
                 </div>
 
-                <div class="pw pw-front">
-                  <div class="pw-not"></div>
-                  <div class="pw-scr">
-                    <div class="pw-sb"><span>9:41</span><em><i></i><i></i><i></i></em></div>
-                    <div class="pw-hd"><span class="pw-ib pw-bk">&#8249;</span><b>Challenge</b><span class="pw-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.4"/><path d="M5 20c.9-3.4 3.6-5 7-5s6.1 1.6 7 5"/></svg></span></div>
-                    <div class="pw-hero">
-                      <div class="pw-hglow"></div>
-                      <span class="pw-tag">DAY 5 OF 21</span>
-                      <div class="pw-hmain">
-                        <div class="pw-dial" style="--p:24"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.4" r="1.9"/><path d="M12 7v5m0 0-4 3m4-3 4 3M7 20h10"/><path d="M8.5 12.2 5 10.6M15.5 12.2 19 10.6"/></svg></i></div>
-                        <div><b>21 Days of Yoga</b><span>A better start &middot; Rank 12</span></div>
+                <div class="vp vp-front">
+                  <div class="vp-not"></div>
+                  <div class="vp-scr">
+                    <div class="vp-sb"><span>9:41</span><em><i></i><i></i><i></i></em></div>
+                    <div class="vp-nav"><span class="vp-bk">&#8249;</span><b>Challenge Info</b></div>
+                    <div class="vp-weeks">
+                      <span class="on">Week<b>1</b></span><span>Week<b>2</b></span><span>Week<b>3</b></span><span>Week<b>4</b></span>
+                    </div>
+                    <div class="vp-blue">
+                      <div class="vp-btop"><span class="vp-i">i</span><span class="vp-chat">&#128172;</span></div>
+                      <p class="vp-title">21 Days of Yoga</p>
+                      <div class="vp-avatar">&#129496;</div>
+                      <p class="vp-sm">Theme of the week</p>
+                      <p class="vp-theme">A better start</p>
+                      <span class="vp-rank">Rank 12</span>
+                      <p class="vp-sm vp-fit">Earn 300 Fit Points</p>
+                      <div class="vp-prog">
+                        <div class="vp-ph"><span>Challenge Progress</span><span>Day 5</span></div>
+                        <div class="vp-pb"><i style="width:55%"></i></div>
+                        <p class="vp-pc">55% Tasks Completed</p>
                       </div>
-                      <div class="pw-hfoot"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>300 Fit Points</span><span class="pw-join">Joined</span></div>
                     </div>
-                    <div class="pw-week">
-                      <p class="pw-sec pw-sec2">This week</p>
-                      <div class="pw-dots"><i class="on">M</i><i class="on">T</i><i class="on">W</i><i class="now">T</i><i>F</i><i>S</i><i>S</i></div>
-                    </div>
-                    <p class="pw-sec">Today&rsquo;s tasks</p>
-                    <div class="pw-task">
-                      <span class="pw-ti" style="--c:#F15162"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4.5a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2Z"/><path d="m8 21 2.4-4.6 2.1-1.6-.9-4.4-2.9 1.9-1.3 3"/><path d="m12.6 10.4 2.8-1.1 2.6 1.8 2 2.4"/><path d="m13.1 14.8 2.6 2.1.8 4.1"/></svg></span>
-                      <div class="pw-tx"><b>Jog or run 5 km</b><span class="pw-pts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>100</span></div>
-                      <div class="pw-ring" style="--p:35"><i>35%</i></div>
-                    </div>
-                    <div class="pw-task">
-                      <span class="pw-ti" style="--c:#41d8b4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.4" r="1.9"/><path d="M12 7v5m0 0-4 3m4-3 4 3M7 20h10"/><path d="M8.5 12.2 5 10.6M15.5 12.2 19 10.6"/></svg></span>
-                      <div class="pw-tx"><b>Yoga flow, 20 min</b><span class="pw-pts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>180</span></div>
-                      <div class="pw-ring" style="--p:40"><i>2/5</i></div>
-                    </div>
-                    <div class="pw-task">
-                      <span class="pw-ti" style="--c:#F6993B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M9 10h.01M15 10h.01M8.6 14.4a4.2 4.2 0 0 0 6.8 0"/></svg></span>
-                      <div class="pw-tx"><b>Log your mood</b><span class="pw-pts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>90</span></div>
-                      <div class="pw-ring" style="--p:75"><i>3/4</i></div>
+                    <p class="vp-h2 vp-h2a">This Week&rsquo;s Task</p>
+                    <div class="vp-task">
+                      <div class="vp-trow">
+                        <span class="vp-pin">&#128681;</span>
+                        <div class="vp-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i></div>
+                        <div class="vp-rw"><span class="vp-rl">TASK PROGRESS</span>
+                        <div class="vp-ring" style="--p:35"><i><b>35%</b><em>completed</em></i></div></div>
+                      </div>
+                      <div class="vp-brow">
+                        <span class="vp-btn">START ACTIVITY<em>&raquo;</em></span>
+                        <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:18%"></i></div><u>0 &nbsp; 50</u></div>
+                      </div>
                     </div>
                   </div>
-                  <div class="pw-tabs"><span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v8a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 19Z"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4m0 0h11l-2.4 3.6L17 11H6"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.4"/><path d="M5 20c.9-3.4 3.6-5 7-5s6.1 1.6 7 5"/></svg></span></div>
                 </div>
               </div>
             </div>
@@ -2271,60 +2273,54 @@
               <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days &divide; enrolled employees.</p>
             </div>
             <div class="tour-media tour-frame">
-                            <div class="ui-dash" role="img" aria-label="Vantage Fit admin console: participation rate against target, enrolled and active users, participation trend, organisation wellness score, participation by department and an AI insight">
-                <div class="dw-rail">
-                  <span class="dw-logo"></span>
-                  <span class="dw-ri on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="3.6" width="7" height="7" rx="1.6"/><rect x="13.4" y="3.6" width="7" height="7" rx="1.6"/><rect x="3.6" y="13.4" width="7" height="7" rx="1.6"/><rect x="13.4" y="13.4" width="7" height="7" rx="1.6"/></svg></span><span class="dw-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4m0 0h11l-2.4 3.6L17 11H6"/></svg></span>
-                  <span class="dw-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V11M10 19V5M16 19v-6M21 19H3"/></svg></span><span class="dw-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><span class="dw-ri dw-last"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 4.2V2m0 20v-2.2M19.8 12H22M2 12h2.2M17.5 6.5 19 5M5 19l1.5-1.5M17.5 17.5 19 19M5 5l1.5 1.5"/></svg></span>
+                                          <div class="ui-dash" role="img" aria-label="Vantage Fit admin dashboard: enrolled and active users, participation rate, AI leadership insights, organisation wellness score with its breakdown, daily activity averages, and the ask-anything bar">
+                <div class="vd-rail">
+                  <span class="vd-logo"></span>
+                  <span class="vd-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="3.6" width="7" height="7" rx="1.6"/><rect x="13.4" y="3.6" width="7" height="7" rx="1.6"/><rect x="3.6" y="13.4" width="7" height="7" rx="1.6"/><rect x="13.4" y="13.4" width="7" height="7" rx="1.6"/></svg></span><span class="vd-ri on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4m0 0h11l-2.4 3.6L17 11H6"/></svg></span>
+                  <span class="vd-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V11M10 19V5M16 19v-6M21 19H3"/></svg></span><span class="vd-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/></svg></span><span class="vd-ri vd-last"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 4.2V2m0 20v-2.2M19.8 12H22M2 12h2.2"/></svg></span>
                 </div>
-                <div class="dw-main">
-                  <div class="dw-top">
-                    <div><b>Participation overview</b><span>All employees &middot; last 30 days</span></div>
-                    <span class="dw-srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-3.6-3.6"/></svg>Search</span>
-                    <span class="dw-date">Jun 29 &ndash; Jul 28</span>
-                    <i class="dw-me"></i>
+                <div class="vd-main">
+                  <div class="vd-top">
+                    <div><b>Wellness overview</b><span>All employees &middot; last 30 days</span></div>
+                    <span class="vd-date">Jun 29 &ndash; Jul 28</span>
+                    <i class="vd-me"></i>
                   </div>
-                  <div class="dw-kpis">
-                    <div class="dw-k dw-k1">
-                      <span>PARTICIPATION RATE</span>
-                      <div class="dw-kv"><b>68%</b><em>&#9650; 7 pts</em></div>
-                      <div class="dw-mini"><svg viewBox="0 0 90 26" preserveAspectRatio="none"><path d="M0 22 C14 21 22 17 34 14 S60 7 90 3" fill="none" stroke="#F15162" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+                  <div class="vd-kpis">
+                    <div class="vd-k"><span>ENROLLED USERS</span><b>561</b><i>across all countries</i></div>
+                    <div class="vd-k"><span>ACTIVE USERS</span><div class="vd-kv"><b>300</b><em>&#9650; 12</em></div><i>vs previous period</i></div>
+                    <div class="vd-k vd-k1"><span>PARTICIPATION RATE</span><b>60%</b><i>of enrolled employees</i>
+                      <div class="vd-spark"><svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M0 20 C12 19 20 15 32 12 S56 5 80 2" fill="none" stroke="#F15162" stroke-width="2.2" stroke-linecap="round"/></svg></div>
                     </div>
-                    <div class="dw-k"><span>ENROLLED</span><div class="dw-kv"><b>2,140</b></div><i class="dw-sub">across 12 countries</i></div>
-                    <div class="dw-k"><span>ACTIVE THIS WEEK</span><div class="dw-kv"><b>1,455</b><em>&#9650; 12</em></div><i class="dw-sub">vs previous week</i></div>
                   </div>
-                  <div class="dw-grid">
-                    <div class="dw-card dw-chart">
-                      <div class="dw-ch"><b>Participation over time</b><span class="dw-leg"><i></i>30-day rate</span></div>
-                      <div class="dw-plot">
-                        <span class="dw-tgt"><i>75% target</i></span>
-                        <svg viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
-                          <defs><linearGradient id="dwF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#41d8b4" stop-opacity=".38"/><stop offset="1" stop-color="#41d8b4" stop-opacity="0"/></linearGradient></defs>
-                          <g stroke="rgba(41,41,76,.07)"><line x1="0" y1="28" x2="320" y2="28"/><line x1="0" y1="60" x2="320" y2="60"/><line x1="0" y1="92" x2="320" y2="92"/></g>
-                          <path d="M0 94 C36 92 54 84 88 79 S150 60 184 52 S250 32 320 22 L320 110 L0 110Z" fill="url(#dwF)"/>
-                          <path d="M0 94 C36 92 54 84 88 79 S150 60 184 52 S250 32 320 22" fill="none" stroke="#169d7e" stroke-width="2.8" stroke-linecap="round"/>
-                          <circle cx="320" cy="22" r="4" fill="#169d7e" stroke="#fff" stroke-width="2.4"/>
-                        </svg>
+                  <div class="vd-ai">
+                    <span class="vd-sp">&#10022;</span>
+                    <div><b>LEADERSHIP INSIGHTS</b><p>Participation is steady this quarter. Team challenges are the strongest driver.</p></div>
+                    <span class="vd-gen">&#10022; AI-generated</span>
+                  </div>
+                  <div class="vd-grid">
+                    <div class="vd-card vd-score">
+                      <b>Org Wellness Score</b>
+                      <div class="vd-srow">
+                        <div class="vd-donut" style="--p:43"><i>43</i></div>
+                        <div class="vd-brk">
+                          <div><span>Health baselines</span><em>89</em></div>
+                          <div><span>Participation</span><em>44</em></div>
+                          <div><span>Activity levels</span><em>33</em></div>
+                          <div><span>Adherence</span><em>13</em></div>
+                        </div>
                       </div>
-                      <div class="dw-mo"><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span></div>
                     </div>
-                    <div class="dw-side">
-                      <div class="dw-card dw-score">
-                        <b>Org wellness score</b>
-                        <div class="dw-donut" style="--p:72"><i>72</i></div>
-                        <span class="dw-up">&#9650; 6 vs last quarter</span>
-                      </div>
-                      <div class="dw-card dw-dep">
-                        <b>By department</b>
-                        <div class="dw-dr"><span>Engineering</span><i style="--w:82%;--c:#41d8b4"></i><em>82</em></div>
-                        <div class="dw-dr"><span>Product</span><i style="--w:74%;--c:#41d8b4"></i><em>74</em></div>
-                        <div class="dw-dr"><span>Operations</span><i style="--w:66%;--c:#F6993B"></i><em>66</em></div>
-                        <div class="dw-dr"><span>Support</span><i style="--w:57%;--c:#F15162"></i><em>57</em></div>
-                        <div class="dw-dr"><span>Sales</span><i style="--w:49%;--c:#F15162"></i><em>49</em></div>
+                    <div class="vd-card vd-glance">
+                      <b>At a Glance &middot; daily averages</b>
+                      <div class="vd-gr">
+                        <div><b>7,580</b><span>steps</span></div>
+                        <div><b>45 min</b><span>active</span></div>
+                        <div><b>30 min</b><span>mindful</span></div>
+                        <div><b>8 hrs</b><span>sleep</span></div>
                       </div>
                     </div>
                   </div>
-                  <div class="dw-ins"><span class="dw-sp">&#10022;</span><b>Support and Sales sit below the 75% target.</b><em>Launch a team challenge &rarr;</em></div>
+                  <div class="vd-ask"><span class="vd-orb">&#10022;</span>Ask Vantage Fit anything<kbd>&#8984;K</kbd></div>
                 </div>
               </div>
             </div>
