@@ -309,6 +309,42 @@
     .action-row { display: flex; gap: 6px; margin-top: 8px; }
     .action-row span { flex: 1; padding: 8px; border: 1px solid #e4e5e9; border-radius: 8px; background: #fff; color: #737680; font-size: 6px; }
 
+    /* Minimal split experience: product canvas + audience accordion */
+    .experience-nav { grid-template-columns: minmax(0, .9fr) minmax(360px, .62fr); margin-bottom: 42px; }
+    .experience-nav .experience-deck { align-self: end; margin: 0 0 7px; }
+    .experience-showcase { display: grid; min-height: 680px; grid-template-columns: 1.06fr .94fr; overflow: hidden; border: 1px solid rgba(29,34,40,.11); border-radius: 26px; background: #fff; box-shadow: 0 28px 72px rgba(29,34,40,.09); }
+    .experience-visuals { position: relative; min-width: 0; min-height: 680px; overflow: hidden; background: #dff3f5; }
+    .experience-visuals::before { position: absolute; inset: 0; background: linear-gradient(rgba(29,34,40,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(29,34,40,.045) 1px, transparent 1px); background-size: 92px 92px; content: ""; }
+    .experience-showcase .experience-panel { position: absolute; inset: 0; display: block; min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+    .experience-showcase .experience-panel[hidden] { display: none; }
+    .experience-showcase .product-mockup { position: absolute; inset: 0; min-height: 0; border-radius: 0; background: transparent; }
+    .experience-showcase .product-mockup::after { right: -100px; bottom: -140px; width: 350px; height: 350px; border-width: 68px; }
+    .employee-panel-stage::before { position: absolute; top: 75px; left: 55px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.72); content: ""; }
+    .employee-panel-stage::after { position: absolute; top: 115px; left: 85px; width: 230px; height: 1px; background: var(--coral); box-shadow: 0 28px 0 var(--mint), 0 56px 0 #5569ce; content: ""; transform: rotate(-10deg); }
+    .experience-showcase .visual-label { top: 26px; left: 28px; }
+    .experience-showcase .panel-stat { top: 24px; right: 26px; }
+    .experience-showcase .phone-leaderboard { left: 10%; bottom: -4%; width: min(34%, 220px); height: 74%; transform: rotate(-1.2deg); }
+    .experience-showcase .phone-summary { top: 12%; right: 12%; width: min(36%, 232px); height: 80%; transform: rotate(.8deg); }
+    .experience-showcase .admin-window { inset: 13% 5% 6%; }
+
+    .experience-accordion.tab-list { display: flex; max-width: none; flex-direction: column; gap: 0; padding: 0; border: 0; border-left: 1px solid var(--line); border-radius: 0; background: #fff; box-shadow: none; backdrop-filter: none; }
+    .experience-accordion .tab-btn { display: block; min-height: 112px; flex: 0 0 auto; padding: 26px 30px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: #fff; color: var(--ink); box-shadow: none; transform: none; }
+    .experience-accordion .tab-btn:last-child { border-bottom: 0; }
+    .experience-accordion .tab-btn:hover { background: #faf9f6; transform: none; }
+    .experience-accordion .tab-btn[aria-selected="true"] { flex: 1 1 auto; background: #f5f2ec; color: var(--ink); box-shadow: none; }
+    .experience-accordion .tab-heading { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 13px; }
+    .experience-accordion .tab-heading b { font-size: 1.42rem; letter-spacing: -.035em; }
+    .experience-accordion .tab-no { width: 32px; height: 32px; }
+    .experience-accordion .tab-btn[aria-selected="true"] .tab-no { border-color: var(--coral); background: var(--coral); color: #fff; }
+    .experience-accordion .tab-arrow { transition: transform .22s ease; }
+    .experience-accordion .tab-btn[aria-selected="true"] .tab-arrow { transform: rotate(90deg); }
+    .tab-detail { display: none; padding: 28px 0 4px 45px; }
+    .tab-btn[aria-selected="true"] .tab-detail { display: block; }
+    .tab-detail strong, .tab-detail small, .tab-benefits { display: block; }
+    .tab-detail strong { max-width: 390px; font-size: 1.55rem; line-height: 1.18; letter-spacing: -.035em; }
+    .tab-detail small { max-width: 430px; margin-top: 13px; color: var(--muted); font-size: .76rem; line-height: 1.72; }
+    .tab-benefits { margin-top: 24px; color: var(--coral-deep); font-size: .64rem; font-weight: 800; }
+
     .proof { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
     .proof::before { position: absolute; left: -140px; bottom: -180px; width: 430px; height: 430px; border: 90px solid rgba(65,216,180,.08); border-radius: 50%; content: ""; }
     .proof-grid { position: relative; display: grid; grid-template-columns: .7fr 1fr .9fr; gap: 24px; align-items: stretch; }
@@ -390,6 +426,9 @@
       .experience-nav h2 { max-width: 760px; }
       .experience-deck { max-width: 680px; }
       .tab-list { max-width: 620px; }
+      .experience-showcase { grid-template-columns: 1fr; }
+      .experience-visuals { min-height: 650px; }
+      .experience-accordion.tab-list { max-width: none; border-top: 1px solid var(--line); border-left: 0; }
       .experience-panel { grid-template-columns: minmax(300px, .68fr) minmax(0, 1.32fr); }
       .panel-copy { padding-inline: 34px; }
       .proof-grid { grid-template-columns: .72fr 1.2fr; }
@@ -445,6 +484,16 @@
       .admin-side { padding-inline: 7px; }
       .admin-main { padding: 10px; }
       .action-row span:last-child { display: none; }
+      .experience-nav .experience-deck { margin-top: 4px; }
+      .experience-showcase { min-height: 0; border-radius: 20px; }
+      .experience-visuals { min-height: 610px; }
+      .experience-showcase .visual-label { display: none; }
+      .experience-showcase .phone-leaderboard { display: none; }
+      .experience-showcase .phone-summary { top: 10%; right: 21%; width: 58%; height: 84%; transform: none; }
+      .experience-accordion .tab-btn { padding: 22px 20px; }
+      .experience-accordion .tab-heading b { font-size: 1.15rem; }
+      .tab-detail { padding: 22px 0 2px 45px; }
+      .tab-detail strong { font-size: 1.25rem; }
       .proof-grid { grid-template-columns: 1fr; }
       .feature-story { min-height: 520px; }
       .quote-stack { grid-template-columns: 1fr; }
@@ -533,67 +582,53 @@
           <div>
             <span class="eyebrow">One connected experience</span>
             <h2 id="experience-heading">Made for people.<br>Built for HR.</h2>
-            <p class="experience-deck">The same platform keeps employees moving and gives program owners clarity—without making either side work harder.</p>
           </div>
-          <div class="tab-list" role="tablist" aria-label="Choose platform experience">
-            <button class="tab-btn" id="employee-tab" type="button" role="tab" aria-selected="true" aria-controls="employee-panel" tabindex="0"><span class="tab-no">01</span><span class="tab-copy"><b>Employee app</b><small>Join, track &amp; redeem</small></span><span class="tab-arrow">→</span></button>
-            <button class="tab-btn" id="hr-tab" type="button" role="tab" aria-selected="false" aria-controls="hr-panel" tabindex="-1"><span class="tab-no">02</span><span class="tab-copy"><b>HR workspace</b><small>Launch, manage &amp; measure</small></span><span class="tab-arrow">→</span></button>
-          </div>
+          <p class="experience-deck">The same platform keeps employees moving and gives program owners clarity—without making either side work harder.</p>
         </div>
 
-        <div class="experience-panels reveal">
-          <article class="experience-panel" id="employee-panel" role="tabpanel" aria-labelledby="employee-tab">
-            <div class="panel-copy"><span class="eyebrow">Momentum people feel</span><h3>Wellness that fits real life.</h3><ul class="feature-list"><li><b>Something for more people</b><p>Physical, mental, and everyday wellbeing across different interests and abilities.</p></li><li><b>Progress people can feel</b><p>Daily goals, streaks, and teams turn a distant goal into a clear next step.</p></li><li><b>Rewards worth earning</b><p>Points convert into a global catalogue employees recognize and redeem.</p></li></ul></div>
-            <div class="product-mockup employee-mock" role="img" aria-label="Vantage Fit employee app showing a leaderboard, challenge progress, activity and points">
-              <div class="visual-label">Vantage Fit employee app</div>
-              <div class="panel-stat"><small>Challenge completion</small><strong>87%</strong></div>
-              <div class="phone phone-leaderboard">
-                <div class="phone-bar"><span>3:44</span><span>● ● ●</span></div>
-                <div class="leader-hero"><b>Team leaderboard</b><div class="leader-score"><span>YOUR RANK<br><strong>12th</strong></span><span class="avatar-ui">AT</span><span>POINTS<br><strong>412</strong></span></div></div>
-                <div class="leader-tabs"><b>Weekly</b><span>Overall</span></div>
-                <div class="leader-list">
-                  <div class="leader-row"><b>1</b><i>AT</i><div>Angu Tamba<span>Marketing</span></div><em>710</em></div>
-                  <div class="leader-row"><b>2</b><i>MR</i><div>Mariam Ray<span>App Development</span></div><em>678</em></div>
-                  <div class="leader-row"><b>3</b><i>JD</i><div>Johnny Doeish<span>Operations</span></div><em>634</em></div>
-                  <div class="leader-row"><b>4</b><i>AS</i><div>Arya Singh<span>Brand Sales</span></div><em>610</em></div>
-                  <div class="leader-row"><b>5</b><i>MS</i><div>Mohsen Salehi<span>Design</span></div><em>599</em></div>
+        <div class="experience-showcase reveal">
+          <div class="experience-visuals">
+            <article class="experience-panel employee-panel-stage" id="employee-panel" role="tabpanel" aria-labelledby="employee-tab">
+              <div class="product-mockup employee-mock" role="img" aria-label="Vantage Fit employee app showing a mobile activity summary and leaderboard">
+                <div class="visual-label">Employee mobile experience</div>
+                <div class="panel-stat"><small>Challenge completion</small><strong>87%</strong></div>
+                <div class="phone phone-leaderboard">
+                  <div class="phone-bar"><span>3:44</span><span>● ● ●</span></div>
+                  <div class="leader-hero"><b>Team leaderboard</b><div class="leader-score"><span>YOUR RANK<br><strong>12th</strong></span><span class="avatar-ui">AT</span><span>POINTS<br><strong>412</strong></span></div></div>
+                  <div class="leader-tabs"><b>Weekly</b><span>Overall</span></div>
+                  <div class="leader-list"><div class="leader-row"><b>1</b><i>AT</i><div>Angu Tamba<span>Marketing</span></div><em>710</em></div><div class="leader-row"><b>2</b><i>MR</i><div>Mariam Ray<span>App Development</span></div><em>678</em></div><div class="leader-row"><b>3</b><i>JD</i><div>Johnny Doeish<span>Operations</span></div><em>634</em></div><div class="leader-row"><b>4</b><i>AS</i><div>Arya Singh<span>Brand Sales</span></div><em>610</em></div></div>
+                </div>
+                <div class="phone phone-summary">
+                  <div class="phone-bar"><span>9:41</span><span>●</span></div>
+                  <div class="summary-head"><div><small>Wednesday, 16 July</small><strong>Your wellbeing</strong></div><span class="point-pill">2,500 pts</span></div>
+                  <div class="activity-ring"><span class="ring"></span><div class="activity-data"><span>Steps covered <b>5,988</b>/7,000</span><span>Active minutes <b>31</b>/60 mins</span></div></div>
+                  <div class="challenge-ui"><div>Week 5<br>21 Days to Transform: Strength, Stamina, and Sweat</div><div class="challenge-progress">Weekly progress: <b>88%</b><div class="progress-track"></div></div></div>
+                  <div class="mini-trends"><div class="trend-card"><b>Avg steps</b><div class="trend-bars"><i style="height:55%"></i><i style="height:82%"></i><i style="height:68%"></i><i style="height:91%"></i><i style="height:76%"></i></div></div><div class="trend-card"><b>Active minutes</b><div class="trend-bars"><i style="height:46%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:86%"></i><i style="height:70%"></i></div></div></div>
+                  <div class="achievement-strip"><div class="achievement"><i>✦</i><span><small>Current streak</small><b>7 active days</b></span></div><div class="achievement"><i>↗</i><span><small>Weekly rank</small><b>28 of 340</b></span></div></div>
+                  <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
                 </div>
               </div>
-              <div class="phone phone-summary">
-                <div class="phone-bar"><span>9:41</span><span>●</span></div>
-                <div class="summary-head"><div><small>Wednesday, 16 July</small><strong>Your wellbeing</strong></div><span class="point-pill">2,500 pts</span></div>
-                <div class="activity-ring"><span class="ring"></span><div class="activity-data"><span>Steps covered <b>5,988</b>/7,000</span><span>Active minutes <b>31</b>/60 mins</span></div></div>
-                <div class="challenge-ui"><div>Week 5<br>21 Days to Transform: Strength, Stamina, and Sweat</div><div class="challenge-progress">Weekly progress: <b>88%</b><div class="progress-track"></div></div></div>
-                <div class="mini-trends"><div class="trend-card"><b>Avg steps</b><div class="trend-bars"><i style="height:55%"></i><i style="height:82%"></i><i style="height:68%"></i><i style="height:91%"></i><i style="height:76%"></i></div></div><div class="trend-card"><b>Active minutes</b><div class="trend-bars"><i style="height:46%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:86%"></i><i style="height:70%"></i></div></div></div>
-                <div class="achievement-strip"><div class="achievement"><i>✦</i><span><small>Current streak</small><b>7 active days</b></span></div><div class="achievement"><i>↗</i><span><small>Weekly rank</small><b>28 of 340</b></span></div></div>
-                <div class="phone-nav"><span>◉</span><span>♕</span><span>＋</span><span>▣</span><span>♙</span></div>
-              </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="experience-panel" id="hr-panel" role="tabpanel" aria-labelledby="hr-tab" hidden>
-            <div class="panel-copy"><span class="eyebrow">Clarity for program owners</span><h3>Run wellness without running in circles.</h3><ul class="feature-list"><li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li><li><b>See participation clearly</b><p>Follow rolling rates, trend direction, and teams needing a new approach.</p></li><li><b>One connected program</b><p>Manage challenges, engagement, rewards, and reporting in one place.</p></li></ul></div>
-            <div class="product-mockup hr-mock" role="img" aria-label="Vantage Fit HR dashboard showing enrollment, participation trends, wellness score and recommended actions">
-              <div class="visual-label">Vantage Fit admin workspace</div>
-              <div class="panel-stat"><small>Programs live</small><strong>12</strong></div>
-              <div class="admin-window">
-                <div class="admin-top"><i></i><i></i><i></i><span>app.vantagefit.io / organization</span></div>
-                <div class="admin-layout">
-                  <div class="admin-side"><b>VANTAGE FIT</b><span class="active">Overview</span><span>Wellness</span><span>Challenges</span><span>Programs</span><span>Reports</span><span>Rewards</span></div>
-                  <div class="admin-main">
-                    <div class="admin-toolbar"><div><small>ORGANIZATION</small><strong>Wellness overview</strong></div><span>Last 30 days⌄</span></div>
-                    <div class="admin-metrics"><div class="admin-metric"><small>Enrolled users</small><strong>561</strong><em>↑ 8.4%</em></div><div class="admin-metric"><small>Active users</small><strong>300</strong><em>↑ 12.1%</em></div><div class="admin-metric"><small>Participation</small><strong>60%</strong><em>↑ 6.2%</em></div></div>
-                    <div class="admin-dashboard">
-                      <div class="participation-chart"><div class="chart-head">Participation trend <span>+12% this month</span></div><div class="chart-bars"><i style="height:38%"></i><i style="height:52%"></i><i style="height:47%"></i><i style="height:68%"></i><i style="height:73%"></i><i style="height:86%"></i><i style="height:92%"></i></div></div>
-                      <div class="wellness-card"><small>ORG WELLNESS SCORE</small><div class="score-ring"><b>43</b></div><p>Up 5 points this month</p></div>
-                    </div>
-                    <div class="insight-banner">✦ Leadership insight <span>Participation is strongest in team challenges</span></div>
-                    <div class="action-row"><span>○ View inactive employees</span><span>○ Nudge low-participation teams</span><span>○ Export monthly report</span></div>
+            <article class="experience-panel hr-panel-stage" id="hr-panel" role="tabpanel" aria-labelledby="hr-tab" hidden>
+              <div class="product-mockup hr-mock" role="img" aria-label="Vantage Fit HR dashboard showing enrollment, participation trends, wellness score and recommended actions">
+                <div class="visual-label">HR program workspace</div>
+                <div class="panel-stat"><small>Programs live</small><strong>12</strong></div>
+                <div class="admin-window">
+                  <div class="admin-top"><i></i><i></i><i></i><span>app.vantagefit.io / organization</span></div>
+                  <div class="admin-layout">
+                    <div class="admin-side"><b>VANTAGE FIT</b><span class="active">Overview</span><span>Wellness</span><span>Challenges</span><span>Programs</span><span>Reports</span><span>Rewards</span></div>
+                    <div class="admin-main"><div class="admin-toolbar"><div><small>ORGANIZATION</small><strong>Wellness overview</strong></div><span>Last 30 days⌄</span></div><div class="admin-metrics"><div class="admin-metric"><small>Enrolled users</small><strong>561</strong><em>↑ 8.4%</em></div><div class="admin-metric"><small>Active users</small><strong>300</strong><em>↑ 12.1%</em></div><div class="admin-metric"><small>Participation</small><strong>60%</strong><em>↑ 6.2%</em></div></div><div class="admin-dashboard"><div class="participation-chart"><div class="chart-head">Participation trend <span>+12% this month</span></div><div class="chart-bars"><i style="height:38%"></i><i style="height:52%"></i><i style="height:47%"></i><i style="height:68%"></i><i style="height:73%"></i><i style="height:86%"></i><i style="height:92%"></i></div></div><div class="wellness-card"><small>ORG WELLNESS SCORE</small><div class="score-ring"><b>43</b></div><p>Up 5 points this month</p></div></div><div class="insight-banner">✦ Leadership insight <span>Participation is strongest in team challenges</span></div><div class="action-row"><span>○ View inactive employees</span><span>○ Nudge low-participation teams</span><span>○ Export monthly report</span></div></div>
                   </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </div>
+
+          <div class="tab-list experience-accordion" role="tablist" aria-label="Choose platform experience">
+            <button class="tab-btn" id="employee-tab" type="button" role="tab" aria-selected="true" aria-controls="employee-panel" tabindex="0"><span class="tab-heading"><span class="tab-no">01</span><b>Employee experience</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>Wellness that fits real life.</strong><small>Daily activity, inclusive challenges, leaderboards, streaks, and rewards make progress easy to see and worth returning to.</small><span class="tab-benefits">Activity tracking · Team challenges · Global rewards</span></span></button>
+            <button class="tab-btn" id="hr-tab" type="button" role="tab" aria-selected="false" aria-controls="hr-panel" tabindex="-1"><span class="tab-heading"><span class="tab-no">02</span><b>HR program workspace</b><span class="tab-arrow">→</span></span><span class="tab-detail"><strong>Clarity without the admin drag.</strong><small>Launch programs, follow participation, understand wellness patterns, and act on recommendations from one workspace.</small><span class="tab-benefits">Program management · Analytics · Reporting</span></span></button>
+          </div>
         </div>
       </div>
     </section>
