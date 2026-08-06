@@ -60,6 +60,7 @@
     h2 { font-size: clamp(1.9rem, 3.4vw, 3.2rem); }
     h3 { font-size: 1.15rem; }
 
+    section[id], header[id] { scroll-margin-top: var(--nav-h); }
     .shell { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
     .eyebrow {
       display: inline-flex;
@@ -154,9 +155,11 @@
 
     /* —— Nav —— */
     .nav {
-      position: sticky;
+      position: fixed;
       z-index: 40;
       top: 0;
+      left: 0;
+      right: 0;
       /* liquid glass: barely-there tint, heavy blur, lit top edge */
       border-bottom: 1px solid rgba(255, 255, 255, .5);
       background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.16));
@@ -371,18 +374,18 @@
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 0;
+      padding: var(--nav-h) 0 0;
       /* aurora mesh: brand red, teal and a mild orange bleeding into white */
       background:
-        radial-gradient(56% 44% at 76% 6%,   rgba(241, 81, 98, .26), transparent 66%),
-        radial-gradient(38% 32% at 95% 30%,  rgba(246,153, 59, .17), transparent 68%),
+        radial-gradient(56% 44% at 76% 6%,   rgba(241, 81, 98, .34), transparent 66%),
+        radial-gradient(38% 32% at 95% 30%,  rgba(246,153, 59, .26), transparent 68%),
         radial-gradient(44% 38% at 10% 10%,  rgba(65, 216,180, .17), transparent 70%),
         radial-gradient(54% 46% at 2% 90%,   rgba(65, 216,180, .24), transparent 68%),
-        radial-gradient(42% 36% at 48% 104%, rgba(246,153, 59, .13), transparent 70%),
-        radial-gradient(36% 30% at 60% 54%,  rgba(241, 81, 98, .07), transparent 72%),
+        radial-gradient(42% 36% at 48% 104%, rgba(246,153, 59, .20), transparent 70%),
+        radial-gradient(36% 30% at 60% 54%,  rgba(241, 81, 98, .12), transparent 72%),
         #fff;
       color: var(--ink);
-      min-height: var(--hero-h);
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
