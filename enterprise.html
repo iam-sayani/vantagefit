@@ -171,7 +171,9 @@
     /* once past the hero, thicken the glass so links stay readable over content */
     .nav.lit {
       border-bottom-color: rgba(41,41,76,.09);
-      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.62));
+      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.82));
+      backdrop-filter: blur(26px) saturate(1.25);
+      -webkit-backdrop-filter: blur(26px) saturate(1.25);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 6px 22px rgba(41,41,76,.06);
     }
     .nav-inner {
@@ -1252,6 +1254,101 @@
     .tour-checks li p { color: var(--muted); font-size: .85rem; line-height: 1.55; margin-top: 4px; max-width: 390px; }
     .tour-checks li::before { content: "✓"; position: absolute; left: 0; top: 17px; color: #169d7e;
       font-size: 1rem; font-weight: 900; line-height: 1; }
+    /* ===== HTML product screens (replaces the product PNGs) ===== */
+    .ui-phones { position: relative; width: 100%; max-width: 430px; height: 380px; margin: 0 auto; font-size: 10px; }
+    .ui-ph { position: absolute; border-radius: 20px; background: #fff; overflow: hidden;
+      border: 1px solid rgba(41,41,76,.12); box-shadow: 0 20px 44px rgba(41,41,76,.16); }
+    .ui-ph-a { left: 2%; top: 6%; width: 50%; height: 92%; z-index: 2; }
+    .ui-ph-b { right: 2%; top: 0; width: 48%; height: 86%; z-index: 1; }
+    .ui-scr { padding: 8px 9px; height: 100%; overflow: hidden; color: var(--ink); }
+    .ui-sb { display: flex; justify-content: space-between; align-items: center; font-size: 7.5px; font-weight: 700; }
+    .ui-sb-r { display: flex; gap: 2px; }
+    .ui-sb-r i { width: 6px; height: 6px; border-radius: 1px; background: rgba(41,41,76,.5); }
+    .ui-nav { display: flex; align-items: center; gap: 6px; justify-content: center; position: relative;
+      font-size: 9px; font-weight: 700; padding: 6px 0 7px; }
+    .ui-back { position: absolute; left: 0; font-size: 12px; color: rgba(41,41,76,.55); line-height: 1; }
+    .ui-weeks { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; margin-bottom: 7px; }
+    .ui-weeks span { display: grid; place-items: center; padding: 3px 0; border-radius: 4px; background: #f2f2f6;
+      font-size: 5.6px; font-weight: 700; color: rgba(41,41,76,.55); line-height: 1.25; }
+    .ui-weeks span b { font-size: 8px; color: var(--ink); }
+    .ui-weeks span.on { background: var(--coral); color: rgba(255,255,255,.85); }
+    .ui-weeks span.on b { color: #fff; }
+    .ui-card { border-radius: 10px; padding: 8px; text-align: center; color: #fff;
+      background: linear-gradient(165deg, #2f6df6, #2455d8); }
+    .ui-card-top { display: flex; justify-content: space-between; font-size: 7px; }
+    .ui-i { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.25); display: grid; place-items: center; font-weight: 700; font-style: italic; }
+    .ui-ct { font-size: 10px; font-weight: 800; margin: 4px 0 6px; }
+    .ui-yoga { width: 40px; height: 40px; margin: 0 auto 6px; border-radius: 50%; background: #ffd76a; display: grid; place-items: center; font-size: 20px; }
+    .ui-sm { font-size: 6px; opacity: .82; }
+    .ui-bg { font-size: 9px; font-weight: 800; margin-top: 1px; }
+    .ui-pill { display: inline-block; margin-top: 5px; padding: 2px 9px; border-radius: 99px; background: #fff; color: #2455d8; font-size: 6.5px; font-weight: 800; }
+    .ui-mt { margin-top: 5px; }
+    .ui-prog { margin-top: 7px; }
+    .ui-prog-h { display: flex; justify-content: space-between; font-size: 6.5px; font-weight: 700; color: rgba(41,41,76,.6); }
+    .ui-bar { height: 3px; border-radius: 99px; background: #eceef3; margin: 4px 0 3px; overflow: hidden; }
+    .ui-bar i { display: block; height: 100%; border-radius: 99px; background: #41d8b4; }
+    .ui-cap { font-size: 6px; color: rgba(41,41,76,.5); text-align: center; }
+    .ui-h { font-size: 8px; font-weight: 800; padding: 6px 0 5px; }
+    .ui-h2 { padding-top: 8px; }
+    .ui-h3 { padding: 7px 0 4px; }
+    .ui-task { display: grid; grid-template-columns: 16px 1fr 26px; gap: 5px; align-items: start;
+      border: 1px solid rgba(41,41,76,.09); border-radius: 8px; padding: 6px; margin-bottom: 5px; background: #fff; }
+    .ui-ic { width: 16px; height: 16px; border-radius: 50%; display: grid; place-items: center; font-size: 8px;
+      background: color-mix(in srgb, var(--c) 16%, white); }
+    .ui-tt b { display: block; font-size: 6.4px; font-weight: 700; line-height: 1.35; }
+    .ui-tt i { display: block; font-style: normal; font-size: 5.6px; font-weight: 700; color: var(--coral); margin-top: 2px; }
+    .ui-btn { display: inline-block; margin-top: 4px; padding: 2px 6px; border-radius: 99px; font-size: 5.2px; font-weight: 800;
+      letter-spacing: .04em; background: var(--coral); color: #fff; }
+    .ui-btn-o { background: #fff; color: var(--coral); border: 1px solid rgba(241,81,98,.45); }
+    .ui-ring { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 5.6px; font-weight: 800;
+      background: conic-gradient(#41d8b4 calc(var(--p) * 1%), #edeff3 0); }
+    .ui-ring span { width: 19px; height: 19px; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+    .ui-lead { display: flex; align-items: center; gap: 5px; border: 1px solid rgba(41,41,76,.09); border-radius: 8px; padding: 5px 6px; }
+    .ui-you { padding: 1px 5px; border-radius: 99px; background: #ffd76a; font-size: 5.2px; font-weight: 800; }
+    .ui-rank { font-size: 8px; font-weight: 800; color: #2f6df6; }
+    .ui-rank i { font-size: 5px; font-style: normal; }
+    .ui-av { width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(140deg,#f4a58c,#d97a5c); margin-left: auto; }
+    .ui-score { text-align: right; }
+    .ui-score i { display: block; font-style: normal; font-size: 4.6px; font-weight: 800; color: rgba(41,41,76,.45); letter-spacing: .06em; }
+    .ui-score b { font-size: 9px; }
+
+    /* dashboard */
+    .ui-dash { width: min(100%, 560px); margin: 0 auto; border-radius: 14px; overflow: hidden; background: #fff;
+      border: 1px solid rgba(41,41,76,.11); box-shadow: 0 22px 50px rgba(41,41,76,.14); font-size: 10px; }
+    .ui-dbar { display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: #f7f7fa; border-bottom: 1px solid rgba(41,41,76,.08); }
+    .ui-dbar i { width: 7px; height: 7px; border-radius: 50%; background: #dcdfe6; }
+    .ui-dbar span { margin-left: 8px; font-size: 9px; font-weight: 800; }
+    .ui-dbar em { margin-left: auto; font-style: normal; font-size: 7.5px; font-weight: 700; color: rgba(41,41,76,.5);
+      border: 1px solid rgba(41,41,76,.14); border-radius: 99px; padding: 2px 8px; }
+    .ui-dbody { padding: 11px 12px 12px; }
+    .ui-kpis { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 7px; }
+    .ui-kpi { border: 1px solid rgba(41,41,76,.1); border-radius: 8px; padding: 7px 8px; }
+    .ui-kpi span { display: block; font-size: 5.6px; font-weight: 800; letter-spacing: .08em; color: rgba(41,41,76,.5); }
+    .ui-kpi b { display: block; font-size: 15px; font-weight: 800; letter-spacing: -.02em; margin-top: 2px; }
+    .ui-kpi i { display: block; font-style: normal; font-size: 6px; font-weight: 700; color: #169d7e; margin-top: 1px; }
+    .ui-kpi-hero { background: rgba(241,81,98,.05); border-color: rgba(241,81,98,.28); }
+    .ui-kpi-hero b { color: var(--coral); font-size: 19px; }
+    .ui-dgrid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 7px; margin-top: 7px; }
+    .ui-panel { border: 1px solid rgba(41,41,76,.1); border-radius: 8px; padding: 8px; }
+    .ui-pl { font-size: 5.8px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: rgba(41,41,76,.5); margin-bottom: 6px; }
+    .ui-chart { position: relative; }
+    .ui-chart svg { display: block; width: 100%; height: 62px; }
+    .ui-target { position: absolute; left: 0; right: 0; top: 20%; border-top: 1px dashed rgba(241,81,98,.5); }
+    .ui-target i { position: absolute; right: 0; top: -8px; font-style: normal; font-size: 5px; font-weight: 700; color: var(--coral); }
+    .ui-months { display: flex; justify-content: space-between; font-size: 5.2px; color: rgba(41,41,76,.42); margin-top: 3px; }
+    .ui-bars { display: flex; gap: 6px; align-items: flex-end; height: 68px; }
+    .ui-bars > div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+    .ui-bars i { display: block; width: 100%; height: var(--h); background: var(--c); border-radius: 3px; }
+    .ui-bars b { font-size: 5.4px; font-weight: 800; margin-top: 3px; }
+    .ui-bars span { font-size: 5px; color: rgba(41,41,76,.45); }
+    .ui-insight { display: flex; align-items: center; gap: 7px; margin-top: 7px; padding: 7px 9px; border-radius: 8px;
+      background: #faf9ff; border: 1px solid rgba(124,92,255,.2); }
+    .ui-spark { color: #7c5cff; font-size: 9px; }
+    .ui-insight b { font-size: 6.8px; font-weight: 800; }
+    .ui-insight i { font-style: normal; font-size: 6.2px; color: rgba(41,41,76,.55); margin-left: auto; }
+    @media (max-width: 900px) { .ui-phones { height: 330px; } .ui-dash { font-size: 9px; } }
+    @media (max-width: 560px) { .ui-phones { height: 300px; font-size: 9px; } .ui-insight i { display: none; } }
+
     .tour-media { display: grid; min-height: 310px; place-items: center; padding: 0; }
     .tour-media img { width: min(100%, 550px); height: auto; display: block; }
     .tour-frame { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
@@ -2023,7 +2120,70 @@
               </ul>
             </div>
             <div class="tour-media">
-              <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579791/product-images-hub/v-fit/vfit-challenge-mobile.png" alt="Vantage Fit mobile app showing a challenge journey, weekly tasks, and team leaderboard" width="820" height="541" loading="lazy" decoding="async">
+              <div class="ui-phones" role="img" aria-label="Vantage Fit app: a 21 Days of Yoga challenge with weekly progress, this week's tasks with points, and a team leaderboard">
+                <!-- back phone: tasks + leaderboard -->
+                <div class="ui-ph ui-ph-b">
+                  <div class="ui-scr">
+                    <div class="ui-h">This Week&rsquo;s Task</div>
+                    <div class="ui-task">
+                      <span class="ui-ic" style="--c:#F15162">&#128694;</span>
+                      <div class="ui-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i>
+                        <span class="ui-btn">START ACTIVITY</span></div>
+                      <div class="ui-ring" style="--p:35"><span>35%</span></div>
+                    </div>
+                    <div class="ui-task">
+                      <span class="ui-ic" style="--c:#41d8b4">&#129496;</span>
+                      <div class="ui-tt"><b>Do Yoga for 5 days<br>in this week</b><i>Earn 180 points</i>
+                        <span class="ui-btn ui-btn-o">LOG ACTIVITY</span></div>
+                      <div class="ui-ring" style="--p:40"><span>2/5</span></div>
+                    </div>
+                    <div class="ui-task">
+                      <span class="ui-ic" style="--c:#F6993B">&#128522;</span>
+                      <div class="ui-tt"><b>Log your mood 4<br>days this week</b><i>Earn 190 points</i>
+                        <span class="ui-btn ui-btn-o">TRACK MOOD</span></div>
+                      <div class="ui-ring" style="--p:75"><span>3/4</span></div>
+                    </div>
+                    <div class="ui-h ui-h2">Leaderboard</div>
+                    <div class="ui-lead">
+                      <span class="ui-you">YOU</span>
+                      <span class="ui-rank">12<i>th</i></span>
+                      <span class="ui-av"></span>
+                      <span class="ui-score"><i>SCORE</i><b>412</b></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- front phone: challenge detail -->
+                <div class="ui-ph ui-ph-a">
+                  <div class="ui-scr">
+                    <div class="ui-sb"><span>9:41</span><span class="ui-sb-r"><i></i><i></i><i></i></span></div>
+                    <div class="ui-nav"><span class="ui-back">&#8249;</span>Challenge Info</div>
+                    <div class="ui-weeks">
+                      <span class="on">Week<b>1</b></span><span>Week<b>2</b></span><span>Week<b>3</b></span><span>Week<b>4</b></span>
+                    </div>
+                    <div class="ui-card">
+                      <div class="ui-card-top"><span class="ui-i">i</span><span class="ui-chat">&#128172;</span></div>
+                      <p class="ui-ct">21 Days of Yoga</p>
+                      <div class="ui-yoga">&#129496;</div>
+                      <p class="ui-sm">Theme of the week</p>
+                      <p class="ui-bg">A better start</p>
+                      <span class="ui-pill">Rank 12</span>
+                      <p class="ui-sm ui-mt">Earn 300 Fit Points</p>
+                    </div>
+                    <div class="ui-prog">
+                      <div class="ui-prog-h"><span>Challenge Progress</span><span>Day 5</span></div>
+                      <div class="ui-bar"><i style="width:55%"></i></div>
+                      <p class="ui-cap">55% Tasks Completed</p>
+                    </div>
+                    <div class="ui-h ui-h3">This Week&rsquo;s Task</div>
+                    <div class="ui-task ui-task-s">
+                      <span class="ui-ic" style="--c:#F15162">&#128694;</span>
+                      <div class="ui-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i>
+                        <span class="ui-btn">START ACTIVITY</span></div>
+                      <div class="ui-ring" style="--p:35"><span>35%</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -2037,7 +2197,44 @@
               <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days &divide; enrolled employees.</p>
             </div>
             <div class="tour-media tour-frame">
-              <img src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_820/v1771579792/product-images-hub/v-fit/vfit-analytics-dashboard-desktop.png" alt="Vantage Fit admin analytics dashboard with activity insights and participation by department, gender, and location" width="820" height="668" loading="lazy" decoding="async">
+              <div class="ui-dash" role="img" aria-label="Vantage Fit admin dashboard: participation rate against target, enrolled and active users, participation trend, and participation by department">
+                <div class="ui-dbar"><i></i><i></i><i></i><span>Participation overview</span><em>Last 30 days</em></div>
+                <div class="ui-dbody">
+                  <div class="ui-kpis">
+                    <div class="ui-kpi ui-kpi-hero"><span>PARTICIPATION RATE</span><b>68%</b><i>&#9650; 7 pts this quarter</i></div>
+                    <div class="ui-kpi"><span>ENROLLED</span><b>2,140</b></div>
+                    <div class="ui-kpi"><span>ACTIVE</span><b>1,455</b></div>
+                    <div class="ui-kpi"><span>TARGET</span><b>75%</b></div>
+                  </div>
+                  <div class="ui-dgrid">
+                    <div class="ui-panel">
+                      <p class="ui-pl">Participation over time</p>
+                      <div class="ui-chart">
+                        <span class="ui-target"><i>75% target</i></span>
+                        <svg viewBox="0 0 300 108" preserveAspectRatio="none" aria-hidden="true">
+                          <defs><linearGradient id="uiFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#41d8b4" stop-opacity=".34"/><stop offset="1" stop-color="#41d8b4" stop-opacity="0"/></linearGradient></defs>
+                          <path d="M0 92 C34 90 52 82 82 78 S140 62 172 55 S232 38 300 28 L300 108 L0 108Z" fill="url(#uiFill)"/>
+                          <path d="M0 92 C34 90 52 82 82 78 S140 62 172 55 S232 38 300 28" fill="none" stroke="#169d7e" stroke-width="2.6" stroke-linecap="round"/>
+                          <circle cx="300" cy="28" r="3.4" fill="#169d7e"/>
+                        </svg>
+                      </div>
+                      <div class="ui-months"><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+                    </div>
+                    <div class="ui-panel">
+                      <p class="ui-pl">By department</p>
+                      <div class="ui-bars">
+                        <div><i style="--h:82%;--c:#41d8b4"></i><b>82</b><span>Eng</span></div>
+                        <div><i style="--h:74%;--c:#41d8b4"></i><b>74</b><span>Prod</span></div>
+                        <div><i style="--h:66%;--c:#F6993B"></i><b>66</b><span>Ops</span></div>
+                        <div><i style="--h:57%;--c:#F15162"></i><b>57</b><span>Sup</span></div>
+                        <div><i style="--h:49%;--c:#F15162"></i><b>49</b><span>Sales</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ui-insight"><span class="ui-spark">&#10022;</span><b>Support and Sales are below the 75% target.</b><i>Suggest a team challenge before the next window.</i></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
