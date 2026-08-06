@@ -1245,6 +1245,9 @@
     .seg.hr .seg-thumb { transform: translateX(156px); }
     .tabpane { display: grid; grid-template-columns: .88fr 1.12fr; gap: 52px; align-items: center;
       min-height: 390px; margin: 0; padding: 24px 12px 8px; overflow: hidden; }
+    /* grid children default to min-width:auto, so a fixed-width mock inflates the
+       whole pane past the panel; let both columns shrink instead */
+    .tabpane > * { min-width: 0; }
     .tabpane[hidden] { display: none; }
     .tabpane.is-in { animation: panein .5s cubic-bezier(.22,.9,.24,1); }
     @keyframes panein { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
@@ -1351,7 +1354,7 @@
     .vp-sc b { display: block; font-size: 12.2px; font-weight: 800; color: #2f6feb; }
 
     /* ===== admin console: matched to the live Vantage Fit dashboard ===== */
-    .ui-dash { display: flex; width: min(100%, 580px); margin: 0 auto; border-radius: 16px; overflow: hidden;
+    .ui-dash { display: flex; width: 100%; max-width: 580px; margin: 0 auto; border-radius: 16px; overflow: hidden;
       background: #fff; border: 1px solid rgba(41,41,76,.1); box-shadow: 0 26px 56px rgba(41,41,76,.16); }
     .vd-rail { width: 36px; flex: none; background: #23243a; display: flex; flex-direction: column; align-items: center;
       gap: 6px; padding: 10px 0 11px; }
@@ -2268,7 +2271,6 @@
                   <span class="vp-glare"></span>
                   </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
