@@ -1255,15 +1255,26 @@
     .tour-checks li::before { content: "✓"; position: absolute; left: 0; top: 17px; color: #169d7e;
       font-size: 1rem; font-weight: 900; line-height: 1; }
     /* ===== HTML product screens: matched to the live Vantage Fit app ===== */
-    .ui-phones { position: relative; width: 100%; max-width: 520px; height: 505px; margin: 0 auto; }
-    .vp { position: absolute; border-radius: 30px; background: #16171d; padding: 7px;
-      box-shadow: 0 2px 0 rgba(255,255,255,.16) inset, 0 26px 54px rgba(41,41,76,.26); }
-    .vp-front { left: 0; top: 3%; width: 53%; height: 97%; z-index: 2; }
-    .vp-back { right: 0; top: 1%; width: 51%; height: 93%; z-index: 1; }
-    .vp-not { position: absolute; z-index: 3; top: 13px; left: 50%; transform: translateX(-50%);
-      width: 34%; height: 11px; border-radius: 99px; background: #16171d; }
-    .vp-scr { position: relative; height: 100%; border-radius: 24px; background: #f5f6f8; overflow: hidden;
-      padding: 19px 9px 8px; color: var(--ink); }
+    .ui-phones { position: relative; width: 100%; max-width: 560px; height: 566px; margin: 0 auto;
+      perspective: 1600px; }
+    .vp { position: absolute; border-radius: 38px; padding: 2.5px;
+      background: linear-gradient(146deg, #e6e8ee 0%, #9498a6 22%, #5f6472 46%, #cfd2da 62%, #7c8090 82%, #b6bac5 100%);
+      box-shadow: 0 34px 64px rgba(28,30,52,.3), 0 10px 22px rgba(28,30,52,.18), 0 1px 0 rgba(255,255,255,.5) inset; }
+    .vp-body { position: relative; height: 100%; border-radius: 35.5px; background: #07080c; padding: 4px; }
+    .vp::before, .vp::after { content: ""; position: absolute; width: 2.6px; border-radius: 2px;
+      background: linear-gradient(180deg, #b9bdc8, #767b8a); }
+    .vp::before { left: -1.4px; top: 21%; height: 6.5%; box-shadow: 0 5.5% 0 0 #8b90a0; }
+    .vp::after { right: -1.4px; top: 26%; height: 11%; }
+    .vp-glare { position: absolute; inset: 4px; border-radius: 31.5px; pointer-events: none; z-index: 4;
+      background: linear-gradient(116deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.06) 16%, rgba(255,255,255,0) 34%); }
+    .vp-home { position: absolute; z-index: 3; left: 50%; bottom: 6px; transform: translateX(-50%);
+      width: 33%; height: 3.4px; border-radius: 99px; background: rgba(20,22,38,.3); }
+    .vp-front { left: 0; top: 2%; width: 46%; height: 98%; z-index: 2; transform: rotate(-1deg); }
+    .vp-back { right: 0; top: 0; width: 43.5%; height: 88%; z-index: 1; transform: rotate(1.4deg); }
+    .vp-not { position: absolute; z-index: 3; top: 9px; left: 50%; transform: translateX(-50%);
+      width: 31%; height: 10px; border-radius: 99px; background: #07080c; }
+    .vp-scr { position: relative; height: 100%; border-radius: 31.5px; background: #f5f6f8; overflow: hidden;
+      padding: 21px 9px 15px; color: var(--ink); }
     .vp-scr::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 44px; pointer-events: none;
       background: linear-gradient(180deg, rgba(245,246,248,0), rgba(245,246,248,.96) 72%, #f5f6f8); }
     .vp-back .vp-scr { padding-top: 19px; }
@@ -1398,9 +1409,9 @@
       background: linear-gradient(120deg, #7c5cff, #F15162); }
     .vd-ask kbd { margin-left: auto; font-family: inherit; font-size: 5.4px; font-weight: 800; color: rgba(41,41,76,.5);
       background: #f4f4f8; border: 1px solid rgba(41,41,76,.12); border-radius: 4px; padding: 1.6px 5px; }
-    @media (max-width: 900px) { .ui-phones { height: 452px; } }
+    @media (max-width: 900px) { .ui-phones { height: 500px; } }
     @media (max-width: 560px) {
-      .ui-phones { height: 386px; }
+      .ui-phones { height: 424px; }
       .vd-rail { width: 28px; } .vd-grid { grid-template-columns: 1fr; }
       .vd-kpis { grid-template-columns: 1fr 1fr; } .vd-gen { display: none; }
     }
@@ -2178,6 +2189,7 @@
             <div class="tour-media">
                                           <div class="ui-phones" role="img" aria-label="Vantage Fit app: the 21 Days of Yoga challenge with weekly progress, this week's tasks with points and completion rings, and the team leaderboard">
                 <div class="vp vp-back">
+                  <div class="vp-body">
                   <div class="vp-not"></div>
                   <div class="vp-scr">
                     <div class="vp-sb"><span>9:41</span><em><i></i><i></i><i></i></em></div>
@@ -2224,10 +2236,14 @@
                       <span class="vp-face"></span>
                       <div class="vp-sc"><span>SCORE</span><b>412</b></div>
                     </div>
+                    <span class="vp-home"></span>
+                  </div>
+                  <span class="vp-glare"></span>
                   </div>
                 </div>
 
                 <div class="vp vp-front">
+                  <div class="vp-body">
                   <div class="vp-not"></div>
                   <div class="vp-scr">
                     <div class="vp-sb"><span>9:41</span><em><i></i><i></i><i></i></em></div>
@@ -2272,10 +2288,12 @@
                       <div class="vp-brow">
                         <span class="vp-btn">LOG ACTIVITY<em>&raquo;</em></span>
                         <div class="vp-tp"><span>TODAY&rsquo;S PROGRESS</span><div class="vp-tb"><i style="width:100%"></i></div><u>100%</u></div>
-                      </div>
-                    </div>
+                    <span class="vp-home"></span>
+                  </div>
+                  <span class="vp-glare"></span>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
