@@ -1254,100 +1254,174 @@
     .tour-checks li p { color: var(--muted); font-size: .85rem; line-height: 1.55; margin-top: 4px; max-width: 390px; }
     .tour-checks li::before { content: "✓"; position: absolute; left: 0; top: 17px; color: #169d7e;
       font-size: 1rem; font-weight: 900; line-height: 1; }
-    /* ===== HTML product screens (replaces the product PNGs) ===== */
-    .ui-phones { position: relative; width: 100%; max-width: 430px; height: 380px; margin: 0 auto; font-size: 10px; }
-    .ui-ph { position: absolute; border-radius: 20px; background: #fff; overflow: hidden;
-      border: 1px solid rgba(41,41,76,.12); box-shadow: 0 20px 44px rgba(41,41,76,.16); }
-    .ui-ph-a { left: 2%; top: 6%; width: 50%; height: 92%; z-index: 2; }
-    .ui-ph-b { right: 2%; top: 0; width: 48%; height: 86%; z-index: 1; }
-    .ui-scr { padding: 8px 9px; height: 100%; overflow: hidden; color: var(--ink); }
-    .ui-sb { display: flex; justify-content: space-between; align-items: center; font-size: 7.5px; font-weight: 700; }
-    .ui-sb-r { display: flex; gap: 2px; }
-    .ui-sb-r i { width: 6px; height: 6px; border-radius: 1px; background: rgba(41,41,76,.5); }
-    .ui-nav { display: flex; align-items: center; gap: 6px; justify-content: center; position: relative;
-      font-size: 9px; font-weight: 700; padding: 6px 0 7px; }
-    .ui-back { position: absolute; left: 0; font-size: 12px; color: rgba(41,41,76,.55); line-height: 1; }
-    .ui-weeks { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; margin-bottom: 7px; }
-    .ui-weeks span { display: grid; place-items: center; padding: 3px 0; border-radius: 4px; background: #f2f2f6;
-      font-size: 5.6px; font-weight: 700; color: rgba(41,41,76,.55); line-height: 1.25; }
-    .ui-weeks span b { font-size: 8px; color: var(--ink); }
-    .ui-weeks span.on { background: var(--coral); color: rgba(255,255,255,.85); }
-    .ui-weeks span.on b { color: #fff; }
-    .ui-card { border-radius: 10px; padding: 8px; text-align: center; color: #fff;
-      background: linear-gradient(165deg, #2f6df6, #2455d8); }
-    .ui-card-top { display: flex; justify-content: space-between; font-size: 7px; }
-    .ui-i { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.25); display: grid; place-items: center; font-weight: 700; font-style: italic; }
-    .ui-ct { font-size: 10px; font-weight: 800; margin: 4px 0 6px; }
-    .ui-yoga { width: 40px; height: 40px; margin: 0 auto 6px; border-radius: 50%; background: #ffd76a; display: grid; place-items: center; font-size: 20px; }
-    .ui-sm { font-size: 6px; opacity: .82; }
-    .ui-bg { font-size: 9px; font-weight: 800; margin-top: 1px; }
-    .ui-pill { display: inline-block; margin-top: 5px; padding: 2px 9px; border-radius: 99px; background: #fff; color: #2455d8; font-size: 6.5px; font-weight: 800; }
-    .ui-mt { margin-top: 5px; }
-    .ui-prog { margin-top: 7px; }
-    .ui-prog-h { display: flex; justify-content: space-between; font-size: 6.5px; font-weight: 700; color: rgba(41,41,76,.6); }
-    .ui-bar { height: 3px; border-radius: 99px; background: #eceef3; margin: 4px 0 3px; overflow: hidden; }
-    .ui-bar i { display: block; height: 100%; border-radius: 99px; background: #41d8b4; }
-    .ui-cap { font-size: 6px; color: rgba(41,41,76,.5); text-align: center; }
-    .ui-h { font-size: 8px; font-weight: 800; padding: 6px 0 5px; }
-    .ui-h2 { padding-top: 8px; }
-    .ui-h3 { padding: 7px 0 4px; }
-    .ui-task { display: grid; grid-template-columns: 16px 1fr 26px; gap: 5px; align-items: start;
-      border: 1px solid rgba(41,41,76,.09); border-radius: 8px; padding: 6px; margin-bottom: 5px; background: #fff; }
-    .ui-ic { width: 16px; height: 16px; border-radius: 50%; display: grid; place-items: center; font-size: 8px;
-      background: color-mix(in srgb, var(--c) 16%, white); }
-    .ui-tt b { display: block; font-size: 6.4px; font-weight: 700; line-height: 1.35; }
-    .ui-tt i { display: block; font-style: normal; font-size: 5.6px; font-weight: 700; color: var(--coral); margin-top: 2px; }
-    .ui-btn { display: inline-block; margin-top: 4px; padding: 2px 6px; border-radius: 99px; font-size: 5.2px; font-weight: 800;
-      letter-spacing: .04em; background: var(--coral); color: #fff; }
-    .ui-btn-o { background: #fff; color: var(--coral); border: 1px solid rgba(241,81,98,.45); }
-    .ui-ring { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 5.6px; font-weight: 800;
-      background: conic-gradient(#41d8b4 calc(var(--p) * 1%), #edeff3 0); }
-    .ui-ring span { width: 19px; height: 19px; border-radius: 50%; background: #fff; display: grid; place-items: center; }
-    .ui-lead { display: flex; align-items: center; gap: 5px; border: 1px solid rgba(41,41,76,.09); border-radius: 8px; padding: 5px 6px; }
-    .ui-you { padding: 1px 5px; border-radius: 99px; background: #ffd76a; font-size: 5.2px; font-weight: 800; }
-    .ui-rank { font-size: 8px; font-weight: 800; color: #2f6df6; }
-    .ui-rank i { font-size: 5px; font-style: normal; }
-    .ui-av { width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(140deg,#f4a58c,#d97a5c); margin-left: auto; }
-    .ui-score { text-align: right; }
-    .ui-score i { display: block; font-style: normal; font-size: 4.6px; font-weight: 800; color: rgba(41,41,76,.45); letter-spacing: .06em; }
-    .ui-score b { font-size: 9px; }
+    /* ===== HTML product screens ===== */
+    .ui-phones { position: relative; width: 100%; max-width: 452px; height: 470px; margin: 0 auto; }
+    .pw { position: absolute; border-radius: 30px; background: #16171d; padding: 7px;
+      box-shadow: 0 2px 0 rgba(255,255,255,.16) inset, 0 26px 54px rgba(41,41,76,.26); }
+    .pw-front { left: 0; top: 3%; width: 51%; height: 97%; z-index: 2; }
+    .pw-back { right: 0; top: 0; width: 49%; height: 88%; z-index: 1; transform: rotate(1.2deg); }
+    .pw-not { position: absolute; z-index: 3; top: 13px; left: 50%; transform: translateX(-50%);
+      width: 34%; height: 11px; border-radius: 99px; background: #16171d; }
+    .pw-scr { height: 100%; border-radius: 24px; background: #fff; overflow: hidden; padding: 20px 11px 8px;
+      color: var(--ink); display: flex; flex-direction: column; }
+    .pw-front .pw-scr { padding-bottom: 34px; }
+    .pw-sb { display: flex; align-items: center; justify-content: space-between; font-size: 6.6px; font-weight: 800; padding: 0 3px 6px; }
+    .pw-sb em { display: flex; gap: 1.6px; }
+    .pw-sb i { width: 4.6px; height: 4.6px; border-radius: 1px; background: rgba(41,41,76,.42); }
+    .pw-hd { display: flex; align-items: center; gap: 6px; padding: 1px 1px 8px; }
+    .pw-hd b { font-size: 10px; font-weight: 800; letter-spacing: -.02em; }
+    .pw-hd .pw-bk { font-size: 12px; line-height: 1; }
+    .pw-ib { margin-left: auto; width: 17px; height: 17px; border-radius: 50%; display: grid; place-items: center;
+      background: #f3f3f7; color: rgba(41,41,76,.6); }
+    .pw-ib svg { width: 9px; height: 9px; }
+    .pw-bk { margin: 0; background: none; }
 
-    /* dashboard */
-    .ui-dash { width: min(100%, 560px); margin: 0 auto; border-radius: 14px; overflow: hidden; background: #fff;
-      border: 1px solid rgba(41,41,76,.11); box-shadow: 0 22px 50px rgba(41,41,76,.14); font-size: 10px; }
-    .ui-dbar { display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: #f7f7fa; border-bottom: 1px solid rgba(41,41,76,.08); }
-    .ui-dbar i { width: 7px; height: 7px; border-radius: 50%; background: #dcdfe6; }
-    .ui-dbar span { margin-left: 8px; font-size: 9px; font-weight: 800; }
-    .ui-dbar em { margin-left: auto; font-style: normal; font-size: 7.5px; font-weight: 700; color: rgba(41,41,76,.5);
-      border: 1px solid rgba(41,41,76,.14); border-radius: 99px; padding: 2px 8px; }
-    .ui-dbody { padding: 11px 12px 12px; }
-    .ui-kpis { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 7px; }
-    .ui-kpi { border: 1px solid rgba(41,41,76,.1); border-radius: 8px; padding: 7px 8px; }
-    .ui-kpi span { display: block; font-size: 5.6px; font-weight: 800; letter-spacing: .08em; color: rgba(41,41,76,.5); }
-    .ui-kpi b { display: block; font-size: 15px; font-weight: 800; letter-spacing: -.02em; margin-top: 2px; }
-    .ui-kpi i { display: block; font-style: normal; font-size: 6px; font-weight: 700; color: #169d7e; margin-top: 1px; }
-    .ui-kpi-hero { background: rgba(241,81,98,.05); border-color: rgba(241,81,98,.28); }
-    .ui-kpi-hero b { color: var(--coral); font-size: 19px; }
-    .ui-dgrid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 7px; margin-top: 7px; }
-    .ui-panel { border: 1px solid rgba(41,41,76,.1); border-radius: 8px; padding: 8px; }
-    .ui-pl { font-size: 5.8px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: rgba(41,41,76,.5); margin-bottom: 6px; }
-    .ui-chart { position: relative; }
-    .ui-chart svg { display: block; width: 100%; height: 62px; }
-    .ui-target { position: absolute; left: 0; right: 0; top: 20%; border-top: 1px dashed rgba(241,81,98,.5); }
-    .ui-target i { position: absolute; right: 0; top: -8px; font-style: normal; font-size: 5px; font-weight: 700; color: var(--coral); }
-    .ui-months { display: flex; justify-content: space-between; font-size: 5.2px; color: rgba(41,41,76,.42); margin-top: 3px; }
-    .ui-bars { display: flex; gap: 6px; align-items: flex-end; height: 68px; }
-    .ui-bars > div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
-    .ui-bars i { display: block; width: 100%; height: var(--h); background: var(--c); border-radius: 3px; }
-    .ui-bars b { font-size: 5.4px; font-weight: 800; margin-top: 3px; }
-    .ui-bars span { font-size: 5px; color: rgba(41,41,76,.45); }
-    .ui-insight { display: flex; align-items: center; gap: 7px; margin-top: 7px; padding: 7px 9px; border-radius: 8px;
-      background: #faf9ff; border: 1px solid rgba(124,92,255,.2); }
-    .ui-spark { color: #7c5cff; font-size: 9px; }
-    .ui-insight b { font-size: 6.8px; font-weight: 800; }
-    .ui-insight i { font-style: normal; font-size: 6.2px; color: rgba(41,41,76,.55); margin-left: auto; }
-    @media (max-width: 900px) { .ui-phones { height: 330px; } .ui-dash { font-size: 9px; } }
-    @media (max-width: 560px) { .ui-phones { height: 300px; font-size: 9px; } .ui-insight i { display: none; } }
+    /* challenge hero */
+    .pw-hero { flex: none; position: relative; overflow: hidden; border-radius: 14px; padding: 10px; color: #fff;
+      background: linear-gradient(148deg, #5b4bd6 0%, #7c5cff 52%, #a06bf0 100%); }
+    .pw-hglow { position: absolute; inset: auto -20% -60% auto; width: 78%; aspect-ratio: 1; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.34), transparent 68%); }
+    .pw-tag { position: relative; font-size: 5.4px; font-weight: 800; letter-spacing: .12em;
+      background: rgba(255,255,255,.22); border-radius: 99px; padding: 2.4px 7px; }
+    .pw-hmain { position: relative; display: flex; align-items: center; gap: 8px; margin-top: 7px; }
+    .pw-dial { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center;
+      background: conic-gradient(#fff calc(var(--p) * 1%), rgba(255,255,255,.26) 0); }
+    .pw-dial i { width: 29px; height: 29px; border-radius: 50%; background: rgba(255,255,255,.16);
+      backdrop-filter: blur(4px); display: grid; place-items: center; }
+    .pw-dial svg { width: 16px; height: 16px; }
+    .pw-hmain b { display: block; font-size: 10px; font-weight: 800; letter-spacing: -.025em; }
+    .pw-hmain span { display: block; font-size: 6.2px; opacity: .82; margin-top: 2px; }
+    .pw-hfoot { position: relative; display: flex; align-items: center; gap: 6px; margin-top: 8px;
+      border-top: 1px solid rgba(255,255,255,.2); padding-top: 6px; font-size: 6.2px; font-weight: 700; }
+    .pw-hfoot svg { width: 7px; height: 7px; fill: #ffd76a; stroke: none; vertical-align: -1px; margin-right: 3px; }
+    .pw-join { margin-left: auto; background: #fff; color: #5b4bd6; border-radius: 99px; padding: 2.4px 8px; font-weight: 800; }
+
+    .pw-sec { flex: none; font-size: 6px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
+      color: rgba(41,41,76,.42); padding: 9px 2px 5px; }
+    .pw-sec2 { padding: 0 2px 5px; }
+    .pw-week { flex: none; margin-top: 9px; }
+    .pw-dots { display: flex; gap: 3px; }
+    .pw-dots i { flex: 1; height: 18px; border-radius: 5px; display: grid; place-items: center; font-style: normal;
+      font-size: 5.6px; font-weight: 800; background: #f3f3f7; color: rgba(41,41,76,.42); }
+    .pw-dots i.on { background: rgba(65,216,180,.2); color: #12856b; }
+    .pw-dots i.now { background: var(--coral); color: #fff; }
+
+    .pw-task { flex: none; display: grid; grid-template-columns: 21px 1fr 25px; gap: 7px; align-items: center;
+      border-radius: 10px; padding: 6px 7px; margin-bottom: 4px; background: #fafafc; border: 1px solid rgba(41,41,76,.06); }
+    .pw-ti { width: 21px; height: 21px; border-radius: 7px; display: grid; place-items: center; color: var(--c);
+      background: color-mix(in srgb, var(--c) 14%, white); }
+    .pw-ti svg { width: 11px; height: 11px; }
+    .pw-tx b { display: block; font-size: 6.6px; font-weight: 700; letter-spacing: -.01em; }
+    .pw-pts { display: inline-flex; align-items: center; gap: 2px; margin-top: 3px; font-size: 5.4px; font-weight: 800;
+      color: #b8791f; background: rgba(246,185,59,.18); border-radius: 99px; padding: 1.6px 5px; }
+    .pw-pts svg { width: 6px; height: 6px; fill: #f6b93b; stroke: none; }
+    .pw-ring { width: 25px; height: 25px; border-radius: 50%; display: grid; place-items: center;
+      background: conic-gradient(#41d8b4 calc(var(--p) * 1%), #ebedf1 0); }
+    .pw-ring i { width: 18.5px; height: 18.5px; border-radius: 50%; background: #fff; display: grid; place-items: center;
+      font-style: normal; font-size: 5.4px; font-weight: 800; }
+    .pw-tabs { position: absolute; left: 7px; right: 7px; bottom: 7px; height: 26px; border-radius: 0 0 24px 24px;
+      display: flex; align-items: center; justify-content: space-around; background: rgba(255,255,255,.86);
+      backdrop-filter: blur(8px); border-top: 1px solid rgba(41,41,76,.07); }
+    .pw-tabs span { color: rgba(41,41,76,.3); }
+    .pw-tabs span.on { color: var(--coral); }
+    .pw-tabs svg { width: 11px; height: 11px; }
+
+    /* rewards screen */
+    .pw-bal { flex: none; position: relative; overflow: hidden; border-radius: 14px; padding: 10px 11px; color: #fff;
+      background: linear-gradient(140deg, #F15162, #f4705a 62%, #f6993b); }
+    .pw-bl { font-size: 5.4px; font-weight: 800; letter-spacing: .12em; opacity: .9; }
+    .pw-bal b { display: block; font-size: 21px; font-weight: 800; letter-spacing: -.04em; line-height: 1.1; margin-top: 2px; }
+    .pw-bc { font-size: 5.8px; font-weight: 700; opacity: .88; }
+    .pw-cta { position: absolute; right: 10px; bottom: 10px; background: #fff; color: var(--coral);
+      border-radius: 99px; padding: 3px 9px; font-size: 6px; font-weight: 800; }
+    .pw-gifts { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+    .pw-g { border: 1px solid rgba(41,41,76,.08); border-radius: 10px; padding: 7px; background: #fff; }
+    .pw-g span { display: grid; place-items: center; width: 19px; height: 19px; border-radius: 6px; color: var(--c);
+      background: color-mix(in srgb, var(--c) 13%, white); }
+    .pw-g svg { width: 10px; height: 10px; }
+    .pw-g b { display: block; font-size: 6.4px; font-weight: 800; margin-top: 5px; }
+    .pw-g i { font-style: normal; font-size: 5.4px; font-weight: 700; color: rgba(41,41,76,.45); }
+    .pw-lb { flex: none; display: grid; gap: 4px; }
+    .pw-lr { display: flex; align-items: center; gap: 6px; border-radius: 9px; padding: 5px 7px; background: #fafafc;
+      border: 1px solid rgba(41,41,76,.06); }
+    .pw-rk { width: 13px; height: 13px; flex: none; border-radius: 50%; display: grid; place-items: center;
+      font-size: 5.2px; font-weight: 800; background: #ebedf1; color: rgba(41,41,76,.55); }
+    .pw-rk1 { background: #f6b93b; color: #fff; }
+    .pw-av { width: 15px; height: 15px; flex: none; border-radius: 50%; background: linear-gradient(140deg, var(--a), var(--b)); }
+    .pw-lr b { font-size: 6.4px; font-weight: 700; }
+    .pw-lr em { margin-left: auto; font-style: normal; font-size: 7px; font-weight: 800; }
+    .pw-me { background: rgba(241,81,98,.06); border-color: rgba(241,81,98,.22); }
+    .pw-me em { color: var(--coral); }
+
+    /* ===== dashboard ===== */
+    .ui-dash { display: flex; width: min(100%, 580px); margin: 0 auto; border-radius: 16px; overflow: hidden;
+      background: #fff; border: 1px solid rgba(41,41,76,.1); box-shadow: 0 26px 56px rgba(41,41,76,.16); }
+    .dw-rail { width: 38px; flex: none; background: #1f2029; display: flex; flex-direction: column; align-items: center;
+      gap: 7px; padding: 11px 0 12px; }
+    .dw-logo { width: 15px; height: 15px; border-radius: 5px; background: linear-gradient(140deg, #F15162, #f4705a); margin-bottom: 5px; }
+    .dw-ri { width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; color: rgba(255,255,255,.42); }
+    .dw-ri svg { width: 11px; height: 11px; }
+    .dw-ri.on { background: rgba(241,81,98,.9); color: #fff; }
+    .dw-last { margin-top: auto; }
+    .dw-main { flex: 1; padding: 11px 13px 12px; min-width: 0; }
+    .dw-top { display: flex; align-items: center; gap: 8px; padding-bottom: 10px; }
+    .dw-top b { display: block; font-size: 9.5px; font-weight: 800; letter-spacing: -.02em; }
+    .dw-top > div span { font-size: 6.4px; color: rgba(41,41,76,.48); }
+    .dw-srch { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; font-size: 6.2px; font-weight: 600;
+      color: rgba(41,41,76,.45); background: #f4f4f8; border-radius: 99px; padding: 3.5px 9px; }
+    .dw-srch svg { width: 8px; height: 8px; }
+    .dw-date { font-size: 6.2px; font-weight: 700; color: rgba(41,41,76,.55); border: 1px solid rgba(41,41,76,.13);
+      border-radius: 99px; padding: 3.5px 8px; }
+    .dw-me { width: 17px; height: 17px; border-radius: 50%; background: linear-gradient(140deg, #f4a58c, #d97a5c); }
+    .dw-kpis { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 7px; }
+    .dw-k { position: relative; overflow: hidden; border: 1px solid rgba(41,41,76,.09); border-radius: 10px; padding: 8px 9px; }
+    .dw-k > span { font-size: 5.4px; font-weight: 800; letter-spacing: .1em; color: rgba(41,41,76,.45); }
+    .dw-kv { display: flex; align-items: baseline; gap: 5px; margin-top: 2px; }
+    .dw-kv b { font-size: 17px; font-weight: 800; letter-spacing: -.035em; }
+    .dw-kv em { font-style: normal; font-size: 6px; font-weight: 800; color: #169d7e; }
+    .dw-sub { font-style: normal; font-size: 5.6px; color: rgba(41,41,76,.42); }
+    .dw-k1 { background: linear-gradient(150deg, rgba(241,81,98,.07), rgba(241,81,98,.02)); border-color: rgba(241,81,98,.26); }
+    .dw-k1 .dw-kv b { color: var(--coral); font-size: 20px; }
+    .dw-k1 > span { color: #c2394a; }
+    .dw-mini { margin-top: 4px; height: 15px; }
+    .dw-mini svg { width: 100%; height: 100%; }
+    .dw-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 7px; margin-top: 7px; }
+    .dw-card { border: 1px solid rgba(41,41,76,.09); border-radius: 10px; padding: 9px; }
+    .dw-ch { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
+    .dw-ch b { font-size: 6.6px; font-weight: 800; }
+    .dw-leg { display: inline-flex; align-items: center; gap: 4px; font-size: 5.4px; color: rgba(41,41,76,.45); }
+    .dw-leg i { width: 9px; height: 2.4px; border-radius: 2px; background: #169d7e; }
+    .dw-chart { display: flex; flex-direction: column; }
+    .dw-plot { position: relative; flex: 1; min-height: 78px; }
+    .dw-plot svg { display: block; width: 100%; height: 100%; }
+    .dw-tgt { position: absolute; left: 0; right: 0; top: 19%; border-top: 1px dashed rgba(241,81,98,.55); }
+    .dw-tgt i { position: absolute; right: 0; top: -8px; font-style: normal; font-size: 5px; font-weight: 800; color: var(--coral); }
+    .dw-mo { display: flex; justify-content: space-between; margin-top: 4px; font-size: 5.2px; color: rgba(41,41,76,.4); }
+    .dw-side { display: grid; gap: 7px; align-content: start; }
+    .dw-score { text-align: center; }
+    .dw-score b { display: block; font-size: 6.4px; font-weight: 800; }
+    .dw-donut { width: 54px; height: 54px; margin: 7px auto 5px; border-radius: 50%; display: grid; place-items: center;
+      background: conic-gradient(#F15162 calc(var(--p) * 1%), #eef0f4 0); }
+    .dw-donut i { width: 41px; height: 41px; border-radius: 50%; background: #fff; display: grid; place-items: center;
+      font-style: normal; font-size: 13px; font-weight: 800; letter-spacing: -.03em; }
+    .dw-up { font-size: 5.6px; font-weight: 800; color: #169d7e; }
+    .dw-dep b { display: block; font-size: 6.4px; font-weight: 800; margin-bottom: 6px; }
+    .dw-dr { display: grid; grid-template-columns: 40px 1fr 16px; gap: 5px; align-items: center; margin-bottom: 4.5px; }
+    .dw-dr span { font-size: 5.4px; color: rgba(41,41,76,.5); }
+    .dw-dr i { height: 5px; border-radius: 99px; background: #eef0f4; position: relative; }
+    .dw-dr i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 99px; background: var(--c); }
+    .dw-dr em { font-style: normal; font-size: 5.6px; font-weight: 800; text-align: right; }
+    .dw-ins { display: flex; align-items: center; gap: 7px; margin-top: 7px; padding: 8px 10px; border-radius: 10px;
+      background: linear-gradient(100deg, #f7f4ff, #f2fbf8); border: 1px solid rgba(124,92,255,.18); }
+    .dw-sp { color: #7c5cff; font-size: 9px; }
+    .dw-ins b { font-size: 6.6px; font-weight: 800; }
+    .dw-ins em { margin-left: auto; font-style: normal; font-size: 6.2px; font-weight: 800; color: #7c5cff; white-space: nowrap; }
+    @media (max-width: 900px) { .ui-phones { height: 420px; } }
+    @media (max-width: 560px) {
+      .ui-phones { height: 356px; }
+      .dw-rail { width: 30px; } .dw-srch, .dw-ins em { display: none; }
+      .dw-grid { grid-template-columns: 1fr; } .dw-kpis { grid-template-columns: 1fr 1fr; }
+    }
 
     .tour-media { display: grid; min-height: 310px; place-items: center; padding: 0; }
     .tour-media img { width: min(100%, 550px); height: auto; display: block; }
@@ -2120,68 +2194,68 @@
               </ul>
             </div>
             <div class="tour-media">
-              <div class="ui-phones" role="img" aria-label="Vantage Fit app: a 21 Days of Yoga challenge with weekly progress, this week's tasks with points, and a team leaderboard">
-                <!-- back phone: tasks + leaderboard -->
-                <div class="ui-ph ui-ph-b">
-                  <div class="ui-scr">
-                    <div class="ui-h">This Week&rsquo;s Task</div>
-                    <div class="ui-task">
-                      <span class="ui-ic" style="--c:#F15162">&#128694;</span>
-                      <div class="ui-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i>
-                        <span class="ui-btn">START ACTIVITY</span></div>
-                      <div class="ui-ring" style="--p:35"><span>35%</span></div>
+                            <div class="ui-phones" role="img" aria-label="Vantage Fit app: a 21 Days of Yoga challenge with daily tasks and progress, and a rewards screen with a points balance, gift cards and a team leaderboard">
+                <div class="pw pw-back">
+                  <div class="pw-not"></div>
+                  <div class="pw-scr">
+                    <div class="pw-sb"><span>9:41</span><em><i></i><i></i><i></i></em></div>
+                    <div class="pw-hd"><b>Rewards</b><span class="pw-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.4"/><path d="M5 20c.9-3.4 3.6-5 7-5s6.1 1.6 7 5"/></svg></span></div>
+                    <div class="pw-bal">
+                      <span class="pw-bl">POINTS BALANCE</span>
+                      <b>1,420</b>
+                      <span class="pw-bc">+180 this week</span>
+                      <span class="pw-cta">Redeem</span>
                     </div>
-                    <div class="ui-task">
-                      <span class="ui-ic" style="--c:#41d8b4">&#129496;</span>
-                      <div class="ui-tt"><b>Do Yoga for 5 days<br>in this week</b><i>Earn 180 points</i>
-                        <span class="ui-btn ui-btn-o">LOG ACTIVITY</span></div>
-                      <div class="ui-ring" style="--p:40"><span>2/5</span></div>
+                    <p class="pw-sec">Popular rewards</p>
+                    <div class="pw-gifts">
+                      <div class="pw-g" style="--c:#ff9900"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><b>Amazon</b><i>500 pts</i></div>
+                      <div class="pw-g" style="--c:#0a7d4b"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><b>Starbucks</b><i>350 pts</i></div>
                     </div>
-                    <div class="ui-task">
-                      <span class="ui-ic" style="--c:#F6993B">&#128522;</span>
-                      <div class="ui-tt"><b>Log your mood 4<br>days this week</b><i>Earn 190 points</i>
-                        <span class="ui-btn ui-btn-o">TRACK MOOD</span></div>
-                      <div class="ui-ring" style="--p:75"><span>3/4</span></div>
-                    </div>
-                    <div class="ui-h ui-h2">Leaderboard</div>
-                    <div class="ui-lead">
-                      <span class="ui-you">YOU</span>
-                      <span class="ui-rank">12<i>th</i></span>
-                      <span class="ui-av"></span>
-                      <span class="ui-score"><i>SCORE</i><b>412</b></span>
+                    <p class="pw-sec">Team leaderboard</p>
+                    <div class="pw-lb">
+                      <div class="pw-lr"><span class="pw-rk pw-rk1">1</span><i class="pw-av" style="--a:#f6b93b;--b:#e58e26"></i><b>Aisha K.</b><em>640</em></div>
+                      <div class="pw-lr"><span class="pw-rk">2</span><i class="pw-av" style="--a:#7ecfc0;--b:#41d8b4"></i><b>Marco P.</b><em>587</em></div>
+                      <div class="pw-lr pw-me"><span class="pw-rk">12</span><i class="pw-av" style="--a:#f4a58c;--b:#d97a5c"></i><b>You</b><em>412</em></div>
                     </div>
                   </div>
                 </div>
-                <!-- front phone: challenge detail -->
-                <div class="ui-ph ui-ph-a">
-                  <div class="ui-scr">
-                    <div class="ui-sb"><span>9:41</span><span class="ui-sb-r"><i></i><i></i><i></i></span></div>
-                    <div class="ui-nav"><span class="ui-back">&#8249;</span>Challenge Info</div>
-                    <div class="ui-weeks">
-                      <span class="on">Week<b>1</b></span><span>Week<b>2</b></span><span>Week<b>3</b></span><span>Week<b>4</b></span>
+
+                <div class="pw pw-front">
+                  <div class="pw-not"></div>
+                  <div class="pw-scr">
+                    <div class="pw-sb"><span>9:41</span><em><i></i><i></i><i></i></em></div>
+                    <div class="pw-hd"><span class="pw-ib pw-bk">&#8249;</span><b>Challenge</b><span class="pw-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.4"/><path d="M5 20c.9-3.4 3.6-5 7-5s6.1 1.6 7 5"/></svg></span></div>
+                    <div class="pw-hero">
+                      <div class="pw-hglow"></div>
+                      <span class="pw-tag">DAY 5 OF 21</span>
+                      <div class="pw-hmain">
+                        <div class="pw-dial" style="--p:24"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.4" r="1.9"/><path d="M12 7v5m0 0-4 3m4-3 4 3M7 20h10"/><path d="M8.5 12.2 5 10.6M15.5 12.2 19 10.6"/></svg></i></div>
+                        <div><b>21 Days of Yoga</b><span>A better start &middot; Rank 12</span></div>
+                      </div>
+                      <div class="pw-hfoot"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>300 Fit Points</span><span class="pw-join">Joined</span></div>
                     </div>
-                    <div class="ui-card">
-                      <div class="ui-card-top"><span class="ui-i">i</span><span class="ui-chat">&#128172;</span></div>
-                      <p class="ui-ct">21 Days of Yoga</p>
-                      <div class="ui-yoga">&#129496;</div>
-                      <p class="ui-sm">Theme of the week</p>
-                      <p class="ui-bg">A better start</p>
-                      <span class="ui-pill">Rank 12</span>
-                      <p class="ui-sm ui-mt">Earn 300 Fit Points</p>
+                    <div class="pw-week">
+                      <p class="pw-sec pw-sec2">This week</p>
+                      <div class="pw-dots"><i class="on">M</i><i class="on">T</i><i class="on">W</i><i class="now">T</i><i>F</i><i>S</i><i>S</i></div>
                     </div>
-                    <div class="ui-prog">
-                      <div class="ui-prog-h"><span>Challenge Progress</span><span>Day 5</span></div>
-                      <div class="ui-bar"><i style="width:55%"></i></div>
-                      <p class="ui-cap">55% Tasks Completed</p>
+                    <p class="pw-sec">Today&rsquo;s tasks</p>
+                    <div class="pw-task">
+                      <span class="pw-ti" style="--c:#F15162"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4.5a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2Z"/><path d="m8 21 2.4-4.6 2.1-1.6-.9-4.4-2.9 1.9-1.3 3"/><path d="m12.6 10.4 2.8-1.1 2.6 1.8 2 2.4"/><path d="m13.1 14.8 2.6 2.1.8 4.1"/></svg></span>
+                      <div class="pw-tx"><b>Jog or run 5 km</b><span class="pw-pts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>100</span></div>
+                      <div class="pw-ring" style="--p:35"><i>35%</i></div>
                     </div>
-                    <div class="ui-h ui-h3">This Week&rsquo;s Task</div>
-                    <div class="ui-task ui-task-s">
-                      <span class="ui-ic" style="--c:#F15162">&#128694;</span>
-                      <div class="ui-tt"><b>Jog/Run 20.0 Km(s)<br>in total this week</b><i>Earn 100 points</i>
-                        <span class="ui-btn">START ACTIVITY</span></div>
-                      <div class="ui-ring" style="--p:35"><span>35%</span></div>
+                    <div class="pw-task">
+                      <span class="pw-ti" style="--c:#41d8b4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.4" r="1.9"/><path d="M12 7v5m0 0-4 3m4-3 4 3M7 20h10"/><path d="M8.5 12.2 5 10.6M15.5 12.2 19 10.6"/></svg></span>
+                      <div class="pw-tx"><b>Yoga flow, 20 min</b><span class="pw-pts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>180</span></div>
+                      <div class="pw-ring" style="--p:40"><i>2/5</i></div>
+                    </div>
+                    <div class="pw-task">
+                      <span class="pw-ti" style="--c:#F6993B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M9 10h.01M15 10h.01M8.6 14.4a4.2 4.2 0 0 0 6.8 0"/></svg></span>
+                      <div class="pw-tx"><b>Log your mood</b><span class="pw-pts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg>90</span></div>
+                      <div class="pw-ring" style="--p:75"><i>3/4</i></div>
                     </div>
                   </div>
+                  <div class="pw-tabs"><span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v8a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 19Z"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4m0 0h11l-2.4 3.6L17 11H6"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.4"/><path d="M5 20c.9-3.4 3.6-5 7-5s6.1 1.6 7 5"/></svg></span></div>
                 </div>
               </div>
             </div>
@@ -2197,42 +2271,60 @@
               <p class="measure-note">Participation rate = unique enrolled employees completing a qualifying wellness action in the previous 30 days &divide; enrolled employees.</p>
             </div>
             <div class="tour-media tour-frame">
-              <div class="ui-dash" role="img" aria-label="Vantage Fit admin dashboard: participation rate against target, enrolled and active users, participation trend, and participation by department">
-                <div class="ui-dbar"><i></i><i></i><i></i><span>Participation overview</span><em>Last 30 days</em></div>
-                <div class="ui-dbody">
-                  <div class="ui-kpis">
-                    <div class="ui-kpi ui-kpi-hero"><span>PARTICIPATION RATE</span><b>68%</b><i>&#9650; 7 pts this quarter</i></div>
-                    <div class="ui-kpi"><span>ENROLLED</span><b>2,140</b></div>
-                    <div class="ui-kpi"><span>ACTIVE</span><b>1,455</b></div>
-                    <div class="ui-kpi"><span>TARGET</span><b>75%</b></div>
+                            <div class="ui-dash" role="img" aria-label="Vantage Fit admin console: participation rate against target, enrolled and active users, participation trend, organisation wellness score, participation by department and an AI insight">
+                <div class="dw-rail">
+                  <span class="dw-logo"></span>
+                  <span class="dw-ri on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="3.6" width="7" height="7" rx="1.6"/><rect x="13.4" y="3.6" width="7" height="7" rx="1.6"/><rect x="3.6" y="13.4" width="7" height="7" rx="1.6"/><rect x="13.4" y="13.4" width="7" height="7" rx="1.6"/></svg></span><span class="dw-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4m0 0h11l-2.4 3.6L17 11H6"/></svg></span>
+                  <span class="dw-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V11M10 19V5M16 19v-6M21 19H3"/></svg></span><span class="dw-ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11.5" rx="1.8"/><path d="M3.5 13h17M12 9v11.5"/><path d="M12 9C9.6 9 8.3 7.9 8.3 6.6c0-1 1-1.6 1.8-1.6 1 0 1.9.9 1.9 2 0-1.1.9-2 1.9-2 .8 0 1.8.6 1.8 1.6C15.7 7.9 14.4 9 12 9Z"/></svg></span><span class="dw-ri dw-last"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 4.2V2m0 20v-2.2M19.8 12H22M2 12h2.2M17.5 6.5 19 5M5 19l1.5-1.5M17.5 17.5 19 19M5 5l1.5 1.5"/></svg></span>
+                </div>
+                <div class="dw-main">
+                  <div class="dw-top">
+                    <div><b>Participation overview</b><span>All employees &middot; last 30 days</span></div>
+                    <span class="dw-srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-3.6-3.6"/></svg>Search</span>
+                    <span class="dw-date">Jun 29 &ndash; Jul 28</span>
+                    <i class="dw-me"></i>
                   </div>
-                  <div class="ui-dgrid">
-                    <div class="ui-panel">
-                      <p class="ui-pl">Participation over time</p>
-                      <div class="ui-chart">
-                        <span class="ui-target"><i>75% target</i></span>
-                        <svg viewBox="0 0 300 108" preserveAspectRatio="none" aria-hidden="true">
-                          <defs><linearGradient id="uiFill" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0" stop-color="#41d8b4" stop-opacity=".34"/><stop offset="1" stop-color="#41d8b4" stop-opacity="0"/></linearGradient></defs>
-                          <path d="M0 92 C34 90 52 82 82 78 S140 62 172 55 S232 38 300 28 L300 108 L0 108Z" fill="url(#uiFill)"/>
-                          <path d="M0 92 C34 90 52 82 82 78 S140 62 172 55 S232 38 300 28" fill="none" stroke="#169d7e" stroke-width="2.6" stroke-linecap="round"/>
-                          <circle cx="300" cy="28" r="3.4" fill="#169d7e"/>
+                  <div class="dw-kpis">
+                    <div class="dw-k dw-k1">
+                      <span>PARTICIPATION RATE</span>
+                      <div class="dw-kv"><b>68%</b><em>&#9650; 7 pts</em></div>
+                      <div class="dw-mini"><svg viewBox="0 0 90 26" preserveAspectRatio="none"><path d="M0 22 C14 21 22 17 34 14 S60 7 90 3" fill="none" stroke="#F15162" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+                    </div>
+                    <div class="dw-k"><span>ENROLLED</span><div class="dw-kv"><b>2,140</b></div><i class="dw-sub">across 12 countries</i></div>
+                    <div class="dw-k"><span>ACTIVE THIS WEEK</span><div class="dw-kv"><b>1,455</b><em>&#9650; 12</em></div><i class="dw-sub">vs previous week</i></div>
+                  </div>
+                  <div class="dw-grid">
+                    <div class="dw-card dw-chart">
+                      <div class="dw-ch"><b>Participation over time</b><span class="dw-leg"><i></i>30-day rate</span></div>
+                      <div class="dw-plot">
+                        <span class="dw-tgt"><i>75% target</i></span>
+                        <svg viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
+                          <defs><linearGradient id="dwF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#41d8b4" stop-opacity=".38"/><stop offset="1" stop-color="#41d8b4" stop-opacity="0"/></linearGradient></defs>
+                          <g stroke="rgba(41,41,76,.07)"><line x1="0" y1="28" x2="320" y2="28"/><line x1="0" y1="60" x2="320" y2="60"/><line x1="0" y1="92" x2="320" y2="92"/></g>
+                          <path d="M0 94 C36 92 54 84 88 79 S150 60 184 52 S250 32 320 22 L320 110 L0 110Z" fill="url(#dwF)"/>
+                          <path d="M0 94 C36 92 54 84 88 79 S150 60 184 52 S250 32 320 22" fill="none" stroke="#169d7e" stroke-width="2.8" stroke-linecap="round"/>
+                          <circle cx="320" cy="22" r="4" fill="#169d7e" stroke="#fff" stroke-width="2.4"/>
                         </svg>
                       </div>
-                      <div class="ui-months"><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+                      <div class="dw-mo"><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span></div>
                     </div>
-                    <div class="ui-panel">
-                      <p class="ui-pl">By department</p>
-                      <div class="ui-bars">
-                        <div><i style="--h:82%;--c:#41d8b4"></i><b>82</b><span>Eng</span></div>
-                        <div><i style="--h:74%;--c:#41d8b4"></i><b>74</b><span>Prod</span></div>
-                        <div><i style="--h:66%;--c:#F6993B"></i><b>66</b><span>Ops</span></div>
-                        <div><i style="--h:57%;--c:#F15162"></i><b>57</b><span>Sup</span></div>
-                        <div><i style="--h:49%;--c:#F15162"></i><b>49</b><span>Sales</span></div>
+                    <div class="dw-side">
+                      <div class="dw-card dw-score">
+                        <b>Org wellness score</b>
+                        <div class="dw-donut" style="--p:72"><i>72</i></div>
+                        <span class="dw-up">&#9650; 6 vs last quarter</span>
+                      </div>
+                      <div class="dw-card dw-dep">
+                        <b>By department</b>
+                        <div class="dw-dr"><span>Engineering</span><i style="--w:82%;--c:#41d8b4"></i><em>82</em></div>
+                        <div class="dw-dr"><span>Product</span><i style="--w:74%;--c:#41d8b4"></i><em>74</em></div>
+                        <div class="dw-dr"><span>Operations</span><i style="--w:66%;--c:#F6993B"></i><em>66</em></div>
+                        <div class="dw-dr"><span>Support</span><i style="--w:57%;--c:#F15162"></i><em>57</em></div>
+                        <div class="dw-dr"><span>Sales</span><i style="--w:49%;--c:#F15162"></i><em>49</em></div>
                       </div>
                     </div>
                   </div>
-                  <div class="ui-insight"><span class="ui-spark">&#10022;</span><b>Support and Sales are below the 75% target.</b><i>Suggest a team challenge before the next window.</i></div>
+                  <div class="dw-ins"><span class="dw-sp">&#10022;</span><b>Support and Sales sit below the 75% target.</b><em>Launch a team challenge &rarr;</em></div>
                 </div>
               </div>
             </div>
