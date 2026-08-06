@@ -122,14 +122,10 @@
     }
     .hero-grid { position: relative; display: grid; min-height: 820px; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 46px; padding: 130px 0 70px; }
     .hero-copy { position: relative; z-index: 3; max-width: 610px; }
-    .hero-copy .eyebrow { color: var(--mint); }
-    .hero-copy .eyebrow::before { background: var(--mint); box-shadow: 0 0 0 5px rgba(65,216,180,.12); }
     .hero-copy h1 em { color: var(--coral); font-family: inherit; font-style: normal; font-weight: 800; }
     .hero-copy .lead { max-width: 570px; color: rgba(255,255,255,.7); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
     .hero-actions .btn-primary { box-shadow: none; }
-    .hero-note { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 28px; color: rgba(255,255,255,.55); font-size: .7rem; font-weight: 700; }
-    .hero-note span::before { margin-right: 7px; color: var(--mint); content: "✓"; }
 
     .hero-stage { position: relative; min-height: 610px; }
     .hero-art {
@@ -511,14 +507,12 @@
     <header class="hero">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Employee wellness, built for participation</span>
           <h1>More people <em>in.</em><br>More progress <em>out.</em></h1>
           <p class="lead">Build lasting participation with inclusive challenges, meaningful rewards, and data leaders can trust.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://www.vantagefit.io/request-demo/">Book a demo <span class="arrow">→</span></a>
             <a class="btn btn-ghost" href="#proof">See customer results</a>
           </div>
-          <div class="hero-note"><span>Go live in days</span><span>Global rewards</span><span>Board-ready reporting</span></div>
         </div>
 
         <div class="hero-stage" aria-label="Employee participation and rewards in Vantage Fit">
@@ -618,7 +612,7 @@
 
     <section class="section proof" id="proof" aria-labelledby="proof-heading">
       <div class="shell proof-grid">
-        <div class="proof-intro reveal"><span class="eyebrow">Customer stories</span><h2 id="proof-heading">Results, told by the people who run the program.</h2><p class="lead">Wellness leaders share what changed when participation became the strategy.</p><a class="proof-link" href="https://www.vantagefit.io/client-testimonials/">View all testimonials →</a></div>
+        <div class="proof-intro reveal"><h2 id="proof-heading">Results, told by the people who run the program.</h2><p class="lead">Wellness leaders share what changed when participation became the strategy.</p><a class="proof-link" href="https://www.vantagefit.io/client-testimonials/">View all testimonials →</a></div>
         <article class="feature-story reveal"><img src="/rachel-arthur-feature.jpg" alt="Rachel Arthur of Brazosport ISD" width="600" height="900" loading="lazy"><div class="feature-quote"><blockquote>“Vantage Fit has helped our employees stay active, track their progress, and get rewarded.”</blockquote><div class="person"><img src="/rachel-arthur-avatar.jpg" alt="" width="38" height="38"><div><strong>Rachel Arthur</strong><span>Director of Benefits &amp; Wellness, Brazosport ISD</span></div></div></div></article>
         <div class="quote-stack">
           <article class="quote-card reveal"><blockquote>“Vantage Fit gave our team the first momentum toward healthier habits and a culture of daily progress.”</blockquote><div class="person"><span class="metric-icon">SS</span><div><strong>Shyam Surendran</strong><span>Landmark Leisure</span></div></div></article>
