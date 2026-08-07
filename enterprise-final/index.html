@@ -1819,7 +1819,7 @@
     .launch-loop-card-copy { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; padding: 24px; }
     .launch-loop-card h3 { margin-bottom: 9px; font-size: 1.38rem; }
     .launch-loop-card p { color: rgba(255,255,255,.74); font-size: .82rem; line-height: 1.65; }
-    .launch-loop-note {
+    .launch-loop-footer {
       position: relative;
       z-index: 1;
       display: flex;
@@ -1830,8 +1830,27 @@
       color: var(--muted);
       font-size: .8rem;
     }
-    .launch-loop-note strong { color: var(--ink); }
-    .launch-loop-swipe { display: none; }
+    .launch-loop-footer strong { color: var(--ink); }
+    .launch-loop-controls { display: none; align-items: center; gap: 10px; }
+    .launch-loop-position { min-width: 58px; color: var(--muted); font-size: .76rem; font-weight: 700; text-align: center; }
+    .launch-loop-position strong { color: var(--ink); font-size: .86rem; }
+    .launch-loop-control {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      border: 1px solid rgba(41,41,76,.16);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 800;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .launch-loop-control:hover:not(:disabled) { border-color: var(--coral); background: #fff6f7; transform: translateY(-1px); }
+    .launch-loop-control:disabled { cursor: default; opacity: .35; }
+    .launch-loop-control:focus-visible, .launch-loop-grid:focus-visible { outline: 3px solid var(--mint-dark); outline-offset: 3px; }
 
     @media (max-width: 1040px) {
       .launch-loop-head { grid-template-columns: 1fr; gap: 16px; }
@@ -1844,31 +1863,39 @@
       .launch-loop::after { display: none; }
       .launch-loop-head { margin-bottom: 30px; }
       .launch-loop-head .eyebrow { margin-bottom: 12px; }
+      .launch-loop-head h2 { font-size: clamp(2.05rem, 8.5vw, 2.55rem); line-height: 1.08; }
       .launch-loop-head .lead { font-size: 1rem; line-height: 1.62; }
       .launch-loop-grid {
         display: grid;
-        width: calc(100vw - 16px);
-        grid-auto-columns: minmax(272px, 82vw);
+        width: 100%;
+        grid-auto-columns: 100%;
         grid-template-columns: none;
         grid-auto-flow: column;
         gap: 12px;
-        padding: 0 16px 8px 0;
+        padding: 0 0 8px;
         overflow-x: auto;
         overscroll-behavior-inline: contain;
-        scroll-snap-type: inline mandatory;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 0;
         scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
       }
       .launch-loop-grid::-webkit-scrollbar { display: none; }
-      .launch-loop-card { min-height: 370px; }
+      .launch-loop-card { min-height: 390px; scroll-snap-align: start; scroll-snap-stop: always; }
       .launch-loop-card-copy { padding: 22px; }
-      .launch-loop-card p { font-size: .86rem; }
-      .launch-loop-note { align-items: flex-start; flex-direction: column; gap: 8px; }
-      .launch-loop-swipe { display: inline; }
+      .launch-loop-card h3 { font-size: 1.3rem; line-height: 1.15; }
+      .launch-loop-card p { font-size: .9rem; line-height: 1.62; }
+      .launch-loop-footer { align-items: center; margin-top: 16px; }
+      .launch-loop-footer > strong { max-width: 205px; font-size: .78rem; line-height: 1.45; }
+      .launch-loop-controls { display: flex; }
     }
 
     @media (max-width: 390px) {
-      .launch-loop-grid { grid-auto-columns: 86vw; }
-      .launch-loop-card { min-height: 350px; }
+      .launch-loop-head h2 { font-size: 2rem; }
+      .launch-loop-card { min-height: 370px; }
+      .launch-loop-footer { align-items: flex-start; flex-direction: column; }
+      .launch-loop-controls { align-self: stretch; justify-content: space-between; }
     }
 
     /* —— Footer —— */
@@ -2384,29 +2411,36 @@
           </div>
           <p class="lead">Most wellness programs peak on announcement day. Vantage Fit is designed for day 30, day 90, and the next challenge after that.</p>
         </div>
-        <div class="launch-loop-grid" aria-label="The four stages of ongoing participation">
-          <article class="launch-loop-card">
+        <div class="launch-loop-grid" id="launch-loop-carousel" role="region" aria-roledescription="carousel" aria-label="The four stages of ongoing participation" tabindex="0">
+          <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="1 of 4: Invite">
             <img src="/card-invite.jpg" alt="Two colleagues celebrating together" loading="lazy" width="700" height="875">
             <span class="launch-loop-no">01</span>
             <div class="launch-loop-card-copy"><h3>Invite</h3><p>Launch for teams, regions, or your full workforce from proven formats—without a long implementation project.</p></div>
           </article>
-          <article class="launch-loop-card">
+          <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="2 of 4: Participate">
             <img src="/card-participate.jpg" alt="Employee moving outdoors at an achievable pace" loading="lazy" width="700" height="875">
             <span class="launch-loop-no">02</span>
             <div class="launch-loop-card-copy"><h3>Participate</h3><p>Steps, multi-activity, mindfulness, and team formats make wellness broader than a fitness contest.</p></div>
           </article>
-          <article class="launch-loop-card">
+          <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="3 of 4: Reward">
             <img src="/card-reward.jpg" alt="Trophy representing employee recognition" loading="lazy" width="700" height="875">
             <span class="launch-loop-no">03</span>
             <div class="launch-loop-card-copy"><h3>Reward</h3><p>Recognize real effort with points, badges, leaderboards, and rewards people genuinely value.</p></div>
           </article>
-          <article class="launch-loop-card">
+          <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="4 of 4: Measure">
             <img src="/card-measure-generic.jpg" alt="Professional reviewing participation analytics" loading="lazy" width="700" height="875">
             <span class="launch-loop-no">04</span>
             <div class="launch-loop-card-copy"><h3>Measure</h3><p>Track participation, trends, and team-level patterns so every new program gets smarter.</p></div>
           </article>
         </div>
-        <div class="launch-loop-note"><strong>Different interests. Different abilities. One connected program.</strong><span class="launch-loop-swipe">Swipe to explore →</span></div>
+        <div class="launch-loop-footer">
+          <strong>Different interests. Different abilities. One connected program.</strong>
+          <div class="launch-loop-controls" aria-label="Participation carousel controls">
+            <button class="launch-loop-control" id="launch-loop-prev" type="button" aria-controls="launch-loop-carousel" aria-label="Previous participation step" disabled>←</button>
+            <span class="launch-loop-position" aria-live="polite"><strong id="launch-loop-current">1</strong> of 4</span>
+            <button class="launch-loop-control" id="launch-loop-next" type="button" aria-controls="launch-loop-carousel" aria-label="Next participation step">→</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2656,6 +2690,63 @@
       }
       tabs.emp.addEventListener('click', () => select('emp'));
       tabs.hr.addEventListener('click', () => select('hr'));
+    })();
+
+    // Participation loop: accessible, one-card-at-a-time mobile snapping
+    (function () {
+      const carousel = document.getElementById('launch-loop-carousel');
+      const previous = document.getElementById('launch-loop-prev');
+      const next = document.getElementById('launch-loop-next');
+      const currentLabel = document.getElementById('launch-loop-current');
+      if (!carousel || !previous || !next || !currentLabel) return;
+
+      const cards = [...carousel.querySelectorAll('.launch-loop-card')];
+      const mobile = window.matchMedia('(max-width: 760px)');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let current = 0;
+      let frameId = 0;
+
+      const cardLeft = (card) => {
+        const cardBox = card.getBoundingClientRect();
+        const carouselBox = carousel.getBoundingClientRect();
+        return cardBox.left - carouselBox.left + carousel.scrollLeft;
+      };
+
+      const updateControls = (index) => {
+        current = Math.max(0, Math.min(cards.length - 1, index));
+        currentLabel.textContent = String(current + 1);
+        previous.disabled = current === 0;
+        next.disabled = current === cards.length - 1;
+      };
+
+      const nearestCard = () => {
+        if (!mobile.matches) return updateControls(0);
+        const index = cards.reduce((nearest, card, i) => (
+          Math.abs(cardLeft(card) - carousel.scrollLeft) < Math.abs(cardLeft(cards[nearest]) - carousel.scrollLeft) ? i : nearest
+        ), 0);
+        updateControls(index);
+      };
+
+      const goTo = (index) => {
+        if (!mobile.matches) return;
+        const target = Math.max(0, Math.min(cards.length - 1, index));
+        carousel.scrollTo({ left: cardLeft(cards[target]), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+        updateControls(target);
+      };
+
+      previous.addEventListener('click', () => goTo(current - 1));
+      next.addEventListener('click', () => goTo(current + 1));
+      carousel.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        goTo(current + (event.key === 'ArrowRight' ? 1 : -1));
+      });
+      carousel.addEventListener('scroll', () => {
+        if (frameId) cancelAnimationFrame(frameId);
+        frameId = requestAnimationFrame(nearestCard);
+      }, { passive: true });
+      window.addEventListener('resize', nearestCard, { passive: true });
+      updateControls(0);
     })();
 
   
