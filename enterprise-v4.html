@@ -59,6 +59,13 @@
     :focus-visible { outline: 3px solid var(--sun); outline-offset: 4px; }
     .shell { width: var(--shell); margin-inline: auto; }
     .serif { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; }
+    h1, h2, h3, .hero-copy h1, .panel-copy h3 {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -.01em;
+    }
+    /* the serif has no bold, so drop inherited weights */
+    h1 em, h2 em, h3 em, h1 strong, h2 strong, h3 strong { font-weight: 400; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -429,7 +436,6 @@
     <header class="hero">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Employee wellness, built for participation</span>
           <h1>More people <em>in.</em><br>More progress <em>out.</em></h1>
           <p class="lead">Build lasting participation with inclusive challenges, meaningful rewards, and data leaders can trust.</p>
           <div class="hero-actions">
@@ -469,7 +475,7 @@
     <section class="section loop" id="loop" aria-labelledby="loop-heading">
       <div class="shell">
         <div class="section-head reveal">
-          <div><span class="eyebrow">The participation loop</span><h2 id="loop-heading">Launch day is only <span class="serif">day one.</span></h2></div>
+          <div><h2 id="loop-heading">Launch day is only <span class="serif">day one.</span></h2></div>
           <p class="lead">Most wellness programs peak on announcement day. Vantage Fit is designed for day 30, day 90, and the next challenge after that.</p>
         </div>
         <div class="loop-grid">
@@ -485,7 +491,7 @@
     <section class="section experience" id="experience" aria-labelledby="experience-heading">
       <div class="shell experience-wrap">
         <div class="experience-nav reveal">
-          <div><span class="eyebrow">Two views. One system.</span><h2 id="experience-heading">Easy to join.<br><span class="serif">Easy to run.</span></h2></div>
+          <div><h2 id="experience-heading">Easy to join.<br><span class="serif">Easy to run.</span></h2></div>
           <div class="tab-list" role="tablist" aria-label="Choose platform experience">
             <button class="tab-btn" id="employee-tab" type="button" role="tab" aria-selected="true" aria-controls="employee-panel" tabindex="0">For employees</button>
             <button class="tab-btn" id="hr-tab" type="button" role="tab" aria-selected="false" aria-controls="hr-panel" tabindex="-1">For HR teams</button>
@@ -494,13 +500,13 @@
 
         <div class="experience-panels reveal">
           <article class="experience-panel" id="employee-panel" role="tabpanel" aria-labelledby="employee-tab">
-            <div class="panel-copy"><span class="eyebrow">Momentum people feel</span><h3>Wellness that fits real life.</h3><ul class="feature-list"><li><b>Something for more people</b><p>Physical, mental, and everyday wellbeing across different interests and abilities.</p></li><li><b>Progress people can feel</b><p>Daily goals, streaks, and teams turn a distant goal into a clear next step.</p></li><li><b>Rewards worth earning</b><p>Points convert into a global catalogue employees recognize and redeem.</p></li></ul></div>
+            <div class="panel-copy"><h3>Wellness that fits real life.</h3><ul class="feature-list"><li><b>Something for more people</b><p>Physical, mental, and everyday wellbeing across different interests and abilities.</p></li><li><b>Progress people can feel</b><p>Daily goals, streaks, and teams turn a distant goal into a clear next step.</p></li><li><b>Rewards worth earning</b><p>Points convert into a global catalogue employees recognize and redeem.</p></li></ul></div>
             <div class="panel-stat"><small>Challenge completion</small><strong>87%</strong></div>
             <img class="panel-art" src="employees-day.png" alt="Vantage Fit employee mobile experience" width="1400" height="900" loading="lazy">
           </article>
 
           <article class="experience-panel" id="hr-panel" role="tabpanel" aria-labelledby="hr-tab" hidden>
-            <div class="panel-copy"><span class="eyebrow">Clarity for program owners</span><h3>Run wellness without running in circles.</h3><ul class="feature-list"><li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li><li><b>See participation clearly</b><p>Follow rolling rates, trend direction, and teams needing a new approach.</p></li><li><b>One connected program</b><p>Manage challenges, engagement, rewards, and reporting in one place.</p></li></ul></div>
+            <div class="panel-copy"><h3>Run wellness without running in circles.</h3><ul class="feature-list"><li><b>Launch without a project</b><p>Start from proven formats and adapt audience, duration, and rewards.</p></li><li><b>See participation clearly</b><p>Follow rolling rates, trend direction, and teams needing a new approach.</p></li><li><b>One connected program</b><p>Manage challenges, engagement, rewards, and reporting in one place.</p></li></ul></div>
             <div class="panel-stat"><small>Programs live</small><strong>12</strong></div>
             <img class="panel-art admin" src="dashboard-admin.png" alt="Vantage Fit HR analytics dashboard" width="1400" height="900" loading="lazy">
           </article>
@@ -511,7 +517,6 @@
 
     <section class="roi" id="roi" aria-labelledby="roi-heading">
       <div class="shell">
-        <span class="eyebrow">Business case</span>
         <h2 id="roi-heading">One number your CFO can defend.</h2>
         <p class="lead">Enter your workforce shape and the figure updates, ready to drop into a board deck.</p>
         <div class="roi-grid">
@@ -532,7 +537,7 @@
 
     <section class="section proof" id="proof" aria-labelledby="proof-heading">
       <div class="shell proof-grid">
-        <div class="proof-intro reveal"><span class="eyebrow">Customer stories</span><h2 id="proof-heading">Results, told by the people<br> who run the program.</h2><p class="lead">Wellness leaders share what changed when participation became the strategy.</p><a class="proof-link" href="https://www.vantagefit.io/client-testimonials/">View all testimonials →</a></div>
+        <div class="proof-intro reveal"><h2 id="proof-heading">Results, told by the people<br> who run the program.</h2><p class="lead">Wellness leaders share what changed when participation became the strategy.</p><a class="proof-link" href="https://www.vantagefit.io/client-testimonials/">View all testimonials →</a></div>
         <article class="feature-story reveal"><img src="rachel-arthur-feature.jpg" alt="Rachel Arthur of Brazosport ISD" width="600" height="900" loading="lazy"><div class="feature-quote"><blockquote>“Vantage Fit has helped our employees stay active, track their progress, and get rewarded.”</blockquote><div class="person"><img src="rachel-arthur-avatar.jpg" alt="" width="38" height="38"><div><strong>Rachel Arthur</strong><span>Director of Benefits &amp; Wellness, Brazosport ISD</span></div></div></div></article>
         <div class="quote-stack">
           <article class="quote-card reveal"><blockquote>“Vantage Fit gave our team the first momentum toward healthier habits and a culture of daily progress.”</blockquote><div class="person"><span class="metric-icon">SS</span><div><strong>Shyam Surendran</strong><span>Landmark Leisure</span></div></div></article>
@@ -544,14 +549,14 @@
 
     <section class="section security" id="security" aria-labelledby="security-heading">
       <div class="shell security-grid">
-        <div class="security-copy reveal"><span class="eyebrow">Enterprise security &amp; compliance</span><h2 id="security-heading">Employee data, handled to enterprise standard.</h2><p class="lead">Measure participation without compromising privacy. Vantage Fit is built for enterprise security, global access, and responsible program administration.</p><div class="security-actions"><a class="btn btn-ink" href="https://www.vantagefit.io/features/security-and-compliance/">Explore security</a><a class="btn" href="https://www.vantagefit.io/trust-center/">Visit trust center →</a></div></div>
+        <div class="security-copy reveal"><h2 id="security-heading">Employee data, handled to enterprise standard.</h2><p class="lead">Measure participation without compromising privacy. Vantage Fit is built for enterprise security, global access, and responsible program administration.</p><div class="security-actions"><a class="btn btn-ink" href="https://www.vantagefit.io/features/security-and-compliance/">Explore security</a><a class="btn" href="https://www.vantagefit.io/trust-center/">Visit trust center →</a></div></div>
         <div class="security-board reveal"><h3>Protection built into the platform—not added after procurement asks.</h3><div class="cert-grid"><div class="cert"><b>HIPAA</b><span>Safeguards for protected health information.</span></div><div class="cert"><b>SOC 2</b><span>Controls for security, availability, and confidentiality.</span></div><div class="cert"><b>ISO 27001 / 27701</b><span>Information security and privacy management standards.</span></div><div class="cert"><b>GDPR</b><span>Privacy principles for global employee programs.</span></div></div></div>
       </div>
     </section>
 
     <section class="section insights" id="insights" aria-labelledby="insights-heading">
       <div class="shell">
-        <div class="section-head reveal"><div><span class="eyebrow">Wellness insights for HR</span><h2 id="insights-heading">Ideas worth putting into <span class="serif">practice.</span></h2></div><p class="lead">Practical guidance for building healthier, more engaged workplaces.</p></div>
+        <div class="section-head reveal"><div><h2 id="insights-heading">Ideas worth putting into <span class="serif">practice.</span></h2></div><p class="lead">Practical guidance for building healthier, more engaged workplaces.</p></div>
         <div class="insight-grid">
           <a class="article reveal" href="https://www.vantagefit.io/en/blog/step-challenge/"><img src="https://cdn.vantagecircle.com/image/upload/w_900,q_auto,f_auto/v1773307619/VantageFit/2026/Step-challenge.webp" alt="Workplace step challenge" loading="lazy"><div class="article-copy"><span>Program design</span><h3>How to Set Up a Step Challenge at Work</h3></div></a>
           <a class="article reveal" href="https://www.vantagefit.io/en/blog/employee-health/"><img src="https://cdn.vantagecircle.com/image/upload/w_700,q_auto,f_auto/v1773307619/VantageFit/2026/Employee-Health.webp" alt="Healthy employees at work" loading="lazy"><div class="article-copy"><span>Employee health</span><h3>A vital factor for workplace productivity</h3></div></a>
