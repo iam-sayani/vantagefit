@@ -20,6 +20,11 @@
       --dark: #1D2228;
       --dark-2: #2A313A;
       --coral: #F15162;
+      /* CTA gradient darkened so white label text clears WCAG AA 4.5:1 at any
+         size (brand #F15162 gives only 3.45:1). --coral is unchanged for
+         headline accents and large display use. */
+      --cta-a: #DB3245;
+      --cta-b: #C43142;
       --coral-deep: #B62E40;
       --coral-dark: #d63d4e;
       --coral-text: #d13c4d;
@@ -128,7 +133,7 @@
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%);
+      background: linear-gradient(125deg, var(--cta-a) 5%, var(--cta-b) 125%);
       color: #fff;
     }
     .btn-primary:hover { filter: brightness(1.05); }
@@ -230,7 +235,7 @@
       margin-left: 8px;
       padding-inline: 18px;
       border-radius: 999px;
-      background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%);
+      background: linear-gradient(125deg, var(--cta-a) 5%, var(--cta-b) 125%);
       color: #fff;
     }
     .nav-links .nav-cta:hover { filter: brightness(1.06); color: #fff; }
@@ -644,8 +649,8 @@
       align-items: center;
       gap: 3px;
       margin-top: 5px;
-      color: #128f72;
-      font-size: .56rem;
+      color: #0F7D63;
+      font-size: .62rem;
       font-weight: 800;
     }
     .participation-moment .trend::before { content: "↑"; font-size: .68rem; }
@@ -1707,7 +1712,7 @@
     .final h2 { max-width: 880px; margin-inline: auto; }
     .final p { max-width: 620px; margin: 20px auto 0; color: rgba(255,255,255,.8); font-size: 1.08rem; }
     .final .btn-row { justify-content: center; }
-    .final .btn-primary { background: linear-gradient(125deg, var(--coral) 5%, var(--coral-deep) 125%); }
+    .final .btn-primary { background: linear-gradient(125deg, var(--cta-a) 5%, var(--cta-b) 125%); }
     .final .btn-outline { border-color: rgba(255,255,255,.35); background: transparent; color: #fff; }
     .final .btn-outline:hover { background: rgba(255,255,255,.1); }
     .final-note { margin-top: 18px; font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.85); }
@@ -1856,7 +1861,7 @@
       .photo-status { display: none; }
       .participation-moment { top: 30px; left: -2px; width: 190px; padding: 11px 12px; transform-origin: left top; }
       .participation-copy strong { font-size: 1.2rem; }
-      .participation-moment .trend { font-size: .48rem; }
+      .participation-moment .trend { font-size: .62rem; }
       .participation-spark { flex-basis: 65px; width: 65px; height: 40px; }
       .points-moment { top: 205px; right: -5px; width: 157px; padding: 11px; transform-origin: right center; }
       .reward-moment { left: 0; bottom: 8px; width: 190px; padding: 11px 12px; transform-origin: left bottom; }
@@ -1969,13 +1974,21 @@
       footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
     }
     @media (prefers-reduced-motion: reduce) { .thumb-bar { transition: none; } }
+
+    /* skip link — visible only on focus */
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 200; }
+    .skip-link:focus { left: 12px; top: 12px; padding: 12px 18px; border-radius: 10px;
+      background: var(--ink, #29294c); color: #fff; font-weight: 700; outline: 3px solid #41d8b4; }
+    main:focus { outline: none; }
   </style>
+  <link rel="preload" as="image" href="hero-man-popout-v2.png" fetchpriority="high">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <nav class="nav" aria-label="Primary navigation">
     <div class="shell nav-inner">
       <a class="brand" href="#top" aria-label="Vantage Fit home">
-        <img src="logo.png" alt="Vantage Fit" width="173" height="37" style="height:32px;width:auto;display:block">
+        <img src="logo.png" alt="Vantage Fit" width="173" height="37" style="height:32px;width:auto;display:block" loading="lazy" decoding="async">
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -2092,7 +2105,7 @@
     </div>
   </nav>
 
-  <main id="top">
+  <main id="main" tabindex="-1" id="top">
     <!-- ========== S1 HERO (Fable) ========== -->
     <header class="hero" id="hero">
       <div class="shell hero-grid">
@@ -2199,7 +2212,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="brand" href="#top">
-            <img src="logo-white.png" alt="Vantage Fit" width="173" height="37" style="height:28px;width:auto;display:block">
+            <img src="logo-white.png" alt="Vantage Fit" width="173" height="37" style="height:28px;width:auto;display:block" loading="lazy" decoding="async">
           </a>
           <p class="footer-about">Inclusive wellness that turns participation into measurable progress.</p>
         </div>
