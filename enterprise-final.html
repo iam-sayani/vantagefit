@@ -2056,6 +2056,140 @@
       @keyframes logo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     }
     @media (prefers-reduced-motion: reduce) { .logo-track { animation: none !important; } }
+
+
+    /* ===== Participation loop (ported from Codex branch codex-v) ===== */
+    /* —— Participation loop —— */
+        .launch-loop {
+          position: relative;
+          overflow: hidden;
+          padding: 104px 0;
+          background: #f2f0ec;
+          font-family: var(--font);
+        }
+    .launch-loop::after {
+          position: absolute;
+          top: 76px;
+          right: -126px;
+          width: 340px;
+          height: 340px;
+          border: 72px solid rgba(241,81,98,.065);
+          border-radius: 50%;
+          content: "";
+          pointer-events: none;
+        }
+    .launch-loop-head {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: minmax(0, 1.08fr) minmax(320px, .72fr);
+          align-items: end;
+          gap: 72px;
+          margin-bottom: 48px;
+        }
+    .launch-loop-head h2 { max-width: 670px; }
+    .launch-loop-head .lead { margin: 0 0 5px; }
+    .launch-loop-title-accent { color: var(--coral-text); }
+    .launch-loop-grid {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 14px;
+        }
+    .launch-loop-card {
+          position: relative;
+          min-height: 410px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,.12);
+          border-radius: var(--radius);
+          background: var(--dark);
+          color: #fff;
+          box-shadow: var(--shadow-soft);
+          scroll-snap-align: start;
+        }
+    .launch-loop-card img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(1) contrast(1.06);
+          transition: transform .5s ease, filter .5s ease;
+        }
+    .launch-loop-card::before {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to top, rgba(29,34,40,.98), rgba(182,46,64,.28) 62%, rgba(29,34,40,.12));
+          content: "";
+        }
+    .launch-loop-card:hover img { transform: scale(1.045); filter: grayscale(.62) saturate(.9); }
+    .launch-loop-no {
+          position: absolute;
+          z-index: 2;
+          top: 18px;
+          left: 18px;
+          display: grid;
+          width: 40px;
+          height: 40px;
+          place-items: center;
+          border: 1px solid rgba(255,255,255,.55);
+          border-radius: 50%;
+          font-size: .7rem;
+          font-weight: 800;
+        }
+    .launch-loop-card-copy { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; padding: 24px; }
+    .launch-loop-card h3 { margin-bottom: 9px; font-size: 1.38rem; }
+    .launch-loop-card p { color: rgba(255,255,255,.74); font-size: .82rem; line-height: 1.65; }
+    .launch-loop-note {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+          margin-top: 24px;
+          color: var(--muted);
+          font-size: .8rem;
+        }
+    .launch-loop-note strong { color: var(--ink); }
+    .launch-loop-swipe { display: none; }
+    @media (max-width: 1040px) {
+      .launch-loop-head { grid-template-columns: 1fr; gap: 16px; }
+      .launch-loop-head .lead { max-width: 700px; margin: 0; }
+      .launch-loop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .launch-loop { padding: 72px 0 76px; }
+      .launch-loop::after { display: none; }
+      .launch-loop-head { margin-bottom: 30px; }
+      .launch-loop-head .eyebrow { margin-bottom: 12px; }
+      .launch-loop-head .lead { font-size: 1rem; line-height: 1.62; }
+      .launch-loop-grid {
+            display: grid;
+            width: calc(100vw - 16px);
+            grid-auto-columns: minmax(272px, 82vw);
+            grid-template-columns: none;
+            grid-auto-flow: column;
+            gap: 12px;
+            padding: 0 16px 8px 0;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            scroll-snap-type: inline mandatory;
+            scrollbar-width: none;
+          }
+      .launch-loop-grid::-webkit-scrollbar { display: none; }
+      .launch-loop-card { min-height: 370px; }
+      .launch-loop-card-copy { padding: 22px; }
+      .launch-loop-card p { font-size: .86rem; }
+      .launch-loop-note { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .launch-loop-swipe { display: inline; }
+    }
+    @media (max-width: 390px) {
+      .launch-loop-grid { grid-auto-columns: 86vw; }
+      .launch-loop-card { min-height: 350px; }
+    }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
@@ -2264,10 +2398,44 @@
       </div>
     </header>
 
-    <!-- ========== S2 PARTICIPATION ENGINE (Claude / Fable) ========== -->
-    <!-- ========== S2 THE PARTICIPATION PROBLEM (illume) ========== -->
+    <!-- ========== S2 PARTICIPATION LOOP (from Codex, branch codex-v) ========== -->
+    <section class="launch-loop" id="engine" aria-labelledby="engine-heading">
+      <div class="shell">
+        <div class="launch-loop-head">
+          <div>
+            <span class="eyebrow">The participation loop</span>
+            <h2 id="engine-heading">Launch day is only <span class="launch-loop-title-accent">day one.</span></h2>
+          </div>
+          <p class="lead">Most wellness programs peak on announcement day. Vantage Fit is designed for day 30, day 90, and the next challenge after that.</p>
+        </div>
+        <div class="launch-loop-grid" aria-label="The four stages of ongoing participation">
+          <article class="launch-loop-card">
+            <img src="/card-invite.jpg" alt="Two colleagues celebrating together" loading="lazy" width="700" height="875">
+            <span class="launch-loop-no">01</span>
+            <div class="launch-loop-card-copy"><h3>Invite</h3><p>Launch for teams, regions, or your full workforce from proven formats—without a long implementation project.</p></div>
+          </article>
+          <article class="launch-loop-card">
+            <img src="/card-participate.jpg" alt="Employee moving outdoors at an achievable pace" loading="lazy" width="700" height="875">
+            <span class="launch-loop-no">02</span>
+            <div class="launch-loop-card-copy"><h3>Participate</h3><p>Steps, multi-activity, mindfulness, and team formats make wellness broader than a fitness contest.</p></div>
+          </article>
+          <article class="launch-loop-card">
+            <img src="/card-reward.jpg" alt="Trophy representing employee recognition" loading="lazy" width="700" height="875">
+            <span class="launch-loop-no">03</span>
+            <div class="launch-loop-card-copy"><h3>Reward</h3><p>Recognize real effort with points, badges, leaderboards, and rewards people genuinely value.</p></div>
+          </article>
+          <article class="launch-loop-card">
+            <img src="/card-measure-generic.jpg" alt="Professional reviewing participation analytics" loading="lazy" width="700" height="875">
+            <span class="launch-loop-no">04</span>
+            <div class="launch-loop-card-copy"><h3>Measure</h3><p>Track participation, trends, and team-level patterns so every new program gets smarter.</p></div>
+          </article>
+        </div>
+        <div class="launch-loop-note"><strong>Different interests. Different abilities. One connected program.</strong><span class="launch-loop-swipe">Swipe to explore →</span></div>
+      </div>
+    </section>
+
     <!-- ============================================================
-     SECTIONS TO COME — assembled one at a time as they are chosen.
+     REMAINING SECTIONS TO COME — assembled one at a time as chosen.
      Nav + hero are from /enterprise (version A).
      ============================================================ -->
 
