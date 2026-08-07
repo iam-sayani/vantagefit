@@ -411,6 +411,63 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
     }
+
+    /* ================= MOBILE-FIRST PASS ================= */
+    /* fluid type: scales from 375px up rather than shrinking a desktop scale down */
+    h1, .hero-copy h1 { font-size: clamp(2.05rem, 8.5vw, 4.6rem); line-height: 1.06; }
+    h2 { font-size: clamp(1.72rem, 6vw, 3.2rem); line-height: 1.12; }
+    h3, .panel-copy h3 { font-size: clamp(1.15rem, 4.4vw, 2.1rem); }
+    .lead { font-size: clamp(1rem, 3.6vw, 1.06rem); }
+
+    @media (max-width: 760px) {
+      :root { --shell: calc(100vw - 32px); }
+      .section, .roi, .final { padding: 56px 0; }
+      .hero { min-height: auto; padding-bottom: 44px; }
+      .hero-grid { grid-template-columns: 1fr; min-height: 0; gap: 30px; padding: 96px 0 8px; }
+
+      /* full-width stacked CTAs, comfortable to hit */
+      .hero-actions, .final-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+      .hero-actions .btn, .final-actions .btn { width: 100%; justify-content: center; }
+      .btn { min-height: 48px; padding-inline: 20px; }
+
+      /* interactive controls reach the 44px target minimum */
+      .tab-btn, .nav-links a, .menu-btn, .roi-f input { min-height: 46px; }
+      .text-link, .proof-link, footer a { display: inline-block; padding: 8px 0; }
+
+      /* one card per row, nothing overflowing */
+      /* swipe carousel: bleeds to the viewport edges, clipped by .loop's overflow */
+      .loop-grid { display: flex; width: auto; gap: 12px; margin-inline: -16px; padding: 0 16px 4px;
+        overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .loop-grid::-webkit-scrollbar { display: none; }
+      .loop-card { flex: 0 0 84%; scroll-snap-align: start; min-height: 300px; }
+      .loop-card img { object-position: center 28%; }
+
+
+      /* stacked panels: art below the copy, never absolutely placed */
+      .experience-panel { min-height: 0; }
+      .panel-copy { width: 100%; padding: 26px 22px 0; }
+      .panel-art, .panel-art.admin { position: static; transform: none; width: 100%;
+        margin: 18px 0 0; padding: 0 14px 22px; }
+      .panel-stat { position: static; display: inline-flex; margin: 14px 22px 0; }
+
+      .roi-grid { grid-template-columns: 1fr; gap: 24px; }
+      .roi-out { padding: 26px 20px; }
+      .collage { gap: 12px; }
+      .tile .chip { left: 10px; bottom: 10px; padding: 8px 11px; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a { min-height: 44px; display: inline-flex; align-items: center; }
+      .brand-list { flex-wrap: wrap; justify-content: flex-start; gap: 10px 18px; }
+      .brand-list span { font-size: .68rem; }
+      .tab-btn { min-height: 46px; }
+    }
+
+    @media (max-width: 400px) {
+      :root { --shell: calc(100vw - 24px); }
+      .tile .chip b { font-size: .95rem; }
+      .hero-compliance { font-size: 12px; letter-spacing: .02em; }
+    }
   </style>
 </head>
 <body>
