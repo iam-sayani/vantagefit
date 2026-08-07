@@ -1934,7 +1934,9 @@
       :root { --nav-h: 60px; }
 
       /* 1 — clear the fixed nav, single column, sane rhythm */
-      .hero { min-height: auto; padding: calc(var(--nav-h) + 54px) 0 40px; }
+      /* no bottom padding: the logo band is the last thing in the hero, and
+         40px of it showed as an empty white strip before the next section */
+      .hero { min-height: auto; padding: calc(var(--nav-h) + 54px) 0 0; }
       .hero-grid { grid-template-columns: 1fr; gap: 28px; padding: 0; min-height: 0; }
       .hero-copy { max-width: none; }
 
