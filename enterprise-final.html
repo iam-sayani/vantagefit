@@ -2164,7 +2164,9 @@
       .launch-loop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 760px) {
-      .launch-loop { padding: 72px 0 76px; }
+      /* 72px of top padding read as a dead band under the logo strip on a
+         phone; 24px keeps the heading off the seam without the gap */
+      .launch-loop { padding: 24px 0 56px; }
       .launch-loop::after { display: none; }
       .launch-loop-head { margin-bottom: 30px; }
       .launch-loop-head .eyebrow { margin-bottom: 12px; }
