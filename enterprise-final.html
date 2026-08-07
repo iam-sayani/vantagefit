@@ -1944,6 +1944,31 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
+
+    /* ============ mobile thumb-zone action bar ============
+       Hoober's reach model: the comfortable one-handed band on a phone is
+       the lower third. The hero CTA is fine on first paint, but scrolls out
+       of reach immediately, so the primary action re-appears pinned there. */
+    .thumb-bar { display: none; }
+    @media (max-width: 760px) {
+      .thumb-bar {
+        position: fixed; z-index: 60; left: 0; right: 0; bottom: 0;
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+        background: rgba(255,255,255,.93);
+        backdrop-filter: blur(18px) saturate(1.5); -webkit-backdrop-filter: blur(18px) saturate(1.5);
+        border-top: 1px solid rgba(41,41,76,.1);
+        box-shadow: 0 -6px 24px rgba(41,41,76,.08);
+        transform: translateY(120%); transition: transform .32s cubic-bezier(.22,.9,.24,1);
+      }
+      .thumb-bar.is-on { transform: none; }
+      .thumb-cta { flex: 1; justify-content: center; min-height: 50px; font-size: 1rem; }
+      .thumb-alt { flex: 0 0 auto; min-height: 50px; display: inline-flex; align-items: center; padding: 0 6px;
+        font-size: .92rem; font-weight: 700; color: var(--ink); }
+      /* keep the footer clear of the bar */
+      footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+    }
+    @media (prefers-reduced-motion: reduce) { .thumb-bar { transition: none; } }
   </style>
 </head>
 <body>
@@ -2160,6 +2185,14 @@
      SECTIONS TO COME — assembled one at a time as they are chosen.
      Nav + hero are from /enterprise (version A).
      ============================================================ -->
+
+
+    <!-- Mobile thumb-zone action bar: the primary action stays in the
+         easy-reach band once the hero CTAs scroll away. Mobile only. -->
+    <div class="thumb-bar" id="thumb-bar" hidden>
+      <a class="btn btn-primary thumb-cta" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+      <a class="thumb-alt" href="#proof">See results</a>
+    </div>
 
 <footer>
     <div class="shell">
@@ -2406,6 +2439,22 @@
     }
 
   
+
+  
+    // Thumb-zone bar: reveal once the hero's own CTAs leave the screen
+    (function () {
+      const bar = document.getElementById('thumb-bar');
+      const heroCta = document.querySelector('.hero .btn-row');
+      if (!bar || !heroCta) return;
+      const mq = window.matchMedia('(max-width: 760px)');
+      const io = new IntersectionObserver(([e]) => {
+        const show = mq.matches && !e.isIntersecting && e.boundingClientRect.top < 0;
+        bar.hidden = !show;
+        requestAnimationFrame(() => bar.classList.toggle('is-on', show));
+      }, { threshold: 0 });
+      io.observe(heroCta);
+      mq.addEventListener('change', () => { if (!mq.matches) { bar.hidden = true; bar.classList.remove('is-on'); } });
+    })();
 
   </script>
 </body>
