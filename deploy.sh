@@ -6,4 +6,6 @@ STAGE="${TMPDIR:-/tmp}/vantagefit-deploy"
 mkdir -p "$STAGE"
 rsync -a --delete --exclude='.git' --exclude='.wrangler' --exclude='deploy.sh' "$SITE/" "$STAGE/"
 printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > "$STAGE/_headers"
-npx --yes wrangler pages deploy "$STAGE" --project-name=vantagefit --commit-dirty=true
+# Pinned: wrangler 4.120.0 is tagged latest on npm but its tarball 404s (broken publish).
+# Bump this when a newer version installs cleanly.
+npx --yes wrangler@4.119.0 pages deploy "$STAGE" --project-name=vantagefit --commit-dirty=true
