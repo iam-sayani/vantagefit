@@ -1929,28 +1929,28 @@
       .people-visual::after { display: none; }
       .photo-status { position: absolute; top: 6px; right: 2%; left: auto; bottom: auto; }
 
-      .moment-card { animation: none !important; padding: 9px 11px; border-radius: 13px;
-        box-shadow: 0 10px 26px rgba(23,23,45,.16); }
-      .moment-card p { margin: 0 0 1px; font-size: .53rem; letter-spacing: .04em; line-height: 1.28;
+      .moment-card { animation: none !important; padding: 7px 10px; border-radius: 11px;
+        box-shadow: 0 8px 20px rgba(23,23,45,.15); }
+      .moment-card p { margin: 0; font-size: .48rem; letter-spacing: .03em; line-height: 1.25;
         white-space: normal; overflow-wrap: anywhere; }
-      .moment-card strong { font-size: .95rem; }
+      .moment-card strong { font-size: .82rem; line-height: 1.15; }
       .moment-card div { min-width: 0; }
-      .moment-icon { width: 26px; height: 26px; flex: 0 0 26px; }
+      .moment-icon { width: 21px; height: 21px; flex: 0 0 21px; }
 
       .participation-moment { position: absolute !important; top: 37% !important; bottom: auto !important;
-        left: 0 !important; right: auto !important; width: 57% !important;
+        left: 0 !important; right: auto !important; width: auto !important; max-width: 46% !important;
         display: flex; align-items: center; justify-content: space-between; gap: 8px; }
       .participation-moment .trend { display: none; }   /* secondary line; keeps the card ~50px so three overlays clear each other */
       .participation-spark { display: none; }   /* decorative; the cards must stay short to fit */
 
       .points-moment { position: absolute !important; top: 59% !important; bottom: auto !important;
-        right: 0 !important; left: auto !important; width: 53% !important;
-        display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 8px; }
+        right: 0 !important; left: auto !important; width: auto !important; max-width: 50% !important;
+        display: grid; grid-template-columns: 21px 1fr; align-items: center; gap: 7px; }
 
       .reward-moment { position: absolute !important; top: auto !important; bottom: 0 !important;
-        left: 3% !important; right: auto !important; width: 62% !important;
-        display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 8px; }
-      .reward-moment strong { font-size: .78rem; line-height: 1.24; white-space: normal; overflow-wrap: anywhere; }
+        left: 2% !important; right: auto !important; width: auto !important; max-width: 55% !important;
+        display: grid; grid-template-columns: 21px 1fr; align-items: center; gap: 7px; }
+      .reward-moment strong { font-size: .72rem; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; }
 
       /* 6 — controls reach 44px */
       .nav-links a, .nav-trigger, .menu-btn, .nav-cta { min-height: 46px; display: inline-flex; align-items: center; }
@@ -1965,10 +1965,11 @@
       .people-visual { padding-bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
       .hero-photo { grid-column: 1 / -1; }
       .points-moment, .reward-moment { position: static !important; width: auto !important;
-        top: auto !important; right: auto !important; left: auto !important; bottom: auto !important; }
+        max-width: none !important; top: auto !important; right: auto !important;
+        left: auto !important; bottom: auto !important; }
       .points-moment { grid-column: 1; }
       .reward-moment { grid-column: 2; }
-      .participation-moment { top: 42% !important; width: 62% !important; }
+      .participation-moment { top: 42% !important; width: auto !important; max-width: 52% !important; }
     }
 
     @media (max-width: 400px) {
