@@ -601,7 +601,7 @@
     .moment-card > * { position: relative; z-index: 1; }
     .moment-card p {
       margin: 0 0 3px;
-      color: rgba(41,41,76,.52);
+      color: rgba(41,41,76,.75);   /* .52 composites to 3.15:1 on the card; AA needs 4.5 at this size */
       font-size: .62rem;
       font-weight: 700;
       line-height: 1.25;
@@ -1009,14 +1009,14 @@
     }
     .logos-label {
       max-width: 150px;
-      color: rgba(41,41,76,.45);
+      color: rgba(41,41,76,.72);   /* .45 gave 2.54:1 on the opaque band; AA needs 4.5 */
       font-size: .62rem;
       font-weight: 800;
       line-height: 1.45;
       letter-spacing: .06em;
       text-transform: uppercase;
     }
-    .logo-word { color: rgba(41,41,76,.55); font-size: .74rem; font-weight: 800; letter-spacing: .05em; }
+    .logo-word { color: rgba(41,41,76,.82); font-size: .74rem; font-weight: 800; letter-spacing: .05em; }
 
     /* —— S2 Engine —— */
     .engine-screen { background: var(--canvas); }
@@ -2043,7 +2043,12 @@
     .logo-track { display: contents; }
     @media (min-width: 761px) { .logo-track .logo-word[aria-hidden="true"] { display: none; } }
     @media (max-width: 760px) {
-      .logo-band { margin-top: 26px; }                 /* sit lower, clear of the hero visual */
+      /* The band is glass sitting inside the hero, so the hero's mint/peach
+         gradient showed straight through it and read as a strip of hero
+         background between the logos and the next section. Make it opaque in
+         that section's own colour so the strip merges into it instead. */
+      .logo-band { margin-top: 26px; background: #F2F0EC; backdrop-filter: none;
+        -webkit-backdrop-filter: none; border-top-color: rgba(41,41,76,.06); }
       /* padding stated on all sides and min-height cleared: the <=900px rule
          sets padding 14px 0 and min-height 46px, and leaving the bottom in
          place left a white strip under the marquee before the next section */
@@ -2062,6 +2067,9 @@
 
 
     /* ===== Participation loop (ported from Codex branch codex-v) ===== */
+    /* --coral-dark clears AA on white (4.53:1) but only reaches 3.98:1 on this
+       section's warm grey. Darker red here; the global token is unchanged. */
+    .launch-loop .eyebrow { color: var(--cta-b); }
     /* —— Participation loop —— */
         .launch-loop {
           position: relative;
