@@ -1483,6 +1483,7 @@
     .stories-intro h2 { line-height: 1.02; }
     .stories-intro .lead { max-width: 330px; margin-top: 18px; color: var(--muted); font-size: .92rem; line-height: 1.65; }
     .stories-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 26px; }
+    .stories-actions-mobile { display: none; }
     .stories-actions .btn { min-height: 44px; padding-inline: 18px; }
     /* --coral-dark reaches only 4.21:1 at this size on the section's warm
        grey; darker red here, the global token stays as it is */
@@ -1848,7 +1849,7 @@
       /* 1 — clear the fixed nav, single column, sane rhythm */
       /* no bottom padding: the logo band is the last thing in the hero, and
          40px of it showed as an empty white strip before the next section */
-      .hero { min-height: auto; padding: calc(var(--nav-h) + 54px) 0 0; }
+      .hero { min-height: auto; padding: calc(var(--nav-h) + 68px) 0 0; }
       .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 0; min-height: 0; }
       .hero-copy { max-width: none; }
 
@@ -1938,9 +1939,7 @@
         transform: translateY(120%); transition: transform .32s cubic-bezier(.22,.9,.24,1);
       }
       .thumb-bar.is-on { transform: none; }
-      .thumb-cta { flex: 1; justify-content: center; min-height: 54px; font-size: 1rem; }
-      .thumb-alt { flex: 0 0 auto; min-height: 54px; display: inline-flex; align-items: center; padding: 0 6px;
-        font-size: .92rem; font-weight: 700; color: var(--ink); }
+      .thumb-cta { width: 100%; flex: 1 1 100%; justify-content: center; min-height: 54px; font-size: 1rem; }
       /* keep the footer clear of the bar */
       footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
     }
@@ -2813,6 +2812,27 @@
       #proof,
       #security,
       #blogs { padding-top: 40px; }
+
+      /* Customer actions follow the testimonials on phones, where the
+         reading order is more useful than preserving the desktop columns. */
+      .stories-intro .stories-actions { display: none; }
+      .stories-actions-mobile {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 14px;
+        margin-top: 0;
+      }
+      .stories-actions-mobile .text-link { order: 1; }
+      .stories-actions-mobile .btn { order: 2; width: auto; min-height: 54px; }
+
+      /* Keep the supporting security link first and the conversion action
+         in the familiar right-hand finishing position. */
+      .trust-actions { width: 100%; justify-content: flex-end; }
+      .trust-actions .text-link { order: 1; margin-right: auto; }
+      .trust-actions .btn { order: 2; width: auto; }
     }
     /* ===== Ambient shapes =====
        Gradient is the Figma spec: the origin is the shape's top-left corner
@@ -3295,6 +3315,11 @@
             </article>
           </div>
 
+          <div class="stories-actions stories-actions-mobile" aria-label="Customer story actions">
+            <a class="text-link" href="https://www.vantagefit.io/casestudy/">Read customer stories &rarr;</a>
+            <a class="btn btn-primary" href="https://www.vantagefit.io/client-testimonials/">View all testimonials</a>
+          </div>
+
           <p class="proof-note">Customer experiences vary by workforce and program design.</p>
         </div>
       </div>
@@ -3389,7 +3414,6 @@
          easy-reach band once the hero CTAs scroll away. Mobile only. -->
     <div class="thumb-bar" id="thumb-bar" hidden>
       <a class="btn btn-primary thumb-cta" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
-      <a class="thumb-alt" href="#proof">See results</a>
     </div>
 
 <footer>
