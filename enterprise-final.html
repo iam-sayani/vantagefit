@@ -2866,6 +2866,118 @@
       .vf-glow--d1 { top: 66%; }
     }
 
+
+    /* ===== App screen, matched to the Vantage Fit app UI reference =====
+       Scoped to .vf3-phone--app so the other tab panels keep their styling. */
+    .vf3-phone--app { background: #F4F5F8; }
+    .vf3-phone--app .vf3-status { height: 26px; padding: 9px 13px 3px; font-size: 7.5px; }
+    .vf3-status-ico { display: inline-block; width: 26px; height: 6px;
+      background:
+        linear-gradient(#29294c,#29294c) 0 1px/5px 5px no-repeat,
+        linear-gradient(#29294c,#29294c) 8px 0/6px 6px no-repeat,
+        linear-gradient(#29294c,#29294c) 17px 0/9px 6px no-repeat;
+      border-radius: 1px; opacity: .8; }
+
+    .vf3-appbar { display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 12px 8px; background: #fff; }
+    .vf3-brand { display: inline-flex; align-items: center; font-size: 9px; font-weight: 600; color: #29294c; }
+    .vf3-brand b { font-weight: 800; }
+    .vf3-brand-mark { width: 11px; height: 10px; margin-right: 5px; background: var(--coral);
+      clip-path: path('M5.5 10C5.5 10 0 6.6 0 3.2A3.1 3.1 0 0 1 5.5 1.4 3.1 3.1 0 0 1 11 3.2C11 6.6 5.5 10 5.5 10Z'); }
+    .vf3-appbar-right { display: inline-flex; align-items: center; gap: 6px; }
+    .vf3-coins { padding: 2px 6px 2px 13px; border-radius: 99px; background: #F1F1F6;
+      font-size: 7px; font-weight: 800; color: #29294c; position: relative; }
+    .vf3-coins::before { content: ""; position: absolute; left: 4px; top: 50%; transform: translateY(-50%);
+      width: 6px; height: 6px; border-radius: 2px; background: #29294c; }
+    .vf3-bell { position: relative; width: 11px; height: 11px; border: 1.3px solid #29294c;
+      border-radius: 50% 50% 3px 3px; opacity: .8; }
+    .vf3-bell i { position: absolute; top: -3px; right: -3px; display: grid; place-items: center;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--coral);
+      color: #fff; font-size: 4.6px; font-weight: 800; font-style: normal; }
+    .vf3-avatar { width: 14px; height: 14px; border-radius: 50%;
+      background: linear-gradient(140deg, #f0b9a0, #b9724f); }
+
+    .vf3-phone--app .vf3-phone-head { padding: 6px 12px 9px; }
+    .vf3-phone--app .vf3-phone-head small { color: #6B6D82; font-size: 7px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+    .vf3-phone--app .vf3-phone-head strong { font-size: 14px; letter-spacing: -.02em; }
+
+    .vf3-phone--app .vf3-ring-card { margin: 0 9px; padding: 9px; gap: 9px; border-color: #ECEDF2; border-radius: 12px; }
+    .vf3-phone--app .vf3-ring { position: relative; width: 44px; height: 44px;
+      background: conic-gradient(from 200deg, var(--coral) 0 40%, #59C7BE 40% 72%, #FBDDE1 72% 100%); }
+    .vf3-phone--app .vf3-ring i { position: absolute; inset: 8px; border-radius: 50%; background: #fff; }
+    .vf3-phone--app .vf3-ring-copy { gap: 7px; font-size: 6.4px; }
+    .vf3-stat { display: flex; align-items: center; gap: 5px; }
+    .vf3-stat small { display: block; color: #6B6D82; font-size: 6px; font-weight: 600; }
+    .vf3-stat b { color: #29294c; font-size: 8px; font-weight: 800; }
+    .vf3-stat > span { color: #29294c; font-size: 7px; font-weight: 700; }
+    .vf3-stat-ico { width: 13px; height: 13px; flex: 0 0 13px; border-radius: 50%; }
+    .vf3-stat-ico--steps { background: #FDE7EA; }
+    .vf3-stat-ico--mins  { background: #DDF3F0; }
+
+    .vf3-sec { padding: 10px 12px 5px; font-size: 9px; font-weight: 800; color: #29294c; letter-spacing: -.01em; }
+
+    .vf3-challenge--app { margin: 0 9px; box-shadow: 0 6px 14px rgba(55,71,150,.14); }
+    .vf3-challenge--app .vf3-challenge-top { position: relative; padding: 8px 9px 9px;
+      background: linear-gradient(135deg, #5A62C4, #3C3F97); }
+    .vf3-chips { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+    .vf3-chip { padding: 1.5px 5px; border-radius: 99px; background: rgba(255,255,255,.24);
+      font-size: 5.6px; font-weight: 800; color: #fff; }
+    .vf3-chip--light { background: #fff; color: #3C3F97; }
+    .vf3-chal-name { max-width: 128px; font-size: 7.6px; font-weight: 800; line-height: 1.32; color: #fff; }
+    .vf3-medal { position: absolute; right: 9px; bottom: 9px; width: 24px; height: 24px; border-radius: 50%;
+      background: radial-gradient(circle at 34% 30%, #FBD87C, #E0A02C 62%, #B87914);
+      box-shadow: 0 2px 5px rgba(0,0,0,.22); }
+    .vf3-challenge--app .vf3-challenge-progress { display: flex; align-items: center; gap: 6px;
+      padding: 8px 9px; font-size: 6.4px; font-weight: 700; color: #29294c; }
+    .vf3-challenge--app .vf3-track { flex: 1; height: 4.5px; margin: 0; }
+    .vf3-challenge--app .vf3-track i { display: block; height: 100%; border-radius: 99px;
+      background: linear-gradient(90deg, #2FBFA8, #59C7BE); }
+    .vf3-challenge--app .vf3-challenge-progress b { font-size: 7px; font-weight: 800; }
+
+    .vf3-phone--app .vf3-mini { padding: 7px; border-color: #ECEDF2; }
+    .vf3-mini-head { display: flex; align-items: center; justify-content: space-between; }
+    .vf3-mini-head span { font-size: 6.4px; font-weight: 800; color: #29294c; }
+    .vf3-mini-ico { width: 11px; height: 11px; border-radius: 50%; }
+    .vf3-mini-ico--steps { background: #FDE7EA; }
+    .vf3-mini-ico--mins  { background: #DDF3F0; }
+    .vf3-mini-val { margin-top: 3px; font-size: 8px; font-weight: 800; color: #29294c; }
+    .vf3-mini-val small { font-size: 5.6px; font-weight: 700; color: #6B6D82; }
+    .vf3-mini-val em { margin-left: 3px; font-size: 5.6px; font-style: normal; }
+    .vf3-mini-val em.up { color: #D6304A; }
+    .vf3-mini-val em.down { color: #0F7D63; }
+    .vf3-phone--app .vf3-bars { height: 27px; gap: 2.5px; margin-top: 6px; }
+    .vf3-phone--app .vf3-bars i { flex: 1; border-radius: 2px; background: #F2839A; }
+    .vf3-phone--app .vf3-bars--mint i { background: #6FCFC6; }
+    .vf3-days { display: flex; gap: 2.5px; margin-top: 3px; }
+    .vf3-days span { flex: 1; text-align: center; font-size: 4.6px; font-weight: 800; color: #6E7084; }
+
+    .vf3-phone-nav--app { display: flex; align-items: center; justify-content: space-around;
+      height: 34px; padding: 0 8px; background: #fff; border-top: 1px solid #ECEDF2; }
+    .vf3-nav-i { width: 10px; height: 10px; border: 1.4px solid var(--coral); border-radius: 3px; opacity: .75; }
+    .vf3-nav-i:nth-child(2) { border-radius: 50%; }
+    .vf3-nav-i:nth-child(4) { border-radius: 2px 2px 4px 4px; }
+    .vf3-nav-i:nth-child(5) { border-radius: 50% 50% 3px 3px; }
+    .vf3-fab { position: relative; width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(140deg, var(--cta-a), var(--cta-b));
+      box-shadow: 0 4px 10px rgba(219,50,69,.42); }
+    .vf3-fab::before, .vf3-fab::after { content: ""; position: absolute; left: 50%; top: 50%;
+      background: #fff; border-radius: 1px; transform: translate(-50%, -50%); }
+    .vf3-fab::before { width: 10px; height: 1.8px; }
+    .vf3-fab::after  { width: 1.8px; height: 10px; }
+
+    /* ===== side floaters ===== */
+    .vf3-float { min-width: 118px; padding: 11px 13px; border-radius: 15px; }
+    .vf3-float small { color: #6B6D82; font-size: 7.4px; font-weight: 800;
+      letter-spacing: .10em; text-transform: uppercase; }
+    .vf3-float strong { margin-top: 2px; font-size: 20px; font-weight: 800; letter-spacing: -.03em; color: #29294c; }
+    .vf3-float-ico { display: block; width: 20px; height: 20px; margin-bottom: 7px; border-radius: 50%; }
+    .vf3-float-ico--steps { background: #FDE7EA; }
+    .vf3-float-ico--goal  { background: #DDF3F0; }
+    .vf3-float-trend { display: block; margin-top: 3px; font-size: 6.8px; font-weight: 800;
+      font-style: normal; color: #0F7D63; }
+    .vf3-float-bar { display: block; height: 4px; margin-top: 7px; border-radius: 99px; background: #E7E8EE; }
+    .vf3-float-bar i { display: block; height: 100%; border-radius: 99px;
+      background: linear-gradient(90deg, #2FBFA8, #59C7BE); }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
@@ -3132,16 +3244,72 @@
             <i class="vf-glow vf-glow--coral vf-glow--x1" aria-hidden="true"></i>
             <i class="vf-glow vf-glow--coral vf-glow--x2" aria-hidden="true"></i>
             <article class="vf3-panel" id="vf3-wellbeing-panel" role="tabpanel" aria-labelledby="vf3-wellbeing-tab">
-              <div class="vf3-float vf3-float-left"><small>STEPS TODAY</small><strong>5,988</strong></div>
-              <div class="vf3-phone" role="img" aria-label="Mobile wellbeing summary showing activity and challenge progress">
-                <div class="vf3-status"><span>9:41</span><span>● ● ▰</span></div>
-                <div class="vf3-phone-head"><small>WEDNESDAY, 16 JULY</small><strong>Your wellbeing</strong></div>
-                <div class="vf3-ring-card"><span class="vf3-ring"></span><div class="vf3-ring-copy"><span>Steps covered <b>5,988</b>/7,000</span><span>Active minutes <b>31</b>/60 mins</span></div></div>
-                <div class="vf3-challenge"><div class="vf3-challenge-top">Week 5<br>21 Days to Transform: Strength, Stamina, and Sweat</div><div class="vf3-challenge-progress">Weekly progress: <b>88%</b><div class="vf3-track"></div></div></div>
-                <div class="vf3-minis"><div class="vf3-mini">Avg steps<div class="vf3-bars"><i style="height:55%"></i><i style="height:82%"></i><i style="height:68%"></i><i style="height:91%"></i><i style="height:76%"></i></div></div><div class="vf3-mini">Active minutes<div class="vf3-bars"><i style="height:46%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:86%"></i><i style="height:70%"></i></div></div></div>
-                <div class="vf3-phone-nav"><span>⌂</span><span>◇</span><span>＋</span><span>▣</span><span>○</span></div>
+              <div class="vf3-float vf3-float-left">
+                <span class="vf3-float-ico vf3-float-ico--steps" aria-hidden="true"></span>
+                <small>Steps today</small><strong>5,988</strong>
+                <em class="vf3-float-trend">&#9650; 18% vs last week</em>
               </div>
-              <div class="vf3-float vf3-float-right"><small>WEEKLY GOAL</small><strong>88%</strong></div>
+              <div class="vf3-phone vf3-phone--app" role="img" aria-label="Vantage Fit mobile app summary: activity rings, an active challenge and weekly trends">
+                <div class="vf3-status"><span>9:41</span><span class="vf3-status-ico" aria-hidden="true"></span></div>
+
+                <div class="vf3-appbar">
+                  <span class="vf3-brand"><i class="vf3-brand-mark" aria-hidden="true"></i>Vantage&nbsp;<b>Fit</b></span>
+                  <span class="vf3-appbar-right">
+                    <span class="vf3-coins">2500</span>
+                    <span class="vf3-bell" aria-hidden="true"><i>2</i></span>
+                    <span class="vf3-avatar" aria-hidden="true"></span>
+                  </span>
+                </div>
+
+                <div class="vf3-phone-head"><small>Wednesday, 16 July</small><strong>Summary</strong></div>
+
+                <div class="vf3-ring-card">
+                  <span class="vf3-ring"><i></i></span>
+                  <div class="vf3-ring-copy">
+                    <span class="vf3-stat"><i class="vf3-stat-ico vf3-stat-ico--steps" aria-hidden="true"></i><span><small>Steps covered</small><b>5988</b>/7000</span></span>
+                    <span class="vf3-stat"><i class="vf3-stat-ico vf3-stat-ico--mins" aria-hidden="true"></i><span><small>Active minutes</small><b>31</b>/60 mins</span></span>
+                  </div>
+                </div>
+
+                <div class="vf3-sec">Challenges</div>
+                <div class="vf3-challenge vf3-challenge--app">
+                  <div class="vf3-challenge-top">
+                    <div class="vf3-chips"><span class="vf3-chip">Week 6</span><span class="vf3-chip vf3-chip--light">Weekly rank 28</span></div>
+                    <div class="vf3-chal-name">21 Days to Transform: Strength, Stamina, and Sweat Challenge</div>
+                    <span class="vf3-medal" aria-hidden="true"></span>
+                  </div>
+                  <div class="vf3-challenge-progress"><span>Weekly progress:</span><span class="vf3-track"><i style="width:88%"></i></span><b>88%</b></div>
+                </div>
+
+                <div class="vf3-sec">Trends</div>
+                <div class="vf3-minis">
+                  <div class="vf3-mini">
+                    <div class="vf3-mini-head"><span>Avg steps</span><i class="vf3-mini-ico vf3-mini-ico--steps" aria-hidden="true"></i></div>
+                    <div class="vf3-mini-val">28810<small>/day</small><em class="up">&#9650;</em></div>
+                    <div class="vf3-bars"><i style="height:52%"></i><i style="height:78%"></i><i style="height:64%"></i><i style="height:88%"></i><i style="height:70%"></i><i style="height:96%"></i><i style="height:74%"></i></div>
+                    <div class="vf3-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                  </div>
+                  <div class="vf3-mini">
+                    <div class="vf3-mini-head"><span>Active minutes</span><i class="vf3-mini-ico vf3-mini-ico--mins" aria-hidden="true"></i></div>
+                    <div class="vf3-mini-val">28<small> mins/day</small><em class="down">&#9660;</em></div>
+                    <div class="vf3-bars vf3-bars--mint"><i style="height:44%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:66%"></i><i style="height:90%"></i><i style="height:62%"></i></div>
+                    <div class="vf3-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                  </div>
+                </div>
+
+                <div class="vf3-phone-nav vf3-phone-nav--app">
+                  <span class="vf3-nav-i" aria-hidden="true"></span>
+                  <span class="vf3-nav-i" aria-hidden="true"></span>
+                  <span class="vf3-fab" aria-hidden="true"></span>
+                  <span class="vf3-nav-i" aria-hidden="true"></span>
+                  <span class="vf3-nav-i" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="vf3-float vf3-float-right">
+                <span class="vf3-float-ico vf3-float-ico--goal" aria-hidden="true"></span>
+                <small>Weekly goal</small><strong>88%</strong>
+                <span class="vf3-float-bar"><i style="width:88%"></i></span>
+              </div>
             </article>
 
             <article class="vf3-panel" id="vf3-challenges-panel" role="tabpanel" aria-labelledby="vf3-challenges-tab" hidden>
