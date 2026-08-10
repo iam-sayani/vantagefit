@@ -2461,8 +2461,18 @@
     .vf3-tab-head b { font-size: .95rem; letter-spacing: -.02em; }
     .vf3-tab-no { display: grid; width: 26px; height: 26px; place-items: center; border-radius: 50%; color: #8C646B; font-size: .58rem; font-weight: 800; }
     .vf3-tab[aria-selected="true"] .vf3-tab-no { background: #fdecef; color: var(--coral-deep); }
-    .vf3-tab-arrow { color: var(--coral-deep); transition: transform .2s ease; }
-    .vf3-tab[aria-selected="true"] .vf3-tab-arrow { color: var(--coral-deep); transform: rotate(90deg); }
+    .vf3-tab-arrow {
+      display: grid;
+      width: 26px;
+      height: 26px;
+      place-items: center;
+      color: var(--coral-deep);
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .vf3-tab-arrow::before { content: "+"; }
+    .vf3-tab[aria-selected="true"] .vf3-tab-arrow::before { content: "\2212"; }
     .vf3-tab-detail { display: none; padding: 22px 14px 2px 36px; }
     .vf3-tab[aria-selected="true"] .vf3-tab-detail { display: block; }
     .vf3-tab-detail strong, .vf3-tab-detail small, .vf3-tab-link { display: block; }
@@ -2918,11 +2928,11 @@
           </div>
 
           <div class="vf3-tabs" role="tablist" aria-label="Explore Vantage Fit capabilities">
-            <button class="vf3-tab" id="vf3-wellbeing-tab" type="button" role="tab" aria-selected="true" aria-controls="vf3-wellbeing-panel" tabindex="0"><span class="vf3-tab-head"><span class="vf3-tab-no">01</span><b>Everyday wellbeing</b><span class="vf3-tab-arrow">→</span></span><span class="vf3-tab-detail"><strong>A daily experience people want to return to.</strong><small>Activity, mindfulness, hydration, nutrition, and healthy habits come together in one simple mobile view.</small><span class="vf3-tab-link">Explore the employee app →</span></span></button>
-            <button class="vf3-tab" id="vf3-challenges-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-challenges-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">02</span><b>Team challenges</b><span class="vf3-tab-arrow">→</span></span><span class="vf3-tab-detail"><strong>Turn shared goals into visible momentum.</strong><small>Run step, multi-activity, mindfulness, and custom challenges for teams, regions, or the whole organization.</small><span class="vf3-tab-link">Explore team challenges →</span></span></button>
-            <button class="vf3-tab" id="vf3-rewards-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-rewards-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">03</span><b>Leaderboards &amp; rewards</b><span class="vf3-tab-arrow">→</span></span><span class="vf3-tab-detail"><strong>Recognize consistency, not just first place.</strong><small>Flexible leaderboards, points, badges, and a global rewards catalogue keep progress meaningful for more people.</small><span class="vf3-tab-link">Explore rewards →</span></span></button>
-            <button class="vf3-tab" id="vf3-program-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-program-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">04</span><b>Program management</b><span class="vf3-tab-arrow">→</span></span><span class="vf3-tab-detail"><strong>Launch and run programs without the admin drag.</strong><small>Build audiences, schedule communications, manage incentives, and follow every active program from one workspace.</small><span class="vf3-tab-link">Explore program management →</span></span></button>
-            <button class="vf3-tab" id="vf3-analytics-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-analytics-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">05</span><b>Analytics &amp; insights</b><span class="vf3-tab-arrow">→</span></span><span class="vf3-tab-detail"><strong>See what is working—and what to do next.</strong><small>Participation trends, team comparisons, and board-ready reporting turn program activity into clear decisions.</small><span class="vf3-tab-link">Explore analytics →</span></span></button>
+            <button class="vf3-tab" id="vf3-wellbeing-tab" type="button" role="tab" aria-selected="true" aria-controls="vf3-wellbeing-panel" tabindex="0"><span class="vf3-tab-head"><span class="vf3-tab-no">01</span><b>Everyday wellbeing</b><span class="vf3-tab-arrow" aria-hidden="true"></span></span><span class="vf3-tab-detail"><strong>A daily experience people want to return to.</strong><small>Activity, mindfulness, hydration, nutrition, and healthy habits come together in one simple mobile view.</small><span class="vf3-tab-link">Explore the employee app →</span></span></button>
+            <button class="vf3-tab" id="vf3-challenges-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-challenges-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">02</span><b>Team challenges</b><span class="vf3-tab-arrow" aria-hidden="true"></span></span><span class="vf3-tab-detail"><strong>Turn shared goals into visible momentum.</strong><small>Run step, multi-activity, mindfulness, and custom challenges for teams, regions, or the whole organization.</small><span class="vf3-tab-link">Explore team challenges →</span></span></button>
+            <button class="vf3-tab" id="vf3-rewards-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-rewards-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">03</span><b>Leaderboards &amp; rewards</b><span class="vf3-tab-arrow" aria-hidden="true"></span></span><span class="vf3-tab-detail"><strong>Recognize consistency, not just first place.</strong><small>Flexible leaderboards, points, badges, and a global rewards catalogue keep progress meaningful for more people.</small><span class="vf3-tab-link">Explore rewards →</span></span></button>
+            <button class="vf3-tab" id="vf3-program-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-program-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">04</span><b>Program management</b><span class="vf3-tab-arrow" aria-hidden="true"></span></span><span class="vf3-tab-detail"><strong>Launch and run programs without the admin drag.</strong><small>Build audiences, schedule communications, manage incentives, and follow every active program from one workspace.</small><span class="vf3-tab-link">Explore program management →</span></span></button>
+            <button class="vf3-tab" id="vf3-analytics-tab" type="button" role="tab" aria-selected="false" aria-controls="vf3-analytics-panel" tabindex="-1"><span class="vf3-tab-head"><span class="vf3-tab-no">05</span><b>Analytics &amp; insights</b><span class="vf3-tab-arrow" aria-hidden="true"></span></span><span class="vf3-tab-detail"><strong>See what is working—and what to do next.</strong><small>Participation trends, team comparisons, and board-ready reporting turn program activity into clear decisions.</small><span class="vf3-tab-link">Explore analytics →</span></span></button>
           </div>
           <div class="vf3-mobile-copy" aria-live="polite" aria-atomic="true">
             <strong id="vf3-mobile-title">A daily experience people want to return to.</strong>
