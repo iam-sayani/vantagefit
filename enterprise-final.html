@@ -2095,7 +2095,7 @@
     }
     .launch-loop-head h2 { max-width: 670px; color: #F7F4EF; }
     .launch-loop-head .lead { margin: 0 0 5px; color: rgba(255,255,255,.76); }
-    .launch-loop-title-accent { color: #FF8A94; }   /* lighter coral: --coral-text is 2.9:1 on this ground */
+    .launch-loop-title-accent { color: var(--coral); }   /* brand Fit Red: 4.65:1 on this ground, clears AA */
 
     .launch-loop-grid {
       position: relative; z-index: 1; display: grid;
@@ -2122,8 +2122,8 @@
     .launch-loop-no {
       position: absolute; z-index: 2; top: 18px; left: 18px; display: grid;
       width: 40px; height: 40px; place-items: center;
-      border: 1.5px solid rgba(255,138,148,.85); border-radius: 50%;
-      background: rgba(15,18,22,.45); color: #FF8A94;
+      border: 1.5px solid rgba(241,81,98,.6); border-radius: 50%;
+      background: linear-gradient(145deg, #DB3245 0%, #C43142 54%, #A7253C 100%); color: #fff;
       font-size: .7rem; font-weight: 800; letter-spacing: .04em;
     }
     .launch-loop-card-copy { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; padding: 24px; }
@@ -2146,7 +2146,7 @@
       display: block; width: 18px; height: 3px; border-radius: 3px;
       background: rgba(255,255,255,.28); transition: background .25s ease, width .25s ease;
     }
-    .launch-loop-dots span.is-on { width: 30px; background: #FF8A94; }
+    .launch-loop-dots span.is-on { width: 30px; background: var(--coral); }
     .visually-hidden {
       position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
       overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
@@ -2160,7 +2160,7 @@
       transition: border-color .2s ease, background .2s ease, opacity .2s ease;
     }
     .launch-loop-control svg { width: 18px; height: 18px; }
-    .launch-loop-control:hover:not(:disabled) { border-color: #FF8A94; background: rgba(255,138,148,.16); }
+    .launch-loop-control:hover:not(:disabled) { border-color: var(--coral); background: rgba(241,81,98,.18); }
     .launch-loop-control:disabled { cursor: default; opacity: .3; }
     .launch-loop-control:focus-visible,
     .launch-loop-grid:focus-visible { outline: 3px solid var(--mint-dark); outline-offset: 3px; }
