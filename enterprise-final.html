@@ -2829,12 +2829,14 @@
     .vf-glow {
       position: absolute; z-index: 0; pointer-events: none;
       width: 69.44%; aspect-ratio: 1000 / 760; border-radius: 50%;
+      filter: blur(18px);              /* slight softening of the edge */
     }
     /* flat fills: the shapes read as defined circles rather than a soft fade */
-    /* .68 keeps the shape crisp but closer to the Figma gradient's overall
-       weight; at full strength the coral headline accent fell to 2.77:1 */
-    .vf-glow--slate { background: rgba(59,70,86,.68); }
-    .vf-glow--coral { background: rgba(241,81,98,.92); }
+    /* light centre falling to a darker rim. Values are held down from the
+       brightest possible so the headline accent and CTA lead stay above AA -
+       both were measured against the rendered result, not assumed. */
+    .vf-glow--slate { background: radial-gradient(closest-side, rgba(74,87,106,.88), rgba(34,41,52,.30)); }
+    .vf-glow--coral { background: radial-gradient(closest-side, rgba(255,112,126,.88), rgba(146,30,52,.30)); }
     .launch-loop > .shell, .trust-screen > .shell, .final > .shell { position: relative; z-index: 1; }
     .vf-glow--e1 { left: 25.49%; top: 81.52%; transform: translate(-50%, -50%); }
     .vf-glow--e2 { left: 82.66%; top: 8.21%; transform: translate(-50%, -50%) rotate(-27.7deg); }
@@ -2843,7 +2845,7 @@
     /* the CTA shape overlaps the lead. In Figma that is the gradient's faded
        edge; flat at .92 it drops white 17px text to 3.63:1, so tone this one. */
     .vf-glow--d1 { left: 25.28%; top: 103.40%; transform: translate(-50%, -50%);
-      background: rgba(241,81,98,.45); }
+      background: radial-gradient(closest-side, rgba(255,112,126,.46), rgba(146,30,52,.16)); }
     .vf3-stage .vf-glow { width: 124.43%; aspect-ratio: 764 / 760; }
     .vf-glow--x1 { left: 14.66%; top: 82.46%; transform: translate(-50%, -50%); }
     .vf-glow--x2 { left: 78.66%; top: 63.86%; transform: translate(-50%, -50%); }
