@@ -2815,30 +2815,37 @@
       #security,
       #blogs { padding-top: 40px; }
     }
-    /* ===== Ambient shapes — Figma spec =====
-       Gradient, size, offset and rotation taken from the Figma nodes. The
-       gradient origin is the shape's top-left corner (at 0% 0%), not its
-       centre, which is what gives the directional falloff. No blur: none of
-       the Figma nodes carries a blur effect. Offsets are the 1440 comp's
-       pixel values, so the composition is exact at desktop. */
+    /* ===== Ambient shapes =====
+       Gradient is the Figma spec: the origin is the shape's top-left corner
+       (at 0% 0%), not its centre, which is what gives the directional
+       falloff. Geometry is expressed against each host's own box so the
+       shapes scale and reposition with the viewport instead of being pinned
+       to 1440 pixels — at 1440 these percentages reproduce the Figma offsets.
+       The two right-hand shapes are pushed further right so their edge stays
+       clear of the copy at narrower widths. */
     .vf-glow {
       position: absolute; z-index: 0; pointer-events: none;
-      width: 1000px; height: 760px; border-radius: 50%;
+      width: 69.44%; aspect-ratio: 1000 / 760; border-radius: 50%;
     }
     .vf-glow--slate { background: radial-gradient(100% 100% at 0% 0%, #3B4656 0%, rgba(55, 65, 81, 0.12) 100%); }
     .vf-glow--coral { background: radial-gradient(100% 100% at 0% 0%, rgba(241, 81, 98, 0.92) 0%, rgba(241, 81, 98, 0) 100%); }
     .launch-loop > .shell, .trust-screen > .shell, .final > .shell { position: relative; z-index: 1; }
 
-    .vf-glow--e1 { left: -133px; top:  273px; }
-    .vf-glow--e2 { left:  690px; top: -314px; transform: rotate(27.68deg); }
-    .vf-glow--s1 { left: -337px; top:  -18px; }
-    .vf-glow--s2 { left:  955px; top:   66px; transform: rotate(90deg); }
-    .vf-glow--d1 { left: -136px; top:  290px; }
-    .vf-glow--d2 { left:  798px; top: -207px; }
-    /* the stage pair are 764 wide, not 1000 */
-    .vf3-stage .vf-glow { width: 764px; height: 760px; }
-    .vf-glow--x1 { left: -292px; top:   90px; }
-    .vf-glow--x2 { left:  101px; top:  -16px; }
+    .vf-glow--e1 { left:  -9.24%; top:  34.08%; }
+    .vf-glow--e2 { left:  62.00%; top: -39.20%; transform: rotate(27.68deg); }   /* Figma 47.92%, shifted right */
+    .vf-glow--s1 { left: -23.40%; top:  -4.18%; }
+    .vf-glow--s2 { left:  78.00%; top:  15.31%; transform: rotate(90deg); }      /* Figma 66.32%, shifted right */
+    .vf-glow--d1 { left:  -9.44%; top:  44.75%; }
+    .vf-glow--d2 { left:  55.42%; top: -31.94%; }
+    /* the stage pair sit in a 614x570 box */
+    .vf3-stage .vf-glow { width: 124.43%; aspect-ratio: 764 / 760; }
+    .vf-glow--x1 { left: -47.56%; top:  15.79%; }
+    .vf-glow--x2 { left:  16.45%; top:  -2.81%; }
+    @media (max-width: 760px) {
+      /* the section is narrower here, so this shape's bright corner reaches
+         up into the lead (4.22:1). Drop it below the copy. */
+      .vf-glow--d1 { top: 66%; }
+    }
 
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
