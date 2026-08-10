@@ -2119,12 +2119,19 @@
         rgba(15,18,22,.52) 55%, rgba(15,18,22,.14) 82%, rgba(15,18,22,.04) 100%);
     }
     .launch-loop-card:hover img { transform: scale(1.045); filter: grayscale(0) saturate(1.06) brightness(1); }
+    /* Oversized watermark numeral rather than a badge. Decorative: the step
+       order is already carried by each card's aria-label, so it is
+       aria-hidden and exempt from the contrast rules a label would face. */
     .launch-loop-no {
-      position: absolute; z-index: 2; top: 18px; left: 18px; display: grid;
-      width: 40px; height: 40px; place-items: center;
-      border: 1.5px solid rgba(241,81,98,.6); border-radius: 50%;
-      background: linear-gradient(145deg, #DB3245 0%, #C43142 54%, #A7253C 100%); color: #fff;
-      font-size: .7rem; font-weight: 800; letter-spacing: .04em;
+      position: absolute; z-index: 2; top: 10px; left: 18px;
+      display: block; width: auto; height: auto;
+      border: 0; border-radius: 0; background: none;
+      color: rgba(255,255,255,.13);
+      /* card 1's photo is bright enough that 10% white alone vanished; the
+         shadow is what keeps the numeral readable over light and dark alike */
+      text-shadow: 0 2px 16px rgba(0,0,0,.55), 0 0 2px rgba(0,0,0,.28);
+      font-size: 5rem; font-weight: 800; line-height: 1; letter-spacing: -.045em;
+      pointer-events: none; user-select: none;
     }
     .launch-loop-card-copy { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; padding: 24px; }
     .launch-loop-card h3 { margin-bottom: 9px; font-size: 1.38rem; color: #fff; }
@@ -2193,7 +2200,7 @@
       .launch-loop-card-copy { padding: 18px; }
       .launch-loop-card h3 { font-size: 1.22rem; line-height: 1.15; margin-bottom: 6px; }
       .launch-loop-card p { font-size: .86rem; line-height: 1.55; }
-      .launch-loop-no { top: 14px; left: 14px; width: 34px; height: 34px; font-size: .64rem; }
+      .launch-loop-no { top: 8px; left: 14px; font-size: 3.6rem; }
 
       .launch-loop-footer { flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 18px; }
       .launch-loop-footer > strong { max-width: none; font-size: .82rem; line-height: 1.5; }
@@ -2816,22 +2823,22 @@
         <div class="launch-loop-grid" id="launch-loop-carousel" role="region" aria-roledescription="carousel" aria-label="The four stages of ongoing participation" tabindex="0">
           <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="1 of 4: Invite">
             <img src="/card-invite.jpg" alt="Two colleagues celebrating together" loading="lazy" width="700" height="875">
-            <span class="launch-loop-no">01</span>
+            <span class="launch-loop-no" aria-hidden="true">01</span>
             <div class="launch-loop-card-copy"><h3>Invite</h3><p>Launch for teams, regions, or your full workforce from proven formats, without a long implementation project.</p></div>
           </article>
           <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="2 of 4: Participate">
             <img src="/card-participate.jpg" alt="Employee moving outdoors at an achievable pace" loading="lazy" width="700" height="875">
-            <span class="launch-loop-no">02</span>
+            <span class="launch-loop-no" aria-hidden="true">02</span>
             <div class="launch-loop-card-copy"><h3>Participate</h3><p>Steps, multi-activity, mindfulness, and team formats make wellness broader than a fitness contest.</p></div>
           </article>
           <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="3 of 4: Reward">
             <img src="/card-reward.jpg" alt="Trophy representing employee recognition" loading="lazy" width="700" height="875">
-            <span class="launch-loop-no">03</span>
+            <span class="launch-loop-no" aria-hidden="true">03</span>
             <div class="launch-loop-card-copy"><h3>Reward</h3><p>Recognize real effort with points, badges, leaderboards, and rewards people genuinely value.</p></div>
           </article>
           <article class="launch-loop-card" role="group" aria-roledescription="slide" aria-label="4 of 4: Measure">
             <img src="/card-measure-generic.jpg" alt="Professional reviewing participation analytics" loading="lazy" width="700" height="875">
-            <span class="launch-loop-no">04</span>
+            <span class="launch-loop-no" aria-hidden="true">04</span>
             <div class="launch-loop-card-copy"><h3>Measure</h3><p>Track participation, trends, and team-level patterns so every new program gets smarter.</p></div>
           </article>
         </div>
