@@ -2587,6 +2587,30 @@
       .blog-card { scroll-snap-align: start; scroll-snap-stop: always; }
       .blog-more ul { grid-template-columns: 1fr; }
     }
+
+    /* ===== One section-top rhythm =====
+       Imported sections previously started at 30, 40, 64 and 16px on a
+       phone. Keep their individual bottom spacing, but give every main
+       content section the same distance from its boundary to its heading. */
+    #engine,
+    #experience,
+    #proof,
+    #security,
+    #blogs { padding-top: 72px; }
+    @media (max-width: 1040px) {
+      #engine,
+      #experience,
+      #proof,
+      #security,
+      #blogs { padding-top: 56px; }
+    }
+    @media (max-width: 760px) {
+      #engine,
+      #experience,
+      #proof,
+      #security,
+      #blogs { padding-top: 40px; }
+    }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
