@@ -2822,16 +2822,19 @@
          reading order is more useful than preserving the desktop columns. */
       .stories-intro .stories-actions { display: none; }
       .stories-actions-mobile {
-        display: flex;
+        display: grid;
         width: 100%;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-items: stretch;
-        gap: 12px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 10px;
         margin-top: 0;
       }
-      .stories-actions-mobile .text-link { order: 1; align-self: flex-start; }
-      .stories-actions-mobile .btn { order: 2; width: auto; min-height: 54px; align-self: flex-end; }
+      .stories-actions-mobile .text-link {
+        min-width: 0;
+        line-height: 1.35;
+        white-space: normal;
+      }
+      .stories-actions-mobile .btn { width: auto; min-height: 54px; justify-self: end; white-space: nowrap; }
 
       /* Keep the supporting security link first and the conversion action
          in the familiar right-hand finishing position. */
