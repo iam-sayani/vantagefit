@@ -2846,12 +2846,20 @@
         gap: 10px;
       }
       .trust-actions .text-link {
+        grid-column: 1;
+        grid-row: 1;
         min-width: 0;
         margin-right: 0;
         line-height: 1.35;
         white-space: normal;
       }
-      .trust-actions .btn { width: auto; justify-self: end; white-space: nowrap; }
+      .trust-actions .btn {
+        grid-column: 2;
+        grid-row: 1;
+        width: auto;
+        justify-self: end;
+        white-space: nowrap;
+      }
     }
     /* ===== Ambient shapes =====
        Gradient is the Figma spec: the origin is the shape's top-left corner
