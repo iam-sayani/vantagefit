@@ -2858,16 +2858,16 @@
     .vf-glow--coral { background: radial-gradient(100% 100% at 0% 0%, rgba(241, 81, 98, 0.92) 0%, rgba(241, 81, 98, 0) 100%); }
     .launch-loop > .shell, .trust-screen > .shell, .final > .shell { position: relative; z-index: 1; }
 
-    .vf-glow--e1 { left:  -9.24%; top:  34.08%; --slide: -80px; }
+    .vf-glow--e1 { left:  -9.24%; top:  34.08%; --slide: -260px; }
     .vf-glow--e2 { left:  62.00%; top: -39.20%; --rot: 27.68deg; --slide:  80px; }   /* Figma 47.92%, shifted right */
-    .vf-glow--s1 { left: -23.40%; top:  -4.18%; --slide: -80px; }
+    .vf-glow--s1 { left: -23.40%; top:  -4.18%; --slide: -260px; }
     .vf-glow--s2 { left:  72.00%; top:  15.31%; --rot: 90deg; --slide:  80px; }      /* Figma 66.32%; nudged right, then back inward */
-    .vf-glow--d1 { left:  -9.44%; top:  44.75%; --slide: -80px; }
-    .vf-glow--d2 { left:  55.42%; top: -31.94%; --slide: 80px; }
+    .vf-glow--d1 { left:  -9.44%; top:  44.75%; --slide: -260px; }
+    .vf-glow--d2 { left:  55.42%; top: -31.94%; --slide: 260px; }
     /* the stage pair sit in a 614x570 box */
     .vf3-stage .vf-glow { width: 124.43%; aspect-ratio: 764 / 760; }
-    .vf-glow--x1 { left: -47.56%; top:  15.79%; --slide: -60px; }
-    .vf-glow--x2 { left:  16.45%; top:  -2.81%; --slide: 60px; }
+    .vf-glow--x1 { left: -47.56%; top:  15.79%; --slide: -190px; }
+    .vf-glow--x2 { left:  16.45%; top:  -2.81%; --slide: 190px; }
     @media (max-width: 760px) {
       /* the section is narrower here, so this shape's bright corner reaches
          up into the lead (4.22:1). Drop it below the copy. */
@@ -3089,7 +3089,7 @@
     .vf-anim .vf-glow {
       opacity: 0;
       transform: translate3d(var(--slide, -80px), 0, 0) rotate(var(--rot, 0deg));
-      transition: transform 1.05s cubic-bezier(.22,.9,.24,1), opacity .8s ease;
+      transition: transform 1.25s cubic-bezier(.22,.9,.24,1), opacity 1s ease;
     }
     .vf-anim .vf-glow.is-in {
       opacity: 1;
@@ -4138,7 +4138,7 @@
           (hosts.get(e.target) || []).forEach(s => s.classList.add('is-in'));
           io.unobserve(e.target);
         });
-      }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -28% 0px' });
       hosts.forEach((_, host) => io.observe(host));
     })();
   </script>
