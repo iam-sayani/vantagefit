@@ -997,7 +997,7 @@
       position: relative;
       flex: none;
       border-top: 1px solid rgba(41,41,76,.08);
-      background: #F7FCFF;
+      background: #F8FAFB;
     }
     .logos {
       display: flex;
@@ -1478,7 +1478,7 @@
     @media (prefers-reduced-motion: reduce) { .tabpane.is-in { animation: none; } .seg-thumb { transition: none; } }
 
     /* —— S3 Proof —— */
-    .screen.proof-screen { min-height: auto; padding: 56px 0 96px; background: #F7FCFF; }
+    .screen.proof-screen { min-height: auto; padding: 56px 0 96px; background: #F8FAFB; }
     .stories-layout { display: grid; grid-template-columns: .78fr 1.04fr .94fr; gap: 26px; align-items: start;
       width: min(100%, 1120px); margin: 0 auto; }
     .stories-intro { align-self: start; padding-right: 12px; }   /* top-aligned with the feature card, not centred against it */
@@ -1649,7 +1649,7 @@
     .blogs-screen {
       min-height: 0;
       padding: 64px 0;
-      background: #F7FCFF;
+      background: #F8FAFB;
     }
     .blogs-screen .center .lead {
       max-width: 600px;
@@ -1963,7 +1963,7 @@
          gradient showed straight through it and read as a strip of hero
          background between the logos and the next section. Make it opaque in
          that section's own colour so the strip merges into it instead. */
-      .logo-band { margin-top: 26px; background: #F7FCFF; backdrop-filter: none;
+      .logo-band { margin-top: 26px; background: #F8FAFB; backdrop-filter: none;
         -webkit-backdrop-filter: none; border-top-color: rgba(41,41,76,.06); }
       /* padding stated on all sides and min-height cleared: the <=900px rule
          sets padding 14px 0 and min-height 46px, and leaving the bottom in
@@ -2111,7 +2111,7 @@
         .vf3-product {
           padding: 96px 0;
           overflow: hidden;
-          background: linear-gradient(180deg, #F7FCFF 0%, rgba(247,252,255,.11) 100%);
+          background: linear-gradient(180deg, #F8FAFB 0%, rgba(248,250,251,.11) 100%);
         }
     .vf3-head {
           display: grid;
@@ -2290,16 +2290,16 @@
       border-radius: 7px;
       background: #fff;
       box-shadow: 0 3px 8px rgba(41,41,76,.12);
-      color: #8b8c98;
+      color: #64657A;
       font-size: 5px;
       font-weight: 700;
       line-height: 1.05;
       text-align: center;
     }
-    .vf3-week-switch .is-active { background: var(--coral); color: #fff; }
+    .vf3-week-switch .is-active { background: var(--cta-b); color: #fff; }   /* --coral gives 3.45:1 for 5px white */
     .vf3-challenge-hero {
       padding: 11px 13px 23px;
-      background: linear-gradient(145deg, #ff3d36 0%, #ff7255 100%);
+      background: linear-gradient(145deg, #B8241C 0%, #C4491F 100%);   /* darkened until the lighter stop clears 4.5:1 for white 5.5px text */
       color: #fff;
       text-align: center;
     }
@@ -2323,7 +2323,7 @@
       padding: 4px 8px;
       border-radius: 999px;
       background: #fff;
-      color: #494a57;
+      color: #3A3B47;
       font-size: 5.5px;
       font-weight: 700;
     }
@@ -2385,7 +2385,7 @@
 
     .vf3-phone--leaderboard { background: #fff; }
     .vf3-phone--leaderboard .vf3-status {
-      background: linear-gradient(135deg, #f84260 0%, #ff7048 100%);
+      background: linear-gradient(135deg, #B32240 0%, #C2461F 100%);   /* darkened until the lighter stop clears 4.5:1 for white small text */
       color: #fff;
     }
     .vf3-leaderboard-hero {
@@ -2459,7 +2459,7 @@
       min-width: 45px;
       padding: 5px 7px;
       border-radius: 999px;
-      background: var(--coral);
+      background: var(--cta-b);
       box-shadow: 0 3px 7px rgba(241,81,98,.22);
       color: #fff;
       font-size: 7px;
@@ -3002,6 +3002,79 @@
       background: radial-gradient(100% 100% at 0% 0%, rgba(163,37,64,.96) 0%, rgba(163,37,64,0) 100%);
     }
 
+
+    /* ===== Challenge Info + Leaderboard screens, matched to the app ===== */
+    .vf3-challenge-hero { position: relative; }
+    .vf3-info-dot { position: absolute; top: 8px; left: 9px; display: grid; place-items: center;
+      width: 11px; height: 11px; border: 1.2px solid rgba(255,255,255,.85); border-radius: 50%;
+      font-size: 6.5px; font-weight: 800; font-style: italic; color: #fff; }
+    .vf3-hero-title { display: block; font-size: 9.5px; font-weight: 800; color: #fff; letter-spacing: -.01em; }
+    .vf3-challenge-figure { position: relative; display: grid; place-items: center;
+      width: 52px; height: 52px; margin: 7px auto 6px; border-radius: 50%; background: #fff;
+      box-shadow: 0 3px 8px rgba(0,0,0,.16); overflow: hidden; }
+    .vf3-runner { width: 22px; height: 26px; background: var(--cta-b);
+      clip-path: polygon(52% 0,66% 6%,66% 17%,52% 17%,44% 28%,62% 34%,74% 52%,64% 58%,54% 44%,40% 52%,48% 74%,40% 100%,28% 96%,34% 74%,22% 56%,26% 34%,40% 22%,44% 8%); }
+    .vf3-rank-chip b { color: var(--cta-b); font-weight: 800; }
+    .vf3-hero-points { display: block; margin-top: 5px; font-size: 7px; font-weight: 700; color: #fff; }
+
+    .vf3-progress-card { display: grid; gap: 5px; }
+    .vf3-pc-label { font-size: 7.4px; font-weight: 700; color: #29294c; }
+    .vf3-progress-card .vf3-track { height: 5px; margin: 0; }
+    .vf3-progress-card .vf3-track i { display: block; height: 100%; border-radius: 99px;
+      background: linear-gradient(90deg, #17B79B, #59C7BE); }
+    .vf3-progress-card b { text-align: center; font-size: 7px; font-weight: 700; color: #29294c; }
+
+    .vf3-ended-card { margin: 7px 9px 0; padding: 8px 9px; border-radius: 11px; background: #fff;
+      border: 1px solid #ECEDF2; }
+    .vf3-ended-card small { display: block; font-size: 6.6px; font-weight: 600; color: #6B6D82; }
+    .vf3-ended-card strong { display: block; margin-top: 1px; font-size: 9px; font-weight: 800; color: #29294c; }
+
+    .vf3-task-icon { display: block; width: 22px; height: 22px; flex: 0 0 22px;
+      border-radius: 50%; font-size: 0; }
+    .vf3-task-icon--steps { background: #FDE7EA; }
+    .vf3-task-icon--run   { background: #E8EEFD; }
+    .vf3-task-icon--sleep { background: #EFE9FB; }
+    .vf3-task-ring small { color: #4A4B5A; font-weight: 700; }
+    .vf3-pill-wrap small { color: #56576B; }
+    .vf3-task-copy small { color: var(--cta-b); font-weight: 800; }
+
+    .vf3-rank-block { display: grid; justify-items: start; gap: 2px; }
+    .vf3-rank-badge { display: inline-flex; align-items: center; gap: 3px;
+      padding: 1.5px 5px 1.5px 3px; border-radius: 99px; background: #fff;
+      font-size: 5.8px; font-weight: 800; color: #29294c; }
+    .vf3-rank-badge i { width: 8px; height: 8px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #FBD87C, #E0A02C); }
+    .vf3-rank-block strong { font-size: 15px; font-weight: 800; color: #fff; line-height: 1; }
+    .vf3-rank-block sup { font-size: 7px; font-weight: 700; }
+    .vf3-metres { display: grid; justify-items: end; }
+    .vf3-metres small { font-size: 5.8px; font-weight: 800; letter-spacing: .08em; color: #fff; }
+    .vf3-metres strong { font-size: 14px; font-weight: 800; color: #fff; line-height: 1.1; }
+
+    .vf3-leader-avatar, .vf3-list-avatar { position: relative; }
+    .vf3-leader-avatar { outline: 2px solid #E9B23C; outline-offset: 1px; }
+    .vf3-medal-sm { position: absolute; right: -2px; bottom: -2px; width: 9px; height: 9px;
+      border-radius: 50%; border: 1px solid #fff;
+      background: radial-gradient(circle at 35% 30%, #FBD87C, #C98D22); }
+    .vf3-leader-name small em { font-style: normal; font-weight: 800; color: var(--cta-b); }
+    .vf3-leader-row > b { color: var(--cta-b); }            /* --coral gives 3.15:1 on the row tint */
+    .vf3-leader-name small { color: #56576B; }              /* was 2.65:1 */
+    .vf3-pill-wrap { display: grid; justify-items: center; gap: 1px; }
+    .vf3-pill-wrap small { font-size: 5.2px; font-weight: 700; color: #6B6D82; }
+
+    /* fit the challenge screen inside the 442px frame */
+    .vf3-phone--challenge .vf3-status { height: 26px; padding: 9px 13px 3px; font-size: 7.5px; }
+    .vf3-phone--challenge .vf3-week-switch { padding-top: 2px; padding-bottom: 2px; }
+    .vf3-phone--challenge .vf3-challenge-figure { width: 38px; height: 38px; margin: 4px auto 3px; }
+    .vf3-phone--challenge .vf3-runner { width: 16px; height: 19px; }
+    /* the progress card is pulled 16px up over the hero, so the hero needs
+       enough bottom padding for its last line to clear it */
+    .vf3-phone--challenge .vf3-challenge-hero { padding-top: 9px; padding-bottom: 30px; }
+    .vf3-phone--challenge .vf3-hero-points { margin-top: 4px; }
+    .vf3-phone--challenge .vf3-progress-card { padding: 7px 9px; }
+    .vf3-phone--challenge .vf3-task-card { padding: 6px 8px; }
+    .vf3-phone--challenge .vf3-challenge-hero { padding-bottom: 24px; }
+    .vf3-phone--challenge .vf3-task-title { padding-top: 6px; padding-bottom: 4px; }
+    .vf3-rank-chip b { margin-left: 3px; }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
@@ -3342,9 +3415,13 @@
             </article>
 
             <article class="vf3-panel" id="vf3-challenges-panel" role="tabpanel" aria-labelledby="vf3-challenges-tab" hidden>
-              <div class="vf3-float vf3-float-left"><small>TEAM MEMBERS</small><strong>340</strong></div>
+              <div class="vf3-float vf3-float-left">
+                <span class="vf3-float-ico vf3-float-ico--steps" aria-hidden="true"></span>
+                <small>Team members</small><strong>340</strong>
+                <em class="vf3-float-trend">&#9650; 62 joined this week</em>
+              </div>
               <div class="vf3-phone vf3-phone--challenge" role="img" aria-label="Vantage Fit challenge screen showing weekly progress and completed wellbeing tasks">
-                <div class="vf3-status"><span>9:41</span><span>● ● ▰</span></div>
+                <div class="vf3-status"><span>9:41</span><span class="vf3-status-ico" aria-hidden="true"></span></div>
                 <div class="vf3-appbar">
                   <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></span>
                   <strong>Challenge Info</strong>
@@ -3352,25 +3429,40 @@
                 </div>
                 <div class="vf3-week-switch"><span>WEEK<br>1</span><span class="is-active">WEEK<br>2</span></div>
                 <div class="vf3-challenge-hero">
-                  <small>February Fit Challenge</small>
-                  <span class="vf3-challenge-figure">W2</span>
+                  <span class="vf3-info-dot" aria-hidden="true">i</span>
+                  <small class="vf3-hero-title">February Fit Challenge</small>
+                  <span class="vf3-challenge-figure" aria-hidden="true"><i class="vf3-runner"></i></span>
                   <small>Theme of the week</small>
                   <strong>Stronger Every Day</strong>
-                  <span class="vf3-rank-chip">Weekly Rank 44</span>
+                  <span class="vf3-rank-chip">Weekly Rank <b>44</b></span>
+                  <small class="vf3-hero-points">Earn 300 fit points</small>
                 </div>
-                <div class="vf3-progress-card">Challenge Progress<div class="vf3-track"></div><b>Weekly progress: 83%</b></div>
+                <div class="vf3-progress-card">
+                  <span class="vf3-pc-label">Challenge Progress</span>
+                  <span class="vf3-track"><i style="width:83%"></i></span>
+                  <b>Weekly progress: 83%</b>
+                </div>
                 <div class="vf3-task-title">Week 2 Tasks</div>
                 <div class="vf3-task-list">
-                  <div class="vf3-task-card"><i class="vf3-task-icon">STEP</i><div class="vf3-task-copy"><b>Walk 5,500+ steps 4 days this week</b><small>Earn 100 points</small></div><span class="vf3-task-ring">4/4<small>Completed</small></span></div>
-                  <div class="vf3-task-card"><i class="vf3-task-icon">MOVE</i><div class="vf3-task-copy"><b>Walk or run 3 km on 3 days</b><small>Earn 50 points</small></div><span class="vf3-task-ring">4/3<small>Completed</small></span></div>
+                  <div class="vf3-task-card"><i class="vf3-task-icon vf3-task-icon--steps" aria-hidden="true"></i><div class="vf3-task-copy"><b>Walk 5,500+ steps 4 days this week</b><small>Earn 100 points</small></div><span class="vf3-task-ring">4/4<small>Completed</small></span></div>
+                  <div class="vf3-task-card"><i class="vf3-task-icon vf3-task-icon--run" aria-hidden="true"></i><div class="vf3-task-copy"><b>Walk or run 3.0 km in one go, 3 days</b><small>Earn 50 points</small></div><span class="vf3-task-ring">3/3<small>Completed</small></span></div>
                 </div>
               </div>
-              <div class="vf3-float vf3-float-right"><small>COMPLETION</small><strong>87%</strong></div>
+              <div class="vf3-float vf3-float-right">
+                <span class="vf3-float-ico vf3-float-ico--goal" aria-hidden="true"></span>
+                <small>Completion</small><strong>87%</strong>
+                <span class="vf3-float-bar"><i style="width:87%"></i></span>
+              </div>
             </article>
 
             <article class="vf3-panel" id="vf3-rewards-panel" role="tabpanel" aria-labelledby="vf3-rewards-tab" hidden>
-              <div class="vf3-phone vf3-phone--leaderboard" role="img" aria-label="Vantage Fit team leaderboard showing rank, distance, completed activities, and employee positions">
-                <div class="vf3-status"><span>5:42</span><span>● ● ▰</span></div>
+              <div class="vf3-float vf3-float-left">
+                <span class="vf3-float-ico vf3-float-ico--steps" aria-hidden="true"></span>
+                <small>Your rank</small><strong>1st</strong>
+                <em class="vf3-float-trend">&#9650; up 3 places</em>
+              </div>
+              <div class="vf3-phone vf3-phone--leaderboard" role="img" aria-label="Vantage Fit team leaderboard showing rank, distance and completed activities">
+                <div class="vf3-status"><span>5:42</span><span class="vf3-status-ico" aria-hidden="true"></span></div>
                 <div class="vf3-leaderboard-hero">
                   <div class="vf3-leaderboard-nav">
                     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></span>
@@ -3378,20 +3470,24 @@
                     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></span>
                   </div>
                   <div class="vf3-leaderboard-summary">
-                    <span><small>Your rank</small><strong>1st</strong></span>
-                    <span class="vf3-leader-avatar">IP</span>
-                    <span><small>Metres</small><strong>49,490</strong></span>
+                    <span class="vf3-rank-block"><span class="vf3-rank-badge"><i aria-hidden="true"></i>Your Rank</span><strong>1<sup>st</sup></strong></span>
+                    <span class="vf3-leader-avatar">PN<span class="vf3-medal-sm" aria-hidden="true"></span></span>
+                    <span class="vf3-metres"><small>METRES</small><strong>49490</strong></span>
                   </div>
                   <div class="vf3-completed"><b>6/6</b>completed</div>
                 </div>
                 <div class="vf3-leader-list">
-                  <div class="vf3-leader-row is-you"><b>1</b><i class="vf3-list-avatar">IP</i><div class="vf3-leader-name"><strong>Ishan P.</strong><small>Total distance 49,490</small></div><span class="vf3-complete-pill">6/6</span></div>
-                  <div class="vf3-leader-row"><b>2</b><i class="vf3-list-avatar">AP</i><div class="vf3-leader-name"><strong>Anjan P.</strong><small>Total distance 22,126</small></div><span class="vf3-complete-pill">4/6</span></div>
-                  <div class="vf3-leader-row"><b>3</b><i class="vf3-list-avatar">KK</i><div class="vf3-leader-name"><strong>Kinshuk K.</strong><small>Total distance 5,164</small></div><span class="vf3-complete-pill">1/6</span></div>
-                  <div class="vf3-leader-row"><b>4</b><i class="vf3-list-avatar">JD</i><div class="vf3-leader-name"><strong>Jonak D.</strong><small>Total distance 5,030</small></div><span class="vf3-complete-pill">1/6</span></div>
+                  <div class="vf3-leader-row is-you"><b>1</b><i class="vf3-list-avatar">PN<span class="vf3-medal-sm" aria-hidden="true"></span></i><div class="vf3-leader-name"><strong>Priya N.</strong><small>Total Distance <em>49,490</em></small></div><span class="vf3-pill-wrap"><span class="vf3-complete-pill">6/6</span><small>completed</small></span></div>
+                  <div class="vf3-leader-row"><b>2</b><i class="vf3-list-avatar">DR<span class="vf3-medal-sm" aria-hidden="true"></span></i><div class="vf3-leader-name"><strong>Daniel R.</strong><small>Total Distance <em>22,126</em></small></div><span class="vf3-pill-wrap"><span class="vf3-complete-pill">4/6</span><small>completed</small></span></div>
+                  <div class="vf3-leader-row"><b>3</b><i class="vf3-list-avatar">AK<span class="vf3-medal-sm" aria-hidden="true"></span></i><div class="vf3-leader-name"><strong>Aisha K.</strong><small>Total Distance <em>5,164</em></small></div><span class="vf3-pill-wrap"><span class="vf3-complete-pill">1/6</span><small>completed</small></span></div>
+                  <div class="vf3-leader-row"><b>4</b><i class="vf3-list-avatar">ML<span class="vf3-medal-sm" aria-hidden="true"></span></i><div class="vf3-leader-name"><strong>Marcus L.</strong><small>Total Distance <em>5,030</em></small></div><span class="vf3-pill-wrap"><span class="vf3-complete-pill">1/6</span><small>completed</small></span></div>
                 </div>
               </div>
-              <div class="vf3-float vf3-float-right"><small>REWARD UNLOCKED</small><strong>2,500 pts</strong></div>
+              <div class="vf3-float vf3-float-right">
+                <span class="vf3-float-ico vf3-float-ico--goal" aria-hidden="true"></span>
+                <small>Reward unlocked</small><strong>2,500 pts</strong>
+                <span class="vf3-float-bar"><i style="width:100%"></i></span>
+              </div>
             </article>
 
             <article class="vf3-panel" id="vf3-program-panel" role="tabpanel" aria-labelledby="vf3-program-tab" hidden>
