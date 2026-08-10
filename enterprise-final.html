@@ -2109,7 +2109,7 @@
     }
     .launch-loop-card img {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      filter: grayscale(.22) contrast(1.04) saturate(1.04) brightness(.96);
+      filter: grayscale(1) contrast(1.06) brightness(.96);
       transition: transform .5s ease, filter .5s ease;
     }
     .launch-loop-card::before {
@@ -2118,7 +2118,11 @@
         rgba(15,18,22,.97) 0%, rgba(15,18,22,.90) 26%,
         rgba(15,18,22,.52) 55%, rgba(15,18,22,.14) 82%, rgba(15,18,22,.04) 100%);
     }
-    .launch-loop-card:hover img { transform: scale(1.045); filter: grayscale(0) saturate(1.06) brightness(1); }
+    /* black and white at rest, easing back to partial colour on hover -- not
+       all the way, so the row still reads as one set rather than one card
+       jumping out */
+    .launch-loop-card:hover img,
+    .launch-loop-card:focus-within img { transform: scale(1.045); filter: grayscale(.4) contrast(1.02) saturate(1.05) brightness(1); }
     .launch-loop-card-copy { position: absolute; z-index: 2; right: 0; bottom: 0; left: 0; padding: 24px; }
     .launch-loop-card h3 { margin-bottom: 9px; font-size: 1.38rem; color: #fff; }
     .launch-loop-card p { color: rgba(255,255,255,.82); font-size: .82rem; line-height: 1.65; }
