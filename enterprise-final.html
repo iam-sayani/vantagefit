@@ -1852,7 +1852,7 @@
       /* no bottom padding: the logo band is the last thing in the hero, and
          40px of it showed as an empty white strip before the next section */
       .hero { min-height: auto; padding: calc(var(--nav-h) + 68px) 0 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 28px; padding: 0; min-height: 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 20px; padding: 0; min-height: 0; }
       .hero-copy { max-width: none; }
 
       /* 2 — type scales from the viewport, not down from desktop */
@@ -2822,14 +2822,14 @@
       .stories-actions-mobile {
         display: flex;
         width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 14px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 12px;
         margin-top: 0;
       }
-      .stories-actions-mobile .text-link { order: 1; }
-      .stories-actions-mobile .btn { order: 2; width: auto; min-height: 54px; }
+      .stories-actions-mobile .text-link { order: 1; align-self: flex-start; }
+      .stories-actions-mobile .btn { order: 2; width: auto; min-height: 54px; align-self: flex-end; }
 
       /* Keep the supporting security link first and the conversion action
          in the familiar right-hand finishing position. */
@@ -3860,19 +3860,41 @@
   
 
   
-    // Thumb-zone bar: reveal once the hero's own CTAs leave the screen
+    // Thumb-zone bar: reveal after the hero CTA, but never compete with an
+    // in-section Book a demo action already visible in the viewport.
     (function () {
       const bar = document.getElementById('thumb-bar');
-      const heroCta = document.querySelector('.hero .btn-row');
+      const heroCta = document.querySelector('.hero-mobile-actions');
       if (!bar || !heroCta) return;
       const mq = window.matchMedia('(max-width: 760px)');
-      const io = new IntersectionObserver(([e]) => {
-        const show = mq.matches && !e.isIntersecting && e.boundingClientRect.top < 0;
+      const pageDemoCtas = [...document.querySelectorAll(
+        '.hero-mobile-actions .btn-primary, .trust-actions .btn-primary, .final .btn-primary'
+      )];
+      const visibleDemoCtas = new Set();
+      let heroPassed = false;
+
+      const render = () => {
+        const show = mq.matches && heroPassed && visibleDemoCtas.size === 0;
         bar.hidden = !show;
         requestAnimationFrame(() => bar.classList.toggle('is-on', show));
+      };
+
+      const heroObserver = new IntersectionObserver(([entry]) => {
+        heroPassed = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        render();
       }, { threshold: 0 });
-      io.observe(heroCta);
-      mq.addEventListener('change', () => { if (!mq.matches) { bar.hidden = true; bar.classList.remove('is-on'); } });
+
+      const demoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visibleDemoCtas.add(entry.target);
+          else visibleDemoCtas.delete(entry.target);
+        });
+        render();
+      }, { threshold: 0 });
+
+      heroObserver.observe(heroCta);
+      pageDemoCtas.forEach((cta) => demoObserver.observe(cta));
+      mq.addEventListener('change', render);
     })();
 
 
