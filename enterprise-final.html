@@ -2611,6 +2611,23 @@
       #security,
       #blogs { padding-top: 40px; }
     }
+    /* ===== Ambient glows (recreated from the Figma frame) =====
+       Each is a 1000x760 ellipse in the 1440 comp, so the box is sized from
+       the section's width and keeps that ratio; centre and rotation are taken
+       straight from the Figma nodes. Decorative only. */
+    .vf-glow {
+      position: absolute; z-index: 0; pointer-events: none;
+      width: 69.44%; aspect-ratio: 1000 / 760; border-radius: 50%;
+    }
+    .vf-glow--slate { background: radial-gradient(closest-side, rgba(59,70,86,1), rgba(55,65,81,.12)); }
+    .vf-glow--coral { background: radial-gradient(closest-side, rgba(241,81,98,.92), rgba(241,81,98,0)); }
+    .launch-loop > .shell, .trust-screen > .shell, .final > .shell { position: relative; z-index: 1; }
+    .vf-glow--e1 { left: 25.49%; top: 81.52%; transform: translate(-50%, -50%); }
+    .vf-glow--e2 { left: 82.66%; top: 8.21%; transform: translate(-50%, -50%) rotate(-27.7deg); }
+    .vf-glow--s1 { left: 11.32%; top: 83.99%; transform: translate(-50%, -50%); }
+    .vf-glow--s2 { left: 101.04%; top: 103.48%; transform: translate(-50%, -50%) rotate(-90deg); }
+    .vf-glow--d1 { left: 25.28%; top: 103.40%; transform: translate(-50%, -50%); }
+
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
@@ -2821,6 +2838,8 @@
 
     <!-- ========== S2 PARTICIPATION LOOP (from Codex, branch codex-v) ========== -->
     <section class="launch-loop" id="engine" aria-labelledby="engine-heading">
+      <i class="vf-glow vf-glow--slate vf-glow--e1" aria-hidden="true"></i>
+      <i class="vf-glow vf-glow--slate vf-glow--e2" aria-hidden="true"></i>
       <div class="shell">
         <div class="launch-loop-head">
           <div>
@@ -3032,6 +3051,8 @@
 
     <!-- ========== S5 SECURITY & COMPLIANCE (from /enterprise) ========== -->
     <section class="screen trust-screen" id="security" aria-labelledby="security-heading">
+      <i class="vf-glow vf-glow--slate vf-glow--s1" aria-hidden="true"></i>
+      <i class="vf-glow vf-glow--slate vf-glow--s2" aria-hidden="true"></i>
       <div class="shell trust-cols">
         <div class="trust-copy">
           <h2 id="security-heading">Enterprise protection for employee data.</h2>
@@ -3095,6 +3116,7 @@
 
     <!-- ========== S7 CLOSING CTA (from /enterprise) ========== -->
     <section class="final vf-stage" id="demo" aria-labelledby="demo-heading">
+      <i class="vf-glow vf-glow--coral vf-glow--d1" aria-hidden="true"></i>
       <div class="shell">
         <h2 id="demo-heading">See what better participation looks like.</h2>
         <p>Explore the employee experience, build a challenge, and see reporting for HR leaders.</p>
