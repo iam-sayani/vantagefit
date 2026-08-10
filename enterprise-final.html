@@ -2597,6 +2597,16 @@
           .vf3-admin-grid { grid-template-columns: minmax(0, 1fr) 86px; gap: 5px; }
         }
 
+    /* ===== Inline text links: one size, regular weight =====
+       They were 12.8px in proof and 14.4px in security, both at weight 800.
+       Declared last so it beats the per-section rules. */
+    .text-link,
+    .stories-actions .text-link,
+    .trust-actions .text-link {
+      font-size: .9rem;
+      font-weight: 400;
+    }
+
     /* ===== One subheader scale for every section =====
        These grew apart as sections arrived from different files: at 1440 the
        five section subheads measured 17.92 / 16.64 / 16 / 14.72 / 17.92px with
