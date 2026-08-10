@@ -2299,7 +2299,7 @@
     .vf3-week-switch .is-active { background: var(--cta-b); color: #fff; }   /* --coral gives 3.45:1 for 5px white */
     .vf3-challenge-hero {
       padding: 11px 13px 23px;
-      background: linear-gradient(145deg, #B8241C 0%, #C4491F 100%);   /* darkened until the lighter stop clears 4.5:1 for white 5.5px text */
+      background: linear-gradient(145deg, #3C3F97 0%, #5A62C4 100%);   /* challenge blue; lighter stop gives 5.28:1 for white small text */
       color: #fff;
       text-align: center;
     }
@@ -2391,7 +2391,7 @@
     .vf3-leaderboard-hero {
       min-height: 174px;
       padding: 2px 12px 12px;
-      background: linear-gradient(135deg, #f84260 0%, #ff7048 100%);
+      background: linear-gradient(135deg, #B32240 0%, #C2461F 100%);   /* white small text needs 4.5:1; the lighter stop now gives 5.01 */
       color: #fff;
     }
     .vf3-leaderboard-nav {
@@ -2417,14 +2417,15 @@
       height: 62px;
       margin: 0 auto;
       place-items: center;
-      border: 4px solid #ffc217;
+      border: 2.5px solid #F5C542;
       border-radius: 50%;
-      background: linear-gradient(145deg, #dceff4, #9fc3cf);
-      color: #223742;
+      background: linear-gradient(150deg, #8A5A3E 0%, #6B4430 55%, #4E2F20 100%);
+      box-shadow: 0 3px 10px rgba(0,0,0,.22);
+      color: #fff;
       font-size: 14px;
       font-weight: 800;
     }
-    .vf3-completed { margin-top: 8px; font-size: 8px; text-align: center; }
+    .vf3-completed { margin-top: 6px; font-size: 8px; text-align: center; }
     .vf3-completed b { display: block; font-size: 16px; font-weight: 500; }
     .vf3-leader-list { background: #fff; }
     .vf3-leader-row {
@@ -2444,10 +2445,10 @@
       width: 28px;
       height: 28px;
       place-items: center;
-      border: 3px solid #ffc217;
+      border: 2px solid #F5C542;
       border-radius: 50%;
-      background: #e8ecef;
-      color: #51535c;
+      background: linear-gradient(150deg, #8A5A3E, #5E3A28);
+      color: #fff;
       font-size: 6px;
       font-style: normal;
       font-weight: 800;
@@ -2496,7 +2497,7 @@
         }
     .vf3-admin-top { display: flex; height: 34px; align-items: center; gap: 6px; padding: 0 12px; border-bottom: 1px solid #e6e7eb; background: #fff; }
     .vf3-admin-top i { width: 6px; height: 6px; border-radius: 50%; background: #d7d9df; }
-    .vf3-admin-top span { margin-left: 6px; color: #90939c; font-size: 6px; font-weight: 700; }
+    .vf3-admin-top span { margin-left: 6px; color: #676A76; font-size: 6px; font-weight: 700; }
     .vf3-admin-layout { display: grid; height: calc(100% - 34px); grid-template-columns: 88px 1fr; }
     .vf3-admin-side { padding: 15px 10px; background: #222833; color: rgba(255,255,255,.58); }
     .vf3-admin-side b { display: block; margin-bottom: 21px; color: #fff; font-size: 8px; }
@@ -2505,12 +2506,12 @@
     .vf3-admin-main { padding: 15px; overflow: hidden; }
     .vf3-admin-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
     .vf3-admin-toolbar small, .vf3-admin-toolbar strong { display: block; }
-    .vf3-admin-toolbar small { color: #989ba5; font-size: 5px; font-weight: 800; letter-spacing: .08em; }
+    .vf3-admin-toolbar small { color: #6A6D79; font-size: 5px; font-weight: 800; letter-spacing: .08em; }
     .vf3-admin-toolbar strong { margin-top: 2px; font-size: 10px; }
-    .vf3-admin-toolbar span { padding: 6px 8px; border: 1px solid #e1e3e8; border-radius: 7px; background: #fff; color: #77798d; font-size: 6px; }
+    .vf3-admin-toolbar span { padding: 6px 8px; border: 1px solid #e1e3e8; border-radius: 7px; background: #fff; color: #5F6172; font-size: 6px; }
     .vf3-admin-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .vf3-admin-metric { min-height: 76px; padding: 10px; border: 1px solid #e4e5e9; border-radius: 10px; background: #fff; }
-    .vf3-admin-metric small { color: #8a8d96; font-size: 5.5px; text-transform: uppercase; }
+    .vf3-admin-metric small { color: #656872; font-size: 5.5px; text-transform: uppercase; }
     .vf3-admin-metric strong { display: block; margin: 5px 0 2px; font-size: 17px; }
     .vf3-admin-metric em { color: var(--mint-dark); font-size: 5.5px; font-style: normal; font-weight: 800; }
     .vf3-admin-grid { display: grid; grid-template-columns: 1.45fr .75fr; gap: 8px; margin-top: 8px; }
@@ -2520,11 +2521,11 @@
     .vf3-chart-bars { display: flex; height: 102px; align-items: end; gap: 7px; margin-top: 15px; border-bottom: 1px solid #eceef1; background: repeating-linear-gradient(to bottom, #f1f2f4 0 1px, transparent 1px 31px); }
     .vf3-chart-bars i { flex: 1; border-radius: 4px 4px 1px 1px; background: linear-gradient(180deg, #58d5b6, #219d82); }
     .vf3-score-card { text-align: center; }
-    .vf3-score-card small { color: #898c96; font-size: 5.5px; font-weight: 800; }
+    .vf3-score-card small { color: #63666F; font-size: 5.5px; font-weight: 800; }
     .vf3-score-ring { display: grid; width: 78px; height: 78px; margin: 12px auto 8px; place-items: center; border-radius: 50%; background: conic-gradient(var(--coral) 0 var(--vf3-score, 60%), #f0f1f3 var(--vf3-score, 60%)); }
     .vf3-score-ring b { display: grid; width: 58px; height: 58px; place-items: center; border-radius: 50%; background: #fff; font-size: 18px; }
     .vf3-insight { display: flex; justify-content: space-between; margin-top: 8px; padding: 10px 12px; border: 1px solid #e5dcfa; border-radius: 9px; background: linear-gradient(90deg, #f7f2ff, #edfffa); color: #6630b9; font-size: 6px; font-weight: 800; }
-    .vf3-insight span { color: #7c7f89; font-weight: 600; }
+    .vf3-insight span { color: #5C5F69; font-weight: 600; }
     .vf3-tabs {
           display: flex;
           min-width: 0;
@@ -2946,7 +2947,7 @@
     .vf3-challenge--app .vf3-challenge-top { position: relative; padding: 8px 9px 9px;
       background: linear-gradient(135deg, #5A62C4, #3C3F97); }
     .vf3-chips { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-    .vf3-chip { padding: 1.5px 5px; border-radius: 99px; background: rgba(255,255,255,.24);
+    .vf3-chip { padding: 1.5px 5px; border-radius: 99px; background: rgba(12,16,64,.34);
       font-size: 5.6px; font-weight: 800; color: #fff; }
     .vf3-chip--light { background: #fff; color: #3C3F97; }
     .vf3-chal-name { max-width: 128px; font-size: 7.6px; font-weight: 800; line-height: 1.32; color: #fff; }
@@ -3107,16 +3108,23 @@
     .vf-glow { transform: rotate(var(--rot, 0deg)); }
     .vf-anim .vf-glow {
       opacity: 0;
-      transform: translate3d(var(--slide, -80px), 0, 0) rotate(var(--rot, 0deg));
-      transition: transform 1.25s cubic-bezier(.22,.9,.24,1), opacity 1s ease;
+      /* grows from its own centre, so the shape reads as expanding into place.
+         A slide of even 260px was lost on a shape this large and this soft. */
+      transform: rotate(var(--rot, 0deg)) scale(.42);
+      transition: transform 1.35s cubic-bezier(.19,.86,.28,1), opacity 1.05s ease;
     }
     .vf-anim .vf-glow.is-in {
       opacity: 1;
-      transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg));
+      transform: rotate(var(--rot, 0deg)) scale(1);
     }
     @media (prefers-reduced-motion: reduce) {
-      .vf-anim .vf-glow { opacity: 1; transform: rotate(var(--rot, 0deg)); transition: none; }
+      .vf-anim .vf-glow { opacity: 1; transform: rotate(var(--rot, 0deg)) scale(1); transition: none; }
     }
+
+    /* the HR dashboard panels: mint at these sizes is 3.4:1 on white, and the
+       leaderboard status bar sits on the hero, so give it that ground */
+    .vf3-admin em, .vf3-admin .vf3-chart-head span { color: #0F7D63; }
+    .vf3-phone--leaderboard .vf3-status { background: #B32240; color: #fff; }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
