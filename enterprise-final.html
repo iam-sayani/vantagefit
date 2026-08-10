@@ -2830,14 +2830,23 @@
       position: absolute; z-index: 0; pointer-events: none;
       width: 69.44%; aspect-ratio: 1000 / 760; border-radius: 50%;
     }
-    .vf-glow--slate { background: radial-gradient(closest-side, rgba(59,70,86,1), rgba(55,65,81,.12)); }
-    .vf-glow--coral { background: radial-gradient(closest-side, rgba(241,81,98,.92), rgba(241,81,98,0)); }
+    /* flat fills: the shapes read as defined circles rather than a soft fade */
+    /* .68 keeps the shape crisp but closer to the Figma gradient's overall
+       weight; at full strength the coral headline accent fell to 2.77:1 */
+    .vf-glow--slate { background: rgba(59,70,86,.68); }
+    .vf-glow--coral { background: rgba(241,81,98,.92); }
     .launch-loop > .shell, .trust-screen > .shell, .final > .shell { position: relative; z-index: 1; }
     .vf-glow--e1 { left: 25.49%; top: 81.52%; transform: translate(-50%, -50%); }
     .vf-glow--e2 { left: 82.66%; top: 8.21%; transform: translate(-50%, -50%) rotate(-27.7deg); }
     .vf-glow--s1 { left: 11.32%; top: 83.99%; transform: translate(-50%, -50%); }
     .vf-glow--s2 { left: 101.04%; top: 103.48%; transform: translate(-50%, -50%) rotate(-90deg); }
-    .vf-glow--d1 { left: 25.28%; top: 103.40%; transform: translate(-50%, -50%); }
+    /* the CTA shape overlaps the lead. In Figma that is the gradient's faded
+       edge; flat at .92 it drops white 17px text to 3.63:1, so tone this one. */
+    .vf-glow--d1 { left: 25.28%; top: 103.40%; transform: translate(-50%, -50%);
+      background: rgba(241,81,98,.45); }
+    .vf3-stage .vf-glow { width: 124.43%; aspect-ratio: 764 / 760; }
+    .vf-glow--x1 { left: 14.66%; top: 82.46%; transform: translate(-50%, -50%); }
+    .vf-glow--x2 { left: 78.66%; top: 63.86%; transform: translate(-50%, -50%); }
 
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
@@ -3102,6 +3111,8 @@
 
         <div class="vf3-showcase">
           <div class="vf3-stage">
+            <i class="vf-glow vf-glow--coral vf-glow--x1" aria-hidden="true"></i>
+            <i class="vf-glow vf-glow--coral vf-glow--x2" aria-hidden="true"></i>
             <article class="vf3-panel" id="vf3-wellbeing-panel" role="tabpanel" aria-labelledby="vf3-wellbeing-tab">
               <div class="vf3-float vf3-float-left"><small>STEPS TODAY</small><strong>5,988</strong></div>
               <div class="vf3-phone" role="img" aria-label="Mobile wellbeing summary showing activity and challenge progress">
