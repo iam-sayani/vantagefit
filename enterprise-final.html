@@ -2257,27 +2257,6 @@
         }
     .vf3-panel { position: absolute; inset: 0; }
     .vf3-panel[hidden] { display: none; }
-    .vf3-label {
-          position: absolute;
-          z-index: 5;
-          top: 24px;
-          left: 26px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          color: #fff;
-          font-size: .68rem;
-          font-weight: 800;
-          letter-spacing: .08em;
-          text-transform: uppercase;
-        }
-    .vf3-label::before {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: var(--mint);
-          content: "";
-        }
     .vf3-float {
           position: absolute;
           z-index: 4;
@@ -2297,7 +2276,7 @@
     .vf3-phone {
           position: absolute;
           z-index: 2;
-          top: 64px;
+          top: 56px;
           left: 50%;
           width: 218px;
           height: 456px;
@@ -2409,7 +2388,7 @@
     .vf3-rank em { padding: 4px 7px; border-radius: 10px; background: #ffe7ea; color: var(--coral-deep); font-style: normal; font-weight: 800; }
     .vf3-admin {
           position: absolute;
-          inset: 76px 25px 34px;
+          inset: 56px 25px 54px;
           z-index: 2;
           overflow: hidden;
           border: 5px solid rgba(255,255,255,.94);
@@ -2554,9 +2533,8 @@
             border: 1px solid rgba(41,41,76,.12); border-top: 0;
             border-radius: 0 0 20px 20px; overflow: hidden;
           }
-          .vf3-label { top: 14px; left: 16px; font-size: .66rem; }
           .vf3-float { display: none; }
-          .vf3-phone { top: 30px; width: min(228px, calc(100% - 40px)); height: 454px; border-width: 6px; border-radius: 30px; }
+          .vf3-phone { top: 23px; width: min(228px, calc(100% - 40px)); height: 454px; border-width: 6px; border-radius: 30px; }
 
           .vf3-status { font-size: 9px; }
           .vf3-phone-head small { font-size: 8px; }
@@ -2573,7 +2551,7 @@
           .vf3-rank { font-size: 8.5px; }
           .vf3-rank small { font-size: 7px; }
           .vf3-rank em { font-size: 8px; }
-          .vf3-admin { inset: 34px 12px 16px; }
+          .vf3-admin { inset: 24px 12px 26px; }
           .vf3-admin-top span { font-size: 8.5px; }
           .vf3-admin-layout { grid-template-columns: 1fr; }
           .vf3-admin-side { display: none; }
@@ -2601,8 +2579,8 @@
           .vf3-tab { min-height: 44px; padding: 10px 13px; }
           .vf3-tab-head b { font-size: .8rem; }
           .vf3-stage { min-height: 496px; }
-          .vf3-phone { top: 28px; width: min(212px, calc(100% - 32px)); height: 454px; }
-          .vf3-admin { inset: 32px 8px 14px; }
+          .vf3-phone { top: 21px; width: min(212px, calc(100% - 32px)); height: 454px; }
+          .vf3-admin { inset: 23px 8px 23px; }
           .vf3-admin-main { padding: 9px; }
           .vf3-admin-metrics { gap: 5px; }
           .vf3-admin-metric { padding: 8px 6px; }
@@ -2874,7 +2852,6 @@
         <div class="vf3-showcase">
           <div class="vf3-stage">
             <article class="vf3-panel" id="vf3-wellbeing-panel" role="tabpanel" aria-labelledby="vf3-wellbeing-tab">
-              <div class="vf3-label">Vantage Fit mobile app</div>
               <div class="vf3-float vf3-float-left"><small>STEPS TODAY</small><strong>5,988</strong></div>
               <div class="vf3-phone" role="img" aria-label="Mobile wellbeing summary showing activity and challenge progress">
                 <div class="vf3-status"><span>9:41</span><span>● ● ▰</span></div>
@@ -2888,7 +2865,6 @@
             </article>
 
             <article class="vf3-panel" id="vf3-challenges-panel" role="tabpanel" aria-labelledby="vf3-challenges-tab" hidden>
-              <div class="vf3-label">Team challenge</div>
               <div class="vf3-float vf3-float-left"><small>TEAM MEMBERS</small><strong>340</strong></div>
               <div class="vf3-phone" role="img" aria-label="Mobile team challenge with daily goals and progress">
                 <div class="vf3-status"><span>9:41</span><span>● ● ▰</span></div>
@@ -2901,7 +2877,6 @@
             </article>
 
             <article class="vf3-panel" id="vf3-rewards-panel" role="tabpanel" aria-labelledby="vf3-rewards-tab" hidden>
-              <div class="vf3-label">Leaderboards and rewards</div>
               <div class="vf3-phone" role="img" aria-label="Mobile team leaderboard and reward progress">
                 <div class="vf3-status"><span>3:44</span><span>● ● ▰</span></div>
                 <div class="vf3-leader"><b>Team leaderboard</b><div class="vf3-score"><span>YOUR RANK<strong>12th</strong></span><span class="vf3-avatar">AT</span><span>POINTS<strong>412</strong></span></div></div>
@@ -2912,7 +2887,6 @@
             </article>
 
             <article class="vf3-panel" id="vf3-program-panel" role="tabpanel" aria-labelledby="vf3-program-tab" hidden>
-              <div class="vf3-label">HR program workspace</div>
               <div class="vf3-admin" role="img" aria-label="HR program management dashboard">
                 <div class="vf3-admin-top"><i></i><i></i><i></i><span>app.vantagefit.io / programs</span></div>
                 <div class="vf3-admin-layout">
@@ -2928,7 +2902,6 @@
             </article>
 
             <article class="vf3-panel" id="vf3-analytics-panel" role="tabpanel" aria-labelledby="vf3-analytics-tab" hidden>
-              <div class="vf3-label">Analytics and insights</div>
               <div class="vf3-admin" role="img" aria-label="HR participation analytics dashboard">
                 <div class="vf3-admin-top"><i></i><i></i><i></i><span>app.vantagefit.io / analytics</span></div>
                 <div class="vf3-admin-layout">
