@@ -443,6 +443,7 @@
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
     .hero-copy .lead { max-width: 570px; margin-top: 18px; color: var(--muted); font-size: 1.04rem; line-height: 1.62; }
     .hero-copy .btn-row { margin-top: 26px; }
+    .hero-mobile-actions { display: none; }
     .hero-note {
       display: flex;
       flex-wrap: wrap;
@@ -1851,7 +1852,7 @@
       /* no bottom padding: the logo band is the last thing in the hero, and
          40px of it showed as an empty white strip before the next section */
       .hero { min-height: auto; padding: calc(var(--nav-h) + 68px) 0 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 0; min-height: 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; padding: 0; min-height: 0; }
       .hero-copy { max-width: none; }
 
       /* 2 — type scales from the viewport, not down from desktop */
@@ -1860,7 +1861,8 @@
 
       /* 3 — primary action in the thumb zone, full width, stacked */
       .btn { min-height: 54px; }
-      .hero-copy .btn-row { margin-top: 32px; }
+      .hero-copy > .btn-row { display: none; }
+      .hero-mobile-actions { display: flex; margin-top: 0; }
       .btn-row { flex-direction: column; align-items: stretch; gap: 14px; }
       .btn-row .btn { width: 100%; justify-content: center; min-height: 56px; font-size: 1rem; }
 
@@ -3195,6 +3197,11 @@
               <strong>Choose a gift card</strong>
             </div>
           </div>
+        </div>
+
+        <div class="btn-row hero-mobile-actions" aria-label="Hero actions">
+          <a class="btn btn-primary" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+          <a class="btn btn-outline" href="#proof">See results</a>
         </div>
       </div>
 
