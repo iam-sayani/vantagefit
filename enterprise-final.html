@@ -2583,6 +2583,7 @@
     .vf3-tab-link { margin-top: 17px; color: var(--ink); font-size: .875rem; font-weight: 800; }
     .vf3-tab:focus-visible { outline: 3px solid var(--mint-dark); outline-offset: 2px; }
     .vf3-mobile-copy { display: none; }
+    .vf3-slider-controls { display: none; }
     @media (max-width: 1040px) {
           .vf3-head { grid-template-columns: 1fr; gap: 18px; }
           .vf3-head p { margin: 0; }
@@ -2648,7 +2649,46 @@
             order: 3; min-height: 500px;
             border: 0;
             border-radius: 0 0 20px 20px; overflow: hidden;
+            touch-action: pan-y;
           }
+          .vf3-panel.is-slide-in { animation: vf3-panel-in .32s cubic-bezier(.22,.9,.24,1); }
+          @keyframes vf3-panel-in {
+            from { opacity: .35; transform: translateX(var(--vf3-slide-x, 20px)); }
+            to { opacity: 1; transform: translateX(0); }
+          }
+          .vf3-slider-controls {
+            order: 4;
+            display: grid;
+            grid-template-columns: 44px minmax(0, 1fr) 44px;
+            align-items: center;
+            gap: 12px;
+            margin-top: 14px;
+            padding: 0 8px;
+          }
+          .vf3-slider-control {
+            display: grid;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            padding: 0;
+            border: 1px solid rgba(41,41,76,.14);
+            border-radius: 50%;
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer;
+          }
+          .vf3-slider-control:disabled { opacity: .32; cursor: default; }
+          .vf3-slider-control:focus-visible { outline: 3px solid var(--mint-dark); outline-offset: 3px; }
+          .vf3-slider-control svg { width: 18px; height: 18px; }
+          .vf3-slider-dots { display: flex; align-items: center; justify-content: center; gap: 6px; }
+          .vf3-slider-dots span {
+            width: 18px;
+            height: 3px;
+            border-radius: 3px;
+            background: rgba(41,41,76,.2);
+            transition: width .2s ease, background .2s ease;
+          }
+          .vf3-slider-dots span.is-on { width: 30px; background: var(--coral); }
           .vf3-float { display: none; }
           .vf3-phone { top: 23px; width: min(228px, calc(100% - 40px)); height: 454px; border-width: 6px; border-radius: 30px; }
 
@@ -3583,6 +3623,16 @@
             <p id="vf3-mobile-description">Activity, mindfulness, hydration, nutrition, and healthy habits come together in one simple mobile view.</p>
             <span id="vf3-mobile-link">Explore the employee app →</span>
           </div>
+          <div class="vf3-slider-controls" role="group" aria-label="Product screen slider controls">
+            <button class="vf3-slider-control" id="vf3-slider-prev" type="button" aria-label="Previous product screen" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <div class="vf3-slider-dots" id="vf3-slider-dots" aria-hidden="true"><span class="is-on"></span><span></span><span></span><span></span><span></span></div>
+            <p class="visually-hidden" aria-live="polite">Product screen <span id="vf3-slider-current">1</span> of 5</p>
+            <button class="vf3-slider-control" id="vf3-slider-next" type="button" aria-label="Next product screen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -4098,36 +4148,71 @@
       paint(0);
     })();
 
-    // Product explorer: accessible tabs with familiar arrow-key navigation
+    // Product explorer: accessible tabs plus a synchronized mobile slider.
     (function () {
       const explorer = document.querySelector('.vf3-product');
       if (!explorer) return;
       const tabs = [...explorer.querySelectorAll('.vf3-tab')];
       const panels = [...explorer.querySelectorAll('.vf3-panel')];
+      const stage = explorer.querySelector('.vf3-stage');
       const mobileTitle = document.getElementById('vf3-mobile-title');
       const mobileDescription = document.getElementById('vf3-mobile-description');
       const mobileLink = document.getElementById('vf3-mobile-link');
+      const sliderPrev = document.getElementById('vf3-slider-prev');
+      const sliderNext = document.getElementById('vf3-slider-next');
+      const sliderDots = [...document.querySelectorAll('#vf3-slider-dots span')];
+      const sliderCurrent = document.getElementById('vf3-slider-current');
+      const mobile = window.matchMedia('(max-width: 760px)');
+      let currentIndex = Math.max(0, tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true'));
+      let touchStartX = 0;
+      let touchStartY = 0;
 
-      const activate = (tab, focus = false) => {
+      const paintSlider = () => {
+        if (sliderPrev) sliderPrev.disabled = currentIndex === 0;
+        if (sliderNext) sliderNext.disabled = currentIndex === tabs.length - 1;
+        if (sliderCurrent) sliderCurrent.textContent = String(currentIndex + 1);
+        sliderDots.forEach((dot, index) => dot.classList.toggle('is-on', index === currentIndex));
+      };
+
+      const activate = (tab, focus = false, direction = 0) => {
+        const nextIndex = tabs.indexOf(tab);
+        if (nextIndex < 0) return;
+        currentIndex = nextIndex;
         tabs.forEach((item) => {
           const active = item === tab;
           item.setAttribute('aria-selected', String(active));
           item.tabIndex = active ? 0 : -1;
         });
+        let activePanel = null;
         panels.forEach((panel) => {
           panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+          if (!panel.hidden) activePanel = panel;
         });
+        if (activePanel && mobile.matches && direction) {
+          activePanel.style.setProperty('--vf3-slide-x', direction > 0 ? '24px' : '-24px');
+          activePanel.classList.remove('is-slide-in');
+          void activePanel.offsetWidth;
+          activePanel.classList.add('is-slide-in');
+        }
         const detail = tab.querySelector('.vf3-tab-detail');
         if (detail && mobileTitle && mobileDescription && mobileLink) {
           mobileTitle.textContent = detail.querySelector('strong')?.textContent || '';
           mobileDescription.textContent = detail.querySelector('small')?.textContent || '';
           mobileLink.textContent = detail.querySelector('.vf3-tab-link')?.textContent || '';
         }
+        if (mobile.matches) tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        paintSlider();
         if (focus) tab.focus();
       };
 
+      const goTo = (index, focus = false) => {
+        const nextIndex = Math.max(0, Math.min(tabs.length - 1, index));
+        if (nextIndex === currentIndex) return;
+        activate(tabs[nextIndex], focus, nextIndex - currentIndex);
+      };
+
       tabs.forEach((tab, index) => {
-        tab.addEventListener('click', () => activate(tab));
+        tab.addEventListener('click', () => goTo(index));
         tab.addEventListener('keydown', (event) => {
           let nextIndex = null;
           if (event.key === 'ArrowDown' || event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
@@ -4136,9 +4221,29 @@
           if (event.key === 'End') nextIndex = tabs.length - 1;
           if (nextIndex === null) return;
           event.preventDefault();
-          activate(tabs[nextIndex], true);
+          activate(tabs[nextIndex], true, nextIndex - currentIndex);
         });
       });
+
+      sliderPrev?.addEventListener('click', () => goTo(currentIndex - 1));
+      sliderNext?.addEventListener('click', () => goTo(currentIndex + 1));
+
+      stage?.addEventListener('touchstart', (event) => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      }, { passive: true });
+      stage?.addEventListener('touchend', (event) => {
+        if (!mobile.matches) return;
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+        if (Math.abs(deltaX) < 44 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.2) return;
+        goTo(currentIndex + (deltaX < 0 ? 1 : -1));
+      }, { passive: true });
+
+      mobile.addEventListener('change', paintSlider);
+      paintSlider();
     })();
 
     // Ambient shapes slide in with their section.
