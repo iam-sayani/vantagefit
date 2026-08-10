@@ -2265,6 +2265,212 @@
           font-size: 10px;
         }
     .vf3-phone-nav span:first-child { color: var(--coral-deep); }
+
+    /* Employee app screens — rebuilt from the supplied Vantage Fit mobile
+       references. These remain real HTML so the product stays crisp at every
+       size instead of becoming an unreadable screenshot inside a phone. */
+    .vf3-appbar {
+      display: grid;
+      height: 34px;
+      grid-template-columns: 28px 1fr 28px;
+      align-items: center;
+      padding: 0 9px;
+      border-bottom: 1px solid #ece8eb;
+      background: #fff;
+      color: #242532;
+    }
+    .vf3-appbar strong { font-size: 8px; font-weight: 600; }
+    .vf3-appbar svg { width: 12px; height: 12px; }
+    .vf3-appbar span:last-child { justify-self: end; }
+    .vf3-week-switch {
+      display: flex;
+      gap: 7px;
+      padding: 8px 9px;
+      background: #fbf9fb;
+    }
+    .vf3-week-switch span {
+      display: grid;
+      width: 34px;
+      height: 30px;
+      place-items: center;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: 0 3px 8px rgba(41,41,76,.12);
+      color: #8b8c98;
+      font-size: 5px;
+      font-weight: 700;
+      line-height: 1.05;
+      text-align: center;
+    }
+    .vf3-week-switch .is-active { background: var(--coral); color: #fff; }
+    .vf3-challenge-hero {
+      padding: 11px 13px 23px;
+      background: linear-gradient(145deg, #ff3d36 0%, #ff7255 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .vf3-challenge-hero small { display: block; font-size: 5.5px; opacity: .84; }
+    .vf3-challenge-hero strong { display: block; margin-top: 3px; font-size: 11px; }
+    .vf3-challenge-figure {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      margin: 7px auto;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.94);
+      color: var(--coral-deep);
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .vf3-rank-chip {
+      display: inline-flex;
+      margin-top: 5px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #fff;
+      color: #494a57;
+      font-size: 5.5px;
+      font-weight: 700;
+    }
+    .vf3-progress-card {
+      position: relative;
+      z-index: 2;
+      margin: -16px 9px 8px;
+      padding: 8px 9px;
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(41,41,76,.16);
+      color: #4f505d;
+      font-size: 5.5px;
+    }
+    .vf3-progress-card .vf3-track { height: 4px; margin-top: 5px; }
+    .vf3-progress-card b { display: block; margin-top: 5px; text-align: center; font-size: 6px; }
+    .vf3-task-title { padding: 1px 10px 5px; color: #3f404c; font-size: 7px; font-weight: 700; }
+    .vf3-task-list { display: grid; gap: 6px; padding: 0 9px 10px; }
+    .vf3-task-card {
+      display: grid;
+      min-height: 57px;
+      grid-template-columns: 34px minmax(0, 1fr) 43px;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      border: 1px solid #ebe8ea;
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: 0 3px 8px rgba(41,41,76,.10);
+    }
+    .vf3-task-icon {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border-radius: 9px;
+      background: #fff0ed;
+      color: #e8424f;
+      font-size: 6px;
+      font-style: normal;
+      font-weight: 800;
+    }
+    .vf3-task-copy b, .vf3-task-copy small { display: block; }
+    .vf3-task-copy b { color: #383945; font-size: 6px; line-height: 1.28; }
+    .vf3-task-copy small { margin-top: 3px; color: var(--coral-deep); font-size: 5px; }
+    .vf3-task-ring {
+      display: grid;
+      width: 41px;
+      height: 41px;
+      place-items: center;
+      border: 4px solid #10bca7;
+      border-radius: 50%;
+      color: #30313e;
+      font-size: 8px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .vf3-task-ring small { display: block; margin-top: -4px; color: #92939d; font-size: 3.8px; font-weight: 500; }
+
+    .vf3-phone--leaderboard { background: #fff; }
+    .vf3-phone--leaderboard .vf3-status {
+      background: linear-gradient(135deg, #f84260 0%, #ff7048 100%);
+      color: #fff;
+    }
+    .vf3-leaderboard-hero {
+      min-height: 174px;
+      padding: 2px 12px 12px;
+      background: linear-gradient(135deg, #f84260 0%, #ff7048 100%);
+      color: #fff;
+    }
+    .vf3-leaderboard-nav {
+      display: grid;
+      grid-template-columns: 26px 1fr 26px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .vf3-leaderboard-nav strong { font-size: 11px; text-align: center; }
+    .vf3-leaderboard-nav svg { width: 16px; height: 16px; }
+    .vf3-leaderboard-summary {
+      display: grid;
+      grid-template-columns: 1fr 68px 1fr;
+      align-items: center;
+      gap: 7px;
+      text-align: center;
+    }
+    .vf3-leaderboard-summary small { display: block; font-size: 6px; text-transform: uppercase; }
+    .vf3-leaderboard-summary strong { display: block; margin-top: 3px; font-size: 19px; font-weight: 500; }
+    .vf3-leader-avatar {
+      display: grid;
+      width: 62px;
+      height: 62px;
+      margin: 0 auto;
+      place-items: center;
+      border: 4px solid #ffc217;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #dceff4, #9fc3cf);
+      color: #223742;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .vf3-completed { margin-top: 8px; font-size: 8px; text-align: center; }
+    .vf3-completed b { display: block; font-size: 16px; font-weight: 500; }
+    .vf3-leader-list { background: #fff; }
+    .vf3-leader-row {
+      display: grid;
+      min-height: 53px;
+      grid-template-columns: 16px 29px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border-bottom: 1px solid #f1e5e7;
+      color: #41424b;
+    }
+    .vf3-leader-row.is-you { background: #fff1f3; }
+    .vf3-leader-row > b { color: var(--coral); font-size: 9px; font-weight: 500; }
+    .vf3-list-avatar {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 3px solid #ffc217;
+      border-radius: 50%;
+      background: #e8ecef;
+      color: #51535c;
+      font-size: 6px;
+      font-style: normal;
+      font-weight: 800;
+    }
+    .vf3-leader-name strong, .vf3-leader-name small { display: block; }
+    .vf3-leader-name strong { font-size: 7px; font-weight: 600; }
+    .vf3-leader-name small { margin-top: 2px; color: #9697a0; font-size: 5px; }
+    .vf3-complete-pill {
+      min-width: 45px;
+      padding: 5px 7px;
+      border-radius: 999px;
+      background: var(--coral);
+      box-shadow: 0 3px 7px rgba(241,81,98,.22);
+      color: #fff;
+      font-size: 7px;
+      text-align: center;
+    }
     .vf3-goals { margin: 9px; padding: 2px 11px; border-radius: 13px; background: #fff; }
     .vf3-goal { display: grid; grid-template-columns: 25px 1fr auto; align-items: center; gap: 8px; padding: 10px 0; border-top: 1px solid #eceef2; }
     .vf3-goal:first-child { border: 0; }
@@ -2408,7 +2614,7 @@
              (Miller). */
           .vf3-tabs {
             order: 1; display: flex; flex-direction: row; gap: 8px;
-            margin: 0 0 12px; padding: 2px 0 6px;
+            margin: 0 0 12px; padding: 2px 0 8px;
             border: 0; border-left: 0; background: transparent;
             overflow-x: auto; overscroll-behavior-inline: contain;
             scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch;
@@ -2416,10 +2622,15 @@
           .vf3-tabs::-webkit-scrollbar { display: none; }
           .vf3-tab {
             min-height: 44px; flex: 0 0 auto; padding: 11px 15px;
-            border: 0; border-radius: 0;
-            background: transparent; opacity: .55; scroll-snap-align: start;
+            border: 0; border-radius: 999px;
+            background: #fff; box-shadow: inset 0 0 0 1px rgba(41,41,76,.06);
+            opacity: .66; scroll-snap-align: start;
           }
-          .vf3-tab[aria-selected="true"] { flex: 0 0 auto; border: 0; background: transparent; box-shadow: none; opacity: 1; }
+          .vf3-tab[aria-selected="true"] {
+            flex: 0 0 auto; border: 0; background: #fff;
+            box-shadow: inset 0 0 0 1px rgba(41,41,76,.12), 0 5px 14px rgba(41,41,76,.09);
+            opacity: 1;
+          }
           .vf3-tab + .vf3-tab { border-top: 0; }
           .vf3-tab[aria-selected="true"] b { color: var(--ink); }
           .vf3-tab-head { display: flex; align-items: center; gap: 0; grid-template-columns: none; }
@@ -2762,7 +2973,7 @@
           <p class="lead">Build lasting participation with inclusive challenges, meaningful rewards, and data leaders can trust.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
-            <a class="btn btn-outline" href="#proof">See customer results</a>
+            <a class="btn btn-outline" href="#proof">See results</a>
           </div>
         </div>
         <div class="hero-visual people-visual" aria-label="Employee participation and rewards in Vantage Fit">
@@ -2906,22 +3117,53 @@
 
             <article class="vf3-panel" id="vf3-challenges-panel" role="tabpanel" aria-labelledby="vf3-challenges-tab" hidden>
               <div class="vf3-float vf3-float-left"><small>TEAM MEMBERS</small><strong>340</strong></div>
-              <div class="vf3-phone" role="img" aria-label="Mobile team challenge with daily goals and progress">
+              <div class="vf3-phone vf3-phone--challenge" role="img" aria-label="Vantage Fit challenge screen showing weekly progress and completed wellbeing tasks">
                 <div class="vf3-status"><span>9:41</span><span>● ● ▰</span></div>
-                <div class="vf3-phone-head"><small>MY CHALLENGES</small><strong>Keep your team moving</strong></div>
-                <div class="vf3-challenge"><div class="vf3-challenge-top">ACTIVE · WEEK 5<br><br>21 Days to Transform</div><div class="vf3-challenge-progress">Weekly progress: <b>88%</b><div class="vf3-track"></div></div></div>
-                <div class="vf3-goals"><div class="vf3-goal"><i>✓</i><div><b>7,000 steps</b><small>5,988 completed</small></div><em>86%</em></div><div class="vf3-goal"><i>✓</i><div><b>30 active minutes</b><small>31 completed</small></div><em>Done</em></div><div class="vf3-goal"><i>↗</i><div><b>Team check-in</b><small>Encourage your group</small></div><em>Open</em></div></div>
-                <div class="vf3-phone-nav"><span>⌂</span><span>◇</span><span>＋</span><span>▣</span><span>○</span></div>
+                <div class="vf3-appbar">
+                  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></span>
+                  <strong>Challenge Info</strong>
+                  <span></span>
+                </div>
+                <div class="vf3-week-switch"><span>WEEK<br>1</span><span class="is-active">WEEK<br>2</span></div>
+                <div class="vf3-challenge-hero">
+                  <small>February Fit Challenge</small>
+                  <span class="vf3-challenge-figure">W2</span>
+                  <small>Theme of the week</small>
+                  <strong>Stronger Every Day</strong>
+                  <span class="vf3-rank-chip">Weekly Rank 44</span>
+                </div>
+                <div class="vf3-progress-card">Challenge Progress<div class="vf3-track"></div><b>Weekly progress: 83%</b></div>
+                <div class="vf3-task-title">Week 2 Tasks</div>
+                <div class="vf3-task-list">
+                  <div class="vf3-task-card"><i class="vf3-task-icon">STEP</i><div class="vf3-task-copy"><b>Walk 5,500+ steps 4 days this week</b><small>Earn 100 points</small></div><span class="vf3-task-ring">4/4<small>Completed</small></span></div>
+                  <div class="vf3-task-card"><i class="vf3-task-icon">MOVE</i><div class="vf3-task-copy"><b>Walk or run 3 km on 3 days</b><small>Earn 50 points</small></div><span class="vf3-task-ring">4/3<small>Completed</small></span></div>
+                </div>
               </div>
               <div class="vf3-float vf3-float-right"><small>COMPLETION</small><strong>87%</strong></div>
             </article>
 
             <article class="vf3-panel" id="vf3-rewards-panel" role="tabpanel" aria-labelledby="vf3-rewards-tab" hidden>
-              <div class="vf3-phone" role="img" aria-label="Mobile team leaderboard and reward progress">
-                <div class="vf3-status"><span>3:44</span><span>● ● ▰</span></div>
-                <div class="vf3-leader"><b>Team leaderboard</b><div class="vf3-score"><span>YOUR RANK<strong>12th</strong></span><span class="vf3-avatar">AT</span><span>POINTS<strong>412</strong></span></div></div>
-                <div class="vf3-ranks"><div class="vf3-rank"><b>1</b><i>AT</i><div>Angu Tamba<small>Marketing</small></div><em>710</em></div><div class="vf3-rank"><b>2</b><i>MR</i><div>Mariam Ray<small>App Development</small></div><em>678</em></div><div class="vf3-rank"><b>3</b><i>JD</i><div>Johnny Doeish<small>Operations</small></div><em>634</em></div><div class="vf3-rank"><b>4</b><i>AS</i><div>Arya Singh<small>Brand Sales</small></div><em>610</em></div><div class="vf3-rank"><b>5</b><i>MS</i><div>Mohsen Salehi<small>Design</small></div><em>599</em></div></div>
-                <div class="vf3-phone-nav"><span>⌂</span><span>◇</span><span>＋</span><span>▣</span><span>○</span></div>
+              <div class="vf3-phone vf3-phone--leaderboard" role="img" aria-label="Vantage Fit team leaderboard showing rank, distance, completed activities, and employee positions">
+                <div class="vf3-status"><span>5:42</span><span>● ● ▰</span></div>
+                <div class="vf3-leaderboard-hero">
+                  <div class="vf3-leaderboard-nav">
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></span>
+                    <strong>Leaderboard</strong>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></span>
+                  </div>
+                  <div class="vf3-leaderboard-summary">
+                    <span><small>Your rank</small><strong>1st</strong></span>
+                    <span class="vf3-leader-avatar">IP</span>
+                    <span><small>Metres</small><strong>49,490</strong></span>
+                  </div>
+                  <div class="vf3-completed"><b>6/6</b>completed</div>
+                </div>
+                <div class="vf3-leader-list">
+                  <div class="vf3-leader-row is-you"><b>1</b><i class="vf3-list-avatar">IP</i><div class="vf3-leader-name"><strong>Ishan P.</strong><small>Total distance 49,490</small></div><span class="vf3-complete-pill">6/6</span></div>
+                  <div class="vf3-leader-row"><b>2</b><i class="vf3-list-avatar">AP</i><div class="vf3-leader-name"><strong>Anjan P.</strong><small>Total distance 22,126</small></div><span class="vf3-complete-pill">4/6</span></div>
+                  <div class="vf3-leader-row"><b>3</b><i class="vf3-list-avatar">KK</i><div class="vf3-leader-name"><strong>Kinshuk K.</strong><small>Total distance 5,164</small></div><span class="vf3-complete-pill">1/6</span></div>
+                  <div class="vf3-leader-row"><b>4</b><i class="vf3-list-avatar">JD</i><div class="vf3-leader-name"><strong>Jonak D.</strong><small>Total distance 5,030</small></div><span class="vf3-complete-pill">1/6</span></div>
+                </div>
               </div>
               <div class="vf3-float vf3-float-right"><small>REWARD UNLOCKED</small><strong>2,500 pts</strong></div>
             </article>
