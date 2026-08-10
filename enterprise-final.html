@@ -1605,7 +1605,7 @@
       border-radius: 0 0 3px 3px; background: linear-gradient(90deg, transparent, rgba(65,216,180,.85), transparent); }
     .trust-plaque img { width: 100%; max-width: 560px; height: auto; filter: brightness(1.08); }
     .trust-plaque .trust-support { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1);
-      font-size: .74rem; color: rgba(255,255,255,.45); }
+      font-size: .74rem; color: rgba(255,255,255,.66); }   /* .45 gives 4.19:1 on the plaque; AA needs 4.5 */
     @media (max-width: 1100px) { .trust-cols { grid-template-columns: 1fr; gap: 40px; } .trust-plaque { padding: 36px 26px 24px; } }
     .trust-grid {
       display: grid;
@@ -1634,6 +1634,9 @@
     .trust-card h3 { margin-top: 22px; font-size: 1.15rem; }
     .trust-card p { margin-top: 8px; color: rgba(255,255,255,.62); font-size: .84rem; line-height: 1.45; }
     .trust-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 20px; }
+    /* .text-link carries margin-top:20px from its base rule, which stacks on
+       the flex row-gap once the link wraps below the button on a phone */
+    .trust-actions .text-link { margin-top: 0; }
     .trust-support {
       margin-top: 12px;
       color: rgba(255,255,255,.48);
@@ -3009,6 +3012,30 @@
           </div>
 
           <p class="proof-note">Customer experiences vary by workforce and program design.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== S5 SECURITY & COMPLIANCE (from /enterprise) ========== -->
+    <section class="screen trust-screen" id="security" aria-labelledby="security-heading">
+      <div class="shell trust-cols">
+        <div class="trust-copy">
+          <h2 id="security-heading">Enterprise protection for employee data.</h2>
+          <p class="lead">Measure participation without compromising employee privacy.</p>
+          <div class="trust-actions">
+            <a class="btn btn-primary" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+            <a class="text-link text-link-light" href="https://www.vantagefit.io/features/security-and-compliance/">Explore security &amp; compliance &rarr;</a>
+          </div>
+        </div>
+        <div class="trust-plaque">
+          <img
+            src="https://cdn.vantagecircle.com/image/upload/f_auto,q_auto,w_800/v1766414004/VantageFit/2025/Hipaa"
+            alt="Security certifications: HIPAA, ISO 27001, ISO 27701, GDPR, SOC 2"
+            width="720"
+            height="93"
+            loading="lazy"
+          >
+          <p class="trust-support">Security documentation is available during evaluation.</p>
         </div>
       </div>
     </section>
