@@ -1663,10 +1663,9 @@
       /* Brand red plus the dark red gradient. Fit Red carries the band's
          character from the corners; the field behind the copy stays deep red
          because white small text on #F15162 is only 3.45:1, under AA. */
-      background:
-        radial-gradient(66% 58% at 86% 4%, rgba(241,81,98,.92), transparent 62%),
-        radial-gradient(58% 52% at 6% 98%, rgba(241,81,98,.55), transparent 66%),
-        linear-gradient(158deg, #B92C44 0%, #A32540 45%, #8A1E33 100%);
+      /* the glows are elements now (.vf-glow--d1/--d2), matching the Figma
+         layer stack; only the base ramp stays here */
+      background: linear-gradient(158deg, #B92C44 0%, #A32540 45%, #8A1E33 100%);
       color: #fff;
       text-align: center;
     }
@@ -2145,16 +2144,8 @@
           overflow: hidden;
           background: linear-gradient(145deg, #db3245 0%, #c43142 54%, #a7253c 100%);
         }
-    .vf3-stage::before {
-          position: absolute;
-          top: -128px;
-          left: -138px;
-          width: 330px;
-          height: 330px;
-          border: 68px solid rgba(255,255,255,.08);
-          border-radius: 50%;
-          content: "";
-        }
+    /* ring replaced by the two .vf-glow--x* shapes, as in Figma */
+    .vf3-stage::before { display: none; }
     .vf3-panel { position: absolute; inset: 0; }
     .vf3-panel[hidden] { display: none; }
     .vf3-float {
@@ -2824,33 +2815,30 @@
       #security,
       #blogs { padding-top: 40px; }
     }
-    /* ===== Ambient glows (recreated from the Figma frame) =====
-       Each is a 1000x760 ellipse in the 1440 comp, so the box is sized from
-       the section's width and keeps that ratio; centre and rotation are taken
-       straight from the Figma nodes. Decorative only. */
+    /* ===== Ambient shapes — Figma spec =====
+       Gradient, size, offset and rotation taken from the Figma nodes. The
+       gradient origin is the shape's top-left corner (at 0% 0%), not its
+       centre, which is what gives the directional falloff. No blur: none of
+       the Figma nodes carries a blur effect. Offsets are the 1440 comp's
+       pixel values, so the composition is exact at desktop. */
     .vf-glow {
       position: absolute; z-index: 0; pointer-events: none;
-      width: 69.44%; aspect-ratio: 1000 / 760; border-radius: 50%;
-      filter: blur(18px);              /* slight softening of the edge */
+      width: 1000px; height: 760px; border-radius: 50%;
     }
-    /* flat fills: the shapes read as defined circles rather than a soft fade */
-    /* light centre falling to a darker rim. Values are held down from the
-       brightest possible so the headline accent and CTA lead stay above AA -
-       both were measured against the rendered result, not assumed. */
-    .vf-glow--slate { background: radial-gradient(closest-side, rgba(74,87,106,.88), rgba(34,41,52,.30)); }
-    .vf-glow--coral { background: radial-gradient(closest-side, rgba(255,112,126,.88), rgba(146,30,52,.30)); }
+    .vf-glow--slate { background: radial-gradient(100% 100% at 0% 0%, #3B4656 0%, rgba(55, 65, 81, 0.12) 100%); }
+    .vf-glow--coral { background: radial-gradient(100% 100% at 0% 0%, rgba(241, 81, 98, 0.92) 0%, rgba(241, 81, 98, 0) 100%); }
     .launch-loop > .shell, .trust-screen > .shell, .final > .shell { position: relative; z-index: 1; }
-    .vf-glow--e1 { left: 25.49%; top: 81.52%; transform: translate(-50%, -50%); }
-    .vf-glow--e2 { left: 82.66%; top: 8.21%; transform: translate(-50%, -50%) rotate(-27.7deg); }
-    .vf-glow--s1 { left: 11.32%; top: 83.99%; transform: translate(-50%, -50%); }
-    .vf-glow--s2 { left: 101.04%; top: 103.48%; transform: translate(-50%, -50%) rotate(-90deg); }
-    /* the CTA shape overlaps the lead. In Figma that is the gradient's faded
-       edge; flat at .92 it drops white 17px text to 3.63:1, so tone this one. */
-    .vf-glow--d1 { left: 25.28%; top: 103.40%; transform: translate(-50%, -50%);
-      background: radial-gradient(closest-side, rgba(255,112,126,.46), rgba(146,30,52,.16)); }
-    .vf3-stage .vf-glow { width: 124.43%; aspect-ratio: 764 / 760; }
-    .vf-glow--x1 { left: 14.66%; top: 82.46%; transform: translate(-50%, -50%); }
-    .vf-glow--x2 { left: 78.66%; top: 63.86%; transform: translate(-50%, -50%); }
+
+    .vf-glow--e1 { left: -133px; top:  273px; }
+    .vf-glow--e2 { left:  690px; top: -314px; transform: rotate(27.68deg); }
+    .vf-glow--s1 { left: -337px; top:  -18px; }
+    .vf-glow--s2 { left:  955px; top:   66px; transform: rotate(90deg); }
+    .vf-glow--d1 { left: -136px; top:  290px; }
+    .vf-glow--d2 { left:  798px; top: -207px; }
+    /* the stage pair are 764 wide, not 1000 */
+    .vf3-stage .vf-glow { width: 764px; height: 760px; }
+    .vf-glow--x1 { left: -292px; top:   90px; }
+    .vf-glow--x2 { left:  101px; top:  -16px; }
 
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
@@ -3374,6 +3362,7 @@
     <!-- ========== S7 CLOSING CTA (from /enterprise) ========== -->
     <section class="final vf-stage" id="demo" aria-labelledby="demo-heading">
       <i class="vf-glow vf-glow--coral vf-glow--d1" aria-hidden="true"></i>
+      <i class="vf-glow vf-glow--coral vf-glow--d2" aria-hidden="true"></i>
       <div class="shell">
         <h2 id="demo-heading">See what better participation looks like.</h2>
         <p>Explore the employee experience, build a challenge, and see reporting for HR leaders.</p>
