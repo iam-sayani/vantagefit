@@ -2596,6 +2596,32 @@
           .vf3-admin-metric { padding: 8px 6px; }
           .vf3-admin-grid { grid-template-columns: minmax(0, 1fr) 86px; gap: 5px; }
         }
+
+    /* ===== One subheader scale for every section =====
+       These grew apart as sections arrived from different files: at 1440 the
+       five section subheads measured 17.92 / 16.64 / 16 / 14.72 / 17.92px with
+       line-heights from 24.3 to 27.8. Declared last so it wins over the
+       per-section rules, including their own breakpoints, without editing
+       each one. Colour and max-width stay per-section: the dark sections need
+       lighter text, and measure differs by column width. */
+    .hero-copy .lead,
+    .launch-loop-head .lead,
+    .vf3-head p,
+    .stories-intro .lead,
+    .trust-copy .lead {
+      font-size: 1.12rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 1040px) {
+      .hero-copy .lead,
+      .launch-loop-head .lead,
+      .vf3-head p,
+      .stories-intro .lead,
+      .trust-copy .lead {
+        font-size: 1rem;
+        line-height: 1.62;
+      }
+    }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
