@@ -1652,94 +1652,7 @@
     .blogs-screen .center .lead {
       max-width: 600px;
       color: var(--muted);
-    }
-    .blogs-panel {
-      margin-top: 28px;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: var(--paper);
-      box-shadow: var(--shadow-soft);
-    }
-    .blogs-layout {
-      display: grid;
-      grid-template-columns: .9fr 1.35fr .95fr;
-      gap: 28px;
-      align-items: start;
-    }
-    .blog-featured { display: block; color: var(--ink); }
-    .blog-featured:hover h3 { color: var(--coral-dark); }
-    .blog-featured img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      border-radius: 14px;
-      border: 2px solid #fff;
-      box-shadow: 0 10px 24px rgba(41, 41, 76, .16);
-      background: var(--soft);
-    }
-    .blog-featured h3 {
-      margin-top: 18px;
-      font-size: 1.15rem;
-      line-height: 1.35;
-      letter-spacing: -.02em;
-    }
-    .blog-featured p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: .88rem;
-      line-height: 1.55;
-    }
-    .blog-stack { display: grid; gap: 16px; }
-    .blog-row {
-      display: grid;
-      grid-template-columns: 148px 1fr;
-      gap: 16px;
-      align-items: center;
-      color: var(--ink);
-    }
-    .blog-row:hover h3 { color: var(--coral-dark); }
-    .blog-row img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 2px solid #fff;
-      box-shadow: 0 8px 18px rgba(41, 41, 76, .14);
-      background: var(--soft);
-    }
-    .blog-row h3 {
-      font-size: 1.15rem;
-      line-height: 1.35;
-      letter-spacing: -.02em;
-    }
-    .blog-recent {
-      padding: 22px 20px;
-      border-radius: 16px;
-      background: rgba(23, 33, 38, .04);
-    }
-    .blog-recent h3 {
-      margin-bottom: 14px;
-      font-size: 1.15rem;
-      letter-spacing: -.02em;
-    }
-    .blog-recent a {
-      display: block;
-      padding: 10px 12px;
-      border-radius: 10px;
-      color: var(--ink);
-      font-size: .92rem;
-      font-weight: 650;
-      line-height: 1.4;
-      transition: background .15s ease, color .15s ease;
-    }
-    .blog-recent a + a { margin-top: 4px; }
-    .blog-recent a:hover {
-      background: linear-gradient(125deg, rgba(241,81,98,.12), rgba(182,46,64,.14));
-      color: var(--coral-dark);
-    }
-
-    /* —— S6 Final CTA —— */
+    }/* —— S6 Final CTA —— */
     .final {
       position: relative;
       overflow: hidden;
@@ -2621,6 +2534,59 @@
         line-height: 1.62;
       }
     }
+
+    /* ===== Wellness blogs: uniform card grid =====
+       Replaces a white panel containing a grey panel, a large featured post
+       and three mismatched thumbnail rows. Four equal cards read as one set
+       and match the card treatment used elsewhere on the page. */
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px; margin-top: 42px;
+    }
+    .blog-card {
+      display: flex; flex-direction: column; overflow: hidden;
+      border: 1px solid rgba(41,41,76,.09); border-radius: var(--radius);
+      background: #fff; color: var(--ink); box-shadow: var(--shadow-soft);
+      transition: transform .28s cubic-bezier(.22,.9,.24,1), box-shadow .28s ease;
+    }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(41,41,76,.13); }
+    .blog-card:focus-visible { outline: 3px solid var(--cta-a); outline-offset: 3px; }
+    .blog-card-media { display: block; overflow: hidden; aspect-ratio: 16 / 10; background: var(--soft); }
+    .blog-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .blog-card:hover .blog-card-media img { transform: scale(1.05); }
+    .blog-card h3 {
+      margin: 0; padding: 16px 18px 20px;
+      font-size: 1rem; font-weight: 700; line-height: 1.36; letter-spacing: -.01em;
+      transition: color .2s ease;
+    }
+    .blog-card:hover h3 { color: var(--cta-b); }
+
+    .blog-more {
+      display: grid; grid-template-columns: 180px minmax(0, 1fr);
+      gap: 18px 28px; align-items: start;
+      margin-top: 38px; padding-top: 24px; border-top: 1px solid rgba(41,41,76,.1);
+    }
+    .blog-more h3 { margin: 0; padding-top: 2px; font-size: 1rem; font-weight: 700; }
+    .blog-more ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; margin: 0; padding: 0; list-style: none; }
+    .blog-more a { color: var(--muted); font-size: .95rem; font-weight: 500; line-height: 1.45; transition: color .2s ease; }
+    .blog-more a:hover { color: var(--cta-b); }
+
+    @media (max-width: 1040px) {
+      .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .blog-more { grid-template-columns: 1fr; gap: 14px; }
+    }
+    @media (max-width: 650px) {
+      /* same snap row the other sections use at this width */
+      .blog-grid {
+        grid-auto-flow: column; grid-auto-columns: 78%; grid-template-columns: none;
+        gap: 14px; margin-top: 30px; padding-bottom: 6px;
+        overflow-x: auto; overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      }
+      .blog-grid::-webkit-scrollbar { display: none; }
+      .blog-card { scroll-snap-align: start; scroll-snap-stop: always; }
+      .blog-more ul { grid-template-columns: 1fr; }
+    }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
@@ -3073,61 +3039,33 @@
           <p class="lead">Practical guidance for building healthier, more engaged workplaces.</p>
         </div>
 
-        <div class="blogs-panel">
-          <div class="blogs-layout">
-            <a class="blog-featured" href="https://www.vantagefit.io/en/blog/step-challenge/">
-              <img
-                src="https://cdn.vantagecircle.com/image/upload/w_275,q_auto,f_auto/f_auto,q_auto/v1773307619/VantageFit/2026/Step-challenge.webp"
-                alt="How to Set Up a Step Challenge at Work?"
-                width="279"
-                height="156"
-                loading="lazy"
-              >
+        <div class="blog-grid">
+            <a class="blog-card" href="https://www.vantagefit.io/en/blog/step-challenge/">
+              <span class="blog-card-media"><img src="https://cdn.vantagecircle.com/image/upload/w_600,q_auto,f_auto/v1773307619/VantageFit/2026/Step-challenge.webp" alt="" width="600" height="375" loading="lazy" decoding="async"></span>
               <h3>How to Set Up a Step Challenge at Work?</h3>
-              <p>Plan a workplace step challenge.</p>
             </a>
+            <a class="blog-card" href="https://www.vantagefit.io/en/blog/employee-health/">
+              <span class="blog-card-media"><img src="https://cdn.vantagecircle.com/image/upload/w_600,q_auto,f_auto/v1773307619/VantageFit/2026/Employee-Health.webp" alt="" width="600" height="375" loading="lazy" decoding="async"></span>
+              <h3>Employee Health: A Vital Factor For Workplace Productivity</h3>
+            </a>
+            <a class="blog-card" href="https://www.vantagefit.io/en/blog/benefits-of-employee-wellness-programs/">
+              <span class="blog-card-media"><img src="https://cdn.vantagecircle.com/image/upload/w_600,q_auto,f_auto/v1773307619/VantageFit/2026/Employee-Wellness-Program-1.webp" alt="" width="600" height="375" loading="lazy" decoding="async"></span>
+              <h3>Top 10 Benefits Of Employee Wellness Programs</h3>
+            </a>
+            <a class="blog-card" href="https://www.vantagefit.io/en/blog/self-care-at-work/">
+              <span class="blog-card-media"><img src="https://cdn.vantagecircle.com/image/upload/w_600,q_auto,f_auto/v1773307619/VantageFit/2026/Bijaya-Laxmi---Selfcare-cover_VFit_BLUE-copy.webp" alt="" width="600" height="375" loading="lazy" decoding="async"></span>
+              <h3>Top 15 Self Care Ideas to Practice at Work in 2024</h3>
+            </a>
+        </div>
 
-            <div class="blog-stack">
-              <a class="blog-row" href="https://www.vantagefit.io/en/blog/employee-health/">
-                <img
-                  src="https://cdn.vantagecircle.com/image/upload/w_185,q_auto,f_auto/f_auto,q_auto/v1773307619/VantageFit/2026/Employee-Health.webp"
-                  alt=""
-                  width="189"
-                  height="106"
-                  loading="lazy"
-                >
-                <h3>Employee Health: A Vital Factor For Workplace Productivity</h3>
-              </a>
-              <a class="blog-row" href="https://www.vantagefit.io/en/blog/benefits-of-employee-wellness-programs/">
-                <img
-                  src="https://cdn.vantagecircle.com/image/upload/w_185,q_auto,f_auto/f_auto,q_auto/v1773307619/VantageFit/2026/Employee-Wellness-Program-1.webp"
-                  alt=""
-                  width="189"
-                  height="106"
-                  loading="lazy"
-                >
-                <h3>Top 10 Benefits Of Employee Wellness Programs</h3>
-              </a>
-              <a class="blog-row" href="https://www.vantagefit.io/en/blog/self-care-at-work/">
-                <img
-                  src="https://cdn.vantagecircle.com/image/upload/w_185,q_auto,f_auto/f_auto,q_auto/v1773307619/VantageFit/2026/Bijaya-Laxmi---Selfcare-cover_VFit_BLUE-copy.webp"
-                  alt=""
-                  width="189"
-                  height="106"
-                  loading="lazy"
-                >
-                <h3>Top 15 Self Care Ideas to Practice at Work in 2024</h3>
-              </a>
-            </div>
-
-            <aside class="blog-recent" aria-label="Recent articles">
-              <h3>Recent Articles</h3>
-              <a href="https://www.vantagefit.io/en/blog/step-challenge-apps/">15 Best Step Challenge Apps for 2025</a>
-              <a href="https://www.vantagefit.io/en/blog/wellness-games/">Top 21 Fun Friday Games for Employee Wellness</a>
-              <a href="https://www.vantagefit.io/en/blog/sedentary-lifestyle/">10 Effective Ways to Combat a Sedentary Lifestyle</a>
-              <a href="https://www.vantagefit.io/en/blog/step-challenge-team-names/">61 Unique Step Challenge Team Names</a>
-            </aside>
-          </div>
+        <div class="blog-more">
+          <h3 id="blog-more-heading">More reads</h3>
+          <ul aria-labelledby="blog-more-heading">
+              <li><a href="https://www.vantagefit.io/en/blog/step-challenge-apps/">15 Best Step Challenge Apps for 2025</a></li>
+              <li><a href="https://www.vantagefit.io/en/blog/wellness-games/">Top 21 Fun Friday Games for Employee Wellness</a></li>
+              <li><a href="https://www.vantagefit.io/en/blog/sedentary-lifestyle/">10 Effective Ways to Combat a Sedentary Lifestyle</a></li>
+              <li><a href="https://www.vantagefit.io/en/blog/step-challenge-team-names/">61 Unique Step Challenge Team Names</a></li>
+          </ul>
         </div>
       </div>
     </section>
