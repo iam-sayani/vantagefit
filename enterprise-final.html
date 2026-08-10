@@ -2455,6 +2455,7 @@
           box-shadow: none;
           opacity: 1;
         }
+    .vf3-tab + .vf3-tab { border-top: .5px solid rgba(41,41,76,.12); }
     .vf3-tab-head { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 10px; }
     .vf3-tab-head b { font-size: .95rem; letter-spacing: -.02em; }
     .vf3-tab-no { display: grid; width: 26px; height: 26px; place-items: center; color: var(--muted); font-size: .58rem; font-weight: 800; }
@@ -2517,6 +2518,7 @@
             background: transparent; opacity: .55; scroll-snap-align: start;
           }
           .vf3-tab[aria-selected="true"] { flex: 0 0 auto; border: 0; background: transparent; box-shadow: none; opacity: 1; }
+          .vf3-tab + .vf3-tab { border-top: 0; }
           .vf3-tab[aria-selected="true"] b { color: var(--ink); }
           .vf3-tab-head { display: flex; align-items: center; gap: 0; grid-template-columns: none; }
           .vf3-tab-head b { font-size: .84rem; line-height: 1.2; white-space: nowrap; }
