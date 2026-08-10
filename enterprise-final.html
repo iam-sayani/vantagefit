@@ -1851,7 +1851,7 @@
       /* no bottom padding: the logo band is the last thing in the hero, and
          40px of it showed as an empty white strip before the next section */
       .hero { min-height: auto; padding: calc(var(--nav-h) + 54px) 0 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 28px; padding: 0; min-height: 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 0; min-height: 0; }
       .hero-copy { max-width: none; }
 
       /* 2 — type scales from the viewport, not down from desktop */
@@ -1859,8 +1859,10 @@
       .hero-copy .lead { font-size: 1rem; line-height: 1.62; max-width: 34ch; }
 
       /* 3 — primary action in the thumb zone, full width, stacked */
-      .btn-row { flex-direction: column; align-items: stretch; gap: 10px; }
-      .btn-row .btn { width: 100%; justify-content: center; min-height: 50px; font-size: 1rem; }
+      .btn { min-height: 54px; }
+      .hero-copy .btn-row { margin-top: 32px; }
+      .btn-row { flex-direction: column; align-items: stretch; gap: 14px; }
+      .btn-row .btn { width: 100%; justify-content: center; min-height: 56px; font-size: 1rem; }
 
       /* 4+5 — ONE composition at every phone size.
              The visual is a fixed-ratio box that is its own containment
@@ -1938,8 +1940,8 @@
         transform: translateY(120%); transition: transform .32s cubic-bezier(.22,.9,.24,1);
       }
       .thumb-bar.is-on { transform: none; }
-      .thumb-cta { flex: 1; justify-content: center; min-height: 50px; font-size: 1rem; }
-      .thumb-alt { flex: 0 0 auto; min-height: 50px; display: inline-flex; align-items: center; padding: 0 6px;
+      .thumb-cta { flex: 1; justify-content: center; min-height: 54px; font-size: 1rem; }
+      .thumb-alt { flex: 0 0 auto; min-height: 54px; display: inline-flex; align-items: center; padding: 0 6px;
         font-size: .92rem; font-weight: 700; color: var(--ink); }
       /* keep the footer clear of the bar */
       footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
