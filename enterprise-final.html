@@ -278,6 +278,18 @@
     @media (min-width: 861px) {
       .nav-item.desktop-open .mega,
       .nav-item:focus-within .mega { display: block; }
+
+      /* Anchor the panel to the nav bar rather than to its own trigger.
+         Positioned against the item, a right-hand menu ran off the viewport
+         on a laptop; against the nav it centres, so every menu opens in the
+         same place and none can crop. */
+      .nav-item { position: static; }
+      .nav-inner { position: relative; }
+      .mega {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
     }
     .mega-body { padding: 22px; }
     .mega-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; }
