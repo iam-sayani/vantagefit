@@ -224,9 +224,27 @@
       font-weight: 700;
       cursor: pointer;
     }
-    .nav-links > a:hover,
-    .nav-trigger:hover,
-    .nav-item:focus-within .nav-trigger { background: var(--soft); color: var(--ink); }
+    /* Hover marks the item with an underline rather than a filled box: the
+       grey block read as a pressed/selected state on a nav that has none. */
+    .nav-links > a:not(.nav-cta),
+    .nav-trigger { position: relative; }
+    .nav-links > a:not(.nav-cta)::after,
+    .nav-trigger::after {
+      content: "";
+      position: absolute;
+      left: 12px; right: 12px; bottom: 8px;
+      height: 2px; border-radius: 2px;
+      background: var(--cta-b);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .22s cubic-bezier(.22,.9,.24,1);
+    }
+    .nav-links > a:not(.nav-cta):hover, .nav-trigger:hover,
+    .nav-item:focus-within .nav-trigger { background: transparent; color: var(--ink); }
+    .nav-links > a:not(.nav-cta):hover::after,
+    .nav-trigger:hover::after,
+    .nav-item:focus-within .nav-trigger::after,
+    .nav-links > a:not(.nav-cta):focus-visible::after { transform: scaleX(1); }
     .nav-trigger svg { width: 12px; opacity: .55; transition: transform .2s ease; }
     .nav-item:hover .nav-trigger svg,
     .nav-item:focus-within .nav-trigger svg { transform: rotate(180deg); }
