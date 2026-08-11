@@ -18,6 +18,8 @@
     },
     "semantic": {
       "action": { "$type": "color", "$value": "{color.brand.coralDeep}" },
+      "actionStart": { "$type": "color", "$value": "{color.brand.coral}" },
+      "actionEnd": { "$type": "color", "$value": "{color.brand.coralDeep}" },
       "positive": { "$type": "color", "$value": "#167F69" },
       "reward": { "$type": "color", "$value": "{color.brand.orange}" },
       "focus": { "$type": "color", "$value": "#146CBE" },

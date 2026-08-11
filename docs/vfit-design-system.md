@@ -28,7 +28,7 @@ All reusable classes and variables begin with `vf-` to prevent collisions with p
 | Role | Token | Value | Use |
 |---|---|---:|---|
 | Brand coral | `--vf-coral-500` | `#F15162` | Large accents, illustrations, decorative atmosphere |
-| Deep coral | `--vf-coral-700` | `#B8172A` | Primary CTA, coral text, accessible compact UI |
+| Deep coral | `--vf-coral-700` | `#B8172A` | Primary CTA gradient endpoint, coral text, accessible compact UI |
 | Teal | `--vf-teal-500` | `#41D8B4` | Progress fills and visual wellness signals |
 | Dark teal | `--vf-teal-700` | `#167F69` | Positive text and small-interface labels |
 | Orange | `--vf-orange-500` | `#FF9D57` | Rewards, milestones, achievements |
@@ -41,7 +41,8 @@ All reusable classes and variables begin with `vf-` to prevent collisions with p
 ### Color rules
 
 - Coral is the conversion and brand-recognition color.
-- Use `#B8172A`, not `#F15162`, behind small white text.
+- Primary CTAs use the exact homepage gradient: `linear-gradient(125deg, #F15162 5%, #B8172A 125%)`.
+- Use `#B8172A`, not `#F15162`, for solid red surfaces behind small white text.
 - Use teal only for progress, positive change, health signals, and confirmation.
 - Use orange for rewards and achievements. Pair orange with dark text, not white.
 - Use slate for product, analytics, security, ROI, and footer sections.
@@ -88,7 +89,7 @@ The spacing scale is 4, 8, 12, 16, 24, 32, 48, 64, 80, and 96px.
 
 | Priority | Class | Use |
 |---|---|---|
-| Primary | `.vf-button--primary` | `Book a demo`, submit, or one core conversion |
+| Primary | `.vf-button--primary` | Homepage coral-to-deep-red gradient for `Book a demo`, submit, or one core conversion |
 | Secondary | `.vf-button--secondary` | Customer results, comparison, or next-best action |
 | Dark | `.vf-button--dark` | Product exploration on light surfaces |
 | Light | `.vf-button--light` | Primary action on dark or coral surfaces |
