@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <meta name="description" content="Build lasting employee wellness participation with inclusive challenges, meaningful rewards, and clear HR analytics.">
-  <meta name="theme-color" content="#18262b">
+  <meta name="theme-color" content="#303740">
   <title>Final · Employee Wellness That Drives Participation | Vantage Fit</title>
   <style>
     :root {
@@ -20,20 +20,21 @@
       --canvas: #F8F8F9;
       --soft: #f1f1f6;
       --dark: #1D2228;
-      --dark-2: #2A313A;
+      --dark-2: #303740;
+      --slate: #303740;
       --coral: #F15162;
-      /* CTA gradient darkened so white label text clears WCAG AA 4.5:1 at any
-         size (brand #F15162 gives only 3.45:1). --coral is unchanged for
-         headline accents and large display use. */
-      --cta-a: #DB3245;
-      --cta-b: #C43142;
-      --coral-deep: #B62E40;
-      --coral-dark: #d63d4e;
-      --coral-text: #d13c4d;
-      --mint: #41d8b4;
+      /* Vantage Fit's primary red ramp. Coral leads the brand expression;
+         the deep-red stop supports stronger contrast around button labels. */
+      --cta-a: #F15162;
+      --cta-b: #B8172A;
+      --coral-deep: #B8172A;
+      --coral-dark: #B8172A;
+      --coral-text: #B8172A;
+      --mint: #41D8B4;
       --mint-dark: #169d7e;
-      --lime: #41d8b4;
-      --amber: #F6B93B;
+      --lime: #41D8B4;
+      --orange: #FF9D57;
+      --amber: #FF9D57;
       --line: rgba(41, 41, 76, .12);
       --line-dark: rgba(255, 255, 255, .14);
       --shadow: 0 24px 64px rgba(41, 41, 76, .14);
@@ -342,7 +343,7 @@
       min-height: 100%;
       padding: 18px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--dark), #2c4249);
+      background: linear-gradient(135deg, var(--dark), var(--slate));
       color: #fff;
     }
     .mega-feature:hover { filter: brightness(1.05); }
@@ -445,10 +446,10 @@
       /* aurora mesh: brand red, teal and a mild orange bleeding into white */
       background:
         radial-gradient(56% 44% at 76% 6%,   rgba(241, 81, 98, .34), transparent 66%),
-        radial-gradient(38% 32% at 95% 30%,  rgba(246,153, 59, .26), transparent 68%),
+        radial-gradient(38% 32% at 95% 30%,  rgba(255,157, 87, .26), transparent 68%),
         radial-gradient(44% 38% at 10% 10%,  rgba(65, 216,180, .17), transparent 70%),
         radial-gradient(54% 46% at 2% 90%,   rgba(65, 216,180, .24), transparent 68%),
-        radial-gradient(42% 36% at 48% 104%, rgba(246,153, 59, .20), transparent 70%),
+        radial-gradient(42% 36% at 48% 104%, rgba(255,157, 87, .20), transparent 70%),
         radial-gradient(36% 30% at 60% 54%,  rgba(241, 81, 98, .12), transparent 72%),
         #fff;
       color: var(--ink);
@@ -508,8 +509,8 @@
     .hs-note { font-size: 9.5px; fill: rgba(41,41,76,.38); }
     .hs-up { font-size: 12px; font-weight: 700; fill: #169d7e; }
     .hs-chip { font-size: 11px; font-weight: 600; fill: rgba(41,41,76,.6); }
-    .hs-ai { font-size: 9px; font-weight: 800; letter-spacing: .1em; fill: #7c5cff; }
-    .hs-aigen { font-size: 10px; font-weight: 700; fill: #7c5cff; }
+    .hs-ai { font-size: 9px; font-weight: 800; letter-spacing: .1em; fill: #303740; }
+    .hs-aigen { font-size: 10px; font-weight: 700; fill: #303740; }
     .hs-ask { font-size: 13px; font-weight: 600; fill: rgba(41,41,76,.6); }
     .hs-in { opacity: 0; transform: translateY(10px); animation: hsin .65s cubic-bezier(.22,.9,.24,1) var(--d,0s) forwards; }
     @keyframes hsin { to { opacity: 1; transform: none; } }
@@ -1213,7 +1214,7 @@
     }
 
     /* —— S2 illume statement (red, scroll-lit) —— */
-    .illume { position: relative; background: linear-gradient(180deg, #C23D4C 0%, #A93242 52%, #8E2938 100%); color: #fff; }
+    .illume { position: relative; background: linear-gradient(180deg, var(--coral) 0%, var(--coral-deep) 100%); color: #fff; }
     .illume-inner { min-height: 240vh; position: relative; }
     .illume-stick { position: sticky; top: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     #illume-text { max-width: 920px; margin: 0 auto; text-align: center; font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -1251,7 +1252,7 @@
       transition: transform .8s cubic-bezier(.22,.9,.24,1); }
     .flipcard:hover .flip-bg { transform: scale(1.05); }
     .flip-front::before { content: ""; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(180deg, rgba(194,61,76,.12) 0%, rgba(142,41,56,.22) 100%); }
+      background: linear-gradient(180deg, rgba(241,81,98,.12) 0%, rgba(184,23,42,.22) 100%); }
     .flip-front .step-no, .flip-front h3 { z-index: 2; }
     .flip-front::after { content: ""; position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(30,12,16,.05) 0%, transparent 48%, rgba(22,8,12,.68) 100%); }
@@ -1450,10 +1451,10 @@
     .vd-spark svg { width: 100%; height: 100%; }
     .vd-ai { display: flex; align-items: center; gap: 7px; margin-top: 6px; padding: 6px 9px; border-radius: 9px;
       background: #faf9ff; border: 1px solid rgba(124,92,255,.2); }
-    .vd-sp { color: #7c5cff; font-size: 9px; }
-    .vd-ai b { display: block; font-size: 5.2px; font-weight: 800; letter-spacing: .1em; color: #7c5cff; }
+    .vd-sp { color: var(--mint-dark); font-size: 9px; }
+    .vd-ai b { display: block; font-size: 5.2px; font-weight: 800; letter-spacing: .1em; color: var(--mint-dark); }
     .vd-ai p { font-size: 6.2px; color: rgba(41,41,76,.62); margin-top: 1px; }
-    .vd-gen { margin-left: auto; flex: none; font-size: 5.4px; font-weight: 700; color: #7c5cff;
+    .vd-gen { margin-left: auto; flex: none; font-size: 5.4px; font-weight: 700; color: var(--mint-dark);
       border: 1px solid rgba(124,92,255,.28); border-radius: 99px; padding: 2.4px 7px; background: #fff; }
     .vd-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 6px; margin-top: 6px; }
     .vd-card { border: 1px solid rgba(41,41,76,.1); border-radius: 9px; padding: 8px; }
@@ -1474,7 +1475,7 @@
       font-size: 6.4px; font-weight: 600; color: rgba(41,41,76,.6); background: #fff;
       border: 1px solid rgba(124,92,255,.28); }
     .vd-orb { width: 14px; height: 14px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 7px;
-      background: linear-gradient(120deg, #7c5cff, #F15162); }
+      background: linear-gradient(120deg, var(--coral), var(--coral-deep)); }
     .vd-ask kbd { margin-left: auto; font-family: inherit; font-size: 5.4px; font-weight: 800; color: rgba(41,41,76,.5);
       background: #f4f4f8; border: 1px solid rgba(41,41,76,.12); border-radius: 4px; padding: 1.6px 5px; }
     @media (max-width: 900px) { .ui-phones { height: 400px; } }
@@ -1618,7 +1619,7 @@
       overflow: hidden;
       min-height: 0;
       padding: 96px 0;
-      background: linear-gradient(170deg, #2A313A 0%, #20262d 55%, #1D2228 100%);
+      background: linear-gradient(170deg, var(--slate) 0%, #20262d 55%, var(--dark) 100%);
       color: #fff;
     }
     .trust-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -1697,7 +1698,7 @@
          because white small text on #F15162 is only 3.45:1, under AA. */
       /* the glows are elements now (.vf-glow--d1/--d2), matching the Figma
          layer stack; only the base ramp stays here */
-      background: linear-gradient(158deg, #A32540 0%, #91233B 45%, #7F1B2F 100%);
+      background: linear-gradient(158deg, var(--coral) 0%, var(--coral-deep) 100%);
       color: #fff;
       text-align: center;
     }
@@ -2173,7 +2174,7 @@
           min-width: 0;
           min-height: 570px;
           overflow: hidden;
-          background: linear-gradient(145deg, #db3245 0%, #c43142 54%, #a7253c 100%);
+          background: linear-gradient(145deg, var(--coral) 0%, var(--coral-deep) 100%);
         }
     /* ring replaced by the two .vf-glow--x* shapes, as in Figma */
     .vf3-stage::before { display: none; }
@@ -2415,13 +2416,13 @@
 
     .vf3-phone--leaderboard { background: #fff; }
     .vf3-phone--leaderboard .vf3-status {
-      background: linear-gradient(135deg, #B32240 0%, #C2461F 100%);   /* darkened until the lighter stop clears 4.5:1 for white small text */
+      background: linear-gradient(135deg, var(--coral) 0%, var(--coral-deep) 100%);
       color: #fff;
     }
     .vf3-leaderboard-hero {
       min-height: 174px;
       padding: 18px 12px 14px;   /* was 2px on top: the block sat hard against the status bar */
-      background: linear-gradient(135deg, #B32240 0%, #C2461F 100%);   /* white small text needs 4.5:1; the lighter stop now gives 5.01 */
+      background: linear-gradient(135deg, var(--coral) 0%, var(--coral-deep) 100%);
       color: #fff;
     }
     .vf3-leaderboard-nav {
@@ -2504,7 +2505,7 @@
     .vf3-goal b { font-size: 7px; }
     .vf3-goal small { margin-top: 2px; color: #91939f; font-size: 5.5px; }
     .vf3-goal em { color: var(--coral-deep); font-size: 6px; font-style: normal; font-weight: 800; }
-    .vf3-leader { margin: 4px 9px 9px; padding: 15px 12px; border-radius: 14px; background: linear-gradient(135deg, #f45e6e, #c93449); color: #fff; }
+    .vf3-leader { margin: 4px 9px 9px; padding: 15px 12px; border-radius: 14px; background: linear-gradient(135deg, var(--coral), var(--coral-deep)); color: #fff; }
     .vf3-leader > b { display: block; margin-bottom: 12px; font-size: 11px; }
     .vf3-score { display: flex; align-items: center; justify-content: space-between; font-size: 7px; text-align: center; }
     .vf3-score strong { display: block; font-size: 17px; }
@@ -3000,7 +3001,7 @@
 
     .vf3-phone--app .vf3-ring-card { margin: 0 9px; padding: 9px; gap: 9px; border-color: #ECEDF2; border-radius: 12px; }
     .vf3-phone--app .vf3-ring { position: relative; width: 44px; height: 44px;
-      background: conic-gradient(from 200deg, var(--coral) 0 40%, #59C7BE 40% 72%, #FBDDE1 72% 100%); }
+      background: conic-gradient(from 200deg, var(--coral) 0 40%, var(--mint) 40% 72%, #FBDDE1 72% 100%); }
     .vf3-phone--app .vf3-ring i { position: absolute; inset: 8px; border-radius: 50%; background: #fff; }
     .vf3-phone--app .vf3-ring-copy { gap: 7px; font-size: 6.4px; }
     .vf3-stat { display: flex; align-items: center; gap: 5px; }
@@ -3022,13 +3023,13 @@
     .vf3-chip--light { background: #fff; color: #3C3F97; }
     .vf3-chal-name { max-width: 128px; font-size: 7.6px; font-weight: 800; line-height: 1.32; color: #fff; }
     .vf3-medal { position: absolute; right: 9px; bottom: 9px; width: 24px; height: 24px; border-radius: 50%;
-      background: radial-gradient(circle at 34% 30%, #FBD87C, #E0A02C 62%, #B87914);
+      background: radial-gradient(circle at 34% 30%, #FFD1AE, var(--orange) 62%, #C65A1E);
       box-shadow: 0 2px 5px rgba(0,0,0,.22); }
     .vf3-challenge--app .vf3-challenge-progress { display: flex; align-items: center; gap: 6px;
       padding: 8px 9px; font-size: 6.4px; font-weight: 700; color: #29294c; }
     .vf3-challenge--app .vf3-track { flex: 1; height: 4.5px; margin: 0; }
     .vf3-challenge--app .vf3-track i { display: block; height: 100%; border-radius: 99px;
-      background: linear-gradient(90deg, #2FBFA8, #59C7BE); }
+      background: linear-gradient(90deg, var(--mint), #21A98B); }
     .vf3-challenge--app .vf3-challenge-progress b { font-size: 7px; font-weight: 800; }
 
     .vf3-phone--app .vf3-mini { padding: 7px; border-color: #ECEDF2; }
@@ -3074,7 +3075,7 @@
       font-style: normal; color: #0F7D63; }
     .vf3-float-bar { display: block; height: 4px; margin-top: 7px; border-radius: 99px; background: #E7E8EE; }
     .vf3-float-bar i { display: block; height: 100%; border-radius: 99px;
-      background: linear-gradient(90deg, #2FBFA8, #59C7BE); }
+      background: linear-gradient(90deg, var(--mint), #21A98B); }
     /* One heading system across every content section. Section-specific
        selectors continue to own colour and width only. */
     h2.section-heading {
@@ -3116,7 +3117,7 @@
     .vf3-pc-label { font-size: 7.4px; font-weight: 700; color: #29294c; }
     .vf3-progress-card .vf3-track { height: 5px; margin: 0; }
     .vf3-progress-card .vf3-track i { display: block; height: 100%; border-radius: 99px;
-      background: linear-gradient(90deg, #17B79B, #59C7BE); }
+      background: linear-gradient(90deg, var(--mint), #21A98B); }
     .vf3-progress-card b { text-align: center; font-size: 7px; font-weight: 700; color: #29294c; }
 
     .vf3-ended-card { margin: 7px 9px 0; padding: 8px 9px; border-radius: 11px; background: #fff;
@@ -3138,7 +3139,7 @@
       padding: 1.5px 5px 1.5px 3px; border-radius: 99px; background: #fff;
       font-size: 5.8px; font-weight: 800; color: #29294c; }
     .vf3-rank-badge i { width: 8px; height: 8px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #FBD87C, #E0A02C); }
+      background: radial-gradient(circle at 35% 30%, #FFD1AE, var(--orange)); }
     .vf3-rank-block strong { font-size: 15px; font-weight: 800; color: #fff; line-height: 1; }
     .vf3-rank-block sup { font-size: 7px; font-weight: 700; }
     .vf3-metres { display: grid; justify-items: end; }
@@ -3149,7 +3150,7 @@
     .vf3-leader-avatar { outline: 2px solid #E9B23C; outline-offset: 1px; }
     .vf3-medal-sm { position: absolute; right: -2px; bottom: -2px; width: 9px; height: 9px;
       border-radius: 50%; border: 1px solid #fff;
-      background: radial-gradient(circle at 35% 30%, #FBD87C, #C98D22); }
+      background: radial-gradient(circle at 35% 30%, #FFD1AE, var(--orange)); }
     .vf3-leader-name small em { font-style: normal; font-weight: 800; color: var(--cta-b); }
     .vf3-leader-row > b { color: var(--cta-b); }            /* --coral gives 3.15:1 on the row tint */
     .vf3-leader-name small { color: #56576B; }              /* was 2.65:1 */
