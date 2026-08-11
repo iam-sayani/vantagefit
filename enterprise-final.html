@@ -277,8 +277,7 @@
     }
     .mega.mega-wide { width: min(920px, calc(100vw - 48px)); }
     @media (min-width: 861px) {
-      .nav-item.desktop-open .mega,
-      .nav-item:focus-within .mega { display: block; }
+      .nav-item.desktop-open .mega { display: block; }
 
       /* Anchor the panel to the nav bar rather than to its own trigger.
          Positioned against the item, a right-hand menu ran off the viewport
@@ -4029,20 +4028,63 @@
 
     navTriggers.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        if (window.matchMedia('(max-width: 860px)').matches) {
-          e.preventDefault();
-          const item = btn.closest('.nav-item');
-          const isOpen = item.classList.contains('open');
-          document.querySelectorAll('.nav-item').forEach((n) => {
-            n.classList.remove('open');
-            n.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
-          });
+        e.preventDefault();
+        const item = btn.closest('.nav-item');
+
+        if (desktopNav.matches) {
+          // Desktop used to open on hover only, so clicking a trigger did
+          // nothing — bad for touch laptops, and unreachable if you expect a
+          // click. Click now toggles, hover still works.
+          const isOpen = item.classList.contains('desktop-open');
+          window.clearTimeout(desktopCloseTimer);
+          closeDesktopMenus();
+          navTriggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
           if (!isOpen) {
-            item.classList.add('open');
+            item.classList.add('desktop-open');
             btn.setAttribute('aria-expanded', 'true');
           }
+          return;
+        }
+
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.nav-item').forEach((n) => {
+          n.classList.remove('open');
+          n.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
         }
       });
+    });
+
+    // Tabbing out of an open panel closes it (:focus-within used to do this).
+    navItems.forEach((item) => {
+      item.addEventListener('focusout', () => {
+        if (!desktopNav.matches) return;
+        window.setTimeout(() => {
+          if (!item.contains(document.activeElement) && !item.matches(':hover')) {
+            item.classList.remove('desktop-open');
+            item.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+          }
+        }, 0);
+      });
+    });
+
+    // A click-opened menu needs a way out that hover never required.
+    document.addEventListener('click', (e) => {
+      if (!desktopNav.matches) return;
+      if (e.target.closest('.nav-item')) return;
+      closeDesktopMenus();
+      navTriggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const open = navItems.find((n) => n.classList.contains('desktop-open'));
+      if (!open) return;
+      closeDesktopMenus();
+      navTriggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+      open.querySelector('.nav-trigger')?.focus();
     });
 
     // Video modal
