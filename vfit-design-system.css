@@ -9,9 +9,12 @@
 
   /* Brand */
   --vf-coral-500: #F15162;
+  /* Gradient start for surfaces that carry white text. --vf-coral-500 is only
+     3.45:1 against white, so it must not begin a gradient behind copy. */
+  --vf-coral-600: #DB3245;
   --vf-coral-700: #B8172A;
   --vf-teal-500: #41D8B4;
-  --vf-teal-700: #167F69;
+  --vf-teal-700: #146F58;   /* #167F69 gave 4.49:1 in .vf-badge--positive */
   --vf-orange-500: #FF9D57;
   --vf-orange-700: #B84F16;
   --vf-slate-700: #303740;
@@ -35,8 +38,8 @@
   --vf-reward: var(--vf-orange-500);
   --vf-focus: #146CBE;
   --vf-danger: #A51225;
-  --vf-action-gradient: linear-gradient(125deg, var(--vf-coral-500) 5%, var(--vf-coral-700) 125%);
-  --vf-brand-gradient: linear-gradient(125deg, var(--vf-coral-500) 0%, var(--vf-coral-700) 100%);
+  --vf-action-gradient: linear-gradient(125deg, var(--vf-coral-600) 5%, var(--vf-coral-700) 125%);
+  --vf-brand-gradient: linear-gradient(125deg, var(--vf-coral-600) 0%, var(--vf-coral-700) 100%);
   --vf-dark-gradient: linear-gradient(145deg, var(--vf-slate-700) 0%, var(--vf-dark) 100%);
 
   /* Type */

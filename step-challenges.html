@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step challenges for the whole workforce | Vantage Fit</title>
+<meta name="description" content="A corporate step challenge everyone can join with the phone or wearable they already have, with participation results HR can take to leadership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap">
+<!-- Shared design system: tokens + components. Page-specific rules live in the
+     block below and must build on vf- variables rather than new literals. -->
+<link rel="stylesheet" href="/vfit-design-system.css">
+<style>
+  /* ===== page-local composition only ===== */
+  .sol-nav { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.86);
+    backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--vf-border); }
+  .sol-nav__inner { display: flex; align-items: center; gap: var(--vf-space-5); min-height: 4rem; }
+  .sol-nav__brand { font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+  .sol-nav__links { display: flex; gap: var(--vf-space-5); margin-left: auto; }
+  .sol-nav__links a { color: var(--vf-text); font-size: var(--vf-text-sm); font-weight: 700; text-decoration: none; }
+  .sol-nav__links a:hover { color: var(--vf-ink); }
+  @media (max-width: 760px) { .sol-nav__links { display: none; } }
+
+  /* hero — placeholder composition, to be replaced once the solution-page
+     hero is agreed. Structure and content are final; the treatment is not. */
+  .sol-hero { background:
+      radial-gradient(58% 46% at 78% 4%, rgba(241,81,98,.16), transparent 68%),
+      radial-gradient(48% 40% at 4% 96%, rgba(65,216,180,.14), transparent 70%),
+      var(--vf-surface); }
+  .sol-hero__grid { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr);
+    gap: var(--vf-space-7); align-items: center; }
+  @media (max-width: 900px) { .sol-hero__grid { grid-template-columns: 1fr; } }
+
+  .sol-assurances { display: flex; flex-wrap: wrap; gap: var(--vf-space-2) var(--vf-space-4); }
+  .sol-assurances li { display: flex; align-items: center; gap: .45rem;
+    color: var(--vf-text); font-size: var(--vf-text-sm); font-weight: 600; list-style: none; }
+  .sol-assurances li::before { width: .5rem; height: .5rem; border-radius: 50%;
+    background: var(--vf-teal-700); content: ''; }
+  .vf-section--brand .sol-assurances li { color: #fff; }
+  .vf-section--brand .sol-assurances li::before { background: #fff; }
+
+  .sol-numbered { counter-reset: sol; display: grid; gap: var(--vf-space-5); }
+  .sol-numbered > li { display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--vf-space-4); list-style: none; }
+  .sol-numbered > li::before { display: grid; width: 2.5rem; height: 2.5rem; place-items: center;
+    border-radius: var(--vf-radius-md); background: #FDEBED; color: var(--vf-coral-700);
+    font-weight: 800; counter-increment: sol; content: counter(sol, decimal-leading-zero); }
+  .vf-section--dark .sol-numbered > li::before { background: rgba(255,255,255,.1); color: #fff; }
+
+  .sol-formats { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: var(--vf-space-4); }
+  @media (max-width: 1040px) { .sol-formats { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 560px)  { .sol-formats { grid-template-columns: 1fr; } }
+  .sol-format__no { color: var(--vf-coral-700); font-size: var(--vf-text-xs); font-weight: 800; letter-spacing: .1em; }
+
+  .sol-leader { display: grid; gap: .1rem; }
+  .sol-leader__row { display: grid; grid-template-columns: 1.5rem 2rem 1fr auto; align-items: center;
+    gap: var(--vf-space-3); padding-block: var(--vf-space-3); border-top: 1px solid var(--vf-border-dark); }
+  .sol-leader__row:first-child { border-top: 0; }
+  .sol-leader__row--out { opacity: .62; }
+  .sol-avatar { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%;
+    background: rgba(255,255,255,.12); font-size: var(--vf-text-xs); font-weight: 800; }
+  .sol-strike { text-decoration: line-through; }
+
+  .sol-kpis { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--vf-space-4); }
+  @media (max-width: 560px) { .sol-kpis { grid-template-columns: 1fr; } }
+  .sol-dept { display: grid; gap: var(--vf-space-3); }
+  .sol-dept__row { display: grid; grid-template-columns: 5rem 1fr 2.5rem; align-items: center; gap: var(--vf-space-3);
+    font-size: var(--vf-text-sm); font-weight: 700; }
+
+  .sol-footer { padding-block: var(--vf-space-8); background: var(--vf-dark); color: #fff; }
+  .sol-footer a { color: rgba(255,255,255,.74); font-size: var(--vf-text-sm); text-decoration: none; }
+  .sol-footer a:hover { color: #fff; }
+  .sol-footer__grid { display: grid; grid-template-columns: minmax(0,1.4fr) repeat(3, minmax(0,1fr)); gap: var(--vf-space-6); }
+  @media (max-width: 760px) { .sol-footer__grid { grid-template-columns: 1fr 1fr; } }
+  .sol-footer h2 { font-size: var(--vf-text-xs); font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .sol-footer ul { display: grid; gap: .6rem; margin: var(--vf-space-4) 0 0; padding: 0; list-style: none; }
+</style>
+</head>
+<body>
+<a class="vf-skip-link" href="#main">Skip to main content</a>
+
+<header class="sol-nav">
+  <div class="vf-container sol-nav__inner">
+    <a class="sol-nav__brand" href="/enterprise-final">Vantage Fit</a>
+    <nav class="sol-nav__links" aria-label="Primary">
+      <a href="#formats">Formats</a>
+      <a href="#integrity">Data integrity</a>
+      <a href="#hr">For HR</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="vf-button vf-button--primary" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- ========== HERO (treatment provisional) ========== -->
+  <section class="vf-section sol-hero">
+    <div class="vf-container sol-hero__grid">
+      <div class="vf-stack">
+        <span class="vf-eyebrow">Corporate step challenge</span>
+        <h1 class="vf-display">A step challenge built to move the <span class="vf-accent-text">whole workforce.</span></h1>
+        <p class="vf-lead">Everyone joins with the phone or wearable they already have, and their daily steps become participation results HR can take to leadership.</p>
+        <div class="vf-actions">
+          <a class="vf-button vf-button--primary vf-button--large" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+          <a class="vf-button vf-button--secondary vf-button--large" href="https://www.vantagefit.io/pricing/">See pricing</a>
+        </div>
+        <ul class="sol-assurances">
+          <li>No wearable required</li>
+          <li>Global time zones supported</li>
+          <li>Results exportable</li>
+          <li>Phone + wearable sync</li>
+        </ul>
+      </div>
+
+      <div class="vf-card vf-card--raised vf-stack" style="--vf-stack-gap: var(--vf-space-4)">
+        <div class="vf-cluster" style="justify-content: space-between">
+          <span class="vf-meta">Participation pulse</span>
+          <span class="vf-badge vf-badge--positive">Live program view</span>
+        </div>
+        <div class="sol-kpis">
+          <div class="vf-stat"><span class="vf-stat__value">78%</span><span class="vf-stat__label">Active this week</span></div>
+          <div class="vf-stat"><span class="vf-stat__value">842</span><span class="vf-stat__label">On track</span></div>
+          <div class="vf-stat"><span class="vf-stat__value">1,248</span><span class="vf-stat__label">Joined</span></div>
+        </div>
+        <div>
+          <div class="vf-progress" style="--vf-progress: 78%"><span></span></div>
+          <p class="vf-small" style="margin-top: .6rem">Participation trend across the challenge</p>
+        </div>
+        <p class="vf-meta">Illustrative data</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ROLLOUT CONFIDENCE ========== -->
+  <section class="vf-section vf-section--surface">
+    <div class="vf-container vf-stack">
+      <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
+        <span class="vf-eyebrow vf-eyebrow--teal">Rollout confidence</span>
+        <h2 class="vf-section-title">Easy to join. Fair to run. Clear about data.</h2>
+      </div>
+      <div class="vf-grid" style="--vf-grid-columns: 4">
+        <article class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <h3 class="vf-card-title">Phone-first access</h3>
+          <p class="vf-body">Employees can join without buying a fitness tracker. Supported wearables can connect too.</p>
+        </article>
+        <article class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <h3 class="vf-card-title">Local days, global program</h3>
+          <p class="vf-body">Start, finish, and daily reset follow each participant&rsquo;s local time zone.</p>
+        </article>
+        <article class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <h3 class="vf-card-title">Leaderboard privacy</h3>
+          <p class="vf-body">Employees can hide from individual rankings and continue participating.</p>
+        </article>
+        <article class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <h3 class="vf-card-title">Bounded HR visibility</h3>
+          <p class="vf-body">HR sees participation and challenge results, not individual personal health records.</p>
+        </article>
+      </div>
+      <a class="vf-button vf-button--text" href="https://www.vantagefit.io/features/security-and-compliance/">Security documentation available during evaluation &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ========== FIVE FORMATS ========== -->
+  <section class="vf-section vf-section--soft" id="formats">
+    <div class="vf-container vf-stack" style="--vf-stack-gap: var(--vf-space-7)">
+      <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
+        <span class="vf-eyebrow">Five step-program formats</span>
+        <h2 class="vf-section-title">Choose the behavior you want to create</h2>
+        <p class="vf-lead">Start with a proven format, then set the audience, dates, and experience around your workforce.</p>
+      </div>
+
+      <ul class="sol-formats" style="margin:0; padding:0; list-style:none">
+        <li class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <span class="sol-format__no">01</span><h3 class="vf-card-title">Race</h3>
+          <p class="vf-small">Spark a short burst</p>
+        </li>
+        <li class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <span class="sol-format__no">02</span><h3 class="vf-card-title">Streak</h3>
+          <p class="vf-small">Build daily consistency</p>
+        </li>
+        <li class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <span class="sol-format__no">03</span><h3 class="vf-card-title">Journey</h3>
+          <p class="vf-small">Make progress visual</p>
+        </li>
+        <li class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <span class="sol-format__no">04</span><h3 class="vf-card-title">E-Marathon</h3>
+          <p class="vf-small">Rally around an event</p>
+        </li>
+        <li class="vf-card vf-stack" style="--vf-stack-gap: var(--vf-space-2)">
+          <span class="sol-format__no">05</span><h3 class="vf-card-title">Custom multi-week</h3>
+          <p class="vf-small">Movement, mindfulness, hydration and more</p>
+        </li>
+      </ul>
+
+      <div class="vf-split">
+        <div class="vf-stack">
+          <span class="vf-meta">Format in detail &middot; Race</span>
+          <h3 class="vf-section-title" style="font-size: var(--vf-heading-md)">Spark a short burst</h3>
+          <p class="vf-body">Make the goal instantly clear: walk the most. A pure steps leaderboard with no daily target or extra tasks. Best for a fast, visible company sprint.</p>
+          <ul class="vf-rule-list">
+            <li><strong>Employee view</strong> &mdash; <span class="vf-body">Total steps and live rank</span></li>
+            <li><strong>HR sets</strong> &mdash; <span class="vf-body">Audience and dates</span></li>
+            <li><strong>Suggested pattern</strong> &mdash; <span class="vf-body">1&ndash;2 weeks</span></li>
+          </ul>
+        </div>
+        <div class="vf-card vf-card--raised vf-stack" style="--vf-stack-gap: var(--vf-space-4)">
+          <div class="vf-cluster" style="justify-content: space-between">
+            <span class="vf-meta">Race challenge</span>
+            <span class="vf-badge vf-badge--positive">Live</span>
+          </div>
+          <h4 class="vf-card-title">Spring Step Sprint</h4>
+          <div class="vf-cluster" style="--vf-cluster-gap: var(--vf-space-6)">
+            <div class="vf-stat"><span class="vf-stat__value">84,260</span><span class="vf-stat__label">Total steps</span></div>
+            <div class="vf-stat"><span class="vf-stat__value">#4</span><span class="vf-stat__label">Overall</span></div>
+          </div>
+          <p class="vf-meta">Leaderboard updates after sync &middot; illustrative data</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DESIGNED FOR FOLLOW-THROUGH ========== -->
+  <section class="vf-section vf-section--surface" id="agx">
+    <div class="vf-container vf-split">
+      <div class="vf-stack">
+        <span class="vf-eyebrow">Designed for follow-through</span>
+        <h2 class="vf-section-title">Make the first step easy, and the next one visible</h2>
+        <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
+          <span class="vf-meta">Steps sync</span>
+          <div class="vf-cluster">
+            <span class="vf-badge">Phone</span><span class="vf-badge">Apple Health</span>
+            <span class="vf-badge">Fitbit</span><span class="vf-badge">Garmin</span>
+          </div>
+          <p class="vf-small">Wearables are optional, not the price of admission.</p>
+        </div>
+      </div>
+      <div class="vf-stack">
+        <h3 class="vf-card-title">One primary source. Less logging. No duplicate steps.</h3>
+        <ol class="sol-numbered" style="margin:0; padding:0">
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Sync without a new device</h4><p class="vf-body">Phone, Apple Health, Fitbit or Garmin. One primary source, no double-counting.</p></div></li>
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Give effort a visible destination</h4><p class="vf-body">Show the next milestone, not just a number at day&rsquo;s end.</p></div></li>
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Create fair social momentum</h4><p class="vf-body">Team standings use average scores, so effort beats team size.</p></div></li>
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Recognize progress your way</h4><p class="vf-body">Points, badges and completion recognition, on or off.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DATA INTEGRITY ========== -->
+  <section class="vf-section vf-section--dark vf-on-dark" id="integrity">
+    <div class="vf-container vf-stack" style="--vf-stack-gap: var(--vf-space-7)">
+      <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
+        <span class="vf-eyebrow" style="color: var(--vf-teal-500)">Data integrity</span>
+        <h2 class="vf-section-title">A leaderboard your skeptics can audit</h2>
+        <p class="vf-lead">When rewards ride on steps, the count has to be trustworthy. Five checks keep the leaderboard honest.</p>
+      </div>
+      <div class="vf-split">
+        <ul class="vf-rule-list" style="border-color: var(--vf-border-dark)">
+          <li style="border-color: var(--vf-border-dark)"><h3 class="vf-card-title">Trusted sources only</h3><p class="vf-body">Only recognized apps and devices count. Unknown sources are rejected.</p></li>
+          <li style="border-color: var(--vf-border-dark)"><h3 class="vf-card-title">One device at a time</h3><p class="vf-body">One primary source per person, so nothing double-counts.</p></li>
+          <li style="border-color: var(--vf-border-dark)"><h3 class="vf-card-title">Anomaly and GPS checks</h3><p class="vf-body">Implausible spikes and non-walking GPS are filtered out.</p></li>
+          <li style="border-color: var(--vf-border-dark)"><h3 class="vf-card-title">Three-day results buffer</h3><p class="vf-body">Winners are confirmed after a three-day sync window.</p></li>
+          <li style="border-color: var(--vf-border-dark)"><h3 class="vf-card-title">Manual entry off by default</h3><p class="vf-body">Typed-in steps stay off unless you enable them.</p></li>
+        </ul>
+        <div class="vf-card vf-card--dark vf-stack" style="--vf-stack-gap: var(--vf-space-4)">
+          <div class="vf-cluster" style="justify-content: space-between">
+            <span class="vf-meta" style="color: rgba(255,255,255,.66)">Spring Steps Race &middot; Leaderboard</span>
+            <span class="vf-badge vf-badge--positive">Live</span>
+          </div>
+          <div class="sol-leader">
+            <div class="sol-leader__row"><span class="vf-meta" style="color:rgba(255,255,255,.66)">1</span><span class="sol-avatar">AR</span><span>A. Rivera</span><strong>12,480</strong></div>
+            <div class="sol-leader__row"><span class="vf-meta" style="color:rgba(255,255,255,.66)">2</span><span class="sol-avatar">PS</span><span>Priya S.</span><strong>11,920</strong></div>
+            <div class="sol-leader__row"><span class="vf-meta" style="color:rgba(255,255,255,.66)">3</span><span class="sol-avatar">MC</span><span>M. Chen</span><strong>11,340</strong></div>
+            <div class="sol-leader__row sol-leader__row--out"><span class="vf-meta" style="color:rgba(255,255,255,.66)">&ndash;</span><span class="sol-avatar">JD</span><span>J. Doe<br><span class="vf-small">Source rejected</span></span><strong class="sol-strike">214,006</strong></div>
+          </div>
+          <p class="vf-meta" style="color: rgba(255,255,255,.66)">Illustrative leaderboard. An implausible total from an unrecognized source is flagged and left off the ranking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTROL FOR HR ========== -->
+  <section class="vf-section vf-section--surface" id="hr">
+    <div class="vf-container vf-stack" style="--vf-stack-gap: var(--vf-space-7)">
+      <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
+        <span class="vf-eyebrow">Control for HR and wellbeing teams</span>
+        <h2 class="vf-section-title">Launch in minutes. Keep momentum. Leave with proof.</h2>
+        <p class="vf-lead">One admin workflow, not device data, spreadsheets, and winner updates.</p>
+      </div>
+      <div class="vf-split">
+        <ol class="sol-numbered" style="margin:0; padding:0">
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Set the experience</h3><p class="vf-body">Format, dates, visibility, and audience, in 5 to 10 minutes.</p></div></li>
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Bring people in</h3><p class="vf-body">Add or bulk-upload participants and configure teams.</p></div></li>
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Read the room while it is live</h3><p class="vf-body">Track standings and nudge participants when momentum dips.</p></div></li>
+          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Close with a credible result</h3><p class="vf-body">Export participant, department, step, and rank data to CSV.</p></div></li>
+        </ol>
+
+        <div class="vf-card vf-card--raised vf-stack" style="--vf-stack-gap: var(--vf-space-5)">
+          <div class="vf-cluster" style="justify-content: space-between">
+            <span class="vf-meta">Vantage Fit Admin</span>
+            <span class="vf-cluster" style="--vf-cluster-gap: var(--vf-space-2)">
+              <span class="vf-badge">Send a nudge</span><span class="vf-badge">Export CSV</span>
+            </span>
+          </div>
+          <div class="vf-cluster" style="justify-content: space-between">
+            <strong>Ongoing challenge &middot; Company Coast-to-Coast</strong>
+            <span class="vf-badge vf-badge--reward">Illustrative</span>
+          </div>
+          <div class="sol-kpis">
+            <div class="vf-stat"><span class="vf-stat__value">1,248</span><span class="vf-stat__label">Joined</span><span class="vf-stat__change">+114 this week</span></div>
+            <div class="vf-stat"><span class="vf-stat__value">78%</span><span class="vf-stat__label">Active</span><span class="vf-stat__change">Last 7 days</span></div>
+            <div class="vf-stat"><span class="vf-stat__value">842</span><span class="vf-stat__label">On track</span><span class="vf-stat__change">Current milestone</span></div>
+          </div>
+          <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
+            <div class="vf-cluster" style="justify-content: space-between">
+              <span class="vf-meta">Department view &middot; active</span><span class="vf-meta">14 days</span>
+            </div>
+            <div class="sol-dept">
+              <div class="sol-dept__row"><span>Sales</span><span class="vf-progress" style="--vf-progress: 84%"><span></span></span><span>84%</span></div>
+              <div class="sol-dept__row"><span>Ops</span><span class="vf-progress" style="--vf-progress: 79%"><span></span></span><span>79%</span></div>
+              <div class="sol-dept__row"><span>Product</span><span class="vf-progress" style="--vf-progress: 73%"><span></span></span><span>73%</span></div>
+              <div class="sol-dept__row"><span>Finance</span><span class="vf-progress" style="--vf-progress: 68%"><span></span></span><span>68%</span></div>
+            </div>
+          </div>
+          <div class="vf-callout">
+            <span class="vf-card__icon" aria-hidden="true">&rarr;</span>
+            <div class="vf-stack" style="--vf-stack-gap:.25rem">
+              <strong>Next action &middot; invite 92 eligible employees</strong>
+              <p class="vf-small">Send one focused reminder to people who have not joined.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="vf-section vf-section--soft" id="faq">
+    <div class="vf-container vf-split" style="align-items: start">
+      <div class="vf-stack">
+        <span class="vf-eyebrow">Questions before rollout</span>
+        <h2 class="vf-section-title">The practical answers your team will ask for</h2>
+        <p class="vf-lead">Need a deeper technical or security review? Bring your requirements to the demo and we&rsquo;ll route them to the right team.</p>
+        <a class="vf-button vf-button--text" href="https://www.vantagefit.io/request-demo/">Talk to a program specialist &rarr;</a>
+      </div>
+      <div class="vf-accordion">
+        <div class="vf-accordion__item">
+          <button class="vf-accordion__trigger" type="button" aria-expanded="true" aria-controls="faq1">Do employees need a smartwatch or fitness tracker?</button>
+          <div class="vf-accordion__panel" id="faq1">No. A phone can provide step data through Apple Health on iPhone or the supported Android step path. Employees can also connect supported wearables such as Fitbit, Garmin, or Apple Watch.</div>
+        </div>
+        <div class="vf-accordion__item">
+          <button class="vf-accordion__trigger" type="button" aria-expanded="false" aria-controls="faq2">Can we run a team challenge without favoring the largest team?</button>
+          <div class="vf-accordion__panel" id="faq2" hidden>Yes, in formats that support teams. Team standings are based on average member scores rather than total team size. Race is intentionally an individual, pure-steps format; choose Streak, Journey, or a Custom challenge when team configuration is needed.</div>
+        </div>
+        <div class="vf-accordion__item">
+          <button class="vf-accordion__trigger" type="button" aria-expanded="false" aria-controls="faq3">What can HR see about employees?</button>
+          <div class="vf-accordion__panel" id="faq3" hidden>Admins can see participation status, challenge rankings, team scores, registration status, last-active date, and aggregate program measures. They cannot see individual weight, health assessment answers, lab results, food diaries, mood logs, or sleep records.</div>
+        </div>
+        <div class="vf-accordion__item">
+          <button class="vf-accordion__trigger" type="button" aria-expanded="false" aria-controls="faq4">What can we report after the challenge?</button>
+          <div class="vf-accordion__panel" id="faq4" hidden>HR can export the filtered leaderboard to CSV with participant, department, score, step, team, and ranking fields. The dashboard also provides live step, score, and team leaderboard views.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CLOSING CTA ========== -->
+  <section class="vf-section vf-section--brand vf-on-dark" id="closer">
+    <div class="vf-container vf-stack vf-center" style="align-items: center">
+      <span class="vf-eyebrow" style="color: #fff">A stronger first step</span>
+      <h2 class="vf-section-title" style="max-width: 24ch">See the step challenge your workforce would actually join</h2>
+      <p class="vf-lead" style="color: #fff">In one demo, choose the right format, walk through the employee experience, and see how your HR team can launch, manage, and report the program.</p>
+      <div class="vf-actions" style="justify-content: center">
+        <a class="vf-button vf-button--light vf-button--large" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+        <a class="vf-button vf-button--large" style="border-color: rgba(255,255,255,.5); color:#fff" href="https://www.vantagefit.io/pricing/">See pricing</a>
+      </div>
+      <ul class="sol-assurances" style="justify-content: center; margin:0; padding:0">
+        <li>Format recommendation</li>
+        <li>Employee app walkthrough</li>
+        <li>Admin reporting</li>
+        <li>Security review support</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="sol-footer">
+  <div class="vf-container vf-stack" style="--vf-stack-gap: var(--vf-space-6)">
+    <div class="sol-footer__grid">
+      <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
+        <strong>Vantage Fit</strong>
+        <p class="vf-small" style="color: rgba(255,255,255,.72)">Inclusive wellness programs that turn employee participation into measurable progress. A Vantage Circle product.</p>
+      </div>
+      <div><h2>Programs</h2><ul>
+        <li><a href="https://www.vantagefit.io/solutions/step-challenges/">Step challenges</a></li>
+        <li><a href="https://www.vantagefit.io/solutions/multi-activity-challenges/">Multi-activity</a></li>
+        <li><a href="https://www.vantagefit.io/solutions/remote-team-wellness/">Team challenges</a></li>
+        <li><a href="https://www.vantagefit.io/solutions/wellness-challenges/">Year-round wellness</a></li></ul></div>
+      <div><h2>Evaluate</h2><ul>
+        <li><a href="https://www.vantagefit.io/casestudy/">Customer stories</a></li>
+        <li><a href="https://www.vantagefit.io/features/security-and-compliance/">Security</a></li>
+        <li><a href="https://www.vantagefit.io/pricing/">Pricing</a></li>
+        <li><a href="https://www.vantagefit.io/request-demo/">Contact sales</a></li></ul></div>
+      <div><h2>Resources</h2><ul>
+        <li><a href="https://www.vantagefit.io/en/blog/">Wellbeing blog</a></li>
+        <li><a href="https://www.vantagefit.io/guides/">Guides</a></li>
+        <li><a href="/enterprise-final">Product overview</a></li>
+        <li><a href="#faq">Step challenge FAQ</a></li></ul></div>
+    </div>
+    <hr class="vf-divider" style="background: rgba(255,255,255,.16)">
+    <div class="vf-cluster" style="justify-content: space-between">
+      <span class="vf-small" style="color: rgba(255,255,255,.62)">&copy; 2026 Vantage Circle. All rights reserved.</span>
+      <span class="vf-small" style="color: rgba(255,255,255,.62)">Regional data hosting &middot; Employee privacy controls</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion: one open at a time, keyboard and screen-reader safe.
+  (function () {
+    const items = [...document.querySelectorAll('.vf-accordion__trigger')];
+    items.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        items.forEach(other => {
+          other.setAttribute('aria-expanded', 'false');
+          document.getElementById(other.getAttribute('aria-controls')).hidden = true;
+        });
+        if (!open) { btn.setAttribute('aria-expanded', 'true'); panel.hidden = false; }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
