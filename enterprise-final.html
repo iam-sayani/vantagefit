@@ -3200,7 +3200,9 @@
     .vf3-phone--leaderboard .vf3-status { background: #B32240; color: #fff; }
 
     /* ===== Language switcher ===== */
-    .lang { position: relative; display: inline-flex; }
+    /* the nav row runs on a 2px gap, which is fine between text links but too
+       tight between two pills */
+    .lang { position: relative; display: inline-flex; margin-left: 14px; }
     .lang-btn {
       display: inline-flex; align-items: center; gap: 6px;
       min-height: 40px; padding: 0 12px;
