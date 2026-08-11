@@ -3237,6 +3237,19 @@
       .lang-btn { width: 100%; justify-content: flex-start; min-height: 46px; border-radius: 12px; }
       .lang-menu { position: static; width: 100%; margin-top: 6px; box-shadow: none; }
     }
+
+    /* ===== nav menu: continuation column, tags, footer links ===== */
+    .mega-col-title.is-continuation { border-color: transparent; color: transparent; }
+    .mega-tag {
+      display: inline-block; margin-left: 7px; padding: 1px 7px;
+      border-radius: 999px; background: rgba(65,216,180,.18);
+      color: #0B6B54; font-size: .62rem; font-weight: 800; font-style: normal;   /* 4.49 -> clears 4.5 */
+      letter-spacing: .06em; text-transform: uppercase; vertical-align: 1px;
+    }
+    .mega-foot a { display: block; color: inherit; text-decoration: none; }
+    .mega-foot a b { display: block; color: var(--ink); font-size: .86rem; font-weight: 800; }
+    .mega-foot a span { display: block; margin-top: 2px; color: var(--muted); font-size: .78rem; }
+    .mega-foot a:hover b { color: var(--cta-b); }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
@@ -3260,27 +3273,21 @@
             <div class="mega-body">
               <div class="mega-grid cols-2">
                 <div>
-                  <div class="mega-col-title">By program</div>
-                  <a class="mega-link" href="https://www.vantagefit.io/steps-challenge/">Step challenges<span>Company-wide step goals that get everyone moving</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/multi-activity-challenges/">Multi-activity challenges<span>Custom challenges across any mix of activities</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/team-challenges/">Team challenges<span>Departments and squads, competing together</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/virtual-marathon/">Virtual marathons<span>One-day events that unite a global workforce</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/mental-health-and-wellbeing-challenges/">Mental health &amp; wellbeing<span>Mindfulness, mood and stress support at work</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/holistic-wellness-program/">Year-round wellness program<span>An always-on calendar of challenges and events</span></a>
+                  <div class="mega-col-title">Wellness challenges &mdash; what you want to run</div>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/wellness-challenges/">Wellness challenges Library<span>The full library of ready-to-run challenges</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/step-challenges/">Step challenges<span>Company-wide step goals that get everyone moving</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/multi-activity-challenges/">Multi-activity challenges<span>Any activity, solo or in teams, over themed weeks</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/remote-team-wellness/">Remote &amp; hybrid team challenges<span>Wellness that works away from the office</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/virtual-marathon/">Virtual marathon<span>Distance events powered by steps</span></a>
                 </div>
                 <div>
-                  <div class="mega-col-title">By need</div>
-                  <a class="mega-link" href="https://www.vantagefit.io/global-employee-engagement/">Engage a global workforce<span>One program across countries, languages, time zones</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/remote-team-wellness/">Support remote &amp; hybrid teams<span>Wellness that works away from the office</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/wellness-rewards-program/">Reward healthy habits<span>Points and gift cards tied to real effort</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/health-fitness-analytics/">Measure program impact<span>Participation analytics your board can read</span></a>
+                  <div class="mega-col-title">Workforce health &amp; rewards &mdash; measure and motivate</div>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/health-risk-assessment/">Health Risk Assessment<span>Baseline health screening with aggregate insights</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/workforce-health-insights/">Workforce health insights<span>Participation, challenge and activity analytics your board can read</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/solutions/wellness-rewards-program/">Wellness rewards program<span>Points and gift cards tied to real effort</span></a>
                 </div>
               </div>
             </div>
-            <a class="mega-banner" href="https://www.vantagefit.io/employee-wellness-software/">
-              See Vantage Fit as your all-in-one employee wellness platform
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
-            </a>
           </div>
         </div>
 
@@ -3294,25 +3301,24 @@
               <div class="mega-grid">
                 <div>
                   <div class="mega-col-title">For employees</div>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/activity-tracking/">Activity &amp; health tracking<span>Steps, workouts, sleep and more — auto-synced</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/activity-and-health-tracking/">Activity &amp; health tracking<span>Steps, workouts, sleep and more, auto-synced</span></a>
                   <a class="mega-link" href="https://www.vantagefit.io/features/nutrition-and-hydration/">Nutrition &amp; hydration<span>Everyday habits, gently tracked</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/mental-health-and-mindfulness/">Mental wellbeing &amp; mindfulness<span>Sessions, streaks and mood check-ins</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/personalized-programs/">Personalized programs<span>Plans tuned to each employee's goals</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/engagement-tools/">Teams, leaderboards &amp; community<span>Squads, rankings and social buzz that keep people going</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/mental-wellbeing-and-mindfulness/">Mental wellbeing &amp; mindfulness<span>Sessions, streaks and mood check-ins</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/personalized-programs/">Personalized programs<span>Plans tuned to each employee&rsquo;s goals</span></a>
                 </div>
                 <div>
                   <div class="mega-col-title">For HR teams</div>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/admin-dashboard/">Admin dashboard &amp; analytics<span>Participation, trends and insights in one console</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/program-builder/">Program builder &amp; templates<span>Launch challenges and calendars in minutes</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/audience-targeting/">Audience targeting<span>Segment by team, location, or activity level</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/reports/">Reports &amp; exports<span>Board-ready participation and outcomes reports</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/health-data-upload/">Health data upload — AI insights<span>Turn existing health data into program recommendations</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/participation-analytics/">Participation analytics &amp; insights<span>Trends, AI insights and board-ready exports in one console</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/incentives-and-rewards/">Incentives &amp; rewards<span>Points, badges and a global gift-card catalogue</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/engagement-tools/">Engagement tools &amp; community<span>Group chats, campaigns, streaks and certificates that keep people coming back</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/wellness-leagues/">Wellness leagues<span>Segment by activity level, lift every tier</span></a>
                 </div>
                 <div>
-                  <div class="mega-col-title">Enterprise platform</div>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/integrations/">Integrations &amp; SSO<span>Wearables, HRIS, SSO and more</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/security-and-compliance/">Security, privacy &amp; residency<span>HIPAA, SOC 2, GDPR, ISO 27001/27701</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/features/accessibility/">Global access &amp; localization<span>Inclusive across devices, locations and languages</span></a>
+                  <div class="mega-col-title">Platform</div>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/integrations/">Integrations<span>Wearables, HRIS, SSO and more</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/security-and-compliance/">Security &amp; compliance<span>HIPAA, SOC 2, GDPR, ISO 27001/27701</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/accessibility/">Accessibility<span>Inclusive across devices, locations, abilities</span></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/features/health-data-upload/">Health data upload<span>Turn existing health data into insight</span></a>
                 </div>
               </div>
             </div>
@@ -3328,29 +3334,33 @@
             <div class="mega-body">
               <div class="mega-grid">
                 <div>
-                  <div class="mega-col-title">Learn</div>
-                  <a class="mega-link" href="https://www.vantagefit.io/en/blog/">Blog<span>Ideas and research for healthier workplaces</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/guides/">Guides &amp; eBooks<span>Playbooks for launching and scaling wellness</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/en/blog/podcasts/">Podcasts<span>Conversations with HR and wellbeing leaders</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/2026-global-workplace-well-being-industry-report/">2026 Industry Report<span>The state of global workplace wellbeing</span></a>
+                  <div class="mega-col-title">Content</div>
+                  <a class="mega-link" href="https://www.vantagefit.io/en/blog/">Blog</a>
+                  <a class="mega-link" href="https://www.vantagefit.io/casestudy/">Customer stories</a>
+                  <a class="mega-link" href="https://www.vantagefit.io/compare/">Comparisons</a>
+                  <a class="mega-link" href="https://www.vantagefit.io/reports-and-research/">Reports &amp; research</a>
                 </div>
                 <div>
-                  <div class="mega-col-title">Evaluate</div>
-                  <a class="mega-link" href="https://www.vantagefit.io/casestudy/">Customer stories<span>Results from real customer programs</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/compare/">Compare platforms<span>Vantage Fit vs the alternatives</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/en/help/">Help Center<span>Product docs and setup guides</span></a>
-                  <a class="mega-link" href="https://www.vantagefit.io/tools-and-templates/step-challenge-diy-template/">Step Challenge Template<span>DIY template to plan and launch a step challenge</span></a>
+                  <div class="mega-col-title is-continuation" aria-hidden="true">&nbsp;</div>
+                  <a class="mega-link" href="https://www.vantagefit.io/tools-and-templates/">Tools &amp; templates</a>
+                  <a class="mega-link" href="https://www.vantagefit.io/en/blog/podcasts/">Podcasts</a>
+                  <a class="mega-link" href="https://www.vantagefit.io/trust-center/">Trust Center <em class="mega-tag">New</em></a>
+                  <a class="mega-link" href="https://www.vantagefit.io/en/help/">Help Center</a>
                 </div>
                 <a class="mega-feature" href="https://www.vantagefit.io/wellness-challenges/">
                   <span>
                     <small>Featured</small>
                     <b>Wellness Challenges Library</b>
-                    <p>Browse ready-to-run challenges your teams can start this month.</p>
+                    <p>Browse ready-to-run employee wellness challenges.</p>
                   </span>
-                  <span class="go">Explore the library
+                  <span class="go">Explore challenges
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
                   </span>
                 </a>
+              </div>
+              <div class="mega-foot">
+                <a href="https://www.vantagefit.io/roi-calculator/"><b>ROI Calculator</b><span>See how wellness pays off for your headcount</span></a>
+                <a href="https://www.vantagefit.io/tools-and-templates/step-challenge-diy-template/"><b>Step Challenge Template</b><span>A free, ready-to-run template</span></a>
               </div>
             </div>
           </div>
