@@ -3239,7 +3239,19 @@
     }
 
     /* ===== nav menu: continuation column, tags, footer links ===== */
-    .mega-col-title.is-continuation { border-color: transparent; color: transparent; }
+    /* keeps the rule so it runs the full width of the content columns; only
+       the duplicated label is hidden */
+    .mega-col-title.is-continuation { color: transparent; }
+    /* the foot sits inside .mega-body, which is already padded 22px; its own
+       22px margin was insetting it a further 22 and breaking alignment with
+       the columns above. Grid so each item lines up with a column. */
+    .mega-body > .mega-foot {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px 20px;
+      margin: 18px 0 0;
+      padding-top: 14px;
+    }
     .mega-tag {
       display: inline-block; margin-left: 7px; padding: 1px 7px;
       border-radius: 999px; background: rgba(65,216,180,.18);
