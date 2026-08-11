@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#303740">
+  <meta name="description" content="The reusable visual and interaction standards for Vantage Fit digital experiences.">
+  <title>Vantage Fit Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vfit-design-system.css">
+  <style>
+    .ds-topbar {
+      position: sticky;
+      z-index: 50;
+      top: 0;
+      border-bottom: 1px solid var(--vf-border);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+    }
+    .ds-topbar__inner { display: flex; min-height: 4rem; align-items: center; justify-content: space-between; gap: 1rem; }
+    .ds-brand { display: inline-flex; align-items: center; gap: .7rem; font-size: .95rem; font-weight: 800; text-decoration: none; }
+    .ds-brand__mark { display: grid; width: 1.75rem; height: 1.75rem; place-items: center; border-radius: .55rem; background: var(--vf-brand-gradient); color: #fff; font-size: .8rem; }
+    .ds-version { color: var(--vf-text); font-size: var(--vf-text-sm); }
+    .ds-layout { display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: 3rem; }
+    .ds-sidebar { position: sticky; top: 6rem; align-self: start; padding-block: 2.5rem; }
+    .ds-nav { display: grid; gap: .2rem; }
+    .ds-nav a { min-height: 2.65rem; padding: .55rem .8rem; border-radius: .65rem; color: var(--vf-text); font-size: var(--vf-text-sm); font-weight: 700; text-decoration: none; }
+    .ds-nav a:hover { background: var(--vf-surface-soft); color: var(--vf-ink); }
+    .ds-nav a:focus-visible { outline-offset: 1px; }
+    .ds-main { min-width: 0; padding-bottom: 7rem; }
+    .ds-hero { padding: 6rem 0 5rem; }
+    .ds-hero__panel { padding: clamp(2rem, 7vw, 5rem); border: 1px solid var(--vf-border); border-radius: 2rem; background:
+      radial-gradient(58% 60% at 92% 4%, rgba(241, 81, 98, .22), transparent 70%),
+      radial-gradient(48% 54% at 5% 98%, rgba(65, 216, 180, .2), transparent 72%),
+      radial-gradient(36% 46% at 65% 100%, rgba(255, 157, 87, .16), transparent 70%),
+      #fff;
+      box-shadow: var(--vf-shadow-sm);
+    }
+    .ds-hero .vf-display { margin-top: 1rem; }
+    .ds-hero .vf-lead { margin-top: 1.25rem; }
+    .ds-hero .vf-actions { margin-top: 2rem; }
+    .ds-section { padding: 4.5rem 0; border-top: 1px solid var(--vf-border); scroll-margin-top: 5rem; }
+    .ds-section__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .72fr); gap: 2rem; align-items: end; margin-bottom: 2.5rem; }
+    .ds-section__head .vf-body { max-width: 34rem; }
+    .ds-subsection { margin-top: 3rem; }
+    .ds-subsection > h3 { margin-bottom: 1rem; font-size: 1.25rem; }
+    .ds-swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .ds-swatch { overflow: hidden; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-lg); background: var(--vf-surface); }
+    .ds-swatch__color { height: 7rem; background: var(--swatch); }
+    .ds-swatch__copy { display: grid; gap: .2rem; padding: 1rem; }
+    .ds-swatch__copy span { color: var(--vf-text); font-size: .8rem; }
+    .ds-use-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .ds-token-table { width: 100%; border-collapse: collapse; overflow: hidden; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-lg); background: #fff; }
+    .ds-token-table th, .ds-token-table td { padding: .85rem 1rem; border-bottom: 1px solid var(--vf-border); text-align: left; vertical-align: top; }
+    .ds-token-table th { background: var(--vf-surface-soft); font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; }
+    .ds-token-table tr:last-child td { border-bottom: 0; }
+    .ds-token-table code { color: var(--vf-coral-700); font-size: .82rem; font-weight: 700; }
+    .ds-type-list { display: grid; gap: 1rem; }
+    .ds-type-row { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; align-items: baseline; padding: 1.2rem 0; border-top: 1px solid var(--vf-border); }
+    .ds-type-row:first-child { border-top: 0; }
+    .ds-type-label { color: var(--vf-text); font-size: .78rem; font-weight: 700; }
+    .ds-space-scale { display: flex; flex-wrap: wrap; align-items: end; gap: 1.2rem; }
+    .ds-space-item { display: grid; gap: .55rem; justify-items: center; color: var(--vf-text); font-size: .72rem; }
+    .ds-space-bar { width: 2.5rem; height: var(--space); border-radius: .4rem; background: var(--vf-teal-500); }
+    .ds-component-stage { padding: clamp(1.25rem, 4vw, 2.5rem); border: 1px solid var(--vf-border); border-radius: var(--vf-radius-xl); background: #fff; }
+    .ds-component-stage--dark { background: var(--vf-dark-gradient); color: #fff; }
+    .ds-component-stage + .ds-component-stage { margin-top: 1rem; }
+    .ds-card-grid { --vf-grid-columns: 3; }
+    .ds-card-grid .vf-card { min-height: 15rem; }
+    .ds-card-grid .vf-card-title { margin-top: 1.25rem; }
+    .ds-card-grid .vf-body { margin-top: .6rem; }
+    .ds-form { max-width: 38rem; }
+    .ds-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ds-code { overflow-x: auto; margin: 1rem 0 0; padding: 1.25rem; border-radius: var(--vf-radius-lg); background: #171C21; color: #F4F6F7; font: .82rem/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+    .ds-do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ds-guideline { padding: 1.4rem; border-radius: var(--vf-radius-lg); background: #fff; }
+    .ds-guideline--do { border-top: .25rem solid var(--vf-teal-700); }
+    .ds-guideline--dont { border-top: .25rem solid var(--vf-coral-700); }
+    .ds-guideline h3 { font-size: 1rem; }
+    .ds-guideline ul { margin: .8rem 0 0; padding-left: 1.2rem; color: var(--vf-text); }
+    .ds-section-demo { overflow: hidden; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-xl); }
+    .ds-section-demo > div { min-height: 16rem; padding: 2rem; }
+    .ds-section-demo .vf-section-title { font-size: clamp(1.8rem, 3.6vw, 2.75rem); }
+    .ds-footer { padding: 3rem 0; background: var(--vf-dark); color: rgba(255, 255, 255, .76); }
+    .ds-footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+    @media (max-width: 980px) {
+      .ds-layout { grid-template-columns: 1fr; gap: 0; }
+      .ds-sidebar { position: sticky; z-index: 40; top: 4rem; overflow-x: auto; margin-inline: -1.5rem; padding: .6rem 1.5rem; border-bottom: 1px solid var(--vf-border); background: rgba(248, 248, 249, .96); scrollbar-width: none; }
+      .ds-sidebar::-webkit-scrollbar { display: none; }
+      .ds-nav { display: flex; width: max-content; }
+      .ds-nav a { white-space: nowrap; }
+      .ds-section__head { grid-template-columns: 1fr; gap: .8rem; }
+      .ds-swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .ds-topbar__inner { min-height: 3.75rem; }
+      .ds-version { display: none; }
+      .ds-hero { padding: 2.5rem 0 3rem; }
+      .ds-hero__panel { border-radius: var(--vf-radius-xl); }
+      .ds-section { padding: 3.5rem 0; }
+      .ds-swatches, .ds-use-grid, .ds-do-dont, .ds-form__grid { grid-template-columns: 1fr; }
+      .ds-type-row { grid-template-columns: 1fr; gap: .45rem; }
+      .ds-token-table { display: block; overflow-x: auto; }
+      .ds-footer__inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a class="vf-skip-link" href="#content">Skip to content</a>
+
+  <header class="ds-topbar">
+    <div class="vf-container ds-topbar__inner">
+      <a class="ds-brand" href="enterprise-final">
+        <span class="ds-brand__mark" aria-hidden="true">VF</span>
+        <span>Vantage Fit Design System</span>
+      </a>
+      <span class="ds-version">Version 1.0 · Enterprise web</span>
+    </div>
+  </header>
+
+  <div class="vf-container ds-layout">
+    <aside class="ds-sidebar" aria-label="Design system sections">
+      <nav class="ds-nav">
+        <a href="#foundations">Foundations</a>
+        <a href="#color">Color</a>
+        <a href="#typography">Typography</a>
+        <a href="#layout">Layout</a>
+        <a href="#actions">Actions</a>
+        <a href="#components">Components</a>
+        <a href="#forms">Forms</a>
+        <a href="#sections">Section patterns</a>
+        <a href="#content-guide">Content</a>
+        <a href="#accessibility">Accessibility</a>
+      </nav>
+    </aside>
+
+    <main class="ds-main" id="content">
+      <section class="ds-hero" aria-labelledby="ds-title">
+        <div class="ds-hero__panel">
+          <p class="vf-eyebrow">Vantage Fit digital foundation</p>
+          <h1 class="vf-display" id="ds-title">One system for clear, human wellness experiences.</h1>
+          <p class="vf-lead">Use these foundations and components to create consistent Vantage Fit pages for HR leaders and employees—without rebuilding the visual language each time.</p>
+          <div class="vf-actions">
+            <a class="vf-button vf-button--primary vf-button--large" href="#foundations">Start with foundations</a>
+            <a class="vf-button vf-button--secondary vf-button--large" href="enterprise-final">View reference page</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="foundations" aria-labelledby="foundations-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">01 · Foundations</p>
+            <h2 class="vf-section-title" id="foundations-title">Brand principles</h2>
+          </div>
+          <p class="vf-body">Every page should feel optimistic enough for wellbeing and credible enough for an enterprise buying decision.</p>
+        </div>
+        <div class="vf-grid">
+          <article class="vf-card">
+            <span class="vf-card__icon">01</span>
+            <h3 class="vf-card-title">Human clarity</h3>
+            <p class="vf-body">Use natural language, achievable activities, generous type, and familiar patterns.</p>
+          </article>
+          <article class="vf-card">
+            <span class="vf-card__icon">02</span>
+            <h3 class="vf-card-title">Evidence with restraint</h3>
+            <p class="vf-body">Make outcomes visible, source claims, and avoid unsupported health or ROI promises.</p>
+          </article>
+          <article class="vf-card">
+            <span class="vf-card__icon">03</span>
+            <h3 class="vf-card-title">Inclusive momentum</h3>
+            <p class="vf-body">Show different ages, abilities, roles, and ways to participate—not athletic performance alone.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="ds-section" id="color" aria-labelledby="color-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">02 · Color</p>
+            <h2 class="vf-section-title" id="color-title">A focused brand palette</h2>
+          </div>
+          <p class="vf-body">Coral leads conversion and brand recognition. Teal communicates progress, orange marks rewards, and slate adds enterprise depth.</p>
+        </div>
+        <div class="ds-swatches" aria-label="Core brand colors">
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#F15162"></div><div class="ds-swatch__copy"><strong>VFit Coral</strong><code>#F15162</code><span>Brand accents and large display moments</span></div></article>
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#B8172A"></div><div class="ds-swatch__copy"><strong>Deep Coral</strong><code>#B8172A</code><span>Primary actions and accessible coral text</span></div></article>
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#41D8B4"></div><div class="ds-swatch__copy"><strong>VFit Teal</strong><code>#41D8B4</code><span>Progress, wellbeing, and positive signals</span></div></article>
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#FF9D57"></div><div class="ds-swatch__copy"><strong>VFit Orange</strong><code>#FF9D57</code><span>Rewards, milestones, and achievements</span></div></article>
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#303740"></div><div class="ds-swatch__copy"><strong>VFit Slate</strong><code>#303740</code><span>Dark panels and enterprise product framing</span></div></article>
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#29294C"></div><div class="ds-swatch__copy"><strong>Ink</strong><code>#29294C</code><span>Headings and high-emphasis text</span></div></article>
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#50506D"></div><div class="ds-swatch__copy"><strong>Body</strong><code>#50506D</code><span>Readable paragraphs on light surfaces</span></div></article>
+          <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#F8F8F9"></div><div class="ds-swatch__copy"><strong>Canvas</strong><code>#F8F8F9</code><span>Warm-neutral page background</span></div></article>
+        </div>
+        <div class="ds-subsection">
+          <h3>Usage and contrast</h3>
+          <table class="ds-token-table">
+            <thead><tr><th>Pairing</th><th>Ratio</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td>White on Deep Coral</td><td>6.57:1</td><td>Primary buttons and compact labels</td></tr>
+              <tr><td>Ink on White</td><td>13.85:1</td><td>Headings and essential information</td></tr>
+              <tr><td>Body on White</td><td>7.75:1</td><td>Paragraphs and supporting content</td></tr>
+              <tr><td>White on Slate</td><td>12.03:1</td><td>Dark product, security, and footer sections</td></tr>
+              <tr><td>Ink on Teal</td><td>7.72:1</td><td>Positive-data surfaces and high-contrast progress callouts</td></tr>
+              <tr><td>Ink on Orange</td><td>6.74:1</td><td>Reward callouts; avoid white text on orange</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="ds-section" id="typography" aria-labelledby="typography-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">03 · Typography</p>
+            <h2 class="vf-section-title" id="typography-title">Noto Sans, confidently set</h2>
+          </div>
+          <p class="vf-body">One typeface keeps the experience familiar and readable. Use weight and scale—not extra font families—to create hierarchy.</p>
+        </div>
+        <div class="ds-type-list">
+          <div class="ds-type-row"><span class="ds-type-label">Display · 41–72px · 800</span><p class="vf-display">Wellbeing people return to.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Section · 36–56px · 800</span><p class="vf-section-title">See what keeps people participating.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Card · 20–24px · 750</span><p class="vf-card-title">A daily experience for every employee.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Lead · 18px · 400</span><p class="vf-lead">Inclusive programs make everyday movement easier to join and easier to sustain.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Body · 16px · 400</span><p class="vf-body">Use relaxed line height and keep paragraphs near 60–75 characters for comfortable reading.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Eyebrow · 12px · 800</span><p class="vf-eyebrow">Employee Wellness Software</p></div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="layout" aria-labelledby="layout-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">04 · Layout</p>
+            <h2 class="vf-section-title" id="layout-title">A consistent page rhythm</h2>
+          </div>
+          <p class="vf-body">Use the 1180px container, a four-point spacing base, and generous section gaps. Reduce density before reducing type size.</p>
+        </div>
+        <div class="ds-component-stage">
+          <div class="ds-space-scale" aria-label="Spacing scale">
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:4px"></span><span>4</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:8px"></span><span>8</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:12px"></span><span>12</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:16px"></span><span>16</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:24px"></span><span>24</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:32px"></span><span>32</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:48px"></span><span>48</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:64px"></span><span>64</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:80px"></span><span>80</span></div>
+            <div class="ds-space-item"><span class="ds-space-bar" style="--space:96px"></span><span>96</span></div>
+          </div>
+        </div>
+        <div class="ds-subsection ds-use-grid">
+          <div class="vf-card"><h3 class="vf-card-title">Desktop</h3><p class="vf-body">48px minimum outer gutter. Use 64–96px section padding and two-column layouts only when both columns remain readable.</p></div>
+          <div class="vf-card"><h3 class="vf-card-title">Mobile</h3><p class="vf-body">16px outer gutter. Stack content, preserve heading hierarchy, keep CTAs 56px high, and avoid horizontal scrolling.</p></div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="actions" aria-labelledby="actions-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">05 · Actions</p>
+            <h2 class="vf-section-title" id="actions-title">One unmistakable next step</h2>
+          </div>
+          <p class="vf-body">Use one primary CTA per viewport. Secondary actions should be visually quieter and use specific labels instead of “Learn more.”</p>
+        </div>
+        <div class="ds-component-stage">
+          <div class="vf-actions">
+            <a class="vf-button vf-button--primary" href="#actions">Book a demo</a>
+            <a class="vf-button vf-button--secondary" href="#actions">See customer results</a>
+            <a class="vf-button vf-button--dark" href="#actions">Explore the platform</a>
+            <a class="vf-button vf-button--text" href="#actions">Read the customer story →</a>
+          </div>
+        </div>
+        <div class="ds-component-stage ds-component-stage--dark vf-on-dark">
+          <div class="vf-actions">
+            <a class="vf-button vf-button--light" href="#actions">Book a demo</a>
+            <a class="vf-button vf-button--text" style="color:#41D8B4" href="#actions">Explore security →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="components" aria-labelledby="components-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">06 · Components</p>
+            <h2 class="vf-section-title" id="components-title">Reusable product language</h2>
+          </div>
+          <p class="vf-body">Use cards only when a boundary helps comprehension. Prefer dividers and whitespace for simple lists.</p>
+        </div>
+        <div class="vf-grid ds-card-grid">
+          <article class="vf-card vf-card--raised">
+            <span class="vf-badge vf-badge--positive">Participation</span>
+            <div class="vf-stat" style="margin-top:1.25rem"><strong class="vf-stat__value">88%</strong><span class="vf-stat__label">Employees active this month</span><span class="vf-stat__change">↑ 18% from last month</span></div>
+          </article>
+          <article class="vf-card vf-card--positive">
+            <span class="vf-card__icon" style="background:#DDF7F0;color:#167F69">✓</span>
+            <h3 class="vf-card-title">Weekly goal on track</h3>
+            <p class="vf-body">Progress is visible without relying on color alone.</p>
+            <div class="vf-progress" style="--vf-progress:72%;margin-top:1rem"><span></span></div>
+          </article>
+          <article class="vf-card vf-card--reward">
+            <span class="vf-badge vf-badge--reward">Reward earned</span>
+            <h3 class="vf-card-title">1,420 Vantage Points</h3>
+            <p class="vf-body">Use orange sparingly for achievements and recognition.</p>
+          </article>
+        </div>
+        <div class="ds-subsection">
+          <h3>Tabs</h3>
+          <div class="vf-tabs" role="tablist" aria-label="Product experience example">
+            <button class="vf-tab" type="button" role="tab" aria-selected="true" aria-controls="employee-panel" id="employee-tab">For employees</button>
+            <button class="vf-tab" type="button" role="tab" aria-selected="false" aria-controls="hr-panel" id="hr-tab">For HR teams</button>
+          </div>
+          <div class="vf-card" id="employee-panel" role="tabpanel" aria-labelledby="employee-tab" style="margin-top:1rem"><h3 class="vf-card-title">An experience employees return to</h3><p class="vf-body" style="margin-top:.6rem">Challenges, activity, recognition, and rewards in one clear mobile experience.</p></div>
+          <div class="vf-card" id="hr-panel" role="tabpanel" aria-labelledby="hr-tab" style="margin-top:1rem" hidden><h3 class="vf-card-title">A program HR can run with confidence</h3><p class="vf-body" style="margin-top:.6rem">Launch challenges, monitor participation, manage rewards, and share leadership-ready reports.</p></div>
+        </div>
+        <div class="ds-subsection">
+          <h3>Accordion</h3>
+          <div class="vf-accordion">
+            <div class="vf-accordion__item">
+              <button class="vf-accordion__trigger" type="button" aria-expanded="true" aria-controls="accordion-panel-1">Everyday wellbeing</button>
+              <div class="vf-accordion__panel" id="accordion-panel-1">Combine activity, mindfulness, hydration, nutrition, and healthy habits in one simple view.</div>
+            </div>
+            <div class="vf-accordion__item">
+              <button class="vf-accordion__trigger" type="button" aria-expanded="false" aria-controls="accordion-panel-2">Analytics and insights</button>
+              <div class="vf-accordion__panel" id="accordion-panel-2" hidden>Show aggregate workforce trends without implying individual medical surveillance.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="forms" aria-labelledby="forms-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">07 · Forms</p>
+            <h2 class="vf-section-title" id="forms-title">Simple, forgiving inputs</h2>
+          </div>
+          <p class="vf-body">Ask only for information needed at this step. Keep labels visible, explain requirements before errors, and never use placeholder text as the label.</p>
+        </div>
+        <div class="ds-component-stage">
+          <form class="vf-stack ds-form" action="#forms" method="get">
+            <div class="ds-form__grid">
+              <label class="vf-field"><span class="vf-label">First name <span class="vf-required" aria-hidden="true">*</span></span><input class="vf-input" name="first-name" autocomplete="given-name" required placeholder="Alex"><span class="vf-help">Required</span></label>
+              <label class="vf-field"><span class="vf-label">Work email <span class="vf-required" aria-hidden="true">*</span></span><input class="vf-input" type="email" name="email" autocomplete="email" required placeholder="alex@company.com"><span class="vf-help">Use your company email</span></label>
+            </div>
+            <label class="vf-field"><span class="vf-label">Organization size</span><select class="vf-select" name="organization-size"><option>Select a range</option><option>100–499</option><option>500–1,999</option><option>2,000–9,999</option><option>10,000+</option></select></label>
+            <label class="vf-field"><span class="vf-label">What would you like to improve?</span><textarea class="vf-textarea" name="goals" placeholder="Tell us about your participation goals"></textarea></label>
+            <div><button class="vf-button vf-button--primary vf-button--large" type="submit">Request a conversation</button></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="ds-section" id="sections" aria-labelledby="sections-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">08 · Section patterns</p>
+            <h2 class="vf-section-title" id="sections-title">Intentional light and dark rhythm</h2>
+          </div>
+          <p class="vf-body">Keep roughly three light sections for every dark one. Reserve dark surfaces for product, analytics, security, ROI, and the footer.</p>
+        </div>
+        <div class="ds-section-demo">
+          <div class="vf-section--surface vf-stack"><p class="vf-eyebrow">Light content section</p><h3 class="vf-section-title">Clarity, openness, and human warmth.</h3><p class="vf-lead">Use for education, customer proof, inclusive experiences, and resources.</p></div>
+          <div class="vf-section--dark vf-on-dark vf-stack"><p class="vf-eyebrow vf-eyebrow--teal">Dark enterprise section</p><h3 class="vf-section-title">Depth for product and trust.</h3><p class="vf-lead">Use for product demonstrations, analytics, security, and leadership-facing evidence.</p></div>
+          <div class="vf-section--coral vf-stack"><p class="vf-eyebrow">Coral-led conversion section</p><h3 class="vf-section-title">Build a program employees want to join.</h3><div class="vf-actions"><a class="vf-button vf-button--primary" href="#sections">Book a demo</a><a class="vf-button vf-button--text" href="#sections">Explore the platform →</a></div></div>
+        </div>
+      </section>
+
+      <section class="ds-section" id="content-guide" aria-labelledby="content-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">09 · Content</p>
+            <h2 class="vf-section-title" id="content-title">Concrete, credible language</h2>
+          </div>
+          <p class="vf-body">Write primarily to the HR buyer while showing employee value. Translate every capability into a business or human outcome.</p>
+        </div>
+        <div class="ds-do-dont">
+          <article class="ds-guideline ds-guideline--do"><h3>Do</h3><ul><li>“See what is working—not just what was launched.”</li><li>Use concise US English.</li><li>Source customer results and statistics.</li><li>Use “wellbeing” consistently.</li><li>Name the next step in every CTA.</li></ul></article>
+          <article class="ds-guideline ds-guideline--dont"><h3>Don’t</h3><ul><li>“Revolutionize your wellness journey.”</li><li>Invent outcomes, integrations, or certifications.</li><li>Describe medical or guaranteed savings claims.</li><li>Repeat “Learn more” across every card.</li><li>Make participation sound athletic or exclusive.</li></ul></article>
+        </div>
+      </section>
+
+      <section class="ds-section" id="accessibility" aria-labelledby="accessibility-title">
+        <div class="ds-section__head">
+          <div class="vf-stack" style="--vf-stack-gap:.75rem">
+            <p class="vf-eyebrow">10 · Accessibility</p>
+            <h2 class="vf-section-title" id="accessibility-title">Accessibility is part of the brand</h2>
+          </div>
+          <p class="vf-body">Design to WCAG 2.2 AA as the minimum. Favor enhanced contrast for body text and controls used by older employees.</p>
+        </div>
+        <div class="vf-callout"><span class="vf-card__icon" style="background:#fff;color:#167F69">AA</span><div><h3 class="vf-card-title">Core requirements</h3><ul class="vf-rule-list"><li>Normal text: at least 4.5:1 contrast; aim for 7:1 where practical.</li><li>Large text and essential UI boundaries: at least 3:1.</li><li>Keyboard-visible focus, semantic headings, labels, and status text.</li><li>Touch targets: at least 44 × 44px; preferred mobile CTA height: 56px.</li><li>Respect reduced motion and never communicate status using color alone.</li></ul></div></div>
+        <div class="ds-subsection">
+          <h3>Starter usage</h3>
+          <pre class="ds-code"><code>&lt;link rel="stylesheet" href="/vfit-design-system.css"&gt;
+
+&lt;section class="vf-section vf-section--surface"&gt;
+  &lt;div class="vf-container vf-stack"&gt;
+    &lt;p class="vf-eyebrow"&gt;Employee Wellness Software&lt;/p&gt;
+    &lt;h2 class="vf-section-title"&gt;A clear outcome-led heading.&lt;/h2&gt;
+    &lt;p class="vf-lead"&gt;One concise explanation for HR buyers.&lt;/p&gt;
+    &lt;div class="vf-actions"&gt;
+      &lt;a class="vf-button vf-button--primary" href="/request-demo/"&gt;Book a demo&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="ds-footer">
+    <div class="vf-container ds-footer__inner"><strong>Vantage Fit Design System</strong><span>Use one system. Build with clarity.</span></div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[role="tab"]').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var list = tab.closest('[role="tablist"]');
+        list.querySelectorAll('[role="tab"]').forEach(function (item) {
+          var selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+        });
+      });
+    });
+
+    document.querySelectorAll('.vf-accordion__trigger').forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var expanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', String(!expanded));
+        document.getElementById(trigger.getAttribute('aria-controls')).hidden = expanded;
+      });
+    });
+  </script>
+</body>
+</html>
