@@ -341,6 +341,42 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
     var(--vf-surface);
 }
 
+/* Ambient brand shapes
+   Use at most two per section. They are decorative and must remain behind
+   readable content. Slate belongs on dark enterprise fields; coral may be
+   used on light, dark, or conversion fields at restrained opacity. */
+.vf-brand-field {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.vf-brand-field > :not(.vf-brand-shape) {
+  position: relative;
+  z-index: 1;
+}
+
+.vf-brand-shape {
+  position: absolute;
+  z-index: 0;
+  width: min(62.5rem, 70vw);
+  aspect-ratio: 1000 / 760;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.vf-brand-shape--slate {
+  background: radial-gradient(100% 100% at 0% 0%, #3B4656 0%, rgba(55, 65, 81, .12) 100%);
+}
+
+.vf-brand-shape--coral {
+  background: radial-gradient(100% 100% at 0% 0%, rgba(241, 81, 98, .92) 0%, rgba(241, 81, 98, 0) 100%);
+}
+
+.vf-brand-shape--start { inset-block-start: 34%; inset-inline-start: -9%; }
+.vf-brand-shape--end { inset-block-start: -39%; inset-inline-end: -32%; transform: rotate(28deg); }
+.vf-brand-shape--muted { opacity: .42; }
+
 .vf-divider { height: 1px; border: 0; background: var(--vf-border); }
 .vf-rule-list { margin: 0; padding: 0; list-style: none; }
 .vf-rule-list li { padding-block: var(--vf-space-4); border-top: 1px solid var(--vf-border); }
@@ -356,6 +392,9 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
   .vf-tabs { display: flex; width: 100%; overflow-x: auto; border-radius: var(--vf-radius-lg); scrollbar-width: none; }
   .vf-tabs::-webkit-scrollbar { display: none; }
   .vf-tab { flex: 0 0 auto; }
+  .vf-brand-shape { width: 135vw; opacity: .5; }
+  .vf-brand-shape--start { inset-block-start: 58%; inset-inline-start: -62%; }
+  .vf-brand-shape--end { inset-block-start: -18%; inset-inline-end: -72%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

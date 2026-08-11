@@ -55,6 +55,12 @@
     "extraLarge": { "$type": "dimension", "$value": "22px" },
     "pill": { "$type": "dimension", "$value": "999px" }
   },
+  "ambientShape": {
+    "slateOrigin": { "$type": "color", "$value": "#3B4656" },
+    "coralOrigin": { "$type": "color", "$value": "{color.brand.coral}" },
+    "mutedOpacity": { "$type": "number", "$value": 0.42 },
+    "aspectRatio": { "$type": "number", "$value": 1.315789 }
+  },
   "size": {
     "contentMax": { "$type": "dimension", "$value": "1180px" },
     "control": { "$type": "dimension", "$value": "48px" },

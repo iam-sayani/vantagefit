@@ -84,6 +84,10 @@
     .ds-section-demo { overflow: hidden; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-xl); }
     .ds-section-demo > div { min-height: 16rem; padding: 2rem; }
     .ds-section-demo .vf-section-title { font-size: clamp(1.8rem, 3.6vw, 2.75rem); }
+    .ds-brand-shape-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ds-brand-shape-demo { min-height: 22rem; padding: 2rem; border-radius: var(--vf-radius-xl); }
+    .ds-brand-shape-demo .vf-card-title { max-width: 15ch; }
+    .ds-brand-shape-demo .vf-body { max-width: 28ch; margin-top: .75rem; }
     .ds-footer { padding: 3rem 0; background: var(--vf-dark); color: rgba(255, 255, 255, .76); }
     .ds-footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 
@@ -103,7 +107,7 @@
       .ds-hero { padding: 2.5rem 0 3rem; }
       .ds-hero__panel { border-radius: var(--vf-radius-xl); }
       .ds-section { padding: 3.5rem 0; }
-      .ds-swatches, .ds-use-grid, .ds-do-dont, .ds-form__grid { grid-template-columns: 1fr; }
+      .ds-swatches, .ds-use-grid, .ds-do-dont, .ds-form__grid, .ds-brand-shape-grid { grid-template-columns: 1fr; }
       .ds-type-row { grid-template-columns: 1fr; gap: .45rem; }
       .ds-token-table { display: block; overflow-x: auto; }
       .ds-footer__inner { align-items: flex-start; flex-direction: column; }
@@ -210,6 +214,22 @@
               <tr><td>Ink on Orange</td><td>6.74:1</td><td>Reward callouts; avoid white text on orange</td></tr>
             </tbody>
           </table>
+        </div>
+        <div class="ds-subsection">
+          <h3>Ambient brand shapes</h3>
+          <p class="vf-body" style="margin-bottom:1rem">These oversized radial forms are a controlled branding motif. Use one or two behind content—never as a foreground illustration.</p>
+          <div class="ds-brand-shape-grid">
+            <article class="vf-brand-field vf-section--dark vf-on-dark ds-brand-shape-demo">
+              <span class="vf-brand-shape vf-brand-shape--slate vf-brand-shape--start" aria-hidden="true"></span>
+              <span class="vf-brand-shape vf-brand-shape--slate vf-brand-shape--end" aria-hidden="true"></span>
+              <div><span class="vf-badge">Slate ambient field</span><h3 class="vf-card-title" style="margin-top:1rem">Depth for product and enterprise trust.</h3><p class="vf-body">Use on dark product, analytics, security, and participation sections.</p></div>
+            </article>
+            <article class="vf-brand-field vf-section--surface ds-brand-shape-demo">
+              <span class="vf-brand-shape vf-brand-shape--coral vf-brand-shape--start vf-brand-shape--muted" aria-hidden="true"></span>
+              <span class="vf-brand-shape vf-brand-shape--coral vf-brand-shape--end vf-brand-shape--muted" aria-hidden="true"></span>
+              <div><span class="vf-badge">Coral ambient field</span><h3 class="vf-card-title" style="margin-top:1rem">Warmth for conversion and participation.</h3><p class="vf-body">Use on light or coral-led sections, with restrained opacity behind the copy.</p></div>
+            </article>
+          </div>
         </div>
       </section>
 

@@ -71,6 +71,27 @@ Noto Sans is the only web typeface. Use 400–500 for body copy, 600–700 for c
 - Limit text lines to roughly 60–75 characters.
 - Use one section-heading class across the page. Color may vary; size and line height should not.
 
+## Ambient brand shapes
+
+The oversized radial forms used on the enterprise homepage are a reusable Vantage Fit branding motif.
+
+- Use `.vf-brand-field` on the section host.
+- Add one or two decorative `.vf-brand-shape` elements with `aria-hidden="true"`.
+- Use `.vf-brand-shape--slate` on dark product, participation, analytics, security, and ROI sections.
+- Use `.vf-brand-shape--coral` on light, dark, or conversion sections; add `.vf-brand-shape--muted` behind body copy.
+- Use `.vf-brand-shape--start` and `.vf-brand-shape--end` for the standard paired composition.
+- Keep shapes behind the content, out of the reading order, and clear of essential text.
+- Use no more than two shapes in one section and no more than one ambient-shape section per viewport.
+- Do not use the shapes as icons, card decoration, or independent illustrations.
+
+```html
+<section class="vf-section vf-section--dark vf-brand-field">
+  <span class="vf-brand-shape vf-brand-shape--slate vf-brand-shape--start" aria-hidden="true"></span>
+  <span class="vf-brand-shape vf-brand-shape--slate vf-brand-shape--end" aria-hidden="true"></span>
+  <div class="vf-container">...</div>
+</section>
+```
+
 ## Spacing and layout
 
 The spacing scale is 4, 8, 12, 16, 24, 32, 48, 64, 80, and 96px.
