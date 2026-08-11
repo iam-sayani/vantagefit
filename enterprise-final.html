@@ -3198,6 +3198,45 @@
        leaderboard status bar sits on the hero, so give it that ground */
     .vf3-admin em, .vf3-admin .vf3-chart-head span { color: #0F7D63; }
     .vf3-phone--leaderboard .vf3-status { background: #B32240; color: #fff; }
+
+    /* ===== Language switcher ===== */
+    .lang { position: relative; display: inline-flex; }
+    .lang-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      min-height: 40px; padding: 0 12px;
+      border: 1px solid rgba(41,41,76,.18); border-radius: 999px;
+      background: rgba(255,255,255,.55); color: var(--ink);
+      font-family: inherit; font-size: .82rem; font-weight: 700; letter-spacing: .01em;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .lang-btn svg { width: 16px; height: 16px; }
+    .lang-caret { width: 12px !important; height: 12px !important; opacity: .6; transition: transform .2s ease; }
+    .lang-btn:hover { border-color: rgba(41,41,76,.34); background: #fff; }
+    .lang-btn:focus-visible { outline: 2px solid var(--cta-a); outline-offset: 2px; }
+    .lang-btn[aria-expanded="true"] { border-color: var(--cta-b); background: #fff; }
+    .lang-btn[aria-expanded="true"] .lang-caret { transform: rotate(180deg); }
+
+    .lang-menu {
+      position: absolute; z-index: 60; top: calc(100% + 8px); right: 0;
+      min-width: 168px; margin: 0; padding: 6px; list-style: none;
+      border: 1px solid var(--line); border-radius: 14px;
+      background: var(--paper); box-shadow: var(--shadow);
+    }
+    .lang-menu[hidden] { display: none; }
+    .lang-menu a {
+      display: block; padding: 9px 12px; border-radius: 9px;
+      color: var(--muted); font-size: .88rem; font-weight: 600; text-decoration: none;
+    }
+    .lang-menu a:hover, .lang-menu a:focus-visible { background: var(--soft); color: var(--ink); }
+    .lang-menu a[aria-current="true"] { color: var(--ink); font-weight: 800; }
+
+    @media (max-width: 860px) {
+      /* in the drawer it sits inline, like the other nav rows */
+      .lang { display: block; width: 100%; margin-top: 6px; }
+      .lang-btn { width: 100%; justify-content: flex-start; min-height: 46px; border-radius: 12px; }
+      .lang-menu { position: static; width: 100%; margin-top: 6px; box-shadow: none; }
+    }
   </style>
   <link rel="preload" as="image" href="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png" imagesrcset="https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_420/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 420w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_620/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 620w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_760/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 760w, https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto,w_1100/v1786098001/vfitimages/Sayani/Hompage-New/hero.png 1100w" imagesizes="(max-width: 760px) 92vw, 46vw" fetchpriority="high">
 </head>
@@ -3319,6 +3358,24 @@
 
         <a href="https://www.vantagefit.io/pricing/">Pricing</a>
         <a class="nav-cta" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+
+        <div class="lang" data-lang>
+          <button class="lang-btn" type="button" aria-expanded="false" aria-controls="lang-menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>
+              <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/>
+            </svg>
+            <span class="lang-code">EN</span>
+            <svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            <span class="visually-hidden">Change language, current language English</span>
+          </button>
+          <ul class="lang-menu" id="lang-menu" hidden>
+            <li><a href="https://www.vantagefit.io/"    hreflang="en" lang="en" aria-current="true">English</a></li>
+            <li><a href="https://www.vantagefit.io/fr/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="https://www.vantagefit.io/es/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="https://www.vantagefit.io/de/" hreflang="de" lang="de">Deutsch</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
@@ -4306,6 +4363,33 @@
         });
       }, { threshold: 0, rootMargin: '0px 0px -28% 0px' });
       hosts.forEach((_, host) => io.observe(host));
+    })();
+
+    // Language switcher
+    (function () {
+      const root = document.querySelector('[data-lang]');
+      if (!root) return;
+      const btn = root.querySelector('.lang-btn');
+      const menu = root.querySelector('.lang-menu');
+      const close = () => { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+      const open = () => { menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); };
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        btn.getAttribute('aria-expanded') === 'true' ? close() : open();
+      });
+      document.addEventListener('click', (e) => { if (!root.contains(e.target)) close(); });
+      root.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { close(); btn.focus(); }
+      });
+      menu.addEventListener('keydown', (e) => {
+        const items = [...menu.querySelectorAll('a')];
+        const i = items.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+        if (e.key === 'ArrowUp')   { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+      });
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); open(); menu.querySelector('a').focus(); }
+      });
     })();
   </script>
 </body>
