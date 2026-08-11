@@ -76,10 +76,11 @@
     .ds-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .ds-code { overflow-x: auto; margin: 1rem 0 0; padding: 1.25rem; border-radius: var(--vf-radius-lg); background: #171C21; color: #F4F6F7; font: .82rem/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
     .ds-do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .ds-guideline { padding: 1.4rem; border-radius: var(--vf-radius-lg); background: #fff; }
-    .ds-guideline--do { border-top: .25rem solid var(--vf-teal-700); }
-    .ds-guideline--dont { border-top: .25rem solid var(--vf-coral-700); }
-    .ds-guideline h3 { font-size: 1rem; }
+    .ds-guideline { padding: 1.4rem; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-lg); background: #fff; }
+    .ds-guideline h3 { display: flex; align-items: center; gap: .65rem; font-size: 1rem; }
+    .ds-guideline h3::before { display: grid; width: 1.75rem; height: 1.75rem; flex: none; place-items: center; border-radius: 50%; font-size: .82rem; font-weight: 800; }
+    .ds-guideline--do h3::before { background: #E9F8F4; color: var(--vf-teal-700); content: '✓'; }
+    .ds-guideline--dont h3::before { background: #FDEBED; color: var(--vf-coral-700); content: '×'; }
     .ds-guideline ul { margin: .8rem 0 0; padding-left: 1.2rem; color: var(--vf-text); }
     .ds-section-demo { overflow: hidden; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-xl); }
     .ds-section-demo > div { min-height: 16rem; padding: 2rem; }
