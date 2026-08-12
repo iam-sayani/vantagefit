@@ -54,7 +54,7 @@
   --vf-focus: var(--vf-coral-500);  /* homepage focus rings are coral, not blue */
   /* the 5%/125% stops are the homepage's, not a rounded approximation */
   --vf-action-gradient: linear-gradient(125deg, var(--vf-coral-500) 5%, var(--vf-coral-700) 125%);
-  --vf-brand-gradient: linear-gradient(125deg, var(--vf-coral-500) 0%, var(--vf-coral-700) 100%);
+  --vf-brand-gradient: linear-gradient(158deg, var(--vf-coral-500) 0%, var(--vf-coral-700) 100%);
   --vf-dark-gradient: linear-gradient(145deg, var(--vf-slate-700) 0%, var(--vf-dark) 100%);
 
   /* ---- Type ---- source: body, h1, h2.section-heading, h3, .lead, .eyebrow
@@ -179,7 +179,33 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
 .vf-section--grey { background: var(--vf-surface-soft); }
 .vf-section--coral { background: #FDEBED; }
 .vf-section--dark { background: var(--vf-dark-gradient); color: #fff; }
-.vf-section--brand { background: var(--vf-brand-gradient); color: #fff; }
+/* .final — the closing conversion band. Deep red behind the copy because white
+   small text on coral is only 3.45:1; the brand red carries the corners. */
+.vf-section--brand {
+  position: relative;
+  display: flex;
+  min-height: calc(var(--vf-section-min-h) * .72);
+  align-items: center;
+  overflow: hidden;
+  padding-block: 88px;
+  background: var(--vf-brand-gradient);
+  color: #fff;
+  text-align: center;
+}
+.vf-section--brand .vf-section-title { max-width: 65ch; margin-inline: auto; }
+/* .final p declares 1.08rem, but the unified subheader rule declared later in
+   the homepage overrides it to the standard lead size — so this inherits. */
+.vf-section--brand .vf-lead,
+.vf-section--brand .vf-body,
+.vf-section--brand .vf-small { color: #fff; }
+.vf-section--brand .vf-lead { max-width: 48.75rem; margin-inline: auto; }
+.vf-section--brand .vf-eyebrow { color: #fff; }
+.vf-section--brand .vf-actions { justify-content: center; }
+/* the coral gradient disappears on red, so the primary goes solid white — 5.43:1 */
+.vf-section--brand .vf-button--primary { background: #fff; color: var(--vf-coral-700); }
+.vf-section--brand .vf-button--primary:hover { background: #fff; filter: brightness(.96); }
+.vf-section--brand .vf-button--secondary { border-color: rgba(255, 255, 255, .35); background: transparent; color: #fff; }
+.vf-section--brand .vf-button--secondary:hover { border-color: rgba(255, 255, 255, .5); background: rgba(255, 255, 255, .1); box-shadow: none; }
 
 .vf-stack { display: flex; flex-direction: column; gap: var(--vf-stack-gap, var(--vf-space-4)); }
 .vf-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--vf-cluster-gap, var(--vf-space-3)); }

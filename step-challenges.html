@@ -362,20 +362,42 @@
      the product's rather than a generic card. Mobile first. */
   .sol-lb { display: grid; gap: var(--vf-space-5); justify-items: center; }
   .sol-lb__device {
+    position: relative;
     width: min(100%, 19.5rem);
-    padding: .5rem;
+    padding: .52rem;
     border-radius: 3rem;
-    background: linear-gradient(160deg, #3A4150 0%, #14181F 60%);
-    box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 30px 70px rgba(0,0,0,.55),
-      inset 0 1px 0 rgba(255,255,255,.16);
+    background: linear-gradient(145deg, #4B5361 0%, #242A33 28%, #10141A 72%, #313945 100%);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 0 0 2px rgba(0,0,0,.35),
+      0 34px 76px rgba(0,0,0,.58), inset 0 1px 1px rgba(255,255,255,.24);
+  }
+  /* Subtle hardware controls keep the silhouette recognisably phone-like. */
+  .sol-lb__device::before,
+  .sol-lb__device::after {
+    position: absolute;
+    left: -.18rem;
+    width: .2rem;
+    border-radius: .2rem 0 0 .2rem;
+    background: linear-gradient(#3D4551, #171C23);
+    content: '';
+  }
+  .sol-lb__device::before { top: 7rem; height: 3.4rem; }
+  .sol-lb__device::after { top: 11rem; height: 2rem; }
+  .sol-lb__device::before { box-shadow: 19.65rem 2rem 0 #171C23; }
+  .sol-lb__device::after { box-shadow: 0 -5.1rem 0 #202630; }
+  .sol-lb__device > * { position: relative; z-index: 1; }
+  .sol-lb__device {
+    min-height: 36.5rem;
   }
   .sol-lb__screen {
     position: relative;
     display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    min-height: 35.45rem;
     overflow: hidden;
     border-radius: 2.6rem;
     background: var(--vf-canvas);
     color: var(--vf-ink);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
   }
 
   /* ---- status bar + coral header ---- */
@@ -406,7 +428,13 @@
     height: 1.15rem;
     border-radius: var(--vf-radius-pill);
     background: #0B0E12;
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.22);
     transform: translateX(-50%);
+  }
+  .sol-lb__island::after {
+    position: absolute; right: .55rem; top: 50%; width: .32rem; height: .32rem;
+    border-radius: 50%; background: radial-gradient(circle at 35% 35%, #25335A, #05070A 70%);
+    content: ''; transform: translateY(-50%);
   }
   .sol-lb__nav { display: grid; grid-template-columns: 1.05rem 1fr 1.05rem; align-items: center; gap: .5rem; }
   .sol-lb__nav strong { font-size: .88rem; font-weight: 750; text-align: center; }
@@ -429,7 +457,7 @@
     border: 2px solid var(--vf-coral-600, #C8203A); border-radius: 50%; background: #F5C542; }
 
   /* ---- app canvas ---- */
-  .sol-lb__body { padding: .8rem .75rem .35rem; background: var(--vf-canvas); }
+  .sol-lb__body { padding: .9rem .75rem .55rem; background: var(--vf-canvas); }
   .sol-lb__tabs {
     display: grid; grid-template-columns: 1fr 1fr; gap: .2rem; margin-bottom: .7rem; padding: .2rem;
     border-radius: var(--vf-radius-pill); background: #E7E7EE;
@@ -437,10 +465,10 @@
   }
   .sol-lb__tabs span { padding: .3rem 0; border-radius: var(--vf-radius-pill); color: var(--vf-text); }
   .sol-lb__tabs .is-on { background: #fff; color: var(--vf-ink); box-shadow: 0 1px 3px rgba(41,41,76,.14); }
-  .sol-lb__list { display: grid; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+  .sol-lb__list { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
   .sol-lb__row {
     display: grid; grid-template-columns: .85rem 1.65rem minmax(0,1fr) auto; align-items: center;
-    gap: .5rem; padding: .5rem .6rem;
+    gap: .5rem; padding: .68rem .6rem;
     border-radius: .85rem; background: #fff;
     box-shadow: 0 1px 2px rgba(41,41,76,.07);
   }
@@ -459,11 +487,23 @@
   .sol-lb__row--flagged .sol-lb__face { background: #A6A6B6; }
   .sol-lb__row--flagged .sol-lb__name { color: var(--vf-text); }
   .sol-lb__score--struck { color: var(--vf-text); text-decoration: line-through; }
+  .sol-lb__goal {
+    margin-top: .7rem; padding: .72rem .75rem .65rem; border-radius: 1rem;
+    background: #fff; box-shadow: 0 1px 3px rgba(41,41,76,.08);
+  }
+  .sol-lb__goal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .sol-lb__goal-head strong { font-size: .68rem; font-weight: 800; }
+  .sol-lb__goal-head span { color: var(--vf-coral-700); font-size: .62rem; font-weight: 800; }
+  .sol-lb__progress { display: block; height: .35rem; margin-top: .55rem; overflow: hidden;
+    border-radius: var(--vf-radius-pill); background: #ECECF1; }
+  .sol-lb__progress i { display: block; width: 76%; height: 100%; border-radius: inherit;
+    background: var(--vf-action-gradient); }
+  .sol-lb__goal small { display: block; margin-top: .42rem; color: var(--vf-text); font-size: .52rem; font-weight: 650; }
 
   /* ---- tab bar + home indicator ---- */
   .sol-lb__tabbar {
     display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; justify-items: center;
-    padding: .5rem .75rem .2rem;
+    padding: .65rem .75rem .3rem;
     border-top: 1px solid rgba(41,41,76,.07); background: #fff; color: var(--vf-coral-600, #D8324A);
   }
   .sol-lb__tabbar > svg { width: 1.15rem; height: 1.15rem; opacity: .85; }
@@ -474,7 +514,7 @@
     box-shadow: 0 6px 14px rgba(184,23,42,.34);
   }
   .sol-lb__fab svg { width: 1rem; height: 1rem; }
-  .sol-lb__home { display: block; width: 33%; height: .28rem; margin: .35rem auto .45rem;
+  .sol-lb__home { display: block; width: 33%; height: .28rem; margin: .45rem auto .6rem;
     border-radius: var(--vf-radius-pill); background: rgba(41,41,76,.32); }
   .sol-lb__note { color: rgba(255,255,255,.66); max-width: 22rem; text-align: center; }
 
@@ -729,7 +769,9 @@
   </section>
 
   <!-- ========== DATA INTEGRITY ========== -->
-  <section class="vf-section vf-section--dark vf-on-dark" id="integrity">
+  <section class="vf-section vf-section--dark vf-on-dark vf-brand-field" id="integrity">
+    <span class="vf-brand-shape vf-brand-shape--slate vf-brand-shape--start" aria-hidden="true"></span>
+    <span class="vf-brand-shape vf-brand-shape--slate vf-brand-shape--end" aria-hidden="true"></span>
     <div class="vf-container vf-stack" style="--vf-stack-gap: var(--vf-space-7)">
       <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
         <span class="vf-eyebrow" style="color: var(--vf-teal-500)">Data integrity</span>
@@ -788,6 +830,11 @@
                     <span class="sol-lb__name">J. Doe<small>Source rejected</small></span>
                     <span class="sol-lb__score sol-lb__score--struck">214,006</span></li>
                 </ol>
+                <div class="sol-lb__goal" aria-hidden="true">
+                  <div class="sol-lb__goal-head"><strong>Your weekly goal</strong><span>76%</span></div>
+                  <span class="sol-lb__progress"><i></i></span>
+                  <small>53,460 of 70,000 steps &middot; Synced 2 min ago</small>
+                </div>
               </div>
 
               <div class="sol-lb__tabbar" aria-hidden="true">
@@ -893,14 +940,16 @@
   </section>
 
   <!-- ========== CLOSING CTA ========== -->
-  <section class="vf-section vf-section--brand vf-on-dark" id="closer">
+  <section class="vf-section vf-section--brand vf-brand-field" id="closer">
+    <span class="vf-brand-shape vf-brand-shape--coral vf-brand-shape--start" aria-hidden="true"></span>
+    <span class="vf-brand-shape vf-brand-shape--coral vf-brand-shape--end" aria-hidden="true"></span>
     <div class="vf-container vf-stack vf-center" style="align-items: center">
-      <span class="vf-eyebrow" style="color: #fff">A stronger first step</span>
-      <h2 class="vf-section-title" style="max-width: 24ch">See the step challenge your workforce would actually join</h2>
-      <p class="vf-lead" style="color: #fff">In one demo, choose the right format, walk through the employee experience, and see how your HR team can launch, manage, and report the program.</p>
-      <div class="vf-actions" style="justify-content: center">
-        <a class="vf-button vf-button--light" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
-        <a class="vf-button" style="border-color: rgba(255,255,255,.5); color:#fff" href="https://www.vantagefit.io/pricing/">See pricing</a>
+      <span class="vf-eyebrow">A stronger first step</span>
+      <h2 class="vf-section-title">See the step challenge your workforce would actually join</h2>
+      <p class="vf-lead">In one demo, choose the right format, walk through the employee experience, and see how your HR team can launch, manage, and report the program.</p>
+      <div class="vf-actions">
+        <a class="vf-button vf-button--primary" href="https://www.vantagefit.io/request-demo/">Book a demo</a>
+        <a class="vf-button vf-button--secondary" href="https://www.vantagefit.io/pricing/">See pricing</a>
       </div>
       <ul class="sol-assurances" style="justify-content: center; margin:0; padding:0">
         <li>Format recommendation</li>
