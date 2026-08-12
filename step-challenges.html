@@ -188,12 +188,10 @@
     .sol-follow__claim { position: sticky; top: calc(var(--vf-nav-h) + var(--vf-space-6)); }
   }
 
-  .sol-numbered { counter-reset: sol; display: grid; gap: var(--vf-space-5); }
-  .sol-numbered > li { display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--vf-space-4); list-style: none; }
-  .sol-numbered > li::before { display: grid; width: 2.5rem; height: 2.5rem; place-items: center;
-    border-radius: var(--vf-radius-md); background: #FDEBED; color: var(--vf-coral-700);
-    font-weight: 800; counter-increment: sol; content: counter(sol, decimal-leading-zero); }
-  .vf-section--dark .sol-numbered > li::before { background: rgba(255,255,255,.1); color: #fff; }
+  /* The admin workflow uses the same quiet, two-digit editorial index as the
+     follow-through section above. Keep the list narrow enough that its rules
+     read as a single sequence beside the dashboard. */
+  .sol-admin-steps { align-self: center; }
 
   /* Rollout confidence — an editorial split rather than a row of four equal
      boxes. The claim holds the left column and the four assurances read as one
@@ -318,14 +316,15 @@
   .sol-format__art { position: absolute; z-index: 0; inset: 0; margin: 0; padding: 0; }
   .sol-format__art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
 
-  /* Tints follow the illustration each card carries: coral for the race, mint
-     for the climb and the field, a warm wash under Journey's cream map, deep
-     red under the finish tape. Ink is the text-safe stop of the same hue. */
+  /* Tints follow the illustration each card carries: coral under the finish
+     tape, mint for the climb, a warm wash under Journey's cream map, mint again
+     under the field of runners, coral under the pair. Ink is the text-safe stop
+     of the same hue. */
   .sol-format--race     { --sol-format-tint: rgba(241,81,98,.22); --sol-format-soft: rgba(241,81,98,.2);  --sol-format-ink: var(--vf-coral-700); }
   .sol-format--streak   { --sol-format-tint: rgba(65,216,180,.24); --sol-format-soft: rgba(65,216,180,.2); --sol-format-ink: var(--vf-teal-700); }
   .sol-format--journey  { --sol-format-tint: rgba(255,157,87,.22); --sol-format-soft: rgba(255,157,87,.2); --sol-format-ink: var(--vf-orange-700); }
-  .sol-format--marathon { --sol-format-tint: rgba(184,23,42,.16); --sol-format-soft: rgba(184,23,42,.14); --sol-format-ink: var(--vf-coral-700); }
-  .sol-format--custom   { --sol-format-tint: rgba(22,157,126,.2);  --sol-format-soft: rgba(22,157,126,.16); --sol-format-ink: var(--vf-teal-700); }
+  .sol-format--marathon { --sol-format-tint: rgba(22,157,126,.2);  --sol-format-soft: rgba(22,157,126,.16); --sol-format-ink: var(--vf-teal-700); }
+  .sol-format--custom   { --sol-format-tint: rgba(241,81,98,.18); --sol-format-soft: rgba(241,81,98,.16); --sol-format-ink: var(--vf-coral-700); }
 
   /* one column: hold the card to a phone-ish width so the proportion does not
      turn it into a full page of artwork */
@@ -431,11 +430,126 @@
     background: rgba(255,255,255,.12); font-size: var(--vf-text-xs); font-weight: 800; }
   .sol-strike { text-decoration: line-through; }
 
-  .sol-kpis { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--vf-space-3); }
-  @media (max-width: 560px) { .sol-kpis { grid-template-columns: 1fr; } }
-  .sol-dept { display: grid; gap: var(--vf-space-3); }
-  .sol-dept__row { display: grid; grid-template-columns: 5rem 1fr 2.5rem; align-items: center; gap: var(--vf-space-3);
-    font-size: var(--vf-text-sm); font-weight: 700; }
+  /* Admin preview — deliberately closer to a calm reporting surface than a
+     generic marketing card: one border, restrained dividers, and no pills
+     around every piece of data. */
+  .sol-admin {
+    display: grid;
+    padding: 1.75rem;
+    border: 1px solid var(--vf-border);
+    border-radius: var(--vf-radius-xl);
+    background: var(--vf-surface);
+    box-shadow: 0 16px 44px rgba(41, 41, 76, .06);
+  }
+  .sol-admin__top,
+  .sol-admin__title,
+  .sol-admin__section-head,
+  .sol-admin__next {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--vf-space-4);
+  }
+  .sol-admin__brand {
+    color: var(--vf-ink);
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .035em;
+  }
+  .sol-admin__actions { display: flex; align-items: center; gap: var(--vf-space-4); }
+  .sol-admin__action {
+    color: var(--vf-text);
+    font-size: .68rem;
+    font-weight: 750;
+    white-space: nowrap;
+  }
+  .sol-admin__action + .sol-admin__action {
+    padding-left: var(--vf-space-4);
+    border-left: 1px solid var(--vf-border);
+  }
+  .sol-admin__title {
+    align-items: flex-start;
+    padding-block: 1.35rem 1.5rem;
+    border-bottom: 1px solid var(--vf-border);
+  }
+  .sol-admin__title strong { max-width: 27rem; line-height: 1.35; }
+  .sol-admin__status {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: .4rem;
+    color: var(--vf-text);
+    font-size: .65rem;
+    font-weight: 700;
+  }
+  .sol-admin__status::before {
+    width: .4rem;
+    height: .4rem;
+    border-radius: 50%;
+    background: var(--vf-teal-600);
+    content: '';
+  }
+  .sol-kpis {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--vf-border);
+  }
+  .sol-kpis .vf-stat { padding-inline: var(--vf-space-5); }
+  .sol-kpis .vf-stat:first-child { padding-left: 0; }
+  .sol-kpis .vf-stat + .vf-stat { border-left: 1px solid var(--vf-border); }
+  .sol-kpis .vf-stat__value { font-size: 1.85rem; font-weight: 700; letter-spacing: -.045em; }
+  .sol-kpis .vf-stat__label { margin-top: .15rem; }
+  .sol-kpis .vf-stat__change {
+    display: block;
+    margin-top: .45rem;
+    padding: 0;
+    background: transparent;
+    font-size: .62rem;
+    font-weight: 700;
+  }
+  .sol-admin__departments { padding-block: 1.4rem 1.5rem; }
+  .sol-admin__section-head { margin-bottom: var(--vf-space-4); }
+  .sol-dept { display: grid; gap: .9rem; }
+  .sol-dept__row {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr 2.35rem;
+    align-items: center;
+    gap: var(--vf-space-3);
+    font-size: .75rem;
+    font-weight: 700;
+  }
+  .sol-dept .vf-progress { height: .38rem; background: var(--vf-surface-soft); }
+  .sol-dept .vf-progress > span { background: var(--vf-teal-600); }
+  .sol-admin__next {
+    justify-content: flex-start;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--vf-border);
+  }
+  .sol-admin__next-icon {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid var(--vf-border-strong);
+    border-radius: 50%;
+    color: var(--vf-coral-700);
+    font-size: .95rem;
+  }
+  .sol-admin__next strong { display: block; font-size: .84rem; line-height: 1.4; }
+  .sol-admin__next .vf-small { margin-top: .15rem; }
+
+  @media (max-width: 560px) {
+    .sol-admin { padding: var(--vf-space-5); }
+    .sol-admin__top { align-items: flex-start; }
+    .sol-admin__actions { gap: var(--vf-space-3); }
+    .sol-admin__action + .sol-admin__action { padding-left: var(--vf-space-3); }
+    .sol-admin__title { display: grid; }
+    .sol-kpis { grid-template-columns: 1fr; padding-block: var(--vf-space-3); }
+    .sol-kpis .vf-stat { padding: var(--vf-space-4) 0; }
+    .sol-kpis .vf-stat + .vf-stat { border-top: 1px solid var(--vf-border); border-left: 0; }
+  }
 
 </style>
 </head>
@@ -568,7 +682,7 @@
           <h3 class="vf-card-title">Race</h3>
           <p class="vf-small">Spark a short burst</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/format-race.webp" alt="Two runners racing neck and neck" width="560" height="766" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-tape.webp" alt="A runner breaking the finish tape" width="560" height="766" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--streak">
@@ -579,7 +693,7 @@
           <h3 class="vf-card-title">Streak</h3>
           <p class="vf-small">Build daily consistency</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/format-streak.webp" alt="A person taking the next step up a flight of stairs" width="560" height="1322" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-stairs.webp" alt="A person taking the next step up a flight of stairs" width="560" height="1322" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--journey">
@@ -590,7 +704,7 @@
           <h3 class="vf-card-title">Journey</h3>
           <p class="vf-small">Make progress visual</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/format-journey.webp" alt="A traveller walking a mapped route past landmarks" width="560" height="970" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-map.webp" alt="A traveller walking a mapped route past landmarks" width="560" height="970" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--marathon">
@@ -601,7 +715,7 @@
           <h3 class="vf-card-title">E-Marathon</h3>
           <p class="vf-small">Rally around an event</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/format-marathon.webp" alt="A runner breaking the finish tape" width="560" height="849" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-crowd.webp" alt="A field of runners setting off together" width="560" height="849" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--custom">
@@ -612,7 +726,7 @@
           <h3 class="vf-card-title">Custom multi-week</h3>
           <p class="vf-small">Movement, mindfulness, hydration and more</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/format-custom.webp" alt="A field of runners setting off together" width="560" height="1322" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-pair.webp" alt="Two runners racing neck and neck" width="560" height="1322" loading="lazy" decoding="async">
           </span>
         </li>
       </ul>
@@ -704,31 +818,31 @@
         <p class="vf-lead">One admin workflow, not device data, spreadsheets, and winner updates.</p>
       </div>
       <div class="vf-split">
-        <ol class="sol-numbered" style="margin:0; padding:0">
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Set the experience</h3><p class="vf-body">Format, dates, visibility, and audience, in 5 to 10 minutes.</p></div></li>
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Bring people in</h3><p class="vf-body">Add or bulk-upload participants and configure teams.</p></div></li>
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Read the room while it is live</h3><p class="vf-body">Track standings and nudge participants when momentum dips.</p></div></li>
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Close with a credible result</h3><p class="vf-body">Export participant, department, step, and rank data to CSV.</p></div></li>
+        <ol class="vf-index-list sol-admin-steps">
+          <li class="vf-index-item"><span class="vf-index-number" aria-hidden="true">01</span><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Set the experience</h3><p class="vf-body">Format, dates, visibility, and audience, in 5 to 10 minutes.</p></div></li>
+          <li class="vf-index-item"><span class="vf-index-number" aria-hidden="true">02</span><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Bring people in</h3><p class="vf-body">Add or bulk-upload participants and configure teams.</p></div></li>
+          <li class="vf-index-item"><span class="vf-index-number" aria-hidden="true">03</span><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Read the room while it is live</h3><p class="vf-body">Track standings and nudge participants when momentum dips.</p></div></li>
+          <li class="vf-index-item"><span class="vf-index-number" aria-hidden="true">04</span><div class="vf-stack" style="--vf-stack-gap:.35rem"><h3 class="vf-card-title">Close with a credible result</h3><p class="vf-body">Export participant, department, step, and rank data to CSV.</p></div></li>
         </ol>
 
-        <div class="vf-card vf-card--raised vf-stack" style="--vf-stack-gap: var(--vf-space-5)">
-          <div class="vf-cluster" style="justify-content: space-between">
-            <span class="vf-meta">Vantage Fit Admin</span>
-            <span class="vf-cluster" style="--vf-cluster-gap: var(--vf-space-2)">
-              <span class="vf-badge">Send a nudge</span><span class="vf-badge">Export CSV</span>
+        <div class="sol-admin">
+          <div class="sol-admin__top">
+            <span class="sol-admin__brand">Vantage Fit Admin</span>
+            <span class="sol-admin__actions">
+              <span class="sol-admin__action">Send a nudge</span><span class="sol-admin__action">Export CSV</span>
             </span>
           </div>
-          <div class="vf-cluster" style="justify-content: space-between">
+          <div class="sol-admin__title">
             <strong>Ongoing challenge &middot; Company Coast-to-Coast</strong>
-            <span class="vf-badge vf-badge--reward">Illustrative</span>
+            <span class="sol-admin__status">Illustrative</span>
           </div>
           <div class="sol-kpis">
             <div class="vf-stat"><span class="vf-stat__value">1,248</span><span class="vf-stat__label">Joined</span><span class="vf-stat__change">+114 this week</span></div>
             <div class="vf-stat"><span class="vf-stat__value">78%</span><span class="vf-stat__label">Active</span><span class="vf-stat__change">Last 7 days</span></div>
             <div class="vf-stat"><span class="vf-stat__value">842</span><span class="vf-stat__label">On track</span><span class="vf-stat__change">Current milestone</span></div>
           </div>
-          <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
-            <div class="vf-cluster" style="justify-content: space-between">
+          <div class="sol-admin__departments">
+            <div class="sol-admin__section-head">
               <span class="vf-meta">Department view &middot; active</span><span class="vf-meta">14 days</span>
             </div>
             <div class="sol-dept">
@@ -738,9 +852,9 @@
               <div class="sol-dept__row"><span>Finance</span><span class="vf-progress" style="--vf-progress: 68%"><span></span></span><span>68%</span></div>
             </div>
           </div>
-          <div class="vf-callout">
-            <span class="vf-card__icon" aria-hidden="true">&rarr;</span>
-            <div class="vf-stack" style="--vf-stack-gap:.25rem">
+          <div class="sol-admin__next">
+            <span class="sol-admin__next-icon" aria-hidden="true">&rarr;</span>
+            <div>
               <strong>Next action &middot; invite 92 eligible employees</strong>
               <p class="vf-small">Send one focused reminder to people who have not joined.</p>
             </div>
