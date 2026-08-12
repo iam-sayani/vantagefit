@@ -37,7 +37,9 @@
   --vf-text-subtle: #50506D;        /* the homepage has ONE muted tone, not two */
   --vf-canvas: #F8F8F9;             /* --canvas */
   --vf-surface: #FFFFFF;            /* --paper */
-  --vf-surface-soft: #F1F1F6;       /* --soft */
+  --vf-surface-soft: #F1F1F6;       /* --soft; small UI only on the homepage:
+                                       menu-link hover, chips, media placeholders */
+  --vf-surface-tint: #F8FAFB;       /* the homepage's soft SECTION field (#proof, #blogs) */
   --vf-dark: #1D2228;               /* --dark */
   --vf-border: rgba(41, 41, 76, .12);      /* --line */
   --vf-border-strong: rgba(41, 41, 76, .18);
@@ -172,7 +174,9 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
   min-height: var(--vf-section-min-h);
 }
 .vf-section--surface { background: var(--vf-surface); }
-.vf-section--soft { background: var(--vf-surface-soft); }
+.vf-section--soft { background: var(--vf-surface-tint); }
+/* kept for the rare block that wants the chip grey as a field */
+.vf-section--grey { background: var(--vf-surface-soft); }
 .vf-section--coral { background: #FDEBED; }
 .vf-section--dark { background: var(--vf-dark-gradient); color: #fff; }
 .vf-section--brand { background: var(--vf-brand-gradient); color: #fff; }

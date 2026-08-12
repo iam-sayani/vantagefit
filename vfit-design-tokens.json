@@ -51,7 +51,8 @@
       },
       "surfaceSoft": {
         "$type": "color",
-        "$value": "#F1F1F6"
+        "$value": "#F1F1F6",
+        "$description": "Small UI only on the homepage: menu-link hover, chips, media placeholders. Not a section field."
       },
       "dark": {
         "$type": "color",
@@ -64,6 +65,11 @@
       "borderOnDark": {
         "$type": "color",
         "$value": "rgba(255, 255, 255, 0.14)"
+      },
+      "surfaceTint": {
+        "$type": "color",
+        "$value": "#F8FAFB",
+        "$description": "The homepage's soft section background."
       }
     },
     "semantic": {

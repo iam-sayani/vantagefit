@@ -18,26 +18,8 @@
 <link rel="stylesheet" href="/vf-site-nav.css">
 <style>
   /* ===== page-local composition only ===== */
-  /* height of the section jump strip, referenced by the hero and every anchor */
-  :root { --sol-subnav-h: 2.5rem; }
-  /* section anchors have to clear the fixed site nav plus the jump strip */
-  section[id] { scroll-margin-top: calc(var(--vf-nav-h) + var(--sol-subnav-h) + var(--vf-space-4)); }
-
-  /* Section jump links. Kept deliberately weightless: no second bar, no page
-     title repeated from the h1 — just small muted links on a near-invisible
-     wash, so they read as an aid rather than a navigation layer. */
-  .sol-subnav { position: sticky; top: var(--vf-nav-h); z-index: 30;
-    background: rgba(255,255,255,.72); backdrop-filter: blur(12px) saturate(1.3);
-    -webkit-backdrop-filter: blur(12px) saturate(1.3); }
-  .sol-subnav__inner { display: flex; align-items: center; gap: var(--vf-space-5);
-    min-height: var(--sol-subnav-h); }
-  .sol-subnav__links { display: flex; gap: var(--vf-space-5); }
-  .sol-subnav__links a { color: var(--vf-text-subtle); font-size: var(--vf-text-xs);
-    font-weight: 600; letter-spacing: .01em; text-decoration: none; transition: color .2s ease; }
-  .sol-subnav__links a:hover { color: var(--vf-ink); }
-  @media (max-width: 860px) {
-    .sol-subnav__links { overflow-x: auto; gap: var(--vf-space-4); }
-  }
+  /* section anchors have to clear the fixed site nav */
+  section[id] { scroll-margin-top: calc(var(--vf-nav-h) + var(--vf-space-4)); }
 
   /* Hero — the supplied wide lifestyle image becomes the field itself. The
      left-to-right overlay is intentionally strongest behind copy and nearly
@@ -47,7 +29,7 @@
     position: relative;
     isolation: isolate;
     display: grid;
-    min-height: calc(100svh - var(--vf-nav-h) - var(--sol-subnav-h));
+    min-height: calc(100svh - var(--vf-nav-h));
     overflow: hidden;
     /* Match the homepage's compact first-fold rhythm (34px top / 40px bottom)
        instead of letting the portrait image add extra vertical space. */
@@ -85,9 +67,9 @@
   /* measure only — type scale and leading stay with the design system classes */
   .sol-hero__copy .vf-display { max-width: 12.5ch; }
   .sol-hero__copy .vf-lead { max-width: 35rem; color: rgba(255,255,255,.84); }
-  .sol-hero__copy .vf-eyebrow { color: #FF9BA6; }
+  .sol-hero__copy .vf-eyebrow { color: #F15162; }
   .sol-hero__copy .vf-accent-text {
-    background: linear-gradient(125deg, #FF9BA6, var(--vf-coral-500));
+    background: linear-gradient(125deg, #F15162 8%, #B8172A 112%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -129,10 +111,8 @@
     .sol-hero__visual { width: min(100%, 38rem); justify-self: center; }
   }
   @media (max-width: 760px) {
-    :root { --sol-subnav-h: 0px; }
-    .sol-subnav { display: none; }
     .sol-hero {
-      min-height: calc(100svh - var(--vf-nav-h) - var(--sol-subnav-h));
+      min-height: calc(100svh - var(--vf-nav-h));
       padding-block: 1.5rem var(--vf-space-7);
       background-color: var(--vf-dark);
       background-image: url('https://res.cloudinary.com/vantagecircle/image/upload/f_auto,q_auto:eco,w_900/v1786451236/vfitimages/Sayani/Hompage-New/step-challenge.png');
@@ -184,6 +164,51 @@
   .vf-section--brand .sol-assurances li { color: #fff; }
   .vf-section--brand .sol-assurances li::before { background: #fff; }
 
+  /* Follow-through. Written mobile first: the base rules below ARE the phone
+     layout, and the 900px query only adds the two-column split. The steps-sync
+     chips live inside step 01 rather than in a separate column, so the sync
+     claim and its evidence stay together when the columns collapse. */
+  .sol-follow { display: grid; gap: var(--vf-space-7); }
+  .sol-follow__claim > * + * { margin-top: var(--vf-space-4); }
+  .sol-follow__list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+  .sol-follow__item {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: var(--vf-space-4);
+    padding-block: var(--vf-space-5);
+    border-top: 1px solid var(--vf-border);
+  }
+  .sol-follow__item:first-child { border-top: 0; padding-top: 0; }
+  .sol-follow__item:last-child { padding-bottom: 0; }
+  .sol-follow__no {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #FDEBED;
+    color: var(--vf-coral-700);
+    font-size: var(--vf-text-xs);
+    font-weight: 800;
+    letter-spacing: .04em;
+  }
+  .sol-follow__item .vf-body { margin-top: .35rem; }
+  .sol-follow__chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: var(--vf-space-4) 0 0; padding: 0; list-style: none; }
+  .sol-follow__chips li {
+    padding: .3rem .7rem;
+    border-radius: var(--vf-radius-pill);
+    background: var(--vf-surface-soft);
+    color: var(--vf-ink);
+    font-size: .72rem;
+    font-weight: 700;
+  }
+  .sol-follow__note { margin-top: var(--vf-space-3); }
+
+  @media (min-width: 900px) {
+    .sol-follow { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 52px; align-items: start; }
+    .sol-follow__claim { position: sticky; top: calc(var(--vf-nav-h) + var(--vf-space-6)); }
+  }
+
   .sol-numbered { counter-reset: sol; display: grid; gap: var(--vf-space-5); }
   .sol-numbered > li { display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--vf-space-4); list-style: none; }
   .sol-numbered > li::before { display: grid; width: 2.5rem; height: 2.5rem; place-items: center;
@@ -201,7 +226,7 @@
     gap: 52px;
     align-items: start;
   }
-  .sol-confidence__claim { position: sticky; top: calc(var(--vf-nav-h) + var(--sol-subnav-h) + var(--vf-space-6)); }
+  .sol-confidence__claim { position: sticky; top: calc(var(--vf-nav-h) + var(--vf-space-6)); }
   /* the label wraps in a narrow column, so it needs to justify left rather than
      centre, and sit on its own line under the claim */
   .sol-confidence__link { display: flex; justify-content: flex-start; margin-top: var(--vf-space-5); }
@@ -246,7 +271,7 @@
   }
   @media (max-width: 560px) { .sol-confidence__grid { grid-template-columns: 1fr; } }
 
-  .sol-formats { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: var(--vf-space-3); }
+  .sol-formats { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: .75rem; }
   @media (max-width: 1100px) { .sol-formats { grid-template-columns: repeat(2, minmax(0,1fr)); } }
   @media (max-width: 560px)  { .sol-formats { grid-template-columns: 1fr; } }
 
@@ -256,18 +281,35 @@
      the programme rather than decorating it. Vector, so it themes with the
      brand tokens and stays crisp at any size. */
   .sol-format {
+    --sol-format-soft: rgba(241,81,98,.18);
     position: relative;
     display: flex;
     overflow: hidden;
     flex-direction: column;
     gap: var(--vf-space-2);
-    padding: var(--vf-space-5);
+    min-height: 22rem;
+    padding: 1.5rem 1.35rem 1.15rem;
     border: 1px solid var(--vf-border);
     border-radius: var(--vf-radius-xl);
-    background: linear-gradient(168deg, var(--sol-format-tint) 0%, var(--vf-surface) 58%);
+    background:
+      radial-gradient(90% 54% at 78% 2%, rgba(255,255,255,.72), transparent 70%),
+      linear-gradient(168deg, var(--sol-format-tint) 0%, var(--vf-surface) 57%);
+    box-shadow: 0 10px 30px rgba(41,41,76,.035);
     transition: transform .28s cubic-bezier(.22,.9,.24,1), box-shadow .28s ease;
   }
-  .sol-format:hover { transform: translateY(-4px); box-shadow: var(--vf-shadow-sm); }
+  .sol-format::before {
+    position: absolute;
+    right: -18%;
+    bottom: 13%;
+    width: 82%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--sol-format-soft), transparent 68%);
+    pointer-events: none;
+    content: '';
+  }
+  .sol-format:hover { transform: translateY(-6px); box-shadow: 0 20px 42px rgba(41,41,76,.1); }
+  .sol-format > * { position: relative; z-index: 1; }
   .sol-format__badge {
     display: grid;
     width: 2.25rem;
@@ -279,19 +321,28 @@
     color: var(--sol-format-ink);
   }
   .sol-format__badge svg { width: 1.1rem; height: 1.1rem; }
-  .sol-format__no { color: var(--sol-format-ink); font-size: var(--vf-text-xs); font-weight: 800; letter-spacing: .1em; }
+  .sol-format__no { margin-top: .15rem; color: var(--sol-format-ink); font-size: var(--vf-text-xs); font-weight: 800; letter-spacing: .1em; }
+  .sol-format .vf-card-title { font-size: 1.15rem; line-height: 1.15; }
   .sol-format .vf-small { color: var(--vf-text); }
   /* the artwork sits on the card floor whatever the copy length */
-  .sol-format__art { display: block; margin-top: auto; padding-top: var(--vf-space-5); color: var(--sol-format-ink); }
+  .sol-format__art { display: block; margin: auto -.45rem -.3rem; padding-top: var(--vf-space-4); color: var(--sol-format-ink); }
   /* capped and centred so a wide phone card does not stretch the artwork */
-  .sol-format__art svg { display: block; width: 100%; max-width: 15rem; height: auto;
-    max-height: 3.75rem; margin-inline: auto; }
+  .sol-format__art svg { display: block; width: 100%; max-width: 16rem; height: 8.5rem;
+    margin-inline: auto; overflow: visible; }
 
-  .sol-format--race     { --sol-format-tint: rgba(241,81,98,.18);  --sol-format-ink: var(--vf-coral-700); }
-  .sol-format--streak   { --sol-format-tint: rgba(255,157,87,.24); --sol-format-ink: var(--vf-orange-700); }
-  .sol-format--journey  { --sol-format-tint: rgba(65,216,180,.24); --sol-format-ink: var(--vf-teal-700); }
-  .sol-format--marathon { --sol-format-tint: rgba(48,55,64,.16);   --sol-format-ink: var(--vf-slate-700); }
-  .sol-format--custom   { --sol-format-tint: rgba(241,81,98,.12);  --sol-format-ink: var(--vf-coral-700); }
+  .sol-format--race     { --sol-format-tint: rgba(241,81,98,.22); --sol-format-soft: rgba(241,81,98,.2); --sol-format-ink: #B8172A; }
+  .sol-format--streak   { --sol-format-tint: rgba(124,92,255,.2); --sol-format-soft: rgba(124,92,255,.18); --sol-format-ink: #6946E8; }
+  .sol-format--journey  { --sol-format-tint: rgba(63,142,234,.19); --sol-format-soft: rgba(63,142,234,.18); --sol-format-ink: #276DBD; }
+  .sol-format--marathon { --sol-format-tint: rgba(65,216,180,.22); --sol-format-soft: rgba(65,216,180,.2); --sol-format-ink: #147B64; }
+  .sol-format--custom   { --sol-format-tint: rgba(241,81,98,.15); --sol-format-soft: rgba(241,81,98,.16); --sol-format-ink: #B8172A; }
+
+  @media (max-width: 1100px) {
+    .sol-format { min-height: 20rem; }
+  }
+  @media (max-width: 560px) {
+    .sol-format { min-height: 21rem; }
+    .sol-format__art svg { max-width: 19rem; height: 9rem; }
+  }
 
   .sol-leader { display: grid; gap: .1rem; }
   .sol-leader__row { display: grid; grid-template-columns: 1.5rem 2rem 1fr auto; align-items: center;
@@ -321,15 +372,6 @@
 
 <div data-vf-nav="/step-challenges"></div>
 
-<div class="sol-subnav">
-  <div class="vf-container sol-subnav__inner">
-    <nav class="sol-subnav__links" aria-label="On this page">
-      <a href="#formats">Formats</a>
-      <a href="#integrity">Data integrity</a>
-      <a href="#hr">For HR</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-  </div>
 </div>
 
 <main id="main" tabindex="-1">
@@ -516,28 +558,47 @@
 
   <!-- ========== DESIGNED FOR FOLLOW-THROUGH ========== -->
   <section class="vf-section vf-section--surface" id="agx">
-    <div class="vf-container vf-split">
-      <div class="vf-stack">
+    <div class="vf-container sol-follow">
+      <div class="sol-follow__claim">
         <span class="vf-eyebrow">Designed for follow-through</span>
         <h2 class="vf-section-title">Make the first step easy, and the next one visible</h2>
-        <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
-          <span class="vf-meta">Steps sync</span>
-          <div class="vf-cluster">
-            <span class="vf-badge">Phone</span><span class="vf-badge">Apple Health</span>
-            <span class="vf-badge">Fitbit</span><span class="vf-badge">Garmin</span>
+        <p class="vf-lead">One primary source. Less logging. No duplicate steps.</p>
+      </div>
+
+      <ol class="sol-follow__list">
+        <li class="sol-follow__item">
+          <span class="sol-follow__no" aria-hidden="true">01</span>
+          <div>
+            <h3 class="vf-card-title">Sync without a new device</h3>
+            <p class="vf-body">Phone, Apple Health, Fitbit or Garmin. One primary source, no double-counting.</p>
+            <ul class="sol-follow__chips">
+              <li>Phone</li><li>Apple Health</li><li>Fitbit</li><li>Garmin</li>
+            </ul>
+            <p class="vf-small sol-follow__note">Wearables are optional, not the price of admission.</p>
           </div>
-          <p class="vf-small">Wearables are optional, not the price of admission.</p>
-        </div>
-      </div>
-      <div class="vf-stack">
-        <h3 class="vf-card-title">One primary source. Less logging. No duplicate steps.</h3>
-        <ol class="sol-numbered" style="margin:0; padding:0">
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Sync without a new device</h4><p class="vf-body">Phone, Apple Health, Fitbit or Garmin. One primary source, no double-counting.</p></div></li>
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Give effort a visible destination</h4><p class="vf-body">Show the next milestone, not just a number at day&rsquo;s end.</p></div></li>
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Create fair social momentum</h4><p class="vf-body">Team standings use average scores, so effort beats team size.</p></div></li>
-          <li><div class="vf-stack" style="--vf-stack-gap:.35rem"><h4 class="vf-card-title">Recognize progress your way</h4><p class="vf-body">Points, badges and completion recognition, on or off.</p></div></li>
-        </ol>
-      </div>
+        </li>
+        <li class="sol-follow__item">
+          <span class="sol-follow__no" aria-hidden="true">02</span>
+          <div>
+            <h3 class="vf-card-title">Give effort a visible destination</h3>
+            <p class="vf-body">Show the next milestone, not just a number at day&rsquo;s end.</p>
+          </div>
+        </li>
+        <li class="sol-follow__item">
+          <span class="sol-follow__no" aria-hidden="true">03</span>
+          <div>
+            <h3 class="vf-card-title">Create fair social momentum</h3>
+            <p class="vf-body">Team standings use average scores, so effort beats team size.</p>
+          </div>
+        </li>
+        <li class="sol-follow__item">
+          <span class="sol-follow__no" aria-hidden="true">04</span>
+          <div>
+            <h3 class="vf-card-title">Recognize progress your way</h3>
+            <p class="vf-body">Points, badges and completion recognition, on or off.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
