@@ -171,28 +171,6 @@
      claim and its evidence stay together when the columns collapse. */
   .sol-follow { display: grid; gap: var(--vf-space-7); }
   .sol-follow__claim > * + * { margin-top: var(--vf-space-4); }
-  .sol-follow__list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
-  .sol-follow__item {
-    display: grid;
-    grid-template-columns: 2.25rem minmax(0, 1fr);
-    gap: var(--vf-space-4);
-    padding-block: var(--vf-space-5);
-    border-top: 1px solid var(--vf-border);
-  }
-  .sol-follow__item:first-child { border-top: 0; padding-top: 0; }
-  .sol-follow__item:last-child { padding-bottom: 0; }
-  .sol-follow__no {
-    display: grid;
-    width: 2.25rem;
-    height: 2.25rem;
-    place-items: center;
-    border-radius: 50%;
-    background: #FDEBED;
-    color: var(--vf-coral-700);
-    font-size: var(--vf-text-xs);
-    font-weight: 800;
-    letter-spacing: .04em;
-  }
   .sol-follow__item .vf-body { margin-top: .35rem; }
   .sol-follow__chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: var(--vf-space-4) 0 0; padding: 0; list-style: none; }
   .sol-follow__chips li {
@@ -741,9 +719,9 @@
         <p class="vf-lead">One primary source. Less logging. No duplicate steps.</p>
       </div>
 
-      <ol class="sol-follow__list">
-        <li class="sol-follow__item">
-          <span class="sol-follow__no" aria-hidden="true">01</span>
+      <ol class="vf-index-list sol-follow__list">
+        <li class="vf-index-item sol-follow__item">
+          <span class="vf-index-number" aria-hidden="true">01</span>
           <div>
             <h3 class="vf-card-title">Sync without a new device</h3>
             <p class="vf-body">Phone, Apple Health, Fitbit or Garmin. One primary source, no double-counting.</p>
@@ -753,22 +731,22 @@
             <p class="vf-small sol-follow__note">Wearables are optional, not the price of admission.</p>
           </div>
         </li>
-        <li class="sol-follow__item">
-          <span class="sol-follow__no" aria-hidden="true">02</span>
+        <li class="vf-index-item sol-follow__item">
+          <span class="vf-index-number" aria-hidden="true">02</span>
           <div>
             <h3 class="vf-card-title">Give effort a visible destination</h3>
             <p class="vf-body">Show the next milestone, not just a number at day&rsquo;s end.</p>
           </div>
         </li>
-        <li class="sol-follow__item">
-          <span class="sol-follow__no" aria-hidden="true">03</span>
+        <li class="vf-index-item sol-follow__item">
+          <span class="vf-index-number" aria-hidden="true">03</span>
           <div>
             <h3 class="vf-card-title">Create fair social momentum</h3>
             <p class="vf-body">Team standings use average scores, so effort beats team size.</p>
           </div>
         </li>
-        <li class="sol-follow__item">
-          <span class="sol-follow__no" aria-hidden="true">04</span>
+        <li class="vf-index-item sol-follow__item">
+          <span class="vf-index-number" aria-hidden="true">04</span>
           <div>
             <h3 class="vf-card-title">Recognize progress your way</h3>
             <p class="vf-body">Points, badges and completion recognition, on or off.</p>

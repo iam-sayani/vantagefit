@@ -722,6 +722,33 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
 .vf-rule-list li { padding-block: var(--vf-space-4); border-top: 1px solid var(--vf-border); }
 .vf-rule-list li:first-child { border-top: 0; }
 
+/* Indexed editorial list. Extracted from the homepage product explorer's
+   transparent two-digit index treatment, with a slightly larger number for
+   use beside body copy. */
+.vf-index-list { display: grid; margin: 0; padding: 0; list-style: none; }
+.vf-index-item {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: var(--vf-space-4);
+  padding-block: var(--vf-space-5);
+  border-top: 1px solid var(--vf-border);
+}
+.vf-index-item:first-child { padding-top: 0; border-top: 0; }
+.vf-index-item:last-child { padding-bottom: 0; }
+.vf-index-number {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  color: var(--vf-ink);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  line-height: 1;
+}
+.vf-on-dark .vf-index-item { border-color: var(--vf-border-dark); }
+.vf-on-dark .vf-index-number { color: #fff; }
+
 /* The homepage's unified subheader scale and section-top rhythm step at 1040
    and 760, which are NOT the breakpoints its layout rules use. Kept separate
    rather than folded into the layout queries so each stays traceable. */
