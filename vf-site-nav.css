@@ -1,0 +1,336 @@
+/*
+ * Vantage Fit shared site navigation
+ * Lifted from enterprise-final.html so every solution and feature page carries
+ * the same menu and the same IA. Built on vf- design tokens, with fallbacks so
+ * the file also stands up on a page that has not loaded the design system.
+ *
+ * Usage: link this file, drop <div data-vf-nav></div> as the first element in
+ * <body>, and load vf-site-nav.js. See vf-site-nav.js for the options.
+ */
+
+:root { --vf-nav-h: 4rem; }
+
+/* the bar is fixed, so content needs to clear it */
+.vf-nav-offset { padding-top: var(--vf-nav-h); }
+.vf-visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px;
+  padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.vf-nav {
+  position: fixed;
+  z-index: 40;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid var(--vf-border, rgba(41, 41, 76, .12));
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.82));
+  backdrop-filter: blur(26px) saturate(1.25);
+  -webkit-backdrop-filter: blur(26px) saturate(1.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 6px 22px rgba(41,41,76,.06);
+}
+/* Pages that open on a full-bleed hero can start the bar as clear glass and
+   thicken it past the hero; vf-site-nav.js adds .is-lit on scroll. */
+.vf-nav--overlay:not(.is-lit) {
+  border-bottom-color: rgba(255, 255, 255, .5);
+  background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.16));
+  backdrop-filter: blur(26px) saturate(1.8);
+  -webkit-backdrop-filter: blur(26px) saturate(1.8);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+}
+/* width is restated rather than left to .vf-container so the bar still gutters
+   correctly on a page that has not loaded the design system */
+.vf-nav__inner {
+  display: flex;
+  min-height: var(--vf-nav-h);
+  align-items: center;
+  gap: 1rem;
+  width: min(var(--vf-max-width, 73.75rem), calc(100% - 48px));
+  margin-inline: auto;
+}
+@media (max-width: 860px) { .vf-nav__inner { width: min(100% - 32px, var(--vf-max-width, 73.75rem)); } }
+.vf-nav__brand { display: inline-flex; align-items: center; }
+.vf-nav__brand img { height: 32px; width: auto; display: block; }
+
+.vf-nav__links { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+.vf-nav__item { position: relative; }
+/* bridges the gap between trigger and panel so the pointer can cross it */
+.vf-nav__item::after { content: ""; position: absolute; top: 100%; left: 0; width: 100%; height: 12px; }
+
+.vf-nav__links > a,
+.vf-nav__trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #536067;
+  font-family: inherit;
+  font-size: .88rem;
+  font-weight: 700;
+  /* the design system leaves links to the UA default, which underlines them;
+     the nav marks hover with its own rule instead */
+  text-decoration: none;
+  cursor: pointer;
+}
+.vf-nav__brand { text-decoration: none; }
+/* Hover marks the item with an underline rather than a filled box: the grey
+   block read as a pressed/selected state on a nav that has none. */
+.vf-nav__links > a:not(.vf-nav__cta)::after,
+.vf-nav__trigger::after {
+  content: "";
+  position: absolute;
+  left: 12px; right: 12px; bottom: 8px;
+  height: 2px; border-radius: 2px;
+  background: var(--vf-coral-700, #B8172A);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .22s cubic-bezier(.22,.9,.24,1);
+}
+.vf-nav__links > a:not(.vf-nav__cta):hover,
+.vf-nav__trigger:hover { background: transparent; color: var(--vf-ink, #29294C); }
+.vf-nav__links > a:not(.vf-nav__cta):hover::after,
+.vf-nav__trigger:hover::after,
+.vf-nav__links > a:not(.vf-nav__cta):focus-visible::after { transform: scaleX(1); }
+.vf-nav__trigger svg { width: 12px; opacity: .55; transition: transform .2s ease; }
+.vf-nav__item.is-open .vf-nav__trigger svg { transform: rotate(180deg); }
+
+.vf-nav__links .vf-nav__cta {
+  margin-left: 8px;
+  padding-inline: 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--vf-action-gradient, linear-gradient(125deg, #DB3245 5%, #B8172A 125%));
+  color: #fff;
+  transition: background .3s, color .3s, border-color .3s, filter .2s ease;
+}
+.vf-nav__links .vf-nav__cta:hover { filter: brightness(1.06); color: #fff; }
+.vf-nav--overlay:not(.is-lit) .vf-nav__cta {
+  background: transparent;
+  border-color: rgba(241, 81, 98, .55);
+  color: var(--vf-coral-700, #B8172A);
+}
+.vf-nav--overlay:not(.is-lit) .vf-nav__cta:hover { background: rgba(241, 81, 98, .06); }
+
+/* —— mega panels —— */
+.vf-mega {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  z-index: 50;
+  display: none;
+  width: min(920px, calc(100vw - 48px));
+  border: 1px solid var(--vf-border, rgba(41, 41, 76, .12));
+  border-radius: 18px;
+  background: var(--vf-surface, #fff);
+  box-shadow: var(--vf-shadow-md, 0 18px 48px rgba(41, 41, 76, .12));
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+@media (min-width: 861px) {
+  /* Anchor the panel to the nav bar rather than to its own trigger. Positioned
+     against the item, a right-hand menu ran off the viewport on a laptop. */
+  .vf-nav__item { position: static; }
+  .vf-nav__inner { position: relative; }
+  .vf-nav__item.is-open .vf-mega { display: block; }
+}
+.vf-mega__body { padding: 22px; }
+.vf-mega__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 20px; }
+.vf-mega__grid--2 { grid-template-columns: 1fr 1fr; }
+.vf-mega__title {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--vf-border, rgba(41, 41, 76, .12));
+  color: var(--vf-text-subtle, #686881);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+/* keeps the rule running the full column width; only the label is hidden */
+.vf-mega__title--continued { color: transparent; }
+.vf-mega a.vf-mega__link {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--vf-ink, #29294C);
+  font-size: .84rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.vf-mega a.vf-mega__link span {
+  display: block;
+  margin-top: 2px;
+  color: var(--vf-text-subtle, #686881);
+  font-size: .72rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.vf-mega a.vf-mega__link:hover { background: var(--vf-surface-soft, #F1F1F6); }
+.vf-mega a.vf-mega__link[aria-current="page"] {
+  background: var(--vf-surface-soft, #F1F1F6);
+  box-shadow: inset 2px 0 0 var(--vf-coral-700, #B8172A);
+}
+.vf-mega__tag {
+  display: inline-block; margin-left: 7px; padding: 1px 7px;
+  border-radius: 999px; background: rgba(65,216,180,.18);
+  color: #0B6B54; font-size: .62rem; font-weight: 800; font-style: normal;
+  letter-spacing: .06em; text-transform: uppercase; vertical-align: 1px;
+}
+.vf-mega__feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  padding: 18px;
+  border-radius: 14px;
+  background: var(--vf-dark-gradient, linear-gradient(145deg, #303740, #1D2228));
+  color: #fff;
+  text-decoration: none;
+}
+.vf-mega__feature:hover { filter: brightness(1.05); }
+.vf-mega__feature small {
+  color: var(--vf-teal-500, #41D8B4);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.vf-mega__feature b { display: block; margin-top: 7px; font-size: .95rem; letter-spacing: -.015em; }
+.vf-mega__feature p { margin: 6px 0 0; color: rgba(255,255,255,.68); font-size: .76rem; line-height: 1.45; font-weight: 500; }
+.vf-mega__feature .vf-mega__go {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 18px;
+  color: var(--vf-teal-500, #41D8B4); font-size: .76rem; font-weight: 800;
+}
+.vf-mega__feature .vf-mega__go svg { width: 14px; }
+/* the foot sits inside .vf-mega__body, which is already padded; grid so each
+   item lines up with a column above */
+.vf-mega__foot {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 20px;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--vf-border, rgba(41, 41, 76, .12));
+  color: var(--vf-text-subtle, #686881);
+  font-size: .8rem;
+}
+.vf-mega__foot a { display: block; color: inherit; text-decoration: none; }
+.vf-mega__foot a b { display: block; color: var(--vf-ink, #29294C); font-size: .86rem; font-weight: 800; }
+.vf-mega__foot a span { display: block; margin-top: 2px; color: var(--vf-text-subtle, #686881); font-size: .78rem; }
+.vf-mega__foot a:hover b { color: var(--vf-coral-700, #B8172A); }
+
+/* —— language switcher —— */
+/* the nav row runs on a 2px gap, fine between text links but too tight
+   between two pills */
+.vf-lang { position: relative; display: inline-flex; margin-left: 14px; }
+.vf-lang__btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 40px; padding: 0 12px;
+  border: 1px solid rgba(41,41,76,.18); border-radius: 999px;
+  background: rgba(255,255,255,.55); color: var(--vf-ink, #29294C);
+  font-family: inherit; font-size: .82rem; font-weight: 700; letter-spacing: .01em;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease;
+}
+.vf-lang__btn svg { width: 16px; height: 16px; }
+.vf-lang__caret { width: 12px !important; height: 12px !important; opacity: .6; transition: transform .2s ease; }
+.vf-lang__btn:hover { border-color: rgba(41,41,76,.34); background: #fff; }
+.vf-lang__btn[aria-expanded="true"] { border-color: var(--vf-coral-700, #B8172A); background: #fff; }
+.vf-lang__btn[aria-expanded="true"] .vf-lang__caret { transform: rotate(180deg); }
+.vf-lang__menu {
+  position: absolute; z-index: 60; top: calc(100% + 8px); right: 0;
+  min-width: 168px; margin: 0; padding: 6px; list-style: none;
+  border: 1px solid var(--vf-border, rgba(41, 41, 76, .12)); border-radius: 14px;
+  background: var(--vf-surface, #fff); box-shadow: var(--vf-shadow-md, 0 18px 48px rgba(41, 41, 76, .12));
+}
+.vf-lang__menu[hidden] { display: none; }
+.vf-lang__menu a {
+  display: block; padding: 9px 12px; border-radius: 9px;
+  color: var(--vf-text-subtle, #686881); font-size: .88rem; font-weight: 600; text-decoration: none;
+}
+.vf-lang__menu a:hover, .vf-lang__menu a:focus-visible { background: var(--vf-surface-soft, #F1F1F6); color: var(--vf-ink, #29294C); }
+.vf-lang__menu a[aria-current="true"] { color: var(--vf-ink, #29294C); font-weight: 800; }
+
+/* —— mobile —— */
+/* Glass to match the bar rather than a flat white box on top of it, and the
+   bars morph into a cross so an open menu shows how to close it. 46px square
+   clears the touch target without a min-height fighting the layout. */
+.vf-nav__menu-btn {
+  display: none;
+  width: 46px;
+  height: 46px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid rgba(41,41,76,.14);
+  border-radius: 14px;
+  background: rgba(255,255,255,.55);
+  -webkit-backdrop-filter: blur(14px) saturate(1.6);
+  backdrop-filter: blur(14px) saturate(1.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 4px 14px rgba(41,41,76,.09);
+  color: var(--vf-ink, #29294C);
+  cursor: pointer;
+  transition: background .2s ease, box-shadow .2s ease, transform .14s ease;
+}
+.vf-nav__menu-btn:active { transform: scale(.95); }
+.vf-nav__menu-btn[aria-expanded="true"] {
+  background: rgba(255,255,255,.92);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 6px 18px rgba(41,41,76,.14);
+}
+.vf-nav__menu-ico { position: relative; display: block; width: 20px; height: 14px; }
+.vf-nav__menu-ico i {
+  position: absolute; left: 0; height: 2px; width: 100%;
+  border-radius: 2px; background: currentColor;
+  transition: transform .28s cubic-bezier(.22,.9,.24,1), opacity .16s ease;
+}
+.vf-nav__menu-ico i:nth-child(1) { top: 0; }
+.vf-nav__menu-ico i:nth-child(2) { top: 6px; width: 68%; }
+.vf-nav__menu-ico i:nth-child(3) { top: 12px; }
+.vf-nav__menu-btn[aria-expanded="true"] .vf-nav__menu-ico i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.vf-nav__menu-btn[aria-expanded="true"] .vf-nav__menu-ico i:nth-child(2) { opacity: 0; transform: translateX(-6px); }
+.vf-nav__menu-btn[aria-expanded="true"] .vf-nav__menu-ico i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .vf-nav__menu-btn { display: grid; place-items: center; }
+  .vf-nav__links {
+    position: absolute;
+    top: 64px;
+    right: 16px;
+    left: 16px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid var(--vf-border, rgba(41, 41, 76, .12));
+    border-radius: 14px;
+    background: var(--vf-surface, #fff);
+    box-shadow: var(--vf-shadow-sm, 0 8px 24px rgba(41, 41, 76, .08));
+  }
+  .vf-nav__links.is-open { display: flex; }
+  .vf-nav__item { width: 100%; }
+  .vf-nav__trigger, .vf-nav__links > a { width: 100%; justify-content: space-between; }
+  .vf-mega {
+    position: static;
+    display: none;
+    width: 100%;
+    transform: none;
+    margin-top: 4px;
+    box-shadow: none;
+  }
+  .vf-nav__item.is-open .vf-mega { display: block; }
+  .vf-mega__body { padding: 12px; }
+  .vf-mega__grid, .vf-mega__grid--2, .vf-mega__foot { grid-template-columns: 1fr; gap: 14px; }
+  .vf-nav__links .vf-nav__cta { margin: 8px 0 0; text-align: center; justify-content: center; }
+  /* in the drawer it sits inline, like the other nav rows */
+  .vf-lang { display: block; width: 100%; margin-top: 6px; }
+  .vf-lang__btn { width: 100%; justify-content: flex-start; min-height: 46px; border-radius: 12px; }
+  .vf-lang__menu { position: static; width: 100%; margin-top: 6px; box-shadow: none; }
+}
+
+@media (max-width: 560px) {
+  .vf-nav__links a, .vf-nav__trigger, .vf-nav__cta { min-height: 46px; display: inline-flex; align-items: center; }
+}
