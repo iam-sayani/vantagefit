@@ -250,15 +250,20 @@
   }
   @media (max-width: 560px) { .sol-confidence__grid { grid-template-columns: 1fr; } }
 
+  /* The cards hold the artboard's proportion rather than a fixed height, so the
+     column count steps down in threes and twos: at two columns on a tablet a
+     five-across card would be twice as wide and twice as tall as it needs. */
   .sol-formats { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: .75rem; }
-  @media (max-width: 1100px) { .sol-formats { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 1100px) { .sol-formats { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+  @media (max-width: 820px)  { .sol-formats { grid-template-columns: repeat(2, minmax(0,1fr)); } }
   @media (max-width: 560px)  { .sol-formats { grid-template-columns: 1fr; } }
 
-  /* Format cards. Each carries a tinted wash, an icon badge and a piece of
-     artwork drawn from the format's own mechanic — a leaderboard for Race, a
-     kept week for Streak, a route for Journey — so the card shows the shape of
-     the programme rather than decorating it. Vector, so it themes with the
-     brand tokens and stays crisp at any size. */
+  /* Format cards. Each carries a tinted wash, an icon badge and an illustration
+     of the format's own moment — two runners neck and neck for Race, the next
+     step up for Streak, a mapped route for Journey — so the card shows what the
+     programme feels like rather than decorating it. The illustrations were
+     recoloured onto the brand hues, so each one's field is a brand wash and the
+     card tint carries it up behind the copy. */
   .sol-format {
     --sol-format-soft: rgba(241,81,98,.18);
     position: relative;
@@ -266,29 +271,34 @@
     overflow: hidden;
     flex-direction: column;
     gap: var(--vf-space-2);
+    /* The illustration is the card: its own field carries the copy, so the card
+       holds close to the artboard's proportion rather than a fixed height. Any
+       shorter and the figures, which stand on the artboard floor, rise into the
+       heading - the card always shows the artwork's bottom. */
+    aspect-ratio: .47;
     min-height: 22rem;
     padding: 1.5rem 1.35rem 1.15rem;
     border: 1px solid var(--vf-border);
     border-radius: var(--vf-radius-xl);
-    background:
-      radial-gradient(90% 54% at 78% 2%, rgba(255,255,255,.72), transparent 70%),
-      linear-gradient(168deg, var(--sol-format-tint) 0%, var(--vf-surface) 57%);
+    background: linear-gradient(168deg, var(--sol-format-tint) 0%, var(--vf-surface) 57%);
     box-shadow: 0 10px 30px rgba(41,41,76,.035);
     transition: transform .28s cubic-bezier(.22,.9,.24,1), box-shadow .28s ease;
   }
+  /* a wash over the top of the artwork so the copy always has a quiet field to
+     sit on, whatever the illustration is doing behind it */
   .sol-format::before {
     position: absolute;
-    right: -18%;
-    bottom: 13%;
-    width: 82%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--sol-format-soft), transparent 68%);
+    z-index: 0;
+    inset: 0 0 auto;
+    height: 62%;
+    background: linear-gradient(180deg, rgba(255,255,255,.82) 0%, rgba(255,255,255,.46) 46%, transparent 100%);
     pointer-events: none;
     content: '';
   }
   .sol-format:hover { transform: translateY(-6px); box-shadow: 0 20px 42px rgba(41,41,76,.1); }
-  .sol-format > * { position: relative; z-index: 1; }
+  /* copy above the wash, wash above the artwork */
+  .sol-format::before { z-index: 1; }
+  .sol-format > * { position: relative; z-index: 2; }
   .sol-format__badge {
     display: grid;
     width: 2.25rem;
@@ -303,43 +313,44 @@
   .sol-format__no { margin-top: .15rem; color: var(--sol-format-ink); font-size: var(--vf-text-xs); font-weight: 800; letter-spacing: .1em; }
   .sol-format .vf-card-title { font-size: 1.15rem; line-height: 1.15; }
   .sol-format .vf-small { color: var(--vf-text); }
-  /* the artwork sits on the card floor whatever the copy length */
-  .sol-format__art { display: block; margin: auto -.45rem -.3rem; padding-top: var(--vf-space-4); color: var(--sol-format-ink); }
-  /* capped and centred so a wide phone card does not stretch the artwork */
-  .sol-format__art svg { display: block; width: 100%; max-width: 16rem; height: 8.5rem;
-    margin-inline: auto; overflow: visible; }
-  .sol-format__art img { display: block; width: 100%; height: 8.5rem; margin-inline: auto;
-    object-fit: contain; object-position: center bottom; }
+  /* the artwork fills the card and is anchored to its floor, so a card that
+     runs taller than the artboard's proportion loses empty field at the top
+     rather than cropping the figures at the bottom */
+  .sol-format__art { position: absolute; z-index: 0; inset: 0; margin: 0; padding: 0; }
+  .sol-format__art img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
 
-  .sol-format--race     { --sol-format-tint: rgba(241,81,98,.22); --sol-format-soft: rgba(241,81,98,.2); --sol-format-ink: #B8172A; }
-  .sol-format--streak   { --sol-format-tint: rgba(124,92,255,.2); --sol-format-soft: rgba(124,92,255,.18); --sol-format-ink: #6946E8; }
-  .sol-format--journey  { --sol-format-tint: rgba(63,142,234,.19); --sol-format-soft: rgba(63,142,234,.18); --sol-format-ink: #276DBD; }
-  .sol-format--marathon { --sol-format-tint: rgba(65,216,180,.22); --sol-format-soft: rgba(65,216,180,.2); --sol-format-ink: #147B64; }
-  .sol-format--custom   { --sol-format-tint: rgba(241,81,98,.15); --sol-format-soft: rgba(241,81,98,.16); --sol-format-ink: #B8172A; }
+  /* Tints follow the illustration each card carries: coral for the race, mint
+     for the climb and the field, a warm wash under Journey's cream map, deep
+     red under the finish tape. Ink is the text-safe stop of the same hue. */
+  .sol-format--race     { --sol-format-tint: rgba(241,81,98,.22); --sol-format-soft: rgba(241,81,98,.2);  --sol-format-ink: var(--vf-coral-700); }
+  .sol-format--streak   { --sol-format-tint: rgba(65,216,180,.24); --sol-format-soft: rgba(65,216,180,.2); --sol-format-ink: var(--vf-teal-700); }
+  .sol-format--journey  { --sol-format-tint: rgba(255,157,87,.22); --sol-format-soft: rgba(255,157,87,.2); --sol-format-ink: var(--vf-orange-700); }
+  .sol-format--marathon { --sol-format-tint: rgba(184,23,42,.16); --sol-format-soft: rgba(184,23,42,.14); --sol-format-ink: var(--vf-coral-700); }
+  .sol-format--custom   { --sol-format-tint: rgba(22,157,126,.2);  --sol-format-soft: rgba(22,157,126,.16); --sol-format-ink: var(--vf-teal-700); }
 
-  @media (max-width: 1100px) {
-    .sol-format { min-height: 20rem; }
-  }
+  /* one column: hold the card to a phone-ish width so the proportion does not
+     turn it into a full page of artwork */
   @media (max-width: 560px) {
-    .sol-format { min-height: 21rem; }
-    .sol-format__art svg, .sol-format__art img { max-width: 19rem; height: 9rem; }
+    .sol-format { max-width: 21rem; margin-inline: auto; }
   }
 
-  /* Product leaderboard rendered as a real device: bezel, iOS status bar and
-     island, app canvas, tab bar and home indicator. Built from the homepage's
-     .vf3-phone--leaderboard and the app's own Summary screen, so the chrome is
-     the product's rather than a generic card. Mobile first. */
+  /* Product leaderboard: the app's own Leaderboard screen in a plain phone
+     mockup - a bezel, a pair of hardware keys and the screenshot, nothing more.
+     The screen is held to 13.5rem because the export is 400px wide, and any
+     bigger and the app UI goes soft. Mobile first. */
   .sol-lb { display: grid; gap: var(--vf-space-5); justify-items: center; }
   .sol-lb__device {
     position: relative;
-    width: min(100%, 19.5rem);
-    padding: .52rem;
-    border-radius: 3rem;
+    width: min(100%, 14.6rem);
+    padding: .5rem;
+    border-radius: 2.35rem;
     background: linear-gradient(145deg, #4B5361 0%, #242A33 28%, #10141A 72%, #313945 100%);
     box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 0 0 2px rgba(0,0,0,.35),
       0 34px 76px rgba(0,0,0,.58), inset 0 1px 1px rgba(255,255,255,.24);
   }
-  /* Subtle hardware controls keep the silhouette recognisably phone-like. */
+  /* Subtle hardware controls keep the silhouette recognisably phone-like: the
+     volume pair on the left, and the sleep key thrown to the right edge with a
+     box-shadow rather than a third element. */
   .sol-lb__device::before,
   .sol-lb__device::after {
     position: absolute;
@@ -349,23 +360,16 @@
     background: linear-gradient(#3D4551, #171C23);
     content: '';
   }
-  .sol-lb__device::before { top: 7rem; height: 3.4rem; }
-  .sol-lb__device::after { top: 11rem; height: 2rem; }
-  .sol-lb__device::before { box-shadow: 19.65rem 2rem 0 #171C23; }
-  .sol-lb__device::after { box-shadow: 0 -5.1rem 0 #202630; }
-  .sol-lb__device > * { position: relative; z-index: 1; }
-  .sol-lb__device {
-    min-height: 36.5rem;
-  }
-  .sol-lb__screen {
+  .sol-lb__device::before { top: 5.4rem; height: 2.6rem; }
+  .sol-lb__device::after { top: 8.6rem; height: 1.6rem; box-shadow: 14.76rem -1.4rem 0 #202630; }
+  .sol-lb__shot {
     position: relative;
-    display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto auto;
-    min-height: 35.45rem;
-    overflow: hidden;
-    border-radius: 2.6rem;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1.95rem;
     background: var(--vf-canvas);
-    color: var(--vf-ink);
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
   }
 
@@ -375,135 +379,14 @@
     #integrity { padding-block: 3rem; }
     .sol-integrity {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(17rem, .85fr);
+      grid-template-columns: minmax(0, 1.15fr) minmax(15rem, .7fr);
       gap: var(--vf-space-7);
       align-items: start;
     }
     .sol-integrity__intro { max-width: 34rem; }
     #integrity .sol-lb { padding-top: 1.6rem; }
-    #integrity .sol-lb__device {
-      transform: scale(.86);
-      transform-origin: top center;
-      margin-bottom: -5.1rem;
-    }
   }
 
-  /* ---- status bar + coral header ---- */
-  .sol-lb__chrome {
-    position: relative;
-    padding: .5rem .95rem 1.05rem;
-    background: linear-gradient(150deg, var(--vf-coral-500) 0%, var(--vf-coral-700) 100%);
-    color: #fff;
-  }
-  .sol-lb__statusbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: .1rem .35rem .5rem;
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: -.01em;
-  }
-  .sol-lb__signal { display: inline-flex; align-items: center; gap: .25rem; }
-  .sol-lb__signal svg { height: .58rem; width: auto; }
-  /* the island sits over the status row, as it does on the device */
-  .sol-lb__island {
-    position: absolute;
-    z-index: 2;
-    top: .42rem;
-    left: 50%;
-    width: 4.6rem;
-    height: 1.15rem;
-    border-radius: var(--vf-radius-pill);
-    background: #0B0E12;
-    box-shadow: inset 0 -1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.22);
-    transform: translateX(-50%);
-  }
-  .sol-lb__island::after {
-    position: absolute; right: .55rem; top: 50%; width: .32rem; height: .32rem;
-    border-radius: 50%; background: radial-gradient(circle at 35% 35%, #25335A, #05070A 70%);
-    content: ''; transform: translateY(-50%);
-  }
-  .sol-lb__nav { display: grid; grid-template-columns: 1.05rem 1fr 1.05rem; align-items: center; gap: .5rem; }
-  .sol-lb__nav strong { font-size: .88rem; font-weight: 750; text-align: center; }
-  .sol-lb__nav svg { width: 1.05rem; height: 1.05rem; opacity: .95; }
-  .sol-lb__meta { margin: .35rem 0 0; color: rgba(255,255,255,.8); font-size: .55rem; font-weight: 700;
-    letter-spacing: .07em; text-align: center; text-transform: uppercase; }
-  .sol-lb__summary { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-    gap: .5rem; margin-top: .85rem; text-align: center; }
-  .sol-lb__block small { display: block; font-size: .5rem; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; opacity: .85; }
-  .sol-lb__block strong { display: block; margin-top: .1rem; font-size: 1.2rem; font-weight: 800; letter-spacing: -.03em; }
-  .sol-lb__block sup { font-size: .58em; }
-  .sol-lb__avatar {
-    position: relative; display: grid; width: 3.15rem; height: 3.15rem; place-items: center;
-    border: 2.5px solid #F5C542; border-radius: 50%;
-    background: linear-gradient(150deg, #8A5A3E 0%, #4E2F20 100%);
-    font-size: .78rem; font-weight: 800;
-  }
-  .sol-lb__medal { position: absolute; right: -.1rem; bottom: -.1rem; width: 1.05rem; height: 1.05rem;
-    border: 2px solid var(--vf-coral-600, #C8203A); border-radius: 50%; background: #F5C542; }
-
-  /* ---- app canvas ---- */
-  .sol-lb__body { padding: .9rem .75rem .55rem; background: var(--vf-canvas); }
-  .sol-lb__tabs {
-    display: grid; grid-template-columns: 1fr 1fr; gap: .2rem; margin-bottom: .7rem; padding: .2rem;
-    border-radius: var(--vf-radius-pill); background: #E7E7EE;
-    font-size: .6rem; font-weight: 750; text-align: center;
-  }
-  .sol-lb__tabs span { padding: .3rem 0; border-radius: var(--vf-radius-pill); color: var(--vf-text); }
-  .sol-lb__tabs .is-on { background: #fff; color: var(--vf-ink); box-shadow: 0 1px 3px rgba(41,41,76,.14); }
-  .sol-lb__list { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
-  .sol-lb__row {
-    display: grid; grid-template-columns: .85rem 1.65rem minmax(0,1fr) auto; align-items: center;
-    gap: .5rem; padding: .68rem .6rem;
-    border-radius: .85rem; background: #fff;
-    box-shadow: 0 1px 2px rgba(41,41,76,.07);
-  }
-  .sol-lb__row b { color: var(--vf-text); font-size: .62rem; font-weight: 800; text-align: center; }
-  .sol-lb__face {
-    display: grid; width: 1.65rem; height: 1.65rem; place-items: center; border-radius: 50%;
-    background: var(--vf-slate-700); color: #fff; font-size: .5rem; font-style: normal; font-weight: 800;
-  }
-  .sol-lb__name { min-width: 0; color: var(--vf-ink); font-size: .72rem; font-weight: 750; line-height: 1.25; }
-  .sol-lb__name small { display: block; color: var(--vf-text); font-size: .54rem; font-weight: 600; }
-  .sol-lb__score { color: var(--vf-ink); font-size: .76rem; font-weight: 800; letter-spacing: -.02em; }
-  .sol-lb__row--you { background: #FDEBED; box-shadow: inset 0 0 0 1px rgba(184,23,42,.18); }
-  .sol-lb__row--you .sol-lb__face { background: var(--vf-coral-700); }
-  /* the flagged entry is the point of this section: visibly present, visibly out */
-  .sol-lb__row--flagged { background: transparent; box-shadow: inset 0 0 0 1px var(--vf-border); }
-  .sol-lb__row--flagged .sol-lb__face { background: #A6A6B6; }
-  .sol-lb__row--flagged .sol-lb__name { color: var(--vf-text); }
-  .sol-lb__score--struck { color: var(--vf-text); text-decoration: line-through; }
-  .sol-lb__goal {
-    margin-top: .7rem; padding: .72rem .75rem .65rem; border-radius: 1rem;
-    background: #fff; box-shadow: 0 1px 3px rgba(41,41,76,.08);
-  }
-  .sol-lb__goal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .sol-lb__goal-head strong { font-size: .68rem; font-weight: 800; }
-  .sol-lb__goal-head span { color: var(--vf-coral-700); font-size: .62rem; font-weight: 800; }
-  .sol-lb__progress { display: block; height: .35rem; margin-top: .55rem; overflow: hidden;
-    border-radius: var(--vf-radius-pill); background: #ECECF1; }
-  .sol-lb__progress i { display: block; width: 76%; height: 100%; border-radius: inherit;
-    background: var(--vf-action-gradient); }
-  .sol-lb__goal small { display: block; margin-top: .42rem; color: var(--vf-text); font-size: .52rem; font-weight: 650; }
-
-  /* ---- tab bar + home indicator ---- */
-  .sol-lb__tabbar {
-    display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; justify-items: center;
-    padding: .65rem .75rem .3rem;
-    border-top: 1px solid rgba(41,41,76,.07); background: #fff; color: var(--vf-coral-600, #D8324A);
-  }
-  .sol-lb__tabbar > svg { width: 1.15rem; height: 1.15rem; opacity: .85; }
-  .sol-lb__fab {
-    display: grid; width: 2.3rem; height: 2.3rem; place-items: center; margin-top: -1rem;
-    border: 3px solid #fff; border-radius: 50%;
-    background: var(--vf-action-gradient); color: #fff;
-    box-shadow: 0 6px 14px rgba(184,23,42,.34);
-  }
-  .sol-lb__fab svg { width: 1rem; height: 1rem; }
-  .sol-lb__home { display: block; width: 33%; height: .28rem; margin: .45rem auto .6rem;
-    border-radius: var(--vf-radius-pill); background: rgba(41,41,76,.32); }
   .sol-lb__note { color: rgba(255,255,255,.66); max-width: 22rem; text-align: center; }
 
   .sol-leader { display: grid; gap: .1rem; }
@@ -654,7 +537,7 @@
           <h3 class="vf-card-title">Race</h3>
           <p class="vf-small">Spark a short burst</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/challenge-race.svg" alt="Athletes training together for a race challenge" width="972" height="465" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-race.webp" alt="Two runners racing neck and neck" width="560" height="766" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--streak">
@@ -666,7 +549,7 @@
           <h3 class="vf-card-title">Streak</h3>
           <p class="vf-small">Build daily consistency</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/challenge-streak.svg" alt="Person organizing daily tasks for a streak challenge" width="800" height="571" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-streak.webp" alt="A person taking the next step up a flight of stairs" width="560" height="1322" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--journey">
@@ -678,7 +561,7 @@
           <h3 class="vf-card-title">Journey</h3>
           <p class="vf-small">Make progress visual</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/challenge-journey.svg" alt="Traveler planning destinations along a journey route" width="960" height="538" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-journey.webp" alt="A traveller walking a mapped route past landmarks" width="560" height="970" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--marathon">
@@ -690,7 +573,7 @@
           <h3 class="vf-card-title">E-Marathon</h3>
           <p class="vf-small">Rally around an event</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/challenge-marathon.svg" alt="Fitness progress and activity statistics illustration" width="960" height="665" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-marathon.webp" alt="A runner breaking the finish tape" width="560" height="849" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--custom">
@@ -702,7 +585,7 @@
           <h3 class="vf-card-title">Custom multi-week</h3>
           <p class="vf-small">Movement, mindfulness, hydration and more</p>
           <span class="sol-format__art">
-            <img src="/assets/illustrations/challenge-custom.svg" alt="Person tracking personal goals across multiple activities" width="989" height="775" loading="lazy" decoding="async">
+            <img src="/assets/illustrations/format-custom.webp" alt="A field of runners setting off together" width="560" height="1322" loading="lazy" decoding="async">
           </span>
         </li>
       </ul>
@@ -777,67 +660,11 @@
       </div>
       <div class="sol-lb">
           <div class="sol-lb__device">
-            <div class="sol-lb__screen" role="img" aria-label="Illustrative Vantage Fit leaderboard. A. Rivera leads on 12,480 steps; an implausible total of 214,006 from an unrecognized source is flagged and left off the ranking.">
-
-              <div class="sol-lb__chrome">
-                <div class="sol-lb__statusbar" aria-hidden="true">
-                  <span class="sol-lb__time">9:41</span>
-                  <span class="sol-lb__signal">
-                    <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-                    <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 4.2a10 10 0 0 1 14 0"/><path d="M3.6 7a6.4 6.4 0 0 1 8.8 0"/><circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none"/></svg>
-                    <svg viewBox="0 0 26 12" fill="none"><rect x=".8" y=".8" width="21" height="10.4" rx="3" stroke="currentColor" stroke-width="1.2" opacity=".55"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.8" fill="currentColor"/><path d="M23.5 4.4v3.2a2.2 2.2 0 0 0 0-3.2z" fill="currentColor" opacity=".55"/></svg>
-                  </span>
-                </div>
-                <span class="sol-lb__island" aria-hidden="true"></span>
-
-                <div class="sol-lb__nav" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
-                  <strong>Leaderboard</strong>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
-                </div>
-                <p class="sol-lb__meta">Spring Steps Race &middot; Week 2</p>
-                <div class="sol-lb__summary">
-                  <span class="sol-lb__block"><small>Your rank</small><strong>3<sup>rd</sup></strong></span>
-                  <span class="sol-lb__avatar">MC<i class="sol-lb__medal" aria-hidden="true"></i></span>
-                  <span class="sol-lb__block"><small>Steps</small><strong>11,340</strong></span>
-                </div>
-              </div>
-
-              <div class="sol-lb__body">
-                <div class="sol-lb__tabs" aria-hidden="true"><span class="is-on">Individual</span><span>Teams</span></div>
-                <ol class="sol-lb__list">
-                  <li class="sol-lb__row"><b>1</b><i class="sol-lb__face">AR</i>
-                    <span class="sol-lb__name">A. Rivera<small>Verified source</small></span>
-                    <span class="sol-lb__score">12,480</span></li>
-                  <li class="sol-lb__row"><b>2</b><i class="sol-lb__face">PS</i>
-                    <span class="sol-lb__name">Priya S.<small>Verified source</small></span>
-                    <span class="sol-lb__score">11,920</span></li>
-                  <li class="sol-lb__row sol-lb__row--you"><b>3</b><i class="sol-lb__face">MC</i>
-                    <span class="sol-lb__name">M. Chen<small>You</small></span>
-                    <span class="sol-lb__score">11,340</span></li>
-                  <li class="sol-lb__row sol-lb__row--flagged"><b>&ndash;</b><i class="sol-lb__face">JD</i>
-                    <span class="sol-lb__name">J. Doe<small>Source rejected</small></span>
-                    <span class="sol-lb__score sol-lb__score--struck">214,006</span></li>
-                </ol>
-                <div class="sol-lb__goal" aria-hidden="true">
-                  <div class="sol-lb__goal-head"><strong>Your weekly goal</strong><span>76%</span></div>
-                  <span class="sol-lb__progress"><i></i></span>
-                  <small>53,460 of 70,000 steps &middot; Synced 2 min ago</small>
-                </div>
-              </div>
-
-              <div class="sol-lb__tabbar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.6"/></svg>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4"/><path d="M12 14v3M9 20h6"/></svg>
-                <span class="sol-lb__fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg></span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="10" r="2.4"/><path d="M15.5 19a4.6 4.6 0 0 1 5.5-4.4"/></svg>
-              </div>
-
-              <span class="sol-lb__home" aria-hidden="true"></span>
-            </div>
+            <img class="sol-lb__shot" src="/assets/app-leaderboard.png"
+                 alt="The Vantage Fit app leaderboard: a weekly ranking of colleagues by score, with the viewer's own rank and score above it."
+                 width="400" height="934" loading="lazy" decoding="async">
           </div>
-          <p class="vf-meta sol-lb__note">Illustrative leaderboard. An implausible total from an unrecognized source is flagged and left off the ranking.</p>
+          <p class="vf-meta sol-lb__note">The leaderboard employees see in the Vantage Fit app.</p>
       </div>
     </div>
   </section>
