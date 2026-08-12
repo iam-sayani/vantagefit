@@ -310,7 +310,6 @@
     color: var(--sol-format-ink);
   }
   .sol-format__badge svg { width: 1.1rem; height: 1.1rem; }
-  .sol-format__no { margin-top: .15rem; color: var(--sol-format-ink); font-size: var(--vf-text-xs); font-weight: 800; letter-spacing: .1em; }
   .sol-format .vf-card-title { font-size: 1.15rem; line-height: 1.15; }
   .sol-format .vf-small { color: var(--vf-text); }
   /* the artwork fills the card and is anchored to its floor, so a card that
@@ -334,43 +333,77 @@
     .sol-format { max-width: 21rem; margin-inline: auto; }
   }
 
-  /* Product leaderboard: the app's own Leaderboard screen in a plain phone
-     mockup - a bezel, a pair of hardware keys and the screenshot, nothing more.
-     The screen is held to 13.5rem because the export is 400px wide, and any
-     bigger and the app UI goes soft. Mobile first. */
-  .sol-lb { display: grid; gap: var(--vf-space-5); justify-items: center; }
+  /* Product leaderboard: the app's own Leaderboard screen in a phone mockup -
+     bezel, hardware keys, a glass highlight across the top corner, and a coral
+     glow behind the device picked up from the app's own header so it sits in
+     light rather than on a flat dark slab. The screen is held to 16.4rem: the
+     export is 658px wide, so anything past ~20rem starts to soften on a retina
+     screen. Mobile first. */
+  .sol-lb { position: relative; display: grid; gap: var(--vf-space-5); justify-items: center; }
+  .sol-lb::before {
+    position: absolute;
+    z-index: 0;
+    top: 2%;
+    left: 50%;
+    width: min(150%, 24rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(241,81,98,.34) 0%, rgba(241,81,98,.1) 42%, transparent 68%);
+    pointer-events: none;
+    content: '';
+    transform: translateX(-50%);
+  }
+  .sol-lb > * { position: relative; z-index: 1; }
   .sol-lb__device {
     position: relative;
-    width: min(100%, 14.6rem);
-    padding: .5rem;
-    border-radius: 2.35rem;
-    background: linear-gradient(145deg, #4B5361 0%, #242A33 28%, #10141A 72%, #313945 100%);
-    box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 0 0 2px rgba(0,0,0,.35),
-      0 34px 76px rgba(0,0,0,.58), inset 0 1px 1px rgba(255,255,255,.24);
+    width: min(100%, 16.4rem);
+    /* bezel width; the screen radius below is this much inside the shell's */
+    padding: .45rem;
+    border-radius: 2.7rem;
+    background: linear-gradient(158deg, #59616E 0%, #262C35 18%, #12161C 56%, #0B0E13 80%, #39414D 100%);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.16),
+      0 2px 4px rgba(0,0,0,.4),
+      0 30px 60px -18px rgba(0,0,0,.75),
+      inset 0 1px 1px rgba(255,255,255,.3);
   }
-  /* Subtle hardware controls keep the silhouette recognisably phone-like: the
-     volume pair on the left, and the sleep key thrown to the right edge with a
-     box-shadow rather than a third element. */
+  /* Hardware keys: the volume pair on the left, the second of them thrown down
+     by a box-shadow, and the sleep key opposite on the right. */
   .sol-lb__device::before,
   .sol-lb__device::after {
     position: absolute;
-    left: -.18rem;
-    width: .2rem;
-    border-radius: .2rem 0 0 .2rem;
-    background: linear-gradient(#3D4551, #171C23);
+    width: .17rem;
+    background: linear-gradient(#4B5462, #12161C);
     content: '';
   }
-  .sol-lb__device::before { top: 5.4rem; height: 2.6rem; }
-  .sol-lb__device::after { top: 8.6rem; height: 1.6rem; box-shadow: 14.76rem -1.4rem 0 #202630; }
-  .sol-lb__shot {
+  .sol-lb__device::before {
+    top: 5.5rem;
+    left: -.15rem;
+    height: 1.6rem;
+    border-radius: .17rem 0 0 .17rem;
+    box-shadow: 0 2.05rem 0 #1A1F27;
+  }
+  .sol-lb__device::after {
+    top: 6.3rem;
+    right: -.15rem;
+    height: 2.6rem;
+    border-radius: 0 .17rem .17rem 0;
+  }
+  .sol-lb__screen {
     position: relative;
-    z-index: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 1.95rem;
+    overflow: hidden;
+    border-radius: 2.25rem;
     background: var(--vf-canvas);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+  }
+  .sol-lb__shot { display: block; width: 100%; height: auto; }
+  /* one soft diagonal across the top corner, the way glass catches a room */
+  .sol-lb__screen::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(148deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.06) 16%, transparent 32%);
+    pointer-events: none;
+    content: '';
   }
 
   /* Keep the integrity chapter compact on wider screens. The phone remains
@@ -532,7 +565,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                  stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14.5 4.6a1.7 1.7 0 1 0 0-.01"/><path d="M8 20.5l3-4 3.2-1.6-1.2-4.4-3.5 2.2-1.4 3"/><path d="M13 10.5l3.6 1.5 1.6 3.4"/><path d="M13.9 14.9l1.1 5.6"/></svg>
           </span>
-          <span class="sol-format__no">01</span>
           <h3 class="vf-card-title">Race</h3>
           <p class="vf-small">Spark a short burst</p>
           <span class="sol-format__art">
@@ -544,7 +576,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                  stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 21c3.6 0 6.4-2.6 6.4-6 0-4.4-4.6-6.6-4.6-11-2.6 1.6-4.4 4-4.4 6.6 0 1.4.5 2.3.5 3.2 0 1.1-.9 2-2 2-.9 0-1.6-.5-2-1.2A7 7 0 0 0 5.6 15c0 3.4 2.8 6 6.4 6z"/></svg>
           </span>
-          <span class="sol-format__no">02</span>
           <h3 class="vf-card-title">Streak</h3>
           <p class="vf-small">Build daily consistency</p>
           <span class="sol-format__art">
@@ -556,7 +587,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                  stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 21s7-6.4 7-11.4A7 7 0 0 0 5 9.6C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.6"/></svg>
           </span>
-          <span class="sol-format__no">03</span>
           <h3 class="vf-card-title">Journey</h3>
           <p class="vf-small">Make progress visual</p>
           <span class="sol-format__art">
@@ -568,7 +598,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                  stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="15" r="6"/><path d="M8.6 9.4 6 3h4l2 3.6L14 3h4l-2.6 6.4"/></svg>
           </span>
-          <span class="sol-format__no">04</span>
           <h3 class="vf-card-title">E-Marathon</h3>
           <p class="vf-small">Rally around an event</p>
           <span class="sol-format__art">
@@ -580,7 +609,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
                  stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3.5" y="3.5" width="8" height="8" rx="2.4"/><rect x="12.5" y="3.5" width="8" height="8" rx="2.4"/><rect x="3.5" y="12.5" width="8" height="8" rx="2.4"/><rect x="12.5" y="12.5" width="8" height="8" rx="2.4"/></svg>
           </span>
-          <span class="sol-format__no">05</span>
           <h3 class="vf-card-title">Custom multi-week</h3>
           <p class="vf-small">Movement, mindfulness, hydration and more</p>
           <span class="sol-format__art">
@@ -657,9 +685,11 @@
       </div>
       <div class="sol-lb">
           <div class="sol-lb__device">
+            <div class="sol-lb__screen">
             <img class="sol-lb__shot" src="/assets/app-leaderboard.png"
                  alt="The Vantage Fit app leaderboard: a weekly ranking of colleagues by score, with the viewer's own rank and score above it."
-                 width="400" height="934" loading="lazy" decoding="async">
+                 width="658" height="1540" loading="lazy" decoding="async">
+            </div>
           </div>
           <p class="vf-meta sol-lb__note">The leaderboard employees see in the Vantage Fit app.</p>
       </div>
