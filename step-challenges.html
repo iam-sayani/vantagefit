@@ -339,6 +339,8 @@
   /* capped and centred so a wide phone card does not stretch the artwork */
   .sol-format__art svg { display: block; width: 100%; max-width: 16rem; height: 8.5rem;
     margin-inline: auto; overflow: visible; }
+  .sol-format__art img { display: block; width: 100%; height: 8.5rem; margin-inline: auto;
+    object-fit: contain; object-position: center bottom; }
 
   .sol-format--race     { --sol-format-tint: rgba(241,81,98,.22); --sol-format-soft: rgba(241,81,98,.2); --sol-format-ink: #B8172A; }
   .sol-format--streak   { --sol-format-tint: rgba(124,92,255,.2); --sol-format-soft: rgba(124,92,255,.18); --sol-format-ink: #6946E8; }
@@ -351,103 +353,129 @@
   }
   @media (max-width: 560px) {
     .sol-format { min-height: 21rem; }
-    .sol-format__art svg { max-width: 19rem; height: 9rem; }
+    .sol-format__art svg, .sol-format__art img { max-width: 19rem; height: 9rem; }
   }
 
-  /* Product leaderboard, built from the homepage's .vf3-phone--leaderboard:
-     coral gradient header carrying rank and score, white ranked list beneath.
-     Mobile first — the base rules are the phone layout, and it simply sits in
-     the split's right column once there are two columns. */
-  .sol-lb { display: grid; gap: var(--vf-space-4); justify-items: center; }
-  .sol-lb__phone {
-    width: min(100%, 20rem);
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.16);
-    border-radius: 1.75rem;
-    background: var(--vf-surface);
-    box-shadow: 0 24px 64px rgba(0,0,0,.4);
+  /* Product leaderboard rendered as a real device: bezel, iOS status bar and
+     island, app canvas, tab bar and home indicator. Built from the homepage's
+     .vf3-phone--leaderboard and the app's own Summary screen, so the chrome is
+     the product's rather than a generic card. Mobile first. */
+  .sol-lb { display: grid; gap: var(--vf-space-5); justify-items: center; }
+  .sol-lb__device {
+    width: min(100%, 19.5rem);
+    padding: .5rem;
+    border-radius: 3rem;
+    background: linear-gradient(160deg, #3A4150 0%, #14181F 60%);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 30px 70px rgba(0,0,0,.55),
+      inset 0 1px 0 rgba(255,255,255,.16);
   }
-  .sol-lb__status {
+  .sol-lb__screen {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    border-radius: 2.6rem;
+    background: var(--vf-canvas);
+    color: var(--vf-ink);
+  }
+
+  /* ---- status bar + coral header ---- */
+  .sol-lb__chrome {
+    position: relative;
+    padding: .5rem .95rem 1.05rem;
+    background: linear-gradient(150deg, var(--vf-coral-500) 0%, var(--vf-coral-700) 100%);
+    color: #fff;
+  }
+  .sol-lb__statusbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .55rem 1.1rem .2rem;
-    background: var(--vf-coral-500);
-    color: #fff;
-    font-size: .62rem;
+    padding: .1rem .35rem .5rem;
+    font-size: .68rem;
     font-weight: 700;
+    letter-spacing: -.01em;
   }
-  .sol-lb__status-ico { width: 2.4rem; height: .5rem; border-radius: var(--vf-radius-pill); background: rgba(255,255,255,.55); }
-  .sol-lb__hero {
-    padding: .35rem 1.1rem 1.1rem;
-    background: linear-gradient(135deg, var(--vf-coral-500) 0%, var(--vf-coral-700) 100%);
-    color: #fff;
-  }
-  .sol-lb__nav { display: grid; grid-template-columns: 1.1rem 1fr 1.1rem; align-items: center; gap: .5rem; }
-  .sol-lb__nav strong { font-size: .82rem; text-align: center; }
-  .sol-lb__nav svg { width: 1.1rem; height: 1.1rem; opacity: .9; }
-  .sol-lb__meta { margin: .3rem 0 0; color: rgba(255,255,255,.78); font-size: .58rem; font-weight: 700;
-    letter-spacing: .06em; text-align: center; text-transform: uppercase; }
-  .sol-lb__summary { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-    gap: .6rem; margin-top: .8rem; text-align: center; }
-  .sol-lb__block small { display: block; font-size: .52rem; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; opacity: .82; }
-  .sol-lb__block strong { display: block; margin-top: .15rem; font-size: 1.25rem; font-weight: 800; letter-spacing: -.03em; }
-  .sol-lb__block sup { font-size: .6em; }
-  .sol-lb__avatar {
-    position: relative;
-    display: grid;
-    width: 3.4rem;
-    height: 3.4rem;
-    place-items: center;
-    border: 2.5px solid #F5C542;
-    border-radius: 50%;
-    background: linear-gradient(150deg, #8A5A3E 0%, #4E2F20 100%);
-    font-size: .82rem;
-    font-weight: 800;
-  }
-  .sol-lb__medal {
+  .sol-lb__signal { display: inline-flex; align-items: center; gap: .25rem; }
+  .sol-lb__signal svg { height: .58rem; width: auto; }
+  /* the island sits over the status row, as it does on the device */
+  .sol-lb__island {
     position: absolute;
-    right: -.15rem;
-    bottom: -.15rem;
-    width: 1.15rem;
+    z-index: 2;
+    top: .42rem;
+    left: 50%;
+    width: 4.6rem;
     height: 1.15rem;
-    border-radius: 50%;
-    background: #F5C542;
-    box-shadow: 0 2px 6px rgba(0,0,0,.3);
-  }
-  .sol-lb__list { display: grid; gap: .4rem; margin: 0; padding: .8rem; list-style: none; background: var(--vf-surface); }
-  .sol-lb__row {
-    display: grid;
-    grid-template-columns: 1rem 1.75rem minmax(0,1fr) auto;
-    align-items: center;
-    gap: .55rem;
-    padding: .5rem .6rem;
     border-radius: var(--vf-radius-pill);
-    background: var(--vf-surface-soft);
+    background: #0B0E12;
+    transform: translateX(-50%);
   }
-  .sol-lb__row b { color: var(--vf-text); font-size: .68rem; font-weight: 800; text-align: center; }
+  .sol-lb__nav { display: grid; grid-template-columns: 1.05rem 1fr 1.05rem; align-items: center; gap: .5rem; }
+  .sol-lb__nav strong { font-size: .88rem; font-weight: 750; text-align: center; }
+  .sol-lb__nav svg { width: 1.05rem; height: 1.05rem; opacity: .95; }
+  .sol-lb__meta { margin: .35rem 0 0; color: rgba(255,255,255,.8); font-size: .55rem; font-weight: 700;
+    letter-spacing: .07em; text-align: center; text-transform: uppercase; }
+  .sol-lb__summary { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    gap: .5rem; margin-top: .85rem; text-align: center; }
+  .sol-lb__block small { display: block; font-size: .5rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; opacity: .85; }
+  .sol-lb__block strong { display: block; margin-top: .1rem; font-size: 1.2rem; font-weight: 800; letter-spacing: -.03em; }
+  .sol-lb__block sup { font-size: .58em; }
+  .sol-lb__avatar {
+    position: relative; display: grid; width: 3.15rem; height: 3.15rem; place-items: center;
+    border: 2.5px solid #F5C542; border-radius: 50%;
+    background: linear-gradient(150deg, #8A5A3E 0%, #4E2F20 100%);
+    font-size: .78rem; font-weight: 800;
+  }
+  .sol-lb__medal { position: absolute; right: -.1rem; bottom: -.1rem; width: 1.05rem; height: 1.05rem;
+    border: 2px solid var(--vf-coral-600, #C8203A); border-radius: 50%; background: #F5C542; }
+
+  /* ---- app canvas ---- */
+  .sol-lb__body { padding: .8rem .75rem .35rem; background: var(--vf-canvas); }
+  .sol-lb__tabs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .2rem; margin-bottom: .7rem; padding: .2rem;
+    border-radius: var(--vf-radius-pill); background: #E7E7EE;
+    font-size: .6rem; font-weight: 750; text-align: center;
+  }
+  .sol-lb__tabs span { padding: .3rem 0; border-radius: var(--vf-radius-pill); color: var(--vf-text); }
+  .sol-lb__tabs .is-on { background: #fff; color: var(--vf-ink); box-shadow: 0 1px 3px rgba(41,41,76,.14); }
+  .sol-lb__list { display: grid; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+  .sol-lb__row {
+    display: grid; grid-template-columns: .85rem 1.65rem minmax(0,1fr) auto; align-items: center;
+    gap: .5rem; padding: .5rem .6rem;
+    border-radius: .85rem; background: #fff;
+    box-shadow: 0 1px 2px rgba(41,41,76,.07);
+  }
+  .sol-lb__row b { color: var(--vf-text); font-size: .62rem; font-weight: 800; text-align: center; }
   .sol-lb__face {
-    display: grid;
-    width: 1.75rem;
-    height: 1.75rem;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--vf-slate-700);
-    color: #fff;
-    font-size: .55rem;
-    font-style: normal;
-    font-weight: 800;
+    display: grid; width: 1.65rem; height: 1.65rem; place-items: center; border-radius: 50%;
+    background: var(--vf-slate-700); color: #fff; font-size: .5rem; font-style: normal; font-weight: 800;
   }
-  .sol-lb__name { min-width: 0; color: var(--vf-ink); font-size: .78rem; font-weight: 750; }
-  .sol-lb__name small { display: block; color: var(--vf-text); font-size: .58rem; font-weight: 600; }
-  .sol-lb__score { color: var(--vf-ink); font-size: .82rem; font-weight: 800; letter-spacing: -.02em; }
-  .sol-lb__row--you { background: #FDEBED; }
+  .sol-lb__name { min-width: 0; color: var(--vf-ink); font-size: .72rem; font-weight: 750; line-height: 1.25; }
+  .sol-lb__name small { display: block; color: var(--vf-text); font-size: .54rem; font-weight: 600; }
+  .sol-lb__score { color: var(--vf-ink); font-size: .76rem; font-weight: 800; letter-spacing: -.02em; }
+  .sol-lb__row--you { background: #FDEBED; box-shadow: inset 0 0 0 1px rgba(184,23,42,.18); }
   .sol-lb__row--you .sol-lb__face { background: var(--vf-coral-700); }
   /* the flagged entry is the point of this section: visibly present, visibly out */
-  .sol-lb__row--flagged { background: transparent; box-shadow: inset 0 0 0 1px var(--vf-border); opacity: .72; }
-  .sol-lb__row--flagged .sol-lb__face { background: var(--vf-text); }
+  .sol-lb__row--flagged { background: transparent; box-shadow: inset 0 0 0 1px var(--vf-border); }
+  .sol-lb__row--flagged .sol-lb__face { background: #A6A6B6; }
+  .sol-lb__row--flagged .sol-lb__name { color: var(--vf-text); }
   .sol-lb__score--struck { color: var(--vf-text); text-decoration: line-through; }
+
+  /* ---- tab bar + home indicator ---- */
+  .sol-lb__tabbar {
+    display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; justify-items: center;
+    padding: .5rem .75rem .2rem;
+    border-top: 1px solid rgba(41,41,76,.07); background: #fff; color: var(--vf-coral-600, #D8324A);
+  }
+  .sol-lb__tabbar > svg { width: 1.15rem; height: 1.15rem; opacity: .85; }
+  .sol-lb__fab {
+    display: grid; width: 2.3rem; height: 2.3rem; place-items: center; margin-top: -1rem;
+    border: 3px solid #fff; border-radius: 50%;
+    background: var(--vf-action-gradient); color: #fff;
+    box-shadow: 0 6px 14px rgba(184,23,42,.34);
+  }
+  .sol-lb__fab svg { width: 1rem; height: 1rem; }
+  .sol-lb__home { display: block; width: 33%; height: .28rem; margin: .35rem auto .45rem;
+    border-radius: var(--vf-radius-pill); background: rgba(41,41,76,.32); }
   .sol-lb__note { color: rgba(255,255,255,.66); max-width: 22rem; text-align: center; }
 
   .sol-leader { display: grid; gap: .1rem; }
@@ -465,12 +493,6 @@
   .sol-dept__row { display: grid; grid-template-columns: 5rem 1fr 2.5rem; align-items: center; gap: var(--vf-space-3);
     font-size: var(--vf-text-sm); font-weight: 700; }
 
-  .sol-footer { padding-block: var(--vf-space-8); background: var(--vf-dark); color: #fff; }
-  .sol-footer a { color: rgba(255,255,255,.74); font-size: var(--vf-text-sm); text-decoration: none; }
-  .sol-footer a:hover { color: #fff; }
-  .sol-footer__grid { display: grid; grid-template-columns: minmax(0,1.4fr) repeat(3, minmax(0,1fr)); gap: var(--vf-space-6); }
-  @media (max-width: 860px) { .sol-footer__grid { grid-template-columns: 1fr 1fr; } }
-  .sol-footer ul { display: grid; gap: .6rem; margin: var(--vf-space-4) 0 0; padding: 0; list-style: none; }
 </style>
 </head>
 <body class="vf-nav-offset">
@@ -603,18 +625,8 @@
           <span class="sol-format__no">01</span>
           <h3 class="vf-card-title">Race</h3>
           <p class="vf-small">Spark a short burst</p>
-          <span class="sol-format__art" aria-hidden="true">
-            <svg viewBox="0 0 180 120" fill="none" preserveAspectRatio="xMidYMax meet" focusable="false">
-              <path d="M0 82c31-15 52-8 77-22 31-17 55-13 103-33v93H0z" fill="currentColor" opacity=".08"/>
-              <path d="M0 96c34-16 58-7 89-22 32-15 55-10 91-29v75H0z" fill="currentColor" opacity=".12"/>
-              <g stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="67" cy="50" r="6" fill="currentColor" stroke="none"/><path d="m64 58-8 16 12 8 10-17-10-7m-12 16-12 15m24-7 11 13m-8-33 13 6"/>
-                <circle cx="111" cy="44" r="6" fill="currentColor" opacity=".72" stroke="none"/><path d="m108 52-7 15 12 8 9-16-10-7m-11 15-13 14m25-6 12 12m-7-31 12 5" opacity=".72"/>
-              </g>
-              <rect x="39" y="92" width="102" height="25" rx="12.5" fill="white" opacity=".9"/>
-              <circle cx="55" cy="104.5" r="5" fill="currentColor" opacity=".7"/><circle cx="62" cy="104.5" r="5" fill="currentColor" opacity=".45"/>
-              <text x="72" y="108" fill="currentColor" font-size="11" font-weight="800">1,284 joined</text>
-            </svg>
+          <span class="sol-format__art">
+            <img src="/assets/illustrations/challenge-race.svg" alt="Athletes training together for a race challenge" width="972" height="465" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--streak">
@@ -625,17 +637,8 @@
           <span class="sol-format__no">02</span>
           <h3 class="vf-card-title">Streak</h3>
           <p class="vf-small">Build daily consistency</p>
-          <span class="sol-format__art" aria-hidden="true">
-            <svg viewBox="0 0 180 120" fill="none" preserveAspectRatio="xMidYMax meet" focusable="false">
-              <circle cx="57" cy="64" r="37" stroke="currentColor" stroke-width="10" opacity=".14"/>
-              <circle cx="57" cy="64" r="37" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-dasharray="176 233" transform="rotate(-90 57 64)"/>
-              <text x="57" y="62" text-anchor="middle" fill="currentColor" font-size="22" font-weight="800">12</text>
-              <text x="57" y="76" text-anchor="middle" fill="currentColor" font-size="8" font-weight="700">DAY STREAK</text>
-              <rect x="103" y="34" width="67" height="61" rx="12" fill="white" opacity=".82"/>
-              <g fill="currentColor" font-size="7" font-weight="700" text-anchor="middle"><text x="113" y="49">M</text><text x="129" y="49">T</text><text x="145" y="49">W</text><text x="161" y="49">T</text></g>
-              <g fill="currentColor"><circle cx="113" cy="62" r="5"/><circle cx="129" cy="62" r="5"/><circle cx="145" cy="62" r="5"/><circle cx="161" cy="62" r="5" opacity=".2"/><circle cx="113" cy="78" r="5"/><circle cx="129" cy="78" r="5"/><circle cx="145" cy="78" r="5" opacity=".2"/><circle cx="161" cy="78" r="5" opacity=".2"/></g>
-              <path d="m110 62 2 2 4-5m10 3 2 2 4-5m10 3 2 2 4-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <span class="sol-format__art">
+            <img src="/assets/illustrations/challenge-streak.svg" alt="Person organizing daily tasks for a streak challenge" width="800" height="571" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--journey">
@@ -646,16 +649,8 @@
           <span class="sol-format__no">03</span>
           <h3 class="vf-card-title">Journey</h3>
           <p class="vf-small">Make progress visual</p>
-          <span class="sol-format__art" aria-hidden="true">
-            <svg viewBox="0 0 180 120" fill="none" preserveAspectRatio="xMidYMax meet" focusable="false">
-              <path d="M0 82c28-22 49-7 75-25 25-17 47-10 105-42v105H0z" fill="currentColor" opacity=".07"/>
-              <path d="M0 98c31-18 49-6 78-21 37-18 55-8 102-37v80H0z" fill="currentColor" opacity=".11"/>
-              <path d="M15 98c24-4 20-36 48-36s27 25 52 13c17-8 21-31 45-35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8" opacity=".68"/>
-              <g fill="white" stroke="currentColor" stroke-width="3"><circle cx="15" cy="98" r="6"/><circle cx="63" cy="62" r="6"/><circle cx="115" cy="75" r="6"/></g>
-              <circle cx="15" cy="98" r="2.5" fill="currentColor"/><circle cx="63" cy="62" r="2.5" fill="currentColor"/><circle cx="115" cy="75" r="2.5" fill="currentColor"/>
-              <path d="M160 46V23" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M160 24h14l-4 5 4 5h-14z" fill="currentColor"/>
-              <rect x="101" y="92" width="65" height="23" rx="11.5" fill="white" opacity=".9"/><text x="133.5" y="107" text-anchor="middle" fill="currentColor" font-size="10" font-weight="800">7 destinations</text>
-            </svg>
+          <span class="sol-format__art">
+            <img src="/assets/illustrations/challenge-journey.svg" alt="Traveler planning destinations along a journey route" width="960" height="538" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--marathon">
@@ -666,14 +661,8 @@
           <span class="sol-format__no">04</span>
           <h3 class="vf-card-title">E-Marathon</h3>
           <p class="vf-small">Rally around an event</p>
-          <span class="sol-format__art" aria-hidden="true">
-            <svg viewBox="0 0 180 120" fill="none" preserveAspectRatio="xMidYMax meet" focusable="false">
-              <path d="M0 94 33 55l23 19 31-43 26 36 22-20 45 47v26H0z" fill="currentColor" opacity=".1"/>
-              <path d="m0 105 43-31 25 17 34-30 24 19 20-12 34 27v25H0z" fill="currentColor" opacity=".14"/>
-              <path d="M20 103c28-5 42-30 68-26 25 4 29 23 68 15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="90" cy="77" r="6" fill="currentColor"/><path d="M90 77V49" stroke="currentColor" stroke-width="3"/><path d="M90 50h15l-4 5 4 5H90z" fill="currentColor"/>
-              <rect x="43" y="94" width="94" height="24" rx="12" fill="white" opacity=".9"/><text x="90" y="110" text-anchor="middle" fill="currentColor" font-size="11" font-weight="800">21 / 42 km</text>
-            </svg>
+          <span class="sol-format__art">
+            <img src="/assets/illustrations/challenge-marathon.svg" alt="Fitness progress and activity statistics illustration" width="960" height="665" loading="lazy" decoding="async">
           </span>
         </li>
         <li class="sol-format sol-format--custom">
@@ -684,14 +673,8 @@
           <span class="sol-format__no">05</span>
           <h3 class="vf-card-title">Custom multi-week</h3>
           <p class="vf-small">Movement, mindfulness, hydration and more</p>
-          <span class="sol-format__art" aria-hidden="true">
-            <svg viewBox="0 0 180 120" fill="none" preserveAspectRatio="xMidYMax meet" focusable="false">
-              <rect x="13" y="20" width="70" height="37" rx="12" fill="white" opacity=".88"/><rect x="97" y="20" width="70" height="37" rx="12" fill="white" opacity=".88"/><rect x="13" y="68" width="70" height="37" rx="12" fill="white" opacity=".88"/><rect x="97" y="68" width="70" height="37" rx="12" fill="white" opacity=".88"/>
-              <circle cx="31" cy="38.5" r="10" fill="currentColor" opacity=".92"/><path d="m27 39 3 3 6-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="47" y="42" fill="currentColor" font-size="9" font-weight="800">MOVE</text>
-              <circle cx="115" cy="38.5" r="10" fill="#147B64" opacity=".9"/><path d="M112 33v11m6-8v8m-6-3h6" stroke="white" stroke-width="1.7" stroke-linecap="round"/><text x="131" y="42" fill="#147B64" font-size="9" font-weight="800">HYDRATE</text>
-              <circle cx="31" cy="86.5" r="10" fill="#C45117" opacity=".88"/><path d="M26 88c3-8 7-8 10 0-3 3-7 3-10 0z" stroke="white" stroke-width="1.5"/><text x="47" y="90" fill="#C45117" font-size="9" font-weight="800">MINDFUL</text>
-              <circle cx="115" cy="86.5" r="10" fill="#6946E8" opacity=".88"/><path d="M110 89h10m-8-6 3 6 3-6" stroke="white" stroke-width="1.6" stroke-linecap="round"/><text x="131" y="90" fill="#6946E8" font-size="9" font-weight="800">CUSTOM</text>
-            </svg>
+          <span class="sol-format__art">
+            <img src="/assets/illustrations/challenge-custom.svg" alt="Person tracking personal goals across multiple activities" width="989" height="775" loading="lazy" decoding="async">
           </span>
         </li>
       </ul>
@@ -762,37 +745,61 @@
           <li style="border-color: var(--vf-border-dark)"><h3 class="vf-card-title">Manual entry off by default</h3><p class="vf-body">Typed-in steps stay off unless you enable them.</p></li>
         </ul>
         <div class="sol-lb">
-          <div class="sol-lb__phone" role="img" aria-label="Illustrative Vantage Fit leaderboard. A. Rivera leads on 12,480 steps; an implausible total of 214,006 from an unrecognized source is flagged and left off the ranking.">
-            <div class="sol-lb__status" aria-hidden="true"><span>9:41</span><span class="sol-lb__status-ico"></span></div>
+          <div class="sol-lb__device">
+            <div class="sol-lb__screen" role="img" aria-label="Illustrative Vantage Fit leaderboard. A. Rivera leads on 12,480 steps; an implausible total of 214,006 from an unrecognized source is flagged and left off the ranking.">
 
-            <div class="sol-lb__hero">
-              <div class="sol-lb__nav" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>
-                <strong>Leaderboard</strong>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+              <div class="sol-lb__chrome">
+                <div class="sol-lb__statusbar" aria-hidden="true">
+                  <span class="sol-lb__time">9:41</span>
+                  <span class="sol-lb__signal">
+                    <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                    <svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1 4.2a10 10 0 0 1 14 0"/><path d="M3.6 7a6.4 6.4 0 0 1 8.8 0"/><circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none"/></svg>
+                    <svg viewBox="0 0 26 12" fill="none"><rect x=".8" y=".8" width="21" height="10.4" rx="3" stroke="currentColor" stroke-width="1.2" opacity=".55"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.8" fill="currentColor"/><path d="M23.5 4.4v3.2a2.2 2.2 0 0 0 0-3.2z" fill="currentColor" opacity=".55"/></svg>
+                  </span>
+                </div>
+                <span class="sol-lb__island" aria-hidden="true"></span>
+
+                <div class="sol-lb__nav" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+                  <strong>Leaderboard</strong>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+                </div>
+                <p class="sol-lb__meta">Spring Steps Race &middot; Week 2</p>
+                <div class="sol-lb__summary">
+                  <span class="sol-lb__block"><small>Your rank</small><strong>3<sup>rd</sup></strong></span>
+                  <span class="sol-lb__avatar">MC<i class="sol-lb__medal" aria-hidden="true"></i></span>
+                  <span class="sol-lb__block"><small>Steps</small><strong>11,340</strong></span>
+                </div>
               </div>
-              <p class="sol-lb__meta">Spring Steps Race &middot; Week 2</p>
-              <div class="sol-lb__summary">
-                <span class="sol-lb__block"><small>Your rank</small><strong>3<sup>rd</sup></strong></span>
-                <span class="sol-lb__avatar">MC<i class="sol-lb__medal" aria-hidden="true"></i></span>
-                <span class="sol-lb__block"><small>Steps</small><strong>11,340</strong></span>
+
+              <div class="sol-lb__body">
+                <div class="sol-lb__tabs" aria-hidden="true"><span class="is-on">Individual</span><span>Teams</span></div>
+                <ol class="sol-lb__list">
+                  <li class="sol-lb__row"><b>1</b><i class="sol-lb__face">AR</i>
+                    <span class="sol-lb__name">A. Rivera<small>Verified source</small></span>
+                    <span class="sol-lb__score">12,480</span></li>
+                  <li class="sol-lb__row"><b>2</b><i class="sol-lb__face">PS</i>
+                    <span class="sol-lb__name">Priya S.<small>Verified source</small></span>
+                    <span class="sol-lb__score">11,920</span></li>
+                  <li class="sol-lb__row sol-lb__row--you"><b>3</b><i class="sol-lb__face">MC</i>
+                    <span class="sol-lb__name">M. Chen<small>You</small></span>
+                    <span class="sol-lb__score">11,340</span></li>
+                  <li class="sol-lb__row sol-lb__row--flagged"><b>&ndash;</b><i class="sol-lb__face">JD</i>
+                    <span class="sol-lb__name">J. Doe<small>Source rejected</small></span>
+                    <span class="sol-lb__score sol-lb__score--struck">214,006</span></li>
+                </ol>
               </div>
+
+              <div class="sol-lb__tabbar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4"/><path d="M12 14v3M9 20h6"/></svg>
+                <span class="sol-lb__fab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="10" r="2.4"/><path d="M15.5 19a4.6 4.6 0 0 1 5.5-4.4"/></svg>
+              </div>
+
+              <span class="sol-lb__home" aria-hidden="true"></span>
             </div>
-
-            <ol class="sol-lb__list">
-              <li class="sol-lb__row"><b>1</b><i class="sol-lb__face">AR</i>
-                <span class="sol-lb__name">A. Rivera<small>Verified source</small></span>
-                <span class="sol-lb__score">12,480</span></li>
-              <li class="sol-lb__row"><b>2</b><i class="sol-lb__face">PS</i>
-                <span class="sol-lb__name">Priya S.<small>Verified source</small></span>
-                <span class="sol-lb__score">11,920</span></li>
-              <li class="sol-lb__row sol-lb__row--you"><b>3</b><i class="sol-lb__face">MC</i>
-                <span class="sol-lb__name">M. Chen<small>You</small></span>
-                <span class="sol-lb__score">11,340</span></li>
-              <li class="sol-lb__row sol-lb__row--flagged"><b>&ndash;</b><i class="sol-lb__face">JD</i>
-                <span class="sol-lb__name">J. Doe<small>Source rejected</small></span>
-                <span class="sol-lb__score sol-lb__score--struck">214,006</span></li>
-            </ol>
           </div>
           <p class="vf-meta sol-lb__note">Illustrative leaderboard. An implausible total from an unrecognized source is flagged and left off the ranking.</p>
         </div>
@@ -905,33 +912,47 @@
   </section>
 </main>
 
-<footer class="sol-footer">
-  <div class="vf-container vf-stack" style="--vf-stack-gap: var(--vf-space-6)">
-    <div class="sol-footer__grid">
-      <div class="vf-stack" style="--vf-stack-gap: var(--vf-space-3)">
-        <strong>Vantage Fit</strong>
-        <p class="vf-small" style="color: rgba(255,255,255,.72)">Inclusive wellness programs that turn employee participation into measurable progress. A Vantage Circle product.</p>
+<footer class="vf-footer">
+  <div class="vf-container">
+    <div class="vf-footer__grid">
+      <div class="vf-footer__brand">
+        <a href="/enterprise-final" aria-label="Vantage Fit home">
+          <img src="/logo-white.png" alt="Vantage Fit" width="173" height="37" loading="lazy" decoding="async">
+        </a>
+        <p class="vf-footer__about">Inclusive wellness programs that turn employee participation into measurable progress. A Vantage Circle product.</p>
       </div>
-      <div><h2 class="vf-footer-title">Programs</h2><ul>
-        <li><a href="/step-challenges" aria-current="page">Step challenges</a></li>
-        <li><a href="https://www.vantagefit.io/solutions/multi-activity-challenges/">Multi-activity</a></li>
-        <li><a href="https://www.vantagefit.io/solutions/remote-team-wellness/">Team challenges</a></li>
-        <li><a href="https://www.vantagefit.io/solutions/wellness-challenges/">Year-round wellness</a></li></ul></div>
-      <div><h2 class="vf-footer-title">Evaluate</h2><ul>
-        <li><a href="https://www.vantagefit.io/casestudy/">Customer stories</a></li>
-        <li><a href="https://www.vantagefit.io/features/security-and-compliance/">Security</a></li>
-        <li><a href="https://www.vantagefit.io/pricing/">Pricing</a></li>
-        <li><a href="https://www.vantagefit.io/request-demo/">Contact sales</a></li></ul></div>
-      <div><h2 class="vf-footer-title">Resources</h2><ul>
-        <li><a href="https://www.vantagefit.io/en/blog/">Wellbeing blog</a></li>
-        <li><a href="https://www.vantagefit.io/guides/">Guides</a></li>
-        <li><a href="/enterprise-final">Product overview</a></li>
-        <li><a href="#faq">Step challenge FAQ</a></li></ul></div>
+      <div>
+        <h2 class="vf-footer-title">Programs</h2>
+        <div class="vf-footer__links">
+          <a href="/step-challenges" aria-current="page">Step challenges</a>
+          <a href="https://www.vantagefit.io/solutions/multi-activity-challenges/">Multi-activity</a>
+          <a href="https://www.vantagefit.io/solutions/remote-team-wellness/">Team challenges</a>
+          <a href="https://www.vantagefit.io/solutions/wellness-challenges/">Year-round wellness</a>
+        </div>
+      </div>
+      <div>
+        <h2 class="vf-footer-title">Evaluate</h2>
+        <div class="vf-footer__links">
+          <a href="https://www.vantagefit.io/casestudy/">Customer stories</a>
+          <a href="https://www.vantagefit.io/features/security-and-compliance/">Security</a>
+          <a href="https://www.vantagefit.io/pricing/">Pricing</a>
+          <a href="https://www.vantagefit.io/request-demo/">Contact sales</a>
+        </div>
+      </div>
+      <div>
+        <h2 class="vf-footer-title">Resources</h2>
+        <div class="vf-footer__links">
+          <a href="https://www.vantagefit.io/en/blog/">Wellbeing blog</a>
+          <a href="https://www.vantagefit.io/guides/">Guides</a>
+          <a href="/enterprise-final">Product overview</a>
+          <a href="#faq">Step challenge FAQ</a>
+        </div>
+      </div>
     </div>
-    <hr class="vf-divider" style="background: rgba(255,255,255,.16)">
-    <div class="vf-cluster" style="justify-content: space-between">
-      <span class="vf-small" style="color: rgba(255,255,255,.62)">&copy; 2026 Vantage Circle. All rights reserved.</span>
-      <span class="vf-small" style="color: rgba(255,255,255,.62)">Regional data hosting &middot; Employee privacy controls</span>
+    <div class="vf-footer__bottom">
+      <span>&copy; 2026 Vantage Circle. All rights reserved.</span>
+      <span>HIPAA &middot; SOC 2 &middot; GDPR &middot; ISO 27001 &middot; ISO 27701</span>
+      <span>Regional data hosting &middot; Employee privacy controls</span>
     </div>
   </div>
 </footer>
@@ -954,5 +975,6 @@
   })();
 </script>
 <script src="/vf-site-nav.js" defer></script>
+<script src="/vf-brand-shapes.js" defer></script>
 </body>
 </html>

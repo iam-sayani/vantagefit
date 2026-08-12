@@ -80,6 +80,15 @@ Noto Sans is the only web typeface. Every size below is the homepage's own scale
 - Limit text lines to roughly 60–75 characters. A page-local rule may set `max-width` on a heading for measure; that is the only type property it may touch.
 - Use one section-heading class across the page. Color may vary; size and line height must not.
 
+## Footer
+
+`.vf-footer` is the homepage's footer, value for value: 52/30px block padding on `--vf-dark`, a `1.7fr repeat(3, 1fr)` grid, and a bottom row divided by a hairline.
+
+- `.vf-footer__brand` holds the white logo and `.vf-footer__about`; it spans both columns below 860px.
+- `.vf-footer-title` labels each column. The homepage sets it on a `div`; use a real heading element so a screen reader can navigate the columns.
+- `.vf-footer__links` is a grid of anchors, not a list, matching the homepage.
+- `.vf-footer__bottom` collapses from a row to a stack below 560px.
+
 ## Completion rings
 
 The Vantage Fit app shows completion as a **ring**, not a bar — on challenge tasks, the daily summary and trends. Marketing pages that show product truth should use the same motif.
@@ -112,6 +121,19 @@ The oversized radial forms used on the enterprise homepage are a reusable Vantag
 - Keep shapes behind the content, out of the reading order, and clear of essential text.
 - Use no more than two shapes in one section and no more than one ambient-shape section per viewport.
 - Do not use the shapes as icons, card decoration, or independent illustrations.
+
+### Entrance animation
+
+Load `vf-brand-shapes.js` and the shapes grow into place as their section arrives.
+
+- The script adds `.vf-anim` to the root, which is what switches on the hidden state, then `.is-in` per shape. **Without the script the shapes simply render in place** — the hidden state is deliberately gated so a failed script never leaves them invisible.
+- They **scale** from .42, they do not slide. A slide of even 260px is lost on a shape this large and this soft, which is why the homepage settled on scale.
+- The observer watches the host section, not the shape: right-hand shapes sit mostly outside a phone viewport and would otherwise stay stuck hidden.
+- `prefers-reduced-motion: reduce` shows them immediately.
+
+```html
+<script src="/vf-brand-shapes.js" defer></script>
+```
 
 ```html
 <section class="vf-section vf-section--dark vf-brand-field">
