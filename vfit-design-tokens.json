@@ -1,70 +1,421 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Vantage Fit design tokens. Every value is taken from enterprise-final.html, the approved homepage, which is the reference for the whole system.",
   "color": {
     "brand": {
-      "coral": { "$type": "color", "$value": "#F15162" },
-      "coralDeep": { "$type": "color", "$value": "#B8172A" },
-      "teal": { "$type": "color", "$value": "#41D8B4" },
-      "orange": { "$type": "color", "$value": "#FF9D57" },
-      "slate": { "$type": "color", "$value": "#303740" }
+      "coral": {
+        "$type": "color",
+        "$value": "#F15162",
+        "$description": "Brand fill. 3.45:1 on white, so never body text on a light surface."
+      },
+      "coralDeep": {
+        "$type": "color",
+        "$value": "#B8172A",
+        "$description": "Text and button labels; the CTA gradient endpoint."
+      },
+      "teal": {
+        "$type": "color",
+        "$value": "#41D8B4"
+      },
+      "tealDeep": {
+        "$type": "color",
+        "$value": "#169D7E",
+        "$description": "The homepage's tinted-pill text tone."
+      },
+      "orange": {
+        "$type": "color",
+        "$value": "#FF9D57"
+      },
+      "slate": {
+        "$type": "color",
+        "$value": "#303740"
+      }
     },
     "neutral": {
-      "ink": { "$type": "color", "$value": "#29294C" },
-      "text": { "$type": "color", "$value": "#50506D" },
-      "canvas": { "$type": "color", "$value": "#F8F8F9" },
-      "surface": { "$type": "color", "$value": "#FFFFFF" },
-      "surfaceSoft": { "$type": "color", "$value": "#F1F1F6" },
-      "dark": { "$type": "color", "$value": "#1D2228" }
+      "ink": {
+        "$type": "color",
+        "$value": "#29294C"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "#50506D",
+        "$description": "The single muted tone. The homepage has no second one."
+      },
+      "canvas": {
+        "$type": "color",
+        "$value": "#F8F8F9"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "surfaceSoft": {
+        "$type": "color",
+        "$value": "#F1F1F6"
+      },
+      "dark": {
+        "$type": "color",
+        "$value": "#1D2228"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "rgba(41, 41, 76, 0.12)"
+      },
+      "borderOnDark": {
+        "$type": "color",
+        "$value": "rgba(255, 255, 255, 0.14)"
+      }
     },
     "semantic": {
-      "action": { "$type": "color", "$value": "{color.brand.coralDeep}" },
-      "actionStart": { "$type": "color", "$value": "{color.brand.coral}" },
-      "actionEnd": { "$type": "color", "$value": "{color.brand.coralDeep}" },
-      "positive": { "$type": "color", "$value": "#167F69" },
-      "reward": { "$type": "color", "$value": "{color.brand.orange}" },
-      "focus": { "$type": "color", "$value": "#146CBE" },
-      "danger": { "$type": "color", "$value": "#A51225" }
+      "action": {
+        "$type": "color",
+        "$value": "{color.brand.coralDeep}"
+      },
+      "actionStart": {
+        "$type": "color",
+        "$value": "{color.brand.coral}"
+      },
+      "actionEnd": {
+        "$type": "color",
+        "$value": "{color.brand.coralDeep}"
+      },
+      "positive": {
+        "$type": "color",
+        "$value": "#146F58",
+        "$description": "Extension, not on the homepage: teal that clears 4.5:1 as text."
+      },
+      "reward": {
+        "$type": "color",
+        "$value": "#B84F16",
+        "$description": "Extension, not on the homepage: orange that clears 4.5:1 as text."
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.brand.coral}",
+        "$description": "Homepage focus rings are coral, 3px, offset 3px."
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "#A51225"
+      }
     }
   },
   "font": {
-    "family": { "$type": "fontFamily", "$value": ["Noto Sans", "Arial", "sans-serif"] },
+    "family": {
+      "$type": "fontFamily",
+      "$value": [
+        "Noto Sans",
+        "Arial",
+        "sans-serif"
+      ]
+    },
     "weight": {
-      "regular": { "$type": "fontWeight", "$value": 400 },
-      "medium": { "$type": "fontWeight", "$value": 500 },
-      "semibold": { "$type": "fontWeight", "$value": 600 },
-      "bold": { "$type": "fontWeight", "$value": 700 },
-      "extraBold": { "$type": "fontWeight", "$value": 800 }
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600,
+        "$description": "Buttons."
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700,
+        "$description": "Display headings, subsection and card titles, body links."
+      },
+      "extraBold": {
+        "$type": "fontWeight",
+        "$value": 800,
+        "$description": "Section headings (h2.section-heading), eyebrows, stat values."
+      }
+    },
+    "size": {
+      "displayMin": {
+        "$type": "dimension",
+        "$value": "40.8px"
+      },
+      "displayMax": {
+        "$type": "dimension",
+        "$value": "68px",
+        "$description": "h1: clamp(2.55rem, 4.8vw, 4.25rem)"
+      },
+      "sectionMin": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "sectionMax": {
+        "$type": "dimension",
+        "$value": "51.2px",
+        "$description": "h2.section-heading: clamp(2rem, 3.4vw, 3.2rem)"
+      },
+      "subsectionMin": {
+        "$type": "dimension",
+        "$value": "22.4px"
+      },
+      "subsectionMax": {
+        "$type": "dimension",
+        "$value": "30.4px",
+        "$description": "clamp(1.4rem, 2.4vw, 1.9rem)"
+      },
+      "card": {
+        "$type": "dimension",
+        "$value": "18.4px",
+        "$description": "h3: 1.15rem"
+      },
+      "body": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "small": {
+        "$type": "dimension",
+        "$value": "13.44px",
+        "$description": "0.84rem"
+      },
+      "eyebrow": {
+        "$type": "dimension",
+        "$value": "11.52px",
+        "$description": "0.72rem, tracking 0.14em, uppercase"
+      },
+      "button": {
+        "$type": "dimension",
+        "$value": "14.72px",
+        "$description": "0.92rem"
+      },
+      "lead": {
+        "$type": "dimension",
+        "$value": "17.92px",
+        "$description": "1.12rem; 16px below 1040px"
+      }
+    },
+    "leading": {
+      "heading": {
+        "$type": "number",
+        "$value": 1.04
+      },
+      "display": {
+        "$type": "number",
+        "$value": 1.01,
+        "$description": "The hero tightens past the heading base."
+      },
+      "body": {
+        "$type": "number",
+        "$value": 1.55
+      },
+      "section": {
+        "$type": "number",
+        "$value": 1.08,
+        "$description": "h2.section-heading"
+      },
+      "lead": {
+        "$type": "number",
+        "$value": 1.6,
+        "$description": "1.62 below 1040px"
+      }
+    },
+    "tracking": {
+      "heading": {
+        "$type": "dimension",
+        "$value": "-0.035em"
+      },
+      "statValue": {
+        "$type": "dimension",
+        "$value": "-0.06em"
+      },
+      "eyebrow": {
+        "$type": "dimension",
+        "$value": "0.14em"
+      }
     }
   },
   "space": {
-    "1": { "$type": "dimension", "$value": "4px" },
-    "2": { "$type": "dimension", "$value": "8px" },
-    "3": { "$type": "dimension", "$value": "12px" },
-    "4": { "$type": "dimension", "$value": "16px" },
-    "5": { "$type": "dimension", "$value": "24px" },
-    "6": { "$type": "dimension", "$value": "32px" },
-    "7": { "$type": "dimension", "$value": "48px" },
-    "8": { "$type": "dimension", "$value": "64px" },
-    "9": { "$type": "dimension", "$value": "80px" },
-    "10": { "$type": "dimension", "$value": "96px" }
+    "$description": "The homepage has no formal spacing scale; only the section rhythm and gutter are taken from it.",
+    "1": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "22px",
+      "$description": "Card padding."
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "56px",
+      "$description": "Compact section."
+    },
+    "9": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$description": "Section below 860px."
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "72px",
+      "$description": "Section."
+    }
   },
   "radius": {
-    "small": { "$type": "dimension", "$value": "8px" },
-    "medium": { "$type": "dimension", "$value": "12px" },
-    "large": { "$type": "dimension", "$value": "16px" },
-    "extraLarge": { "$type": "dimension", "$value": "22px" },
-    "pill": { "$type": "dimension", "$value": "999px" }
+    "small": {
+      "$type": "dimension",
+      "$value": "10px"
+    },
+    "medium": {
+      "$type": "dimension",
+      "$value": "15px"
+    },
+    "large": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "extraLarge": {
+      "$type": "dimension",
+      "$value": "22px",
+      "$description": "The card default."
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "999px"
+    }
+  },
+  "shadow": {
+    "soft": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0",
+        "offsetY": "12px",
+        "blur": "36px",
+        "spread": "0",
+        "color": "rgba(41, 41, 76, 0.08)"
+      }
+    },
+    "deep": {
+      "$type": "shadow",
+      "$value": {
+        "offsetX": "0",
+        "offsetY": "24px",
+        "blur": "64px",
+        "spread": "0",
+        "color": "rgba(41, 41, 76, 0.14)"
+      }
+    }
+  },
+  "gradient": {
+    "action": {
+      "$type": "gradient",
+      "$value": "linear-gradient(125deg, #F15162 5%, #B8172A 125%)"
+    },
+    "dark": {
+      "$type": "gradient",
+      "$value": "linear-gradient(145deg, #303740 0%, #1D2228 100%)"
+    }
   },
   "ambientShape": {
-    "slateOrigin": { "$type": "color", "$value": "#3B4656" },
-    "coralOrigin": { "$type": "color", "$value": "{color.brand.coral}" },
-    "mutedOpacity": { "$type": "number", "$value": 0.42 },
-    "aspectRatio": { "$type": "number", "$value": 1.315789 }
+    "slateOrigin": {
+      "$type": "color",
+      "$value": "#3B4656"
+    },
+    "coralOrigin": {
+      "$type": "color",
+      "$value": "{color.brand.coral}"
+    },
+    "mutedOpacity": {
+      "$type": "number",
+      "$value": 0.42
+    },
+    "aspectRatio": {
+      "$type": "number",
+      "$value": 1.315789
+    }
   },
   "size": {
-    "contentMax": { "$type": "dimension", "$value": "1180px" },
-    "control": { "$type": "dimension", "$value": "48px" },
-    "controlLarge": { "$type": "dimension", "$value": "56px" },
-    "touchTargetMinimum": { "$type": "dimension", "$value": "44px" }
+    "contentMax": {
+      "$type": "dimension",
+      "$value": "1180px"
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$description": "32px below 860px."
+    },
+    "navHeight": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "control": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "controlLarge": {
+      "$type": "dimension",
+      "$value": "56px"
+    },
+    "touchTargetMinimum": {
+      "$type": "dimension",
+      "$value": "44px"
+    },
+    "sectionTop": {
+      "$type": "dimension",
+      "$value": "72px",
+      "$description": "One section-top rhythm: 56px below 1040px, 40px below 760px."
+    },
+    "sectionBottom": {
+      "$type": "dimension",
+      "$value": "96px",
+      "$description": "Default only; the homepage varies this per section."
+    }
+  },
+  "breakpoint": {
+    "$description": "The homepage's own breakpoints.",
+    "wide": {
+      "$type": "dimension",
+      "$value": "1100px"
+    },
+    "tablet": {
+      "$type": "dimension",
+      "$value": "860px"
+    },
+    "phone": {
+      "$type": "dimension",
+      "$value": "560px"
+    },
+    "phoneSmall": {
+      "$type": "dimension",
+      "$value": "400px"
+    },
+    "unifiedScale": {
+      "$type": "dimension",
+      "$value": "1040px",
+      "$description": "Where the lead scale and section-top rhythm step; not a layout breakpoint."
+    },
+    "sectionRhythm": {
+      "$type": "dimension",
+      "$value": "760px",
+      "$description": "Second step of the section-top rhythm and the section-heading rescale."
+    }
   }
 }

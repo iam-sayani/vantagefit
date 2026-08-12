@@ -2,6 +2,8 @@
 
 This system translates the `enterprise-final` homepage into reusable standards for future Vantage Fit web pages. The visual reference is available at `/design-system`, the reusable CSS source is `/vfit-design-system.css`, and machine-readable tokens are available at `/vfit-design-tokens.json`.
 
+**The homepage is the reference.** Every value in the system is taken from `enterprise-final.html`. Where the two disagree, the homepage is right and the system is wrong: fix the system, not the page. Two values are extensions rather than homepage values, both because the homepage has no accessible stop for them — `--vf-teal-700` and `--vf-orange-700`, for teal and orange used as text on white.
+
 ## Brand principles
 
 1. **Human clarity** — Familiar patterns, readable type, natural language, and achievable wellness activities.
@@ -30,8 +32,10 @@ All reusable classes and variables begin with `vf-` to prevent collisions with p
 | Brand coral | `--vf-coral-500` | `#F15162` | Large accents, illustrations, decorative atmosphere |
 | Deep coral | `--vf-coral-700` | `#B8172A` | Primary CTA gradient endpoint, coral text, accessible compact UI |
 | Teal | `--vf-teal-500` | `#41D8B4` | Progress fills and visual wellness signals |
-| Dark teal | `--vf-teal-700` | `#167F69` | Positive text and small-interface labels |
+| Mid teal | `--vf-teal-600` | `#169D7E` | The homepage's tinted-pill text tone |
+| Dark teal | `--vf-teal-700` | `#146F58` | Positive text and small-interface labels |
 | Orange | `--vf-orange-500` | `#FF9D57` | Rewards, milestones, achievements |
+| Dark orange | `--vf-orange-700` | `#B84F16` | Reward text that must clear 4.5:1 |
 | Slate | `--vf-slate-700` | `#303740` | Dark enterprise panels and product framing |
 | Ink | `--vf-ink` | `#29294C` | Headings and essential light-surface text |
 | Body | `--vf-text` | `#50506D` | Paragraphs and supporting light-surface text |
@@ -51,25 +55,50 @@ All reusable classes and variables begin with `vf-` to prevent collisions with p
 
 ## Typography
 
-Noto Sans is the only web typeface. Use 400–500 for body copy, 600–700 for controls, and 750–800 for headings.
+Noto Sans is the only web typeface. Every size below is the homepage's own scale. Weights are **not uniform, by design**: the hero display inherits 700, while section headings are 800 via the homepage's `h2.section-heading` rule. Use 400 for body copy and inline text links, 600 for controls, and 800 for section headings, eyebrows and stat values.
 
-| Style | Class | Size | Typical use |
-|---|---|---|---|
-| Display | `.vf-display` | 41–72px responsive | Hero headings only |
-| Section | `.vf-section-title` | 36–56px responsive | One consistent heading style across sections |
-| Card | `.vf-card-title` | 20–24px responsive | Component and content-card titles |
-| Lead | `.vf-lead` | 18px | Section introduction |
-| Body | `.vf-body` | 16px | Paragraphs |
-| Small | `.vf-small` | 14px | Supporting content |
-| Eyebrow | `.vf-eyebrow` | 12px / 800 | Short category labels |
+| Style | Class | Size | Weight | Typical use |
+|---|---|---|---|---|
+| Display | `.vf-display` | 41–68px responsive | 700 | Hero headings only |
+| Section | `.vf-section-title` | 32–51px responsive | **800** | One consistent heading style across sections |
+| Subsection | `.vf-subsection-title` | 22–30px responsive | 700 | A heading inside a section, below the section title |
+| Card | `.vf-card-title` | 18px | 700 | Component and content-card titles |
+| Lead | `.vf-lead` | 18px, 16px below 1040px | 400 | Section introduction |
+| Body | `.vf-body` | 16px | 400 | Paragraphs |
+| Small | `.vf-small` | 13px | 400 | Supporting content, card copy, menu descriptions |
+| Eyebrow | `.vf-eyebrow` | 11.5px | 800 | Short category labels |
 
 ### Typography rules
 
-- Keep headings at 1.05 line height and body copy near 1.62.
-- Keep body copy at 16px or larger and product UI text at 14px or larger when the UI is functional rather than decorative.
+- **Never override `font-size` on a heading class**, in a page's local `<style>` block or inline. If a heading looks wrong at its size, the level is wrong: pick the class that matches it. The scale is display > section > subsection > card, and there is no size between them.
+- Display headings sit at 700; section headings sit at 800. Both are the homepage's values — check which level you are on rather than assuming one weight.
+- Inline text links (`.vf-button--text`) are **regular weight (400)**, not bold. The homepage resets them last, after noting they had drifted to 800 across sections.
+- Heading line height is 1.04; `.vf-display` tightens to 1.01 (1.1 below 560px) and `.vf-section-title` runs at 1.08. Body copy is 1.55; the lead runs looser at 1.6, and 1.62 below 1040px.
+- Heading tracking is -0.035em; stat values are -0.06em.
+- Keep body copy at 16px or larger and product UI text at 13px or larger when the UI is functional rather than decorative.
 - Use sentence case except for short eyebrows.
-- Limit text lines to roughly 60–75 characters.
-- Use one section-heading class across the page. Color may vary; size and line height should not.
+- Limit text lines to roughly 60–75 characters. A page-local rule may set `max-width` on a heading for measure; that is the only type property it may touch.
+- Use one section-heading class across the page. Color may vary; size and line height must not.
+
+## Completion rings
+
+The Vantage Fit app shows completion as a **ring**, not a bar — on challenge tasks, the daily summary and trends. Marketing pages that show product truth should use the same motif.
+
+- Use `.vf-ring` with a `--vf-ring-value` of 0–100. The SVG circles carry `pathLength="100"`, so the value is a literal percentage and the markup never needs the circumference.
+- Colour carries meaning, matching the app: `.vf-ring--coral` for activity and steps, `.vf-ring--teal` for completion, `.vf-ring--orange` for calories.
+- Size with `--vf-ring-size` (default 3.25rem) and `--vf-ring-width` (default 5).
+- Mark the ring `aria-hidden="true"` and put the real figure in the surrounding copy or the card's `aria-label`; a ring on its own is not an accessible value.
+- Pair it the way the app does: label and value on the left, ring on the right.
+
+```html
+<span class="vf-ring vf-ring--coral" style="--vf-ring-value: 84" aria-hidden="true">
+  <svg viewBox="0 0 44 44" focusable="false">
+    <circle class="vf-ring__track" cx="22" cy="22" r="19" pathLength="100"/>
+    <circle class="vf-ring__value" cx="22" cy="22" r="19" pathLength="100"/>
+  </svg>
+  <b class="vf-ring__label">84%</b>
+</span>
+```
 
 ## Ambient brand shapes
 
@@ -94,15 +123,18 @@ The oversized radial forms used on the enterprise homepage are a reusable Vantag
 
 ## Spacing and layout
 
-The spacing scale is 4, 8, 12, 16, 24, 32, 48, 64, 80, and 96px.
+The spacing scale is 4, 8, 12, 16, 22, 32, 48, 56, 64, and 72px. The homepage has no formal spacing scale of its own, so this one is the system's; only the section rhythm and gutters below are taken directly from it.
 
 - Maximum content width: `1180px` (`--vf-max-width`).
-- Desktop outer gutter: 24px minimum per side; 48px where space allows.
-- Mobile outer gutter: 16px.
-- Standard section padding: 96px desktop, 64px mobile.
-- Compact section padding: 64px desktop, 48px mobile.
-- Default card radius: 22px.
-- Default control height: 48px desktop, 56px mobile.
+- Desktop outer gutter: 48px per side (`--vf-gutter`).
+- Mobile outer gutter: 32px, from 860px down.
+- **One section-top rhythm**: every main content section sits the same distance from its boundary to its heading — 72px, 56px below 1040px, 40px below 760px (`--vf-section-top`).
+- Section bottom spacing is deliberately per-section on the homepage. `--vf-section-bottom` defaults to 96 / 76 / 60px; override it on a section rather than editing the token.
+- Compact section padding: 56px desktop, 48px below 860px.
+- Card padding: 22px. Default card radius: 22px; the radius set is 10 / 15 / 18 / 22px.
+- Default control height: 48px desktop, 56px on a phone.
+- Nav height: 64px (`--vf-nav-h`).
+- Breakpoints are the homepage's: 1100, 860, 560, and 400px, plus a short-laptop query at `(min-width: 981px) and (max-height: 860px)`.
 - Use a two-column layout only when both columns remain comfortably readable.
 - On mobile, stack content and never shrink screenshots until text becomes illegible.
 

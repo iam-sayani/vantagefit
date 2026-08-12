@@ -1,84 +1,118 @@
 /*
  * Vantage Fit Design System
- * Reusable foundations and components derived from enterprise-final.html.
- * Prefix all public classes and custom properties with vf- to avoid collisions.
+ *
+ * Every value here is lifted from enterprise-final.html, the approved homepage.
+ * That page is the reference: if a value differs between the two, the homepage
+ * is right and this file is wrong. Rebuilt 2026-08-11 to end the drift where
+ * pages using these classes rendered at a different scale than the homepage.
+ *
+ * Public API is prefixed vf- so it cannot collide with a page's local CSS.
+ * Homepage source of each group is noted, so a future homepage change can be
+ * traced back to the token it should update.
  */
 
 :root {
   color-scheme: light;
 
-  /* Brand */
-  --vf-coral-500: #F15162;
-  /* Gradient start for surfaces that carry white text. --vf-coral-500 is only
-     3.45:1 against white, so it must not begin a gradient behind copy. */
-  --vf-coral-600: #DB3245;
-  --vf-coral-700: #B8172A;
-  --vf-teal-500: #41D8B4;
-  --vf-teal-700: #146F58;   /* #167F69 gave 4.49:1 in .vf-badge--positive */
-  --vf-orange-500: #FF9D57;
+  /* ---- Brand ---- source: :root in enterprise-final.html
+     The red ramp is two stops, not three: coral leads the brand expression and
+     the deep red carries text and button labels. Coral is 3.45:1 on white, so
+     it is a fill and never a text colour on a light surface. */
+  --vf-coral-500: #F15162;          /* --coral / --cta-a */
+  --vf-coral-700: #B8172A;          /* --cta-b / --coral-deep / --coral-dark / --coral-text */
+  --vf-teal-500: #41D8B4;           /* --mint / --lime */
+  --vf-teal-600: #169D7E;           /* --mint-dark; the homepage's tinted-pill text tone */
+  --vf-orange-500: #FF9D57;         /* --orange / --amber */
+  --vf-slate-700: #303740;          /* --slate / --dark-2 */
+
+  /* Text-safe extensions. The homepage never sets teal or orange as body text
+     on white, so it has no AA-passing stop for either; these exist for copy
+     that must clear 4.5:1 and are the only two values not on the homepage. */
+  --vf-teal-700: #146F58;
   --vf-orange-700: #B84F16;
-  --vf-slate-700: #303740;
 
-  /* Neutrals */
-  --vf-ink: #29294C;
-  --vf-text: #50506D;
-  --vf-text-subtle: #686881;
-  --vf-canvas: #F8F8F9;
-  --vf-surface: #FFFFFF;
-  --vf-surface-soft: #F1F1F6;
-  --vf-dark: #1D2228;
-  --vf-border: rgba(41, 41, 76, .12);
-  --vf-border-strong: rgba(41, 41, 76, .22);
-  --vf-border-dark: rgba(255, 255, 255, .16);
+  /* ---- Neutrals ---- source: :root */
+  --vf-ink: #29294C;                /* --ink */
+  --vf-text: #50506D;               /* --muted; 7.21:1 or better on every light surface */
+  --vf-text-subtle: #50506D;        /* the homepage has ONE muted tone, not two */
+  --vf-canvas: #F8F8F9;             /* --canvas */
+  --vf-surface: #FFFFFF;            /* --paper */
+  --vf-surface-soft: #F1F1F6;       /* --soft */
+  --vf-dark: #1D2228;               /* --dark */
+  --vf-border: rgba(41, 41, 76, .12);      /* --line */
+  --vf-border-strong: rgba(41, 41, 76, .18);
+  --vf-border-dark: rgba(255, 255, 255, .14); /* --line-dark */
 
-  /* Semantic */
+  /* ---- Semantic ---- */
   --vf-action: var(--vf-coral-700);
   --vf-action-hover: #951323;
   --vf-positive: var(--vf-teal-700);
   --vf-reward: var(--vf-orange-500);
-  --vf-focus: #146CBE;
   --vf-danger: #A51225;
-  --vf-action-gradient: linear-gradient(125deg, var(--vf-coral-600) 5%, var(--vf-coral-700) 125%);
-  --vf-brand-gradient: linear-gradient(125deg, var(--vf-coral-600) 0%, var(--vf-coral-700) 100%);
+  --vf-focus: var(--vf-coral-500);  /* homepage focus rings are coral, not blue */
+  /* the 5%/125% stops are the homepage's, not a rounded approximation */
+  --vf-action-gradient: linear-gradient(125deg, var(--vf-coral-500) 5%, var(--vf-coral-700) 125%);
+  --vf-brand-gradient: linear-gradient(125deg, var(--vf-coral-500) 0%, var(--vf-coral-700) 100%);
   --vf-dark-gradient: linear-gradient(145deg, var(--vf-slate-700) 0%, var(--vf-dark) 100%);
 
-  /* Type */
+  /* ---- Type ---- source: body, h1, h2.section-heading, h3, .lead, .eyebrow
+     Weights are not uniform, and that is the homepage's choice, not an
+     oversight: the hero h1 inherits the UA bold (700) while every section
+     heading is 800 via h2.section-heading, its "one heading system" rule.
+     Sizes come from the rules the homepage declares LAST — several of its
+     scales were unified late in the stylesheet specifically to beat the
+     per-section rules, so an early declaration is not the effective one. */
   --vf-font-sans: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --vf-text-xs: .75rem;
-  --vf-text-sm: .875rem;
-  --vf-text-md: 1rem;
-  --vf-text-lg: 1.125rem;
-  --vf-text-xl: 1.25rem;
-  --vf-heading-sm: clamp(1.25rem, 1.8vw, 1.5rem);
-  --vf-heading-md: clamp(1.75rem, 3vw, 2.5rem);
-  --vf-heading-lg: clamp(2.25rem, 4.5vw, 3.5rem);
-  --vf-heading-xl: clamp(2.55rem, 5vw, 4.5rem);
-  --vf-leading-tight: 1.05;
-  --vf-leading-body: 1.62;
+  --vf-text-xs: .72rem;             /* .eyebrow */
+  --vf-text-sm: .84rem;             /* card copy, menu links */
+  --vf-text-md: 1rem;               /* body */
+  --vf-text-lg: 1.12rem;            /* .lead cap */
+  --vf-text-xl: 1.15rem;            /* = h3 */
+  --vf-heading-sm: 1.15rem;                          /* h3 */
+  --vf-heading-md: clamp(1.4rem, 2.4vw, 1.9rem);     /* .dual-head h3 */
+  --vf-heading-lg: clamp(2rem, 3.4vw, 3.2rem);       /* h2.section-heading */
+  --vf-heading-xl: clamp(2.55rem, 4.8vw, 4.25rem);   /* h1 */
+  --vf-lead-size: 1.12rem;          /* unified subheader scale */
+  --vf-leading-tight: 1.04;
+  --vf-leading-body: 1.55;
+  --vf-leading-lead: 1.6;           /* the lead runs looser than body copy */
 
-  /* Spacing: use this scale before introducing one-off values */
+  /* ---- Spacing ----
+     The homepage has no formal spacing scale; it uses ad-hoc px per section.
+     This scale is therefore ours, and only the values the homepage IS
+     consistent about are pinned to it: the section rhythm and the gutter. */
   --vf-space-1: .25rem;
   --vf-space-2: .5rem;
-  --vf-space-3: .75rem;
-  --vf-space-4: 1rem;
-  --vf-space-5: 1.5rem;
+  --vf-space-3: .75rem;             /* 12px — .btn-row gap */
+  --vf-space-4: 1rem;               /* 16px — .eyebrow / .lead offsets */
+  --vf-space-5: 1.375rem;           /* 22px — card padding, --radius's twin */
   --vf-space-6: 2rem;
   --vf-space-7: 3rem;
-  --vf-space-8: 4rem;
-  --vf-space-9: 5rem;
-  --vf-space-10: 6rem;
+  --vf-space-8: 3.5rem;             /* 56px — .screen-tight */
+  --vf-space-9: 4rem;               /* 64px — .screen at <=860px */
+  --vf-space-10: 4.5rem;            /* 72px — .screen */
 
-  /* Shape and elevation */
-  --vf-radius-sm: .5rem;
-  --vf-radius-md: .75rem;
-  --vf-radius-lg: 1rem;
-  --vf-radius-xl: 1.375rem;
+  /* ---- Shape and elevation ---- source: --radius, --shadow, --shadow-soft */
+  --vf-radius-sm: .625rem;          /* 10px — .metric-inline span, .trust-icon */
+  --vf-radius-md: .9375rem;         /* 15px — .metric-card */
+  --vf-radius-lg: 1.125rem;         /* 18px — .trust-card, .mega */
+  --vf-radius-xl: 1.375rem;         /* 22px — --radius, the card default */
   --vf-radius-pill: 999px;
-  --vf-shadow-sm: 0 8px 24px rgba(41, 41, 76, .08);
-  --vf-shadow-md: 0 18px 48px rgba(41, 41, 76, .12);
-  --vf-max-width: 73.75rem;
-  --vf-control-height: 3rem;
-  --vf-control-height-lg: 3.5rem;
+  --vf-shadow-sm: 0 12px 36px rgba(41, 41, 76, .08);  /* --shadow-soft */
+  --vf-shadow-md: 0 24px 64px rgba(41, 41, 76, .14);  /* --shadow */
+
+  /* ---- Frame ---- source: .shell, --nav-h, --vh-section */
+  --vf-max-width: 73.75rem;         /* 1180px */
+  --vf-gutter: 3rem;                /* 48px */
+  --vf-nav-h: 4rem;                 /* 64px */
+  --vf-section-min-h: min(100vh, 980px);
+  /* One section-top rhythm: every main content section sits the same distance
+     from its boundary to its heading. Bottom spacing is deliberately per
+     section on the homepage, so --vf-section-bottom is the default, not a law. */
+  --vf-section-top: 72px;
+  --vf-section-bottom: 96px;
+  --vf-control-height: 3rem;        /* 48px — .btn */
+  --vf-control-height-lg: 3.5rem;   /* 56px — .btn on a phone */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -96,7 +130,8 @@ body {
 }
 
 img, svg { display: block; max-width: 100%; }
-a { color: inherit; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
 button, input, select, textarea { font: inherit; }
 h1, h2, h3, h4, p { margin-block: 0; }
 h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); text-wrap: balance; }
@@ -120,64 +155,125 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
 
 .vf-skip-link:focus { transform: translateY(0); }
 
-/* Layout */
+/* ===== Layout ===== */
 .vf-container {
-  width: min(var(--vf-max-width), calc(100% - 3rem));
+  width: min(var(--vf-max-width), calc(100% - var(--vf-gutter)));
   margin-inline: auto;
 }
 
-.vf-section { padding-block: var(--vf-space-10); }
-.vf-section--compact { padding-block: var(--vf-space-8); }
+/* .screen — 72px block padding, and a full-height variant for the
+   chapter sections the homepage builds its narrative from */
+.vf-section { padding-top: var(--vf-section-top); padding-bottom: var(--vf-section-bottom); }
+.vf-section--compact { padding-top: var(--vf-space-8); padding-bottom: var(--vf-space-8); }
+.vf-section--full {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--vf-section-min-h);
+}
 .vf-section--surface { background: var(--vf-surface); }
 .vf-section--soft { background: var(--vf-surface-soft); }
 .vf-section--coral { background: #FDEBED; }
 .vf-section--dark { background: var(--vf-dark-gradient); color: #fff; }
 .vf-section--brand { background: var(--vf-brand-gradient); color: #fff; }
 
-.vf-stack { display: flex; flex-direction: column; gap: var(--vf-stack-gap, var(--vf-space-5)); }
+.vf-stack { display: flex; flex-direction: column; gap: var(--vf-stack-gap, var(--vf-space-4)); }
 .vf-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--vf-cluster-gap, var(--vf-space-3)); }
 .vf-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--vf-space-7); align-items: center; }
-.vf-grid { display: grid; grid-template-columns: repeat(var(--vf-grid-columns, 3), minmax(0, 1fr)); gap: var(--vf-space-5); }
+.vf-grid { display: grid; grid-template-columns: repeat(var(--vf-grid-columns, 3), minmax(0, 1fr)); gap: var(--vf-space-3); }
 .vf-center { text-align: center; }
+.vf-center .vf-lead { margin-inline: auto; }
 
-/* Type */
-.vf-display { max-width: 16ch; font-size: var(--vf-heading-xl); font-weight: 800; }
-.vf-section-title { max-width: 20ch; font-size: var(--vf-heading-lg); font-weight: 800; }
-.vf-card-title { font-size: var(--vf-heading-sm); font-weight: 750; }
-.vf-lead { max-width: 38rem; color: var(--vf-text); font-size: var(--vf-text-lg); line-height: var(--vf-leading-body); }
+/* ===== Type =====
+   One class per level. Never override font-size on these in a page's local
+   CSS or inline style — pick the class that matches the level instead. */
+/* Weights are the homepage's, and they are NOT uniform: the hero h1 inherits
+   the UA bold (700) while section headings are explicitly 800 by way of
+   h2.section-heading, the homepage's "one heading system" rule. */
+/* the homepage hero tightens leading past the 1.04 base; .vf-display is the
+   hero level, so it carries that here */
+.vf-display { font-size: var(--vf-heading-xl); font-weight: 700; line-height: 1.01; }
+.vf-section-title { font-size: var(--vf-heading-lg); font-weight: 800; line-height: 1.08; }
+.vf-subsection-title { font-size: var(--vf-heading-md); font-weight: 700; }
+.vf-card-title { font-size: var(--vf-heading-sm); font-weight: 700; }
+.vf-lead {
+  max-width: 40rem;                 /* 640px — .lead */
+  color: var(--vf-text);
+  font-size: var(--vf-lead-size);
+  line-height: var(--vf-leading-lead);
+}
 .vf-body { color: var(--vf-text); }
-.vf-small { color: var(--vf-text); font-size: var(--vf-text-sm); }
-.vf-meta { color: var(--vf-text-subtle); font-size: var(--vf-text-xs); font-weight: 700; }
+.vf-small { color: var(--vf-text); font-size: var(--vf-text-sm); line-height: 1.45; }
+.vf-meta { color: var(--vf-text); font-size: .68rem; font-weight: 750; }
 
 .vf-on-dark .vf-lead,
 .vf-on-dark .vf-body,
-.vf-on-dark .vf-small { color: rgba(255, 255, 255, .82); }
+.vf-on-dark .vf-small,
+.vf-on-dark .vf-meta { color: rgba(255, 255, 255, .82); }
 
+/* .eyebrow. Its 16px bottom margin is deliberately not carried over: spacing
+   between it and the heading comes from the parent .vf-stack gap. */
 .vf-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: .55rem;
+  gap: 9px;
   color: var(--vf-coral-700);
   font-size: var(--vf-text-xs);
   font-weight: 800;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
 .vf-eyebrow::before {
-  width: .5rem;
-  height: .5rem;
+  width: 8px;
+  height: 8px;
   flex: none;
   border-radius: 50%;
   background: currentColor;
   content: '';
 }
 
+/* .footer-title — the homepage sets this on a div; use it on a real heading
+   element instead, so a screen reader can still navigate the footer columns. */
+.vf-footer-title {
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 .vf-eyebrow--teal { color: var(--vf-teal-700); }
 .vf-eyebrow--orange { color: var(--vf-orange-700); }
 .vf-accent-text { color: var(--vf-coral-700); }
 
-/* Actions */
+/* .kicker — the bordered white chip the homepage uses for a status line */
+.vf-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 13px 7px 9px;
+  border: 1px solid var(--vf-border);
+  border-radius: var(--vf-radius-pill);
+  background: var(--vf-surface);
+  box-shadow: 0 4px 14px rgba(41, 41, 76, .06);
+  color: var(--vf-ink);
+  font-size: .77rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.vf-kicker::before {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--vf-teal-500);
+  box-shadow: 0 0 0 4px rgba(65, 216, 180, .12);
+  content: '';
+}
+
+/* ===== Actions ===== source: .btn-row, .btn and variants */
 .vf-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--vf-space-3); }
 
 .vf-button {
@@ -185,76 +281,232 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
   min-height: var(--vf-control-height);
   align-items: center;
   justify-content: center;
-  gap: .55rem;
-  padding-inline: 1.25rem;
+  gap: 9px;
+  padding-inline: 1.25rem;          /* 20px */
   border: 1px solid transparent;
   border-radius: var(--vf-radius-pill);
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: .92rem;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: transform .18s ease, filter .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, filter .2s ease;
 }
 
+.vf-button svg { width: 17px; }
 .vf-button:hover { transform: translateY(-2px); }
 .vf-button:active { transform: translateY(0); }
-.vf-button--primary { background: var(--vf-action-gradient); color: #fff; box-shadow: 0 8px 22px rgba(184, 23, 42, .2); }
-.vf-button--primary:hover { filter: brightness(1.05); }
-.vf-button--secondary { border-color: var(--vf-border-strong); background: var(--vf-surface); color: var(--vf-ink); }
-.vf-button--secondary:hover { border-color: var(--vf-ink); box-shadow: var(--vf-shadow-sm); }
-.vf-button--dark { background: var(--vf-dark); color: #fff; }
-.vf-button--light { border-color: rgba(255, 255, 255, .35); background: #fff; color: var(--vf-coral-700); }
-.vf-button--text { min-height: 2.75rem; padding-inline: .25rem; background: transparent; color: var(--vf-coral-700); }
-.vf-button--text:hover { transform: none; text-decoration: underline; text-underline-offset: .25rem; }
-.vf-button--large { min-height: var(--vf-control-height-lg); padding-inline: 1.6rem; }
 
-/* Cards and data */
+/* .btn-primary carries no shadow on the homepage; the gradient does the work */
+.vf-button--primary { background: var(--vf-action-gradient); color: #fff; }
+.vf-button--primary:hover { filter: brightness(1.05); }
+/* .btn-outline */
+.vf-button--secondary { border-color: var(--vf-border); background: var(--vf-surface); color: var(--vf-ink); }
+.vf-button--secondary:hover { border-color: rgba(23, 33, 38, .28); box-shadow: var(--vf-shadow-sm); }
+/* .btn-dark */
+.vf-button--dark { background: var(--vf-ink); color: #fff; }
+.vf-button--dark:hover { background: #243338; }
+/* .btn-light — a translucent ghost for dark fields, not a white pill */
+.vf-button--light { border-color: rgba(255, 255, 255, .24); background: rgba(255, 255, 255, .08); color: #fff; }
+.vf-button--light:hover { background: rgba(255, 255, 255, .14); }
+/* .text-link. The homepage's hover recolours to the same value it already has,
+   so it has no visible hover; the underline is added here because a link needs
+   one. It is the only behavioural change from the reference. */
+.vf-button--text {
+  min-height: auto;
+  padding-inline: 0;
+  gap: 6px;
+  background: transparent;
+  color: var(--vf-coral-700);
+  font-size: .9rem;
+  /* the homepage resets these to regular weight in a rule declared last,
+     after noting they had drifted to 800 across sections */
+  font-weight: 400;
+}
+.vf-button--text:hover { transform: none; text-decoration: underline; text-underline-offset: .25rem; }
+.vf-button--text.vf-button--on-dark { color: var(--vf-teal-500); }
+.vf-button--text.vf-button--on-dark:hover { color: #fff; }
+.vf-button--large { min-height: var(--vf-control-height-lg); padding-inline: 1.6rem; font-size: 1rem; }
+
+/* ===== Cards and data ===== source: .blog-card, .trust-card, .metric-* */
 .vf-card {
-  padding: var(--vf-space-5);
+  padding: var(--vf-space-5);       /* 22px */
   border: 1px solid var(--vf-border);
   border-radius: var(--vf-radius-xl);
   background: var(--vf-surface);
 }
 
 .vf-card--raised { box-shadow: var(--vf-shadow-sm); }
-.vf-card--dark { border-color: var(--vf-border-dark); background: var(--vf-slate-700); color: #fff; }
-.vf-card--positive { border-color: rgba(22, 127, 105, .24); background: #E9F8F4; }
+.vf-card--lift { transition: transform .28s cubic-bezier(.22, .9, .24, 1), box-shadow .28s ease; }
+.vf-card--lift:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(41, 41, 76, .13); }
+/* .trust-card — a tinted pane on a dark field, not a solid slate block */
+.vf-card--dark { border-color: var(--vf-border-dark); border-radius: var(--vf-radius-lg); background: rgba(255, 255, 255, .05); color: #fff; }
+.vf-card--positive { border-color: rgba(22, 127, 105, .24); background: #E8F7F1; }
 .vf-card--reward { border-color: rgba(184, 79, 22, .18); background: #FFF1E7; }
+
+/* .trust-icon */
 .vf-card__icon {
   display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 40px;
+  height: 40px;
   place-items: center;
-  border-radius: var(--vf-radius-md);
+  border-radius: var(--vf-radius-sm);
   background: #FDEBED;
   color: var(--vf-coral-700);
+  font-size: 1.1rem;
   font-weight: 800;
 }
 
-.vf-stat { display: grid; gap: .2rem; }
-.vf-stat__value { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
-.vf-stat__label { color: var(--vf-text); font-size: var(--vf-text-sm); font-weight: 700; }
-.vf-stat__change { color: var(--vf-positive); font-size: var(--vf-text-sm); font-weight: 800; }
+.vf-card__icon--teal { background: rgba(55, 201, 164, .14); color: var(--vf-teal-700); }
+.vf-on-dark .vf-card__icon--teal { color: var(--vf-teal-500); }
+
+/* .metric-lab / .metric-value / .metric-delta */
+.vf-stat { display: grid; gap: 3px; }
+.vf-stat__value { font-size: 2.1rem; font-weight: 800; letter-spacing: -.06em; line-height: 1; }
+.vf-stat__label { color: var(--vf-text); font-size: .68rem; font-weight: 750; }
+.vf-stat__change {
+  display: inline-flex;
+  align-self: start;
+  padding: 4px 7px;
+  border-radius: var(--vf-radius-pill);
+  background: rgba(20, 123, 100, .1);
+  color: var(--vf-teal-600);
+  font-size: .63rem;
+  font-weight: 800;
+}
+
+/* .moment-card — the frosted card that floats over a hero visual. The page
+   positions it; everything about how it looks and sets type lives here. */
+.vf-overlay-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  /* the base .moment-card rule is a flat 14px, but two of the homepage's three
+     cards nudge it to 14px 15px, so that is what actually renders */
+  padding: 14px 15px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: var(--vf-radius-xl);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .66));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 18px 40px rgba(41, 41, 76, .15);
+  backdrop-filter: blur(24px) saturate(1.55);
+  -webkit-backdrop-filter: blur(24px) saturate(1.55);
+  color: var(--vf-ink);
+}
+
+/* stacked variant, on the homepage's .metric-card internal rhythm (3px) rather
+   than the 11px that separates an icon from its copy in the row layout */
+.vf-overlay-card--stack { flex-direction: column; align-items: stretch; gap: 3px; }
+
+.vf-overlay-card__label {
+  font-size: .62rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vf-overlay-card__value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.035em;
+}
+
+.vf-overlay-card__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #0F7D63;
+  font-size: .62rem;
+  font-weight: 800;
+}
+
+.vf-overlay-card__icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border-radius: 11px;
+  font-size: .9rem;
+  font-weight: 900;
+}
+
+/* Ring — the Vantage Fit app's core progress motif. The app uses a ring, not a
+   bar, wherever completion is shown (challenge tasks, the daily summary), so
+   marketing pages showing product truth should use one too. Colour carries
+   meaning: coral for activity/steps, teal for completion, orange for calories.
+
+   pathLength="100" makes --vf-ring-value a literal 0-100 percentage, so the
+   markup never has to know the circle's circumference. */
+.vf-ring {
+  position: relative;
+  display: grid;
+  width: var(--vf-ring-size, 3.25rem);
+  height: var(--vf-ring-size, 3.25rem);
+  flex: none;
+  place-items: center;
+}
+
+.vf-ring svg { width: 100%; height: 100%; overflow: visible; transform: rotate(-90deg); }
+.vf-ring circle { fill: none; stroke-width: var(--vf-ring-width, 5); }
+.vf-ring__track { stroke: var(--vf-ring-track, rgba(41, 41, 76, .1)); }
+.vf-ring__value {
+  stroke: var(--vf-ring-color, var(--vf-teal-500));
+  stroke-linecap: round;
+  stroke-dasharray: var(--vf-ring-value, 0) 100;
+}
+.vf-ring__label {
+  position: absolute;
+  color: var(--vf-ink);
+  font-size: var(--vf-ring-label-size, .68rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.vf-ring__caption {
+  position: absolute;
+  top: 58%;
+  color: var(--vf-text);
+  font-size: .5rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+/* the app pairs a value with a small caption below it inside the ring */
+.vf-ring--captioned .vf-ring__label { top: 28%; }
+
+.vf-ring--coral { --vf-ring-color: var(--vf-coral-500); --vf-ring-track: rgba(241, 81, 98, .16); }
+.vf-ring--teal { --vf-ring-color: var(--vf-teal-500); --vf-ring-track: rgba(65, 216, 180, .2); }
+.vf-ring--orange { --vf-ring-color: var(--vf-orange-500); --vf-ring-track: rgba(255, 157, 87, .2); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .vf-ring__value { transition: stroke-dasharray .9s cubic-bezier(.22, .9, .24, 1); }
+}
 
 .vf-progress { height: .55rem; overflow: hidden; border-radius: var(--vf-radius-pill); background: rgba(41, 41, 76, .1); }
-.vf-progress > span { display: block; width: var(--vf-progress, 0%); height: 100%; border-radius: inherit; background: var(--vf-teal-700); }
+.vf-progress > span { display: block; width: var(--vf-progress, 0%); height: 100%; border-radius: inherit; background: var(--vf-teal-600); }
 
+/* the tinted pill pattern, sized off .metric-delta */
 .vf-badge {
   display: inline-flex;
-  min-height: 1.75rem;
   align-items: center;
-  padding-inline: .7rem;
+  padding: 4px 8px;
   border-radius: var(--vf-radius-pill);
   background: var(--vf-surface-soft);
   color: var(--vf-ink);
-  font-size: var(--vf-text-xs);
+  font-size: .68rem;
   font-weight: 800;
 }
 
-.vf-badge--positive { background: #E9F8F4; color: var(--vf-teal-700); }
+.vf-badge--positive { background: rgba(20, 123, 100, .1); color: var(--vf-teal-700); }
 .vf-badge--reward { background: #FFF1E7; color: var(--vf-orange-700); }
 
-/* Familiar product controls */
+/* ===== Familiar product controls =====
+   The homepage has no tab, accordion or form components, so these keep the
+   geometry of the system rather than claiming a homepage source. */
 .vf-tabs {
   display: inline-flex;
   gap: .25rem;
@@ -271,7 +523,8 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
   border-radius: var(--vf-radius-pill);
   background: transparent;
   color: var(--vf-text);
-  font-weight: 700;
+  font-size: .92rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -290,7 +543,8 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
   border: 0;
   background: transparent;
   color: var(--vf-ink);
-  font-weight: 750;
+  font-size: var(--vf-heading-sm);
+  font-weight: 700;
   text-align: left;
   cursor: pointer;
 }
@@ -299,7 +553,7 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
 .vf-accordion__trigger[aria-expanded='true']::after { content: '−'; }
 .vf-accordion__panel { padding: 0 0 var(--vf-space-5); color: var(--vf-text); }
 
-/* Forms */
+/* ===== Forms ===== */
 .vf-field { display: grid; gap: .45rem; }
 .vf-label { font-size: var(--vf-text-sm); font-weight: 750; }
 .vf-required { color: var(--vf-danger); }
@@ -322,7 +576,7 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
 .vf-help { color: var(--vf-text); font-size: var(--vf-text-xs); }
 .vf-error { color: var(--vf-danger); font-size: var(--vf-text-xs); font-weight: 700; }
 
-/* Product and content patterns */
+/* ===== Product and content patterns ===== */
 .vf-callout {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -330,9 +584,10 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
   padding: var(--vf-space-5);
   border-left: .25rem solid var(--vf-teal-700);
   border-radius: 0 var(--vf-radius-md) var(--vf-radius-md) 0;
-  background: #E9F8F4;
+  background: #E8F7F1;
 }
 
+/* the homepage's aurora mesh, reduced to a panel */
 .vf-brand-panel {
   position: relative;
   overflow: hidden;
@@ -344,10 +599,17 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
     var(--vf-surface);
 }
 
-/* Ambient brand shapes
-   Use at most two per section. They are decorative and must remain behind
-   readable content. Slate belongs on dark enterprise fields; coral may be
-   used on light, dark, or conversion fields at restrained opacity. */
+/* Ambient brand shapes  ---- source: .vf-glow
+   The gradient origin is the shape's TOP-LEFT corner (0% 0%), not its centre —
+   that is what gives the directional falloff, and it is the Figma spec. Geometry
+   is stated against the host's own box, not the viewport, so a shape scales and
+   repositions with its section instead of being pinned to 1440px. At 1440 these
+   percentages reproduce the Figma offsets.
+
+   Use at most two per section, keep them behind readable content and out of the
+   reading order (aria-hidden), and no more than one shape section per viewport.
+   Slate belongs on dark enterprise fields; coral works on light, dark or
+   conversion fields. */
 .vf-brand-field {
   position: relative;
   isolation: isolate;
@@ -362,44 +624,116 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
 .vf-brand-shape {
   position: absolute;
   z-index: 0;
-  width: min(62.5rem, 70vw);
+  width: 69.44%;
   aspect-ratio: 1000 / 760;
   border-radius: 50%;
   pointer-events: none;
 }
 
-.vf-brand-shape--slate {
-  background: radial-gradient(100% 100% at 0% 0%, #3B4656 0%, rgba(55, 65, 81, .12) 100%);
-}
+.vf-brand-shape--slate { background: radial-gradient(100% 100% at 0% 0%, #3B4656 0%, rgba(55, 65, 81, .12) 100%); }
+.vf-brand-shape--coral { background: radial-gradient(100% 100% at 0% 0%, rgba(241, 81, 98, .92) 0%, rgba(241, 81, 98, 0) 100%); }
 
-.vf-brand-shape--coral {
-  background: radial-gradient(100% 100% at 0% 0%, rgba(241, 81, 98, .92) 0%, rgba(241, 81, 98, 0) 100%);
-}
-
-.vf-brand-shape--start { inset-block-start: 34%; inset-inline-start: -9%; }
-.vf-brand-shape--end { inset-block-start: -39%; inset-inline-end: -32%; transform: rotate(28deg); }
+/* the homepage's paired placements, by name. --start sits low-left, --end high
+   right; the right-hand one is pushed further right than Figma so its bright
+   edge stays clear of the copy at narrower widths. */
+.vf-brand-shape--start { left: -9.24%; top: 34.08%; --vf-shape-slide: -260px; }
+.vf-brand-shape--end { left: 62%; top: -39.2%; --vf-shape-rot: 27.68deg; --vf-shape-slide: 80px; }
 .vf-brand-shape--muted { opacity: .42; }
+
+/* Slide-in. The shapes rest offset and settle as their section arrives; a page
+   adds .is-in (IntersectionObserver) and must degrade to visible without JS,
+   which is why the transform is only applied once .vf-anim is on the root. */
+.vf-brand-shape { transform: rotate(var(--vf-shape-rot, 0deg)); }
+.vf-anim .vf-brand-shape {
+  transform: translateX(var(--vf-shape-slide, 0)) rotate(var(--vf-shape-rot, 0deg));
+  transition: transform .9s cubic-bezier(.22, .9, .24, 1), opacity .9s ease;
+}
+.vf-anim .vf-brand-shape.is-in { transform: rotate(var(--vf-shape-rot, 0deg)); }
 
 .vf-divider { height: 1px; border: 0; background: var(--vf-border); }
 .vf-rule-list { margin: 0; padding: 0; list-style: none; }
 .vf-rule-list li { padding-block: var(--vf-space-4); border-top: 1px solid var(--vf-border); }
 .vf-rule-list li:first-child { border-top: 0; }
 
+/* The homepage's unified subheader scale and section-top rhythm step at 1040
+   and 760, which are NOT the breakpoints its layout rules use. Kept separate
+   rather than folded into the layout queries so each stays traceable. */
+@media (max-width: 1040px) {
+  :root {
+    --vf-lead-size: 1rem;
+    --vf-leading-lead: 1.62;
+    --vf-section-top: 56px;
+    --vf-section-bottom: 76px;
+  }
+}
+
 @media (max-width: 760px) {
+  :root {
+    --vf-section-top: 40px;
+    --vf-section-bottom: 60px;
+    /* h2.section-heading rescales here, from a 2rem floor */
+    --vf-heading-lg: clamp(2rem, 8.2vw, 2.55rem);
+  }
+  /* every button reaches a 54px target on a phone, not just those in a row */
+  .vf-button { min-height: 54px; }
+  .vf-button--text { min-height: auto; }
+}
+
+@media (max-width: 760px) {
+  /* a narrow section brings the bright corner up into the lead (4.22:1 there),
+     so the low-left shape drops below the copy */
+  .vf-brand-shape--start { top: 66%; }
+}
+
+/* ===== Responsive =====
+   Breakpoints match the homepage's: 1100 / 860 / 560 / 400. */
+@media (max-width: 1100px) {
+  .vf-split, .vf-grid { grid-template-columns: repeat(var(--vf-grid-columns-md, 2), minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
   .vf-container { width: min(100% - 2rem, var(--vf-max-width)); }
-  .vf-section { padding-block: var(--vf-space-8); }
-  .vf-section--compact { padding-block: var(--vf-space-7); }
+  .vf-section--compact { padding-top: var(--vf-space-7); padding-bottom: var(--vf-space-7); }
+  .vf-section--full { min-height: auto; }
   .vf-split, .vf-grid { grid-template-columns: 1fr; }
-  .vf-actions { align-items: stretch; }
-  .vf-actions .vf-button { width: 100%; min-height: var(--vf-control-height-lg); }
   .vf-tabs { display: flex; width: 100%; overflow-x: auto; border-radius: var(--vf-radius-lg); scrollbar-width: none; }
   .vf-tabs::-webkit-scrollbar { display: none; }
   .vf-tab { flex: 0 0 auto; }
-  .vf-brand-shape { width: 135vw; opacity: .5; }
-  .vf-brand-shape--start { inset-block-start: 58%; inset-inline-start: -62%; }
-  .vf-brand-shape--end { inset-block-start: -18%; inset-inline-end: -72%; }
+}
+
+/* the homepage rescales headings from the viewport here rather than letting
+   the desktop clamp carry down */
+@media (max-width: 560px) {
+  :root {
+    --vf-heading-xl: clamp(2.15rem, 10.5vw, 2.9rem);
+    /* --vf-heading-lg is deliberately NOT stepped again here. The homepage's
+       base h2 does drop to clamp(1.7rem, 8.5vw, 2.4rem) at 560, but
+       h2.section-heading — which .vf-section-title maps to — overrides it and
+       stops at its own 760 rule. Re-adding a 560 step would shrink every
+       section title below the reference. */
+  }
+  .vf-display { line-height: 1.1; }
+  .vf-eyebrow { font-size: .68rem; }
+  .vf-overlay-card { padding: 11px 12px; }
+  .vf-overlay-card__value { font-size: 1.1rem; }
+  .vf-overlay-card__icon { width: 31px; height: 31px; flex-basis: 31px; }
+  .vf-actions { flex-direction: column; align-items: stretch; gap: .875rem; }
+  .vf-actions .vf-button { width: 100%; justify-content: center; min-height: var(--vf-control-height-lg); font-size: 1rem; }
+  .vf-actions .vf-button--text { min-height: auto; font-size: .9rem; }
+  .vf-stat__value { font-size: 1.95rem; }
+}
+
+@media (max-width: 400px) {
+  :root { --vf-heading-xl: clamp(1.95rem, 9vw, 2.4rem); }
+}
+
+/* short laptops: keep a hero inside the first fold */
+@media (min-width: 981px) and (max-height: 860px) {
+  :root { --vf-heading-xl: clamp(2.25rem, 3.9vw, 3.4rem); }
+  .vf-button { min-height: 2.75rem; font-size: .88rem; }
+  .vf-stat__value { font-size: 1.85rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }

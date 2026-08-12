@@ -46,7 +46,7 @@
     .ds-section__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .72fr); gap: 2rem; align-items: end; margin-bottom: 2.5rem; }
     .ds-section__head .vf-body { max-width: 34rem; }
     .ds-subsection { margin-top: 3rem; }
-    .ds-subsection > h3 { margin-bottom: 1rem; font-size: 1.25rem; }
+    .ds-subsection > h3 { margin-bottom: 1rem; }
     .ds-swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
     .ds-swatch { overflow: hidden; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-lg); background: var(--vf-surface); }
     .ds-swatch__color { height: 7rem; background: var(--swatch); }
@@ -77,14 +77,13 @@
     .ds-code { overflow-x: auto; margin: 1rem 0 0; padding: 1.25rem; border-radius: var(--vf-radius-lg); background: #171C21; color: #F4F6F7; font: .82rem/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
     .ds-do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .ds-guideline { padding: 1.4rem; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-lg); background: #fff; }
-    .ds-guideline h3 { display: flex; align-items: center; gap: .65rem; font-size: 1rem; }
+    .ds-guideline h3 { display: flex; align-items: center; gap: .65rem; }
     .ds-guideline h3::before { display: grid; width: 1.75rem; height: 1.75rem; flex: none; place-items: center; border-radius: 50%; font-size: .82rem; font-weight: 800; }
     .ds-guideline--do h3::before { background: #E9F8F4; color: var(--vf-teal-700); content: '✓'; }
     .ds-guideline--dont h3::before { background: #FDEBED; color: var(--vf-coral-700); content: '×'; }
     .ds-guideline ul { margin: .8rem 0 0; padding-left: 1.2rem; color: var(--vf-text); }
     .ds-section-demo { overflow: hidden; border: 1px solid var(--vf-border); border-radius: var(--vf-radius-xl); }
     .ds-section-demo > div { min-height: 16rem; padding: 2rem; }
-    .ds-section-demo .vf-section-title { font-size: clamp(1.8rem, 3.6vw, 2.75rem); }
     .ds-brand-shape-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .ds-brand-shape-demo { min-height: 22rem; padding: 2rem; border-radius: var(--vf-radius-xl); }
     .ds-brand-shape-demo .vf-card-title { max-width: 15ch; }
@@ -203,7 +202,7 @@
           <article class="ds-swatch"><div class="ds-swatch__color" style="--swatch:#F8F8F9"></div><div class="ds-swatch__copy"><strong>Canvas</strong><code>#F8F8F9</code><span>Warm-neutral page background</span></div></article>
         </div>
         <div class="ds-subsection">
-          <h3>Usage and contrast</h3>
+          <h3 class="vf-card-title">Usage and contrast</h3>
           <table class="ds-token-table">
             <thead><tr><th>Pairing</th><th>Ratio</th><th>Use</th></tr></thead>
             <tbody>
@@ -217,7 +216,7 @@
           </table>
         </div>
         <div class="ds-subsection">
-          <h3>Ambient brand shapes</h3>
+          <h3 class="vf-card-title">Ambient brand shapes</h3>
           <p class="vf-body" style="margin-bottom:1rem">These oversized radial forms are a controlled branding motif. Use one or two behind content—never as a foreground illustration.</p>
           <div class="ds-brand-shape-grid">
             <article class="vf-brand-field vf-section--dark vf-on-dark ds-brand-shape-demo">
@@ -240,16 +239,19 @@
             <p class="vf-eyebrow">03 · Typography</p>
             <h2 class="vf-section-title" id="typography-title">Noto Sans, confidently set</h2>
           </div>
-          <p class="vf-body">One typeface keeps the experience familiar and readable. Use weight and scale—not extra font families—to create hierarchy.</p>
+          <p class="vf-body">One typeface keeps the experience familiar and readable. Every size below is the homepage&rsquo;s own scale. Pick the class that matches the level; never override its font size on a page.</p>
         </div>
         <div class="ds-type-list">
-          <div class="ds-type-row"><span class="ds-type-label">Display · 41–72px · 800</span><p class="vf-display">Wellbeing people return to.</p></div>
-          <div class="ds-type-row"><span class="ds-type-label">Section · 36–56px · 800</span><p class="vf-section-title">See what keeps people participating.</p></div>
-          <div class="ds-type-row"><span class="ds-type-label">Card · 20–24px · 750</span><p class="vf-card-title">A daily experience for every employee.</p></div>
-          <div class="ds-type-row"><span class="ds-type-label">Lead · 18px · 400</span><p class="vf-lead">Inclusive programs make everyday movement easier to join and easier to sustain.</p></div>
-          <div class="ds-type-row"><span class="ds-type-label">Body · 16px · 400</span><p class="vf-body">Use relaxed line height and keep paragraphs near 60–75 characters for comfortable reading.</p></div>
-          <div class="ds-type-row"><span class="ds-type-label">Eyebrow · 12px · 800</span><p class="vf-eyebrow">Employee Wellness Software</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Display · 41–68px · 700<br><code>.vf-display</code></span><p class="vf-display">Wellbeing people return to.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Section · 32–51px · 800<br><code>.vf-section-title</code></span><p class="vf-section-title">See what keeps people participating.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Subsection · 22–30px · 700<br><code>.vf-subsection-title</code></span><p class="vf-subsection-title">Built for the whole workforce.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Card · 18px · 700<br><code>.vf-card-title</code></span><p class="vf-card-title">A daily experience for every employee.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Lead · 18px (16px &lt;1040) · 400<br><code>.vf-lead</code></span><p class="vf-lead">Inclusive programs make everyday movement easier to join and easier to sustain.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Body · 16px · 400<br><code>.vf-body</code></span><p class="vf-body">Use relaxed line height and keep paragraphs near 60–75 characters for comfortable reading.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Small · 13px · 400<br><code>.vf-small</code></span><p class="vf-small">Supporting detail, card copy and menu descriptions.</p></div>
+          <div class="ds-type-row"><span class="ds-type-label">Eyebrow · 11.5px · 800<br><code>.vf-eyebrow</code></span><p class="vf-eyebrow">Employee Wellness Software</p></div>
         </div>
+        <p class="vf-small" style="margin-top:1.5rem">Weights are not uniform, and that is the homepage's choice: the display level inherits 700, section headings are 800. Inline text links are regular weight (400).</p>
       </section>
 
       <section class="ds-section" id="layout" aria-labelledby="layout-title">
@@ -323,6 +325,24 @@
             <p class="vf-body">Progress is visible without relying on color alone.</p>
             <div class="vf-progress" style="--vf-progress:72%;margin-top:1rem"><span></span></div>
           </article>
+          <article class="vf-card vf-card--raised">
+            <h3 class="vf-card-title">Completion rings</h3>
+            <p class="vf-body">The app shows completion as a ring, not a bar. Colour carries meaning: coral for activity and steps, teal for completion, orange for calories.</p>
+            <div class="vf-cluster" style="margin-top:1.25rem;gap:1rem">
+              <span class="vf-ring vf-ring--coral" style="--vf-ring-value: 84" aria-hidden="true">
+                <svg viewBox="0 0 44 44" focusable="false"><circle class="vf-ring__track" cx="22" cy="22" r="19" pathLength="100"/><circle class="vf-ring__value" cx="22" cy="22" r="19" pathLength="100"/></svg>
+                <b class="vf-ring__label">84%</b>
+              </span>
+              <span class="vf-ring vf-ring--teal" style="--vf-ring-value: 43" aria-hidden="true">
+                <svg viewBox="0 0 44 44" focusable="false"><circle class="vf-ring__track" cx="22" cy="22" r="19" pathLength="100"/><circle class="vf-ring__value" cx="22" cy="22" r="19" pathLength="100"/></svg>
+                <b class="vf-ring__label">43%</b>
+              </span>
+              <span class="vf-ring vf-ring--orange" style="--vf-ring-value: 61" aria-hidden="true">
+                <svg viewBox="0 0 44 44" focusable="false"><circle class="vf-ring__track" cx="22" cy="22" r="19" pathLength="100"/><circle class="vf-ring__value" cx="22" cy="22" r="19" pathLength="100"/></svg>
+                <b class="vf-ring__label">61%</b>
+              </span>
+            </div>
+          </article>
           <article class="vf-card vf-card--reward">
             <span class="vf-badge vf-badge--reward">Reward earned</span>
             <h3 class="vf-card-title">1,420 Vantage Points</h3>
@@ -330,7 +350,7 @@
           </article>
         </div>
         <div class="ds-subsection">
-          <h3>Tabs</h3>
+          <h3 class="vf-card-title">Tabs</h3>
           <div class="vf-tabs" role="tablist" aria-label="Product experience example">
             <button class="vf-tab" type="button" role="tab" aria-selected="true" aria-controls="employee-panel" id="employee-tab">For employees</button>
             <button class="vf-tab" type="button" role="tab" aria-selected="false" aria-controls="hr-panel" id="hr-tab">For HR teams</button>
@@ -339,7 +359,7 @@
           <div class="vf-card" id="hr-panel" role="tabpanel" aria-labelledby="hr-tab" style="margin-top:1rem" hidden><h3 class="vf-card-title">A program HR can run with confidence</h3><p class="vf-body" style="margin-top:.6rem">Launch challenges, monitor participation, manage rewards, and share leadership-ready reports.</p></div>
         </div>
         <div class="ds-subsection">
-          <h3>Accordion</h3>
+          <h3 class="vf-card-title">Accordion</h3>
           <div class="vf-accordion">
             <div class="vf-accordion__item">
               <button class="vf-accordion__trigger" type="button" aria-expanded="true" aria-controls="accordion-panel-1">Everyday wellbeing</button>
@@ -398,8 +418,8 @@
           <p class="vf-body">Write primarily to the HR buyer while showing employee value. Translate every capability into a business or human outcome.</p>
         </div>
         <div class="ds-do-dont">
-          <article class="ds-guideline ds-guideline--do"><h3>Do</h3><ul><li>“See what is working—not just what was launched.”</li><li>Use concise US English.</li><li>Source customer results and statistics.</li><li>Use “wellbeing” consistently.</li><li>Name the next step in every CTA.</li></ul></article>
-          <article class="ds-guideline ds-guideline--dont"><h3>Don’t</h3><ul><li>“Revolutionize your wellness journey.”</li><li>Invent outcomes, integrations, or certifications.</li><li>Describe medical or guaranteed savings claims.</li><li>Repeat “Learn more” across every card.</li><li>Make participation sound athletic or exclusive.</li></ul></article>
+          <article class="ds-guideline ds-guideline--do"><h3 class="vf-card-title">Do</h3><ul><li>“See what is working—not just what was launched.”</li><li>Use concise US English.</li><li>Source customer results and statistics.</li><li>Use “wellbeing” consistently.</li><li>Name the next step in every CTA.</li></ul></article>
+          <article class="ds-guideline ds-guideline--dont"><h3 class="vf-card-title">Don’t</h3><ul><li>“Revolutionize your wellness journey.”</li><li>Invent outcomes, integrations, or certifications.</li><li>Describe medical or guaranteed savings claims.</li><li>Repeat “Learn more” across every card.</li><li>Make participation sound athletic or exclusive.</li></ul></article>
         </div>
       </section>
 
@@ -413,7 +433,7 @@
         </div>
         <div class="vf-callout"><span class="vf-card__icon" style="background:#fff;color:#167F69">AA</span><div><h3 class="vf-card-title">Core requirements</h3><ul class="vf-rule-list"><li>Normal text: at least 4.5:1 contrast; aim for 7:1 where practical.</li><li>Large text and essential UI boundaries: at least 3:1.</li><li>Keyboard-visible focus, semantic headings, labels, and status text.</li><li>Touch targets: at least 44 × 44px; preferred mobile CTA height: 56px.</li><li>Respect reduced motion and never communicate status using color alone.</li></ul></div></div>
         <div class="ds-subsection">
-          <h3>Starter usage</h3>
+          <h3 class="vf-card-title">Starter usage</h3>
           <pre class="ds-code"><code>&lt;link rel="stylesheet" href="/vfit-design-system.css"&gt;
 
 &lt;section class="vf-section vf-section--surface"&gt;
