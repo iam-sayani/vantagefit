@@ -741,7 +741,7 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
   height: 1.75rem;
   place-items: center;
   color: var(--vf-ink);
-  font-size: .7rem;
+  font-size: .75rem;
   font-weight: 800;
   letter-spacing: .04em;
   line-height: 1;
