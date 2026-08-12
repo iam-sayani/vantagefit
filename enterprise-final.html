@@ -466,7 +466,7 @@
       align-items: center;
       gap: 52px;
       min-height: 0;
-      padding: 34px 0 40px;
+      padding: 20px 0 40px;
     }
     .hero-copy h1 { max-width: 690px; margin-top: 0; line-height: 1.01; }
     .hero-copy .eyebrow { margin-bottom: 14px; }
@@ -1755,7 +1755,7 @@
 
     /* —— Responsive —— */
     @media (max-width: 1100px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; padding-top: 28px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; padding-top: 18px; }
       .hero-copy { max-width: 720px; }
       .hero-visual { width: min(100%, 660px); margin: 0 auto; min-height: 470px; }
       .people-visual { min-height: 530px; }
@@ -1882,10 +1882,20 @@
       /* 1 — clear the fixed nav, single column, sane rhythm */
       /* no bottom padding: the logo band is the last thing in the hero, and
          40px of it showed as an empty white strip before the next section */
-      .hero { min-height: auto; padding: calc(var(--nav-h) + 68px) 0 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 20px; padding: 0; min-height: 0; }
+      /* 68px of clearance below the nav was pushing Book a demo out of the
+         first viewport once browser chrome took its share. 12px is the least
+         that still reads as a gap rather than the eyebrow touching the nav. */
+      .hero { min-height: auto; padding: calc(var(--nav-h) + 24px) 0 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 16px; padding: 0; min-height: 0; }
       .hero-copy { max-width: none; }
       .hero-copy .eyebrow { margin-bottom: 10px; font-size: .68rem; }
+
+      /* the actions follow the copy, as they do on desktop, rather than sitting
+         below a 283px visual. The thumb bar still takes over on scroll, so this
+         is the first-paint CTA its comment describes. */
+      .hero-copy { order: 1; }
+      .hero-mobile-actions { order: 2; }
+      .people-visual { order: 3; }
 
       /* 2 — type scales from the viewport, not down from desktop */
       .hero-copy h1 { font-size: clamp(2.05rem, 8.8vw, 2.9rem); line-height: 1.1; }
