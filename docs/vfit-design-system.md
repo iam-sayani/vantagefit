@@ -73,6 +73,7 @@ Noto Sans is the only web typeface. Every size below is the homepage's own scale
 - **Never override `font-size` on a heading class**, in a page's local `<style>` block or inline. If a heading looks wrong at its size, the level is wrong: pick the class that matches it. The scale is display > section > subsection > card, and there is no size between them.
 - Display headings sit at 700; section headings sit at 800. Both are the homepage's values — check which level you are on rather than assuming one weight.
 - Inline text links (`.vf-button--text`) are **regular weight (400)**, not bold. The homepage resets them last, after noting they had drifted to 800 across sections.
+- A text link has no chrome, so it hugs its label rather than filling its column: it is left-aligned, and as a direct child of `.vf-stack` it shrinks to the label so the hit area is the link, not the whole column. Inside `.vf-actions` it is unaffected and stays centred against its sibling buttons.
 - Heading line height is 1.04; `.vf-display` tightens to 1.01 (1.1 below 560px) and `.vf-section-title` runs at 1.08. Body copy is 1.55; the lead runs looser at 1.6, and 1.62 below 1040px.
 - Heading tracking is -0.035em; stat values are -0.06em.
 - Keep body copy at 16px or larger and product UI text at 13px or larger when the UI is functional rather than decorative.

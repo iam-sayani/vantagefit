@@ -206,7 +206,8 @@
   .sol-confidence__claim { position: sticky; top: calc(var(--vf-nav-h) + var(--vf-space-6)); }
   /* the label wraps in a narrow column, so it needs to justify left rather than
      centre, and sit on its own line under the claim */
-  .sol-confidence__link { display: flex; justify-content: flex-start; margin-top: var(--vf-space-5); }
+  /* alignment is the component's now; this is spacing only */
+  .sol-confidence__link { align-self: start; margin-top: var(--vf-space-5); }
 
   /* one hairline between cells, drawn by the gap showing the panel through */
   .sol-confidence__grid {
@@ -321,10 +322,19 @@
      under the field of runners, coral under the pair. Ink is the text-safe stop
      of the same hue. */
   .sol-format--race     { --sol-format-tint: rgba(241,81,98,.22); --sol-format-soft: rgba(241,81,98,.2);  --sol-format-ink: var(--vf-coral-700); }
-  .sol-format--streak   { --sol-format-tint: rgba(65,216,180,.24); --sol-format-soft: rgba(65,216,180,.2); --sol-format-ink: var(--vf-teal-700); }
+  .sol-format--streak   { --sol-format-tint: rgba(65,216,180,.42); --sol-format-soft: rgba(65,216,180,.26); --sol-format-ink: var(--vf-teal-700); }
   .sol-format--journey  { --sol-format-tint: rgba(255,157,87,.22); --sol-format-soft: rgba(255,157,87,.2); --sol-format-ink: var(--vf-orange-700); }
-  .sol-format--marathon { --sol-format-tint: rgba(22,157,126,.2);  --sol-format-soft: rgba(22,157,126,.16); --sol-format-ink: var(--vf-teal-700); }
+  .sol-format--marathon { --sol-format-tint: rgba(65,216,180,.42); --sol-format-soft: rgba(65,216,180,.26); --sol-format-ink: var(--vf-teal-700); }
   .sol-format--custom   { --sol-format-tint: rgba(241,81,98,.18); --sol-format-soft: rgba(241,81,98,.16); --sol-format-ink: var(--vf-coral-700); }
+  .sol-format--streak::before,
+  .sol-format--marathon::before {
+    background: linear-gradient(180deg,
+      rgba(255,255,255,.68) 0%,
+      rgba(65,216,180,.16) 48%,
+      rgba(65,216,180,.12) 100%);
+  }
+  .sol-format--streak .sol-format__art img,
+  .sol-format--marathon .sol-format__art img { filter: saturate(1.16); }
 
   /* one column: hold the card to a phone-ish width so the proportion does not
      turn it into a full page of artwork */
@@ -486,7 +496,7 @@
     width: .4rem;
     height: .4rem;
     border-radius: 50%;
-    background: var(--vf-teal-600);
+    background: var(--vf-teal-500);
     content: '';
   }
   .sol-kpis {
@@ -520,7 +530,7 @@
     font-weight: 700;
   }
   .sol-dept .vf-progress { height: .38rem; background: var(--vf-surface-soft); }
-  .sol-dept .vf-progress > span { background: var(--vf-teal-600); }
+  .sol-dept .vf-progress > span { background: var(--vf-teal-500); }
   .sol-admin__next {
     justify-content: flex-start;
     padding-top: 1.25rem;

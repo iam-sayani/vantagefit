@@ -353,6 +353,14 @@ h1, h2, h3, h4 { letter-spacing: -.035em; line-height: var(--vf-leading-tight); 
      after noting they had drifted to 800 across sections */
   font-weight: 400;
 }
+/* A text button has no chrome, so nothing signals its box: stretched to the
+   full width of a column it just leaves its label floating in the middle. Hug
+   the label at the start, and in a stack shrink the box to it so the hit area
+   is the link rather than the whole column. Inside .vf-actions the box is
+   already content-sized and centred against its sibling pill, so that row is
+   untouched. */
+.vf-button--text { justify-content: flex-start; }
+.vf-stack > .vf-button--text { align-self: start; }
 .vf-button--text:hover { transform: none; text-decoration: underline; text-underline-offset: .25rem; }
 .vf-button--text.vf-button--on-dark { color: var(--vf-teal-500); }
 .vf-button--text.vf-button--on-dark:hover { color: #fff; }
