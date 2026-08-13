@@ -170,9 +170,10 @@
   line-height: 1.35;
 }
 .vf-mega a.vf-mega__link:hover { background: var(--vf-surface-soft, #F1F1F6); }
+/* The page you are on keeps the soft field and nothing else: the coral rule
+   that used to sit down its left edge read as a stray stroke in the menu. */
 .vf-mega a.vf-mega__link[aria-current="page"] {
   background: var(--vf-surface-soft, #F1F1F6);
-  box-shadow: inset 2px 0 0 var(--vf-coral-700, #B8172A);
 }
 .vf-mega__tag {
   display: inline-block; margin-left: 7px; padding: 1px 7px;
